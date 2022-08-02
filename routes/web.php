@@ -14,5 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('instructor.index');
+    return redirect('instructor/dashboard');
+});
+
+
+
+Route::group(['prefix'=>'instructor', 'as'=>'instructor', 'middleware'=> [] ], function (){
+    Route::get('/dashboard', function () { return view('instructor.index'); });
+});
+
+
+Route::group(['prefix'=>'admin', 'as'=>'admin', 'middleware'=> [] ], function (){
+    Route::get('/dashboard', function () { return view('instructor.index'); });
 });
