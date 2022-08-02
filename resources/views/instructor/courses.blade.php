@@ -1,15 +1,16 @@
 @extends('layouts.instructor')
 @section('page_title')
-    Course |
+    Instructors Dashboard
 @endsection
 
 @section('page_content')
     <div class="pt-5 pb-5">
         <div class="container">
+            {!! instructorInfo() !!}
 
             <div class="row mt-0 mt-md-4">
                 <div class="col-lg-3 col-md-4 col-12">
-                    @include('instructor.side')
+                    @include('layouts.sidebar')
                 </div>
                 <div class="col-lg-9 col-md-8 col-12">
                     <div class="card mb-4">

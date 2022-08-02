@@ -19,15 +19,14 @@ Route::get('/', function () {
 
 
 
-Route::group(['prefix'=>'instructor', 'as'=>'instructor', 'middleware'=> [] ], function (){
+Route::group(['prefix'=>'instructor', 'as'=>'instructor.', 'middleware'=> [] ], function (){
     Route::get('/dashboard', function () { return view('instructor.index'); });
+    Route::view('/courses', 'instructor.courses')->name('courses');
+    Route::view('/add_course','instructor.add_course')->name('add_course');
+    Route::view('/course','instructor.course')->name('course');
 });
 
 
 Route::group(['prefix'=>'admin', 'as'=>'admin', 'middleware'=> [] ], function (){
     Route::get('/dashboard', function () { return view('instructor.index'); });
 });
-Route::view('/','instructor.index');
-Route::view('/courses', 'instructor.course')->name('instructor.courses');
-
-Route::view('/add_course','instructor.add-course')->name('instructor.add-course');

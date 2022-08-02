@@ -30,7 +30,7 @@
 
 <body>
 
-@include('layouts.instructors_nav')
+        @include('layouts.nav')
 
         @yield('page_content')
 
