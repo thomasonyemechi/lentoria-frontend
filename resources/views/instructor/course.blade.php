@@ -120,92 +120,47 @@
 
     <div class="modal fade" id="newCatgory" tabindex="-1" role="dialog" aria-labelledby="newCatgoryLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title mb-0" id="newCatgoryLabel">
-                        Create New Category
-                    </h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
-                    </button>
-                </div>
-                <div class="modal-body">
+                <div class="modal-body shadow">
+                    <div class="mb-4">
+                        <a href="."><img src="assets/images/brand/logo/logo111.png" class="mb-4"
+                                alt=""></a>
+                        <h1 class="mb-1 fw-bold">Sign in</h1>
+                        <span>Don’t have an account? <a href="signup.php" class="ms-1">Sign up</a></span>
+                    </div>
                     <form>
-                        <div class="mb-3 mb-2">
-                            <label class="form-label" for="title">Title<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" placeholder="Write a Category" id="title"
-                                required>
-                            <small>Field must contain a unique value</small>
+                        <div id="loginAlert"></div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Username or email</label>
+                            <input type="email" id="loginEmail" class="form-control" name="email"
+                                placeholder="Email address here" required>
                         </div>
-                        <div class="mb-3 mb-2">
-                            <label class="form-label">Slug</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="slug">https://example.com</span>
-                                </div>
-                                <input type="text" class="form-control" id="basic-url" aria-describedby="slug"
-                                    placeholder="designcourses" required>
-                            </div>
-                            <small>Field must contain a unique value</small>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="loginPassword" class="form-control" name="password"
+                                placeholder="**************" required>
                         </div>
-                        <div class="mb-3 mb-2">
-                            <label class="form-label">Parent</label>
-                            <select class="selectpicker" data-width="100%">
-                                <option value="">Select</option>
-                                <option value="Course">Course</option>
-                                <option value="Tutorial">Tutorial</option>
-                                <option value="Workshop">Workshop</option>
-                                <option value="Company">Company</option>
-                            </select>
-                        </div>
-                        <div class="mb-3 mb-3">
-                            <label class="form-label">Description</label>
-                            <div id="editor">
-                                <br>
-                                <h4>One Ring to Rule Them All</h4>
-                                <br>
-                                <p>
-                                    Three Rings for the
-                                    <i> Elven-kingsunder</i> the sky,
-                                    <br> Seven for the
-                                    <u>Dwarf-lords</u> in halls of stone, Nine for Mortal Men,
-                                    <br> doomed to die, One for the Dark Lord on his dark throne.
-                                    <br> In the Land of Mordor where the Shadows lie.
-                                    <br>
-                                    <br>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label">Enabled</label>
-                            <div class="form-check form-switch">
-                                <input type="checkbox" class="form-check-input" id="customSwitch1" checked>
-                                <label class="form-check-label" for="customSwitch1"></label>
+                        <div class="d-lg-flex justify-content-end align-items-center mb-4">
+                
+                            <div>
+                                <a href="forgot-password.php">Forgot your password?</a>
                             </div>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-primary">Add New Category</button>
-                            <button type="button" class="btn btn-outline-white" data-bs-dismiss="modal">
-                                Close
-                            </button>
+                            <div class="d-grid">
+                                <button type="submit" id="submitLogin" class="btn btn-primary ">Sign in</button>
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script>
         $(function() {
-
-            $('.con_pay').on('click', function() {
-                $('#checkout').modal('show');
-            })
-
-            $('.btn-close').on('click', function() {
-                $('#checkout').modal('hide');
-            })
+            $('#newCatgory').modal('show')
         })
-    <script>
+    </script>
 @endsection
