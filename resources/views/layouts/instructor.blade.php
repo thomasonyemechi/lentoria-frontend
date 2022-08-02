@@ -18,6 +18,7 @@
 <link href="{{ asset('assets/libs/tiny-slider/dist/tiny-slider.css')}}" rel="stylesheet">
 <link href="{{ asset('assets/libs/tippy.js/dist/tippy.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('assets/cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css') }}">
+<script src="{{ asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
 
 
 
@@ -38,7 +39,6 @@
 
 {{-- Javascripts Here .... --}}
 
-<script src="{{ asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{ asset('assets/libs/odometer/odometer.min.js')}}"></script>
 <script src="{{ asset('assets/libs/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
@@ -66,6 +66,8 @@
 <script src="{{ asset('assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
 <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{ asset('assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js')}}"></script>
+
+@method('js')
 
 
 

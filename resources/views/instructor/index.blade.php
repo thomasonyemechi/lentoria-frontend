@@ -234,4 +234,12 @@
             </div>
         </div>
     </div>
+
+       <script type="text/javascript">
+                alert('fuiefuiefjh')
+        <script>
 @endsection
+@push('js')
+    
+ 
+@endpush
