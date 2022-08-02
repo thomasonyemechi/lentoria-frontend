@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('instructor.index');
-});
+Route::view('/','instructor.index');
+Route::view('/courses', 'instructor.course')->name('instructor.courses');
+
+Route::view('/add_course','instructor.add-course')->name('instructor.add-course');
