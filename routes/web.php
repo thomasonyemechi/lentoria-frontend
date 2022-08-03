@@ -32,6 +32,7 @@ Route::group(['prefix'=>'instructor', 'as'=>'instructor.', 'middleware'=> ['auth
 Route::group(['prefix'=>'admin', 'as'=>'admin.', 'middleware'=> ['auth2'] ], function (){
     Route::get('/dashboard', function () { return view('admin.dashboard'); });
     Route::get('/category', function () { return view('admin.course_category'); });
+    Route::get('/topic', function () { return view('admin.course_topics'); });
 });
 
 Route::get('/logout', function () {

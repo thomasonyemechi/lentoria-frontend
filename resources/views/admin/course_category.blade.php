@@ -150,7 +150,6 @@
                     btn(bt, 'Update Category', 'after');
                 }).fail(function (res) {
                     concatError(res.responseJSON);
-                    console.log(res)
                     btn(bt, 'Update Category', 'after');
                 })
             })
@@ -195,8 +194,7 @@
                         `)
                     })
                 }).fail(function (res) {
-                    console.log(res)
-                    salat('An error occured while fetch your data', 1);
+                    salat('An error occured while fetching your data', 1);
                 })
             }
 
@@ -220,7 +218,6 @@
                     btn(bt, 'Add New Category', 'after');
                 }).fail(function (res) {
                     concatError(res.responseJSON);
-                    console.log(res)
                     btn(bt, 'Add New Category', 'after');
                 })
             })
