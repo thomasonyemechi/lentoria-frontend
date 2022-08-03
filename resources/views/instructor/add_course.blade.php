@@ -66,6 +66,54 @@
                                             <h4 class="mb-0">Course Type</h4>
                                         </div>
                                         <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="card bg-dark-primary shadow-none text-center mx-4 my-8">
+                                                        <div class="card-body py-6">
+                                                            <div class="mt-4">
+                                                                <h5 class="text-white">Unlimited Access</h5>
+                                                                <p class="text-white-50 fs-6">
+                                                                    Upgrade your plan from a Free trial, to select ‘Business
+                                                                    Plan’.
+                                                                    Start Now
+                                                                </p>
+                                                                <a href="#!" class="btn btn-white btn-sm mt-2">Select</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-4">
+                                                    <div class="card bg-dark-primary shadow-none text-center mx-4 my-8">
+                                                        <div class="card-body py-6">
+                                                            <div class="mt-4">
+                                                                <h5 class="text-white">Unlimited Access</h5>
+                                                                <p class="text-white-50 fs-6">
+                                                                    Upgrade your plan from a Free trial, to select ‘Business
+                                                                    Plan’.
+                                                                    Start Now
+                                                                </p>
+                                                                <a href="#!" class="btn btn-white btn-sm mt-2">Select</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-4">
+                                                    <div class="card bg-dark-primary shadow-none text-center mx-4 my-8">
+                                                        <div class="card-body py-6">
+                                                            <div class="mt-4">
+                                                                <h5 class="text-white">Unlimited Access</h5>
+                                                                <p class="text-white-50 fs-6">
+                                                                    Upgrade your plan from a Free trial, to select ‘Business
+                                                                    Plan’.
+                                                                    Start Now
+                                                                </p>
+                                                                <a href="#!" class="btn btn-white btn-sm mt-2">Select</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
 
                                         </div>
                                     </div>
