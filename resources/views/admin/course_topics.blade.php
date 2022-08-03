@@ -40,6 +40,9 @@
                                     Category
                                 </th>
                                 <th scope="col" class="border-0 text-uppercase">
+                                    Description
+                                </th>
+                                <th scope="col" class="border-0 text-uppercase">
                                     Courses
                                 </th>
                                 <th scope="col" class="border-0 text-uppercase"></th>
@@ -95,7 +98,7 @@
     </div>
 
 
-    <div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" aria-labelledby="newCatgoryLabel"
+    <div class="modal fade" id="editTopicModal" tabindex="-1" role="dialog" aria-labelledby="newCatgoryLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -108,14 +111,15 @@
                     </button>
                 </div>
                 <div class="modal-body shadow">
-                    <form id="editCategoryForm">
+                    <form id="editTopicForm">
                         <div class="mb-3">
                             <label class="form-label">Topic</label>
                             <input type="text" class="form-control" name="topic" placeholder="Topic here" required>
+                            <input type="hidden" name="id">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Category</label>
-                            <select class="form-control course_category" name="category">
+                            <select class="form-control course_category course_category_edit" name="category">
                                 <option selected Disabled>Select Topic Category</option>
                             </select>
                         </div>
@@ -125,7 +129,7 @@
                         </div>
                         <div>
                             <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary ">Add Topic</button>
+                                <button type="submit" class="btn btn-primary ">Update Topic</button>
                             </div>
                         </div>
                     </form>
@@ -140,42 +144,47 @@
                 $('#addTopicModal').modal('show');
             })
 
-            $('body').on('click', '.edit_category', function() {
+            $('body').on('click', '.edit_topic', function() {
                 data = $(this).data('data');
-                modal = $('#editCategoryModal')
+                modal = $('#editTopicModal')
                 modal.modal('show');
 
-                $(modal).find('.modal-title').html(`Edit Category (${data.name}) `);
-                $(modal).find('input[name="course_category"]').val(data.name);
+                $(modal).find('.modal-title').html(`Edit Topic (${data.name}) `);
+                $(modal).find('input[name="topic"]').val(data.name);
                 $(modal).find('input[name="id"]').val(data.id);
+                $(modal).find(`.course_category_edit option[value=${data.category_id}] `).prop('selected', true)
+                $(modal).find('textarea[name="description"]').val(data.description);
             })
 
 
-            $('#editCategoryForm').on('submit', function(e) {
+            $('#editTopicForm').on('submit', function(e) {
                 e.preventDefault();
-                form = $(this)
-                name = $(form).find('input[name="course_category"]').val();
+                form = $(this);
+                name = $(form).find('input[name="topic"]').val();
+                category_id = $(form).find('select[name="category"]').val();
                 id = $(form).find('input[name="id"]').val();
+                des = $(form).find('textarea[name="description"]').val();
                 bt = $(form).find('button');
+
                 $.ajax({
                     method: 'post',
-                    url: api_url + 'admin/category/' + id,
+                    url: api_url + 'admin/update_topic/'+id,
                     data: {
-                        name: name,
-                        id: id
+                        name: name, category_id: category_id, description: des, id: id
                     },
                     beforeSend: () => {
                         btn(bt, '', 'before');
                     }
                 }).done(function(res) {
                     salat(res.message);
-                    fetchCategory();
-                    $('#editCategoryModal').modal('hide');
-                    btn(bt, 'Update Category', 'after');
+                    fetchTopic();
+                    $('#editTopicModal').modal('hide');
+                    btn(bt, 'Update Topic', 'after');
+                    form[0].reset()
                 }).fail(function(res) {
                     concatError(res.responseJSON);
                     console.log(res)
-                    btn(bt, 'Update Category', 'after');
+                    btn(bt, 'Update Topic', 'after');
                 })
             })
 
@@ -200,6 +209,7 @@
                                     </a>
                                 </td>
                                 <td class="align-middle border-top-0">${topic.category.name}</td>
+                                <td class="align-middle border-top-0">${topic.description}</td>
                                 <td class="align-middle border-top-0">${topic.total_courses}</td>
                                 <td class="align-middle border-top-0">
                                     <span class="dropdown dropstart">
@@ -210,7 +220,7 @@
                                         </a>
                                         <span class="dropdown-menu" aria-labelledby="courseDropdown1">
                                             <span class="dropdown-header">Edit</span>
-                                            <a class="dropdown-item edit_category" href="javascript:;" data-data='${JSON.stringify(topic)}' ><i
+                                            <a class="dropdown-item edit_topic" href="javascript:;" data-data='${JSON.stringify(topic)}' ><i
                                                     class="fe fe-edit dropdown-item-icon"></i>Edit Topic</a>
                                         </span>
                                     </span>
@@ -266,7 +276,7 @@
                 }).done(function(res) {
                     salat(res.message);
                     fetchTopic();
-                    $('#addCategoryModal').modal('hide');
+                    $('#addTopicModal').modal('hide');
                     btn(bt, 'Add Topic', 'after');
                     form[0].reset()
                 }).fail(function(res) {
