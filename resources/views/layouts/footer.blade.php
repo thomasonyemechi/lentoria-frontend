@@ -43,7 +43,7 @@
                                 placeholder="**************" required>
                         </div>
                         <div class="d-lg-flex justify-content-end align-items-center mb-4">
-                
+
                             <div>
                                 <a href="forgot-password.php">Forgot your password?</a>
                             </div>
@@ -61,7 +61,7 @@
 
     <script>
         $(function () {
-            //$('#login_modal').modal('show');
+            // $('#login_modal').modal('show');
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
