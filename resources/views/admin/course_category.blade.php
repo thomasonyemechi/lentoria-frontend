@@ -43,7 +43,7 @@
                             </tr>
                         </thead>
                         <tbody id="category_body" >
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -101,7 +101,7 @@
                             <label class="form-label">Course Category</label>
                             <input type="text" class="form-control" name="course_category"
                                 placeholder="Course category here" required>
-                            
+
                             <input type="hidden" name="id">
                         </div>
                         <div>
@@ -164,7 +164,6 @@
                     body = $('#category_body')
                     body.html('')
                     res.data.map( cat => {
-                        console.log(cat)
                         body.append(`
                             <tr>
                                 <td class="border-top-0">
@@ -217,7 +216,7 @@
                     }
                 }).done(function (res) {
                     salat(res.message);
-                    fetchCategory(); $('#addCategoryModal').modal('hide');
+                    fetchCategory();$('#addCategoryModal').modal('hide');$('#addCategoryForm')[0].reset();
                     btn(bt, 'Add New Category', 'after');
                 }).fail(function (res) {
                     concatError(res.responseJSON);
