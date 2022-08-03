@@ -1,8 +1,18 @@
 <?php 
 
 
+function access_token()
+{
+    return session()->get('info')['access_token'] ?? '';
+}
+
+function user(){
+    return json_decode(json_encode(session()->get('info')['data']));
+}
+
 function instructorInfo() {
-    $info = ['name' => 'Jonh Doe Coddyy', 'photo' => 'assets/images/avatar/avatar-1.jpg', 'email' => 'johndoe@gmail.com' ];
+    $user = user();
+    $info = ['name' => $user->firstname.' '.$user->lastname, 'photo' => 'assets/images/avatar/avatar-1.jpg', 'email' => $user->email ];
     return '<div class="row align-items-center">
     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
         <div class="pt-16 rounded-top-md"

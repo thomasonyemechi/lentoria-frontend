@@ -18,24 +18,23 @@
     <link href="{{ asset('assets/libs/tiny-slider/dist/tiny-slider.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/libs/tippy.js/dist/tippy.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css') }}">
-
     <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
-
-
     <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css') }}">
-
-
     <script src="{{ asset('assets/js/general.js') }}"></script>
 
 </head>
 
 <body>
 
+    <div class="littleAlert"></div>
+    @include('layouts.alert_top')
     @include('layouts.nav')
+
+    
 
     @yield('page_content')
 
-    @include('layouts.instructors_footer')
+    @include('layouts.footer')
 
     {{-- Javascripts Here .... --}}
 
