@@ -1,6 +1,6 @@
 @extends('layouts.instructor')
 @section('page_title')
-	Course |
+	Course | {{ $slug }}
 @endsection
 
 @section('page_content')
@@ -37,7 +37,7 @@
 
 								<div class="mb-3">
 									<label class="form-label"><b>Course Description</b></label>
-									<textarea id="editor" class="form-control">
+									<textarea class="form-control">
 
 									</textarea>
 								</div>
@@ -104,14 +104,10 @@
 									</label>
 								</div>
 								<div class="d-flex justify-content-end mt-3">
-									<button class="btn btn-success btn-block review-btn">Submit For Review</button>
-								</form>
-</div>
+									<button class="btn btn-success btn-block review-btn" id="submit">Submit For Review</button>
+							</form>
 						</div>
 					</div>
-
-
-
 				</div>
 
 
@@ -120,22 +116,21 @@
 
 
 
-
 		</div>
-	</div>
-	</div>
+
+
+
+
 	</div>
 
 	<script>
 	 $(function() {
-
-	  $('.con_pay').on('click', function() {
-	   $('#checkout').modal('show');
-	  })
-
-	  $('.btn-close').on('click', function() {
-	   $('#checkout').modal('hide');
-	  })
+	  function getInfo() {
+        $.ajax({
+            method: 'GET',
+            url: api_url+`admin/`
+        })
+	  }
 	 })
 	</script>
 @endsection
