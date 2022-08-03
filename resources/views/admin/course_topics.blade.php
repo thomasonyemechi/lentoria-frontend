@@ -34,16 +34,19 @@
                         <thead class="table-light">
                             <tr>
                                 <th scope="col" class="border-0 text-uppercase">
+                                    Topic
+                                </th>
+                                <th scope="col" class="border-0 text-uppercase">
                                     Category
                                 </th>
                                 <th scope="col" class="border-0 text-uppercase">
-                                    Topics
+                                    Courses
                                 </th>
                                 <th scope="col" class="border-0 text-uppercase"></th>
                             </tr>
                         </thead>
-                        <tbody id="category_body" >
-                            
+                        <tbody id="topic_body">
+
                         </tbody>
                     </table>
                 </div>
@@ -66,16 +69,19 @@
                 </div>
                 <div class="modal-body shadow">
                     <form id="addTopicForm">
-                    <div class="mb-3">
-                            <label class="form-label">Topic</label>
-                            <input type="text" class="form-control" name="topic"
-                                placeholder="Topic here" required>
-                        </div>
                         <div class="mb-3">
                             <label class="form-label">Topic</label>
-                            <select>
-                                
+                            <input type="text" class="form-control" name="topic" placeholder="Topic here" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select class="form-control course_category" name="category">
+                                <option selected Disabled>Select Topic Category</option>
                             </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Topic Description</label>
+                            <textarea class="form-control" row=2 name="description"></textarea>
                         </div>
                         <div>
                             <div class="d-flex justify-content-end">
@@ -104,15 +110,22 @@
                 <div class="modal-body shadow">
                     <form id="editCategoryForm">
                         <div class="mb-3">
-                            <label class="form-label">Course Category</label>
-                            <input type="text" class="form-control" name="course_category"
-                                placeholder="Course category here" required>
-                            
-                            <input type="hidden" name="id">
+                            <label class="form-label">Topic</label>
+                            <input type="text" class="form-control" name="topic" placeholder="Topic here" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select class="form-control course_category" name="category">
+                                <option selected Disabled>Select Topic Category</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Topic Description</label>
+                            <textarea class="form-control" row=2 name="description"></textarea>
                         </div>
                         <div>
                             <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary ">Update Category</button>
+                                <button type="submit" class="btn btn-primary ">Add Topic</button>
                             </div>
                         </div>
                     </form>
@@ -123,8 +136,8 @@
 
     <script>
         $(function() {
-            $('.add_course').on('click', function() {
-                $('#addCategoryModal').modal('show');
+            $('.add_topic').on('click', function() {
+                $('#addTopicModal').modal('show');
             })
 
             $('body').on('click', '.edit_category', function() {
@@ -139,22 +152,27 @@
 
 
             $('#editCategoryForm').on('submit', function(e) {
-                e.preventDefault(); form = $(this)
+                e.preventDefault();
+                form = $(this)
                 name = $(form).find('input[name="course_category"]').val();
                 id = $(form).find('input[name="id"]').val();
                 bt = $(form).find('button');
                 $.ajax({
                     method: 'post',
-                    url: api_url+'admin/category/'+id,
-                    data: { name: name, id: id },
-                    beforeSend:() => {
+                    url: api_url + 'admin/category/' + id,
+                    data: {
+                        name: name,
+                        id: id
+                    },
+                    beforeSend: () => {
                         btn(bt, '', 'before');
                     }
-                }).done(function (res) {
+                }).done(function(res) {
                     salat(res.message);
-                    fetchCategory(); $('#editCategoryModal').modal('hide');
+                    fetchCategory();
+                    $('#editCategoryModal').modal('hide');
                     btn(bt, 'Update Category', 'after');
-                }).fail(function (res) {
+                }).fail(function(res) {
                     concatError(res.responseJSON);
                     console.log(res)
                     btn(bt, 'Update Category', 'after');
@@ -162,28 +180,27 @@
             })
 
 
-            function fetchCategory() {
+            function fetchTopic()
+            {
                 $.ajax({
                     method: 'get',
-                    url: api_url+'admin/category',
-                }).done(function (res) {
-                    body = $('#category_body')
+                    url: api_url + 'admin/topics',
+                }).done(function(res) {
+                    body = $('#topic_body')
                     body.html('')
-                    res.data.map( cat => {
-                        console.log(cat)
+                    res.data.map(topic => {
                         body.append(`
                             <tr>
                                 <td class="border-top-0">
                                     <a href="#" class="text-inherit">
                                         <h4 class="mb-1 text-primary-hover">
-                                            ${cat.name}
+                                            ${topic.name}
                                         </h4>
-                                        <span class="text-inherit">${ formatDate(cat.created_at) }</span>
+                                        <span class="text-inherit">${ formatDate(topic.created_at) }</span>
                                     </a>
                                 </td>
-                                <td class="align-middle border-top-0">
-                                    ${cat.total_topics}
-                                </td>
+                                <td class="align-middle border-top-0">${topic.category.name}</td>
+                                <td class="align-middle border-top-0">${topic.total_courses}</td>
                                 <td class="align-middle border-top-0">
                                     <span class="dropdown dropstart">
                                         <a class="text-decoration-none text-muted" href="#" role="button"
@@ -193,15 +210,33 @@
                                         </a>
                                         <span class="dropdown-menu" aria-labelledby="courseDropdown1">
                                             <span class="dropdown-header">Edit</span>
-                                            <a class="dropdown-item edit_category" href="javascript:;" data-data='${JSON.stringify(cat)}' ><i
-                                                    class="fe fe-edit dropdown-item-icon"></i>Edit Category</a>
+                                            <a class="dropdown-item edit_category" href="javascript:;" data-data='${JSON.stringify(topic)}' ><i
+                                                    class="fe fe-edit dropdown-item-icon"></i>Edit Topic</a>
                                         </span>
                                     </span>
                                 </td>
                             </tr>
                         `)
                     })
-                }).fail(function (res) {
+                }).fail(function(res) {
+                    console.log(res)
+                    salat('An error occured while fetching your data', 1);
+                })
+            }
+
+            fetchTopic()
+
+            function fetchCategory() {
+                $.ajax({
+                    method: 'get',
+                    url: api_url + 'admin/category',
+                }).done(function(res) {
+                    body = $('.course_category')
+                    body.html('<option selected disabled>Select Category</option>')
+                    res.data.map(cat => {
+                        body.append(`<option value="${cat.id}" >${cat.name}</option>`)
+                    })
+                }).fail(function(res) {
                     console.log(res)
                     salat('An error occured while fetch your data', 1);
                 })
@@ -209,26 +244,35 @@
 
             fetchCategory();
 
-            $('#addCategoryForm').on('submit', function (e) {
+            
+
+            $('#addTopicForm').on('submit', function(e) {
                 e.preventDefault();
                 form = $(this);
-                name = $(form).find('input[name="course_category"]').val();
+                name = $(form).find('input[name="topic"]').val();
+                category_id = $(form).find('select[name="category"]').val();
+                des = $(form).find('textarea[name="description"]').val();
                 bt = $(form).find('button');
+
                 $.ajax({
                     method: 'post',
-                    url: api_url+'admin/add_category',
-                    data: { name: name },
-                    beforeSend:() => {
+                    url: api_url + 'admin/add_topic',
+                    data: {
+                        name: name, category_id: category_id, description: des
+                    },
+                    beforeSend: () => {
                         btn(bt, '', 'before');
                     }
-                }).done(function (res) {
+                }).done(function(res) {
                     salat(res.message);
-                    fetchCategory(); $('#addCategoryModal').modal('hide');
-                    btn(bt, 'Add New Category', 'after');
-                }).fail(function (res) {
+                    fetchTopic();
+                    $('#addCategoryModal').modal('hide');
+                    btn(bt, 'Add Topic', 'after');
+                    form[0].reset()
+                }).fail(function(res) {
                     concatError(res.responseJSON);
                     console.log(res)
-                    btn(bt, 'Add New Category', 'after');
+                    btn(bt, 'Add Topic', 'after');
                 })
             })
         })

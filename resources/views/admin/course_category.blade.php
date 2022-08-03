@@ -150,7 +150,6 @@
                     btn(bt, 'Update Category', 'after');
                 }).fail(function (res) {
                     concatError(res.responseJSON);
-                    console.log(res)
                     btn(bt, 'Update Category', 'after');
                 })
             })
@@ -164,7 +163,6 @@
                     body = $('#category_body')
                     body.html('')
                     res.data.map( cat => {
-                        console.log(cat)
                         body.append(`
                             <tr>
                                 <td class="border-top-0">
@@ -196,8 +194,7 @@
                         `)
                     })
                 }).fail(function (res) {
-                    console.log(res)
-                    salat('An error occured while fetch your data', 1);
+                    salat('An error occured while fetching your data', 1);
                 })
             }
 
@@ -221,7 +218,6 @@
                     btn(bt, 'Add New Category', 'after');
                 }).fail(function (res) {
                     concatError(res.responseJSON);
-                    console.log(res)
                     btn(bt, 'Add New Category', 'after');
                 })
             })
