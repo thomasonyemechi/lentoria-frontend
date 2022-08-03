@@ -105,11 +105,11 @@
 								</div>
 								<div class="d-flex justify-content-end mt-3">
 									<button class="btn btn-success btn-block review-btn">Submit For Review</button>
-								</div>
+								</form>
+</div>
 						</div>
 					</div>
 
-					</form>
 
 
 				</div>
