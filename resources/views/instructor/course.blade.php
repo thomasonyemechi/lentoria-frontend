@@ -14,10 +14,6 @@
 			<div class="row mt-0 mt-md-4">
 				<div class="col-lg-3 col-md-4 col-12">
 					@include('instructor.side')
-					<div class="mt-3">
-						<button class="btn btn-success btn-block">Submit For Review</button>
-
-					</div>
 				</div>
 
 				<div class="col-lg-9 col-md-8 col-12">
@@ -88,28 +84,31 @@
 									<label class="form-label"><b>Course image</b>
 										<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"></a></label>
 									<label class="custom-file-container__custom-file">
-										<input type="file" class="custom-file-container__custom-file__custom-file-input" />
+										<input type="file" class="custom-file-container__custom-file__custom-file-input"
+											accept=".jpg,.png,.gif,.jpeg" />
 										<input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
 										<span class="custom-file-container__custom-file__custom-file-control"></span>
 									</label>
 									<small class="mt-3 d-block">Upload your course image here. It must meet
-										our course image quality standards to be accepted.Important guidelines: 750x440 pixels; .jpg, .jpeg, .gif, or
+										our course image quality standards to be accepted.Important guidelines: 750x422 pixels; .jpg, .jpeg, .gif, or
 										.png. no text on the image.</small>
 									<div class="custom-file-container__image-preview"></div>
 								</div>
 
-								<div class="custom-file-container" data-upload-id="promotionalVideo">
+								<div class="custom-file-container">
 									<label class="form-label"><b>Promotional Video</b><a href="javascript:void(0)"
 											class="custom-file-container__image-clear" title="Clear Image"></a></label>
 									<label class="custom-file-container__custom-file">
 										<input type="file" class="custom-file-container__custom-file__custom-file-input" />
 										<span class="custom-file-container__custom-file__custom-file-control"></span>
 									</label>
-									<small class="mt-3 d-block"></small>
-									<div class="custom-file-container__image-preview"></div>
+								</div>
+								<div class="d-flex justify-content-end mt-3">
+									<button class="btn btn-success btn-block review-btn">Submit For Review</button>
 								</div>
 						</div>
 					</div>
+
 					</form>
 
 

@@ -68,18 +68,15 @@
 	<script src="{{ asset('assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
 	<script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
 	<script src="{{ asset('assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
-
+	<!-- clipboard -->
+	<script src="{{ asset('assets/cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js') }}"></script>
+	<!-- Theme JS -->
+	<script src="{{ asset('assets/js/theme.min.js') }}"></script>
 	@method('js')
 
 
 
 
-	<!-- clipboard -->
-	<script src="{{ asset('assets/cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js') }}"></script>
-
-
-	<!-- Theme JS -->
-	<script src="{{ asset('assets/js/theme.min.js') }}"></script>
 </body>
 
 </html>
