@@ -1,6 +1,6 @@
 @extends('layouts.instructor')
 @section('page_title')
-    Course |
+	Course | {{ $slug }}
 @endsection
 
 @section('page_content')
@@ -142,9 +142,39 @@
                                         type="text" placeholder="Course Subtitle" />
                                 </div>
 
+<<<<<<< HEAD
+			<div class="row mt-0 mt-md-4">
+				<div class="col-lg-3 col-md-4 col-12">
+					@include('instructor.side')
+				</div>
+
+				<div class="col-lg-9 col-md-8 col-12">
+					<div class="card mb-4">
+						<div class="card-header">
+							<h3 class="mb-0">Course Landing Page</h3>
+						</div>
+						<div class="card-body">
+
+							<form>
+								<div class="mb-3">
+									<label for="courseTitle" class="form-label"><b>Course Title</b></label>
+									<input id="courseTitle" class="form-control" type="text" placeholder="Course Title" maxlength="60" />
+									<small>Write a 60 character course title.</small>
+								</div>
+								<div class="mb-3">
+									<label for="courseSubtitle" class="form-label"><b>Course Subtitle</b></label>
+									<input id="courseSubtitle" type="text" name="courseSubtitle" class="form-control" type="text"
+										placeholder="Course Subtitle" />
+								</div>
+
+								<div class="mb-3">
+									<label class="form-label"><b>Course Description</b></label>
+									<textarea class="form-control">
+=======
                                 <div class="mb-3">
                                     <label class="form-label"><b>Course Description</b></label>
                                     <textarea id="editor" class="form-control">
+>>>>>>> d41cb760c2a29ad61debfd18c3f23f18fd0ac6c0
 
 									</textarea>
                                 </div>
@@ -207,6 +237,46 @@
                                     <div class="custom-file-container__image-preview"></div>
                                 </div>
 
+<<<<<<< HEAD
+								<div class="custom-file-container">
+									<label class="form-label"><b>Promotional Video</b><a href="javascript:void(0)"
+											class="custom-file-container__image-clear" title="Clear Image"></a></label>
+									<label class="custom-file-container__custom-file">
+										<input type="file" class="custom-file-container__custom-file__custom-file-input" />
+										<span class="custom-file-container__custom-file__custom-file-control"></span>
+									</label>
+								</div>
+								<div class="d-flex justify-content-end mt-3">
+									<button class="btn btn-success btn-block review-btn" id="submit">Submit For Review</button>
+							</form>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+
+	</div>
+
+	<script>
+	 $(function() {
+	  function getInfo() {
+        $.ajax({
+            method: 'GET',
+            url: api_url+`admin/`
+        })
+	  }
+	 })
+	</script>
+=======
                                 <div class="custom-file-container">
                                     <label class="form-label"><b>Promotional Video</b><a href="javascript:void(0)"
                                             class="custom-file-container__image-clear" title="Clear Image"></a></label>
@@ -246,4 +316,5 @@
             })
         })
     </script>
+>>>>>>> d41cb760c2a29ad61debfd18c3f23f18fd0ac6c0
 @endsection

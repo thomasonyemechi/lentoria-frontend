@@ -26,8 +26,9 @@ Route::group(['prefix'=>'instructor', 'as'=>'instructor.', 'middleware'=> ['auth
     Route::view('/courses', 'instructor.courses')->name('courses');
     Route::view('/add_course', 'instructor.add_course')->name('add_course');
     Route::view('/course/{slug}', 'instructor.course')->name('course');
+    Route::view('/course_message', 'instructor.course_message')->name('course_message');
     Route::view('/goals/{slug}', 'instructor.learners')->name('learners');
-    
+
 });
 
 
