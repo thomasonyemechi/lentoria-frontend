@@ -7,11 +7,6 @@
     <div class="pt-5 pb-5">
         <div class="container">
             {!! instructorInfo() !!}
-
-
-
-            <?php print_r(user()) ?>
-
             <div class="row mt-0 mt-md-4">
                 <div class="col-lg-3 col-md-4 col-12">
                     @include('layouts.sidebar')

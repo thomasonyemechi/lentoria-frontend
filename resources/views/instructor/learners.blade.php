@@ -6,6 +6,8 @@
 @section('page_content')
     <div class="pt-5 pb-5">
         <div class="container">
+            
+            @include('instructor.course_name')
 
             <div class="row mt-0 mt-md-4">
                 <div class="col-lg-3 col-md-4 col-12">
@@ -73,7 +75,8 @@
                                     </a>
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button class="btn btn-success btn-block review-btn">Save Answers</button>
+                                    <button type="submit" class="updateLearners ">Save
+                                        Answers</button>
                                 </div>
                             </form>
                         </div>
@@ -85,19 +88,63 @@
 
     <script>
         $(function() {
+      
+
+            $('body').on('click', '.updateLearners', function(e) {
+                e.preventDefault();
+                form = $('#updateLearners'); ///wywl == what you will learn
+
+                wywls = $(form).find('.what_you_will_learn');
+                new_wywl = [];
+                wywls.map(len => {
+                    len = wywls[len];
+                    if (len.value) {
+                        new_wywl.push(len.value)
+                    }
+                })
+
+                requirements = $(form).find('.requirements');
+                new_req = []
+                requirements.map(req => {
+                    req = requirements[req];
+                    if (req.value) {
+                        new_req.push(req.value)
+                    }
+                })
+
+
+                learners = $(form).find('.learners');
+                new_len = []
+                learners.map(le => {
+                    le = learners[le];
+                    if (le.value) {
+                        new_len.push(le.value)
+                    }
+                })
+
+                console.log(new_wywl, new_req, new_len);
+                bt = $(form).find('button');
+
+                $.ajax({
+                    method: 'post',
+                    url: api_url + '/instructor/course_update_info'
+                })
+
+            })
 
             $('body').on('click', '.add_input', function() {
                 cla = $(this).data('class');
                 obj = $(`.${cla}`)
                 last = obj[obj.length - 1];
-                if (last.value == '' || last.value == null) { console.log(last.value); return; }
-                $( `<input class="form-control ${cla} mb-2" type="text" placeholder="Add more to your response" maxlength="160" />` ).insertAfter( last );
+                if (last.value == '' || last.value == null) {
+                    console.log(last.value);
+                    return;
+                }
+                $(`<input class="form-control ${cla} mb-2" type="text" placeholder="Add more to your response" maxlength="160" />`)
+                    .insertAfter(last);
             })
 
-            $('#updateLearners').on('submit', function (e) {
-                e.preventDefault();
-                
-            })
+
 
         })
     </script>
