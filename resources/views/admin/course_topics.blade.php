@@ -266,7 +266,7 @@
 
                 $.ajax({
                     method: 'post',
-                    url: api_url + 'admin/add_topic',
+                    url: api_url + `admin/add_topic`,
                     data: {
                         name: name, category_id: category_id, description: des
                     },
