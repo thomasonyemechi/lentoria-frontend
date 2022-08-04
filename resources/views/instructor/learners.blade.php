@@ -6,7 +6,7 @@
 @section('page_content')
     <div class="pt-5 pb-5">
         <div class="container">
-            
+
             @include('instructor.course_name')
 
             <div class="row mt-0 mt-md-4">
@@ -75,7 +75,7 @@
                                     </a>
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button type="submit" class="updateLearners ">Save
+                                    <button type="submit" class="updateLearners btn btn-success">Save
                                         Answers</button>
                                 </div>
                             </form>
@@ -88,7 +88,7 @@
 
     <script>
         $(function() {
-      
+
 
             $('body').on('click', '.updateLearners', function(e) {
                 e.preventDefault();
@@ -127,7 +127,7 @@
 
                 $.ajax({
                     method: 'post',
-                    url: api_url + '/instructor/course_update_info'
+                    url: api_url + 'instructor/course_update_info'
                 })
 
             })
@@ -137,7 +137,6 @@
                 obj = $(`.${cla}`)
                 last = obj[obj.length - 1];
                 if (last.value == '' || last.value == null) {
-                    console.log(last.value);
                     return;
                 }
                 $(`<input class="form-control ${cla} mb-2" type="text" placeholder="Add more to your response" maxlength="160" />`)

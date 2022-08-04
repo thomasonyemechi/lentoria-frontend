@@ -1,80 +1,96 @@
 <nav class="navbar navbar-expand-lg navbar-default">
     <div class="container-fluid px-0">
-        <a class="navbar-brand" href="#"><img src="{{ asset('assets/images/brand/logo/logo.svg') }}"
-                alt="" /></a>
+        <a class="navbar-brand" href="#"><img src="{{ asset('assets/images/logo1.png') }}" alt="" /></a>
         <!-- Mobile view nav wrap -->
+
         <ul class="navbar-nav navbar-right-wrap ms-auto d-lg-none d-flex nav-top-wrap">
-            <li class="dropdown stopevent">
-                <a class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary" href="#"
-                    role="button" data-bs-toggle="dropdown">
-                    <i class="fe fe-bell"></i>
-                </a>
-            </li>
-            <li class="dropdown ms-2">
-                <a class="rounded-circle" href="#" role="button" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-md avatar-indicators avatar-online">
-                        <img alt="avatar" src="{{ asset('assets/images/avatar/avatar-1.jpg') }}"
-                            class="rounded-circle" />
-                    </div>
-                </a>
-                <div class="dropdown-menu dropdown-menu-end shadow">
-                    <div class="dropdown-item">
-                        <div class="d-flex">
-                            <div class="avatar avatar-md avatar-indicators avatar-online">
-                                <img alt="avatar" src="{{ asset('assets/images/avatar/avatar-1.jpg') }}"
-                                    class="rounded-circle" />
-                            </div>
-                            <div class="ms-3 lh-1">
-                                <h5 class="mb-1">Annette Black</h5>
-                                <p class="mb-0 text-muted">annette@geeksui.com</p>
+            @if (!session('info'))
+                <li class="dropdown d-inline-block stopevent">
+                    <button class="btn btn-outline-white btn-xs me-2" style="border: 1px solid #754ffe;border-radius: 1px;"
+                        data-bs-target="#login_modal" data-bs-toggle="modal" aria-expanded="false">
+                        <span>Login</span>
+                    </button>
+                </li>
+                <li class="dropdown d-inline-block stopevent">
+                    <button class="btn btn-primary btn-xs" style="border-radius: 1px;" aria-expanded="false">
+                        <span>Sign up</span>
+                    </button>
+                </li>
+            @endif
+            @if (session('info'))
+                <li class="dropdown stopevent">
+                    <a class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary"
+                        href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="fe fe-bell"></i>
+                    </a>
+                </li>
+                <li class="dropdown ms-2">
+                    <a class="rounded-circle" href="#" role="button" data-bs-toggle="dropdown">
+                        <div class="avatar avatar-md avatar-indicators avatar-online">
+                            <img alt="avatar" src="{{ asset('assets/images/avatar/avatar-1.jpg') }}"
+                                class="rounded-circle" />
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end shadow">
+                        <div class="dropdown-item">
+                            <div class="d-flex">
+                                <div class="avatar avatar-md avatar-indicators avatar-online">
+                                    <img alt="avatar" src="{{ asset('assets/images/avatar/avatar-1.jpg') }}"
+                                        class="rounded-circle" />
+                                </div>
+                                <div class="ms-3 lh-1">
+                                    <h5 class="mb-1">Annette Black</h5>
+                                    <p class="mb-0 text-muted">annette@geeksui.com</p>
+                                </div>
                             </div>
                         </div>
+                        <div class="dropdown-divider"></div>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    My Learning
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    My Cart
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    My Wihslist
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="dropdown-divider"></div>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Purchase History
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="dropdown-divider"></div>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Public Profile
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="dropdown-divider"></div>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fe fe-power me-2"></i>Sign Out
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="dropdown-divider"></div>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                My Learning
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                My Cart
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                My Wihslist
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="dropdown-divider"></div>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                Purchase History
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="dropdown-divider"></div>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                Public Profile
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="dropdown-divider"></div>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                <i class="fe fe-power me-2"></i>Sign Out
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+                </li>
+            @endif
         </ul>
+
         <!-- Button -->
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false"
@@ -220,80 +236,100 @@
                 </span>
                 <input type="search" class="form-control ps-6" placeholder="Search Courses" />
             </form>
-            <ul class="navbar-nav navbar-right-wrap ms-auto d-none d-lg-block">
-                <li class="dropdown d-inline-block stopevent">
-                    <a class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary"
-                        href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <i class="fe fe-heart"> </i>
-                    </a>
-                </li>
 
-                <li class="dropdown ms-2 d-inline-block">
-                    <a class="rounded-circle" href="#" data-bs-toggle="dropdown" data-bs-display="static"
-                        aria-expanded="false">
-                        <div class="avatar avatar-md avatar-indicators avatar-online">
-                            <img alt="avatar" src="{{ asset('assets/images/avatar/avatar-1.jpg') }}"
-                                class="rounded-circle" />
-                        </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <div class="dropdown-item">
-                            <div class="d-flex">
-                                <div class="avatar avatar-md avatar-indicators avatar-online">
-                                    <img alt="avatar" src="{{ asset('assets/images/avatar/avatar-1.jpg') }}"
-                                        class="rounded-circle" />
-                                </div>
-                                <div class="ms-3 lh-1">
-                                    <h5 class="mb-1">Annette Black</h5>
-                                    <p class="mb-0 text-muted">annette@geeksui.com</p>
+            <ul class="navbar-nav navbar-right-wrap ms-auto d-none d-lg-block">
+
+                @if (!session('info'))
+                    <li class="dropdown d-inline-block stopevent">
+                        <button class="btn btn-outline-white btn-sm"
+                            style="border: 1px solid #754ffe;border-radius: 1px;" data-bs-target="#login_modal"
+                            data-bs-toggle="modal" aria-expanded="false">
+                            <span><big>Login</big></span>
+                        </button>
+                    </li>
+                    <li class="dropdown d-inline-block stopevent m-1">
+                        <button class="btn btn-primary btn-sm" style="border-radius: 1px;" aria-expanded="false">
+                            <span><big>Sign up</big></span>
+                        </button>
+                    </li>
+                @endif
+
+
+                @if (session('info'))
+                    <li class="dropdown d-inline-block stopevent">
+                        <a class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="fe fe-heart"> </i>
+                        </a>
+                    </li>
+
+                    <li class="dropdown ms-2 d-inline-block">
+                        <a class="rounded-circle" href="#" data-bs-toggle="dropdown" data-bs-display="static"
+                            aria-expanded="false">
+                            <div class="avatar avatar-md avatar-indicators avatar-online">
+                                <img alt="avatar" src="{{ asset('assets/images/avatar/avatar-1.jpg') }}"
+                                    class="rounded-circle" />
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <div class="dropdown-item">
+                                <div class="d-flex">
+                                    <div class="avatar avatar-md avatar-indicators avatar-online">
+                                        <img alt="avatar" src="{{ asset('assets/images/avatar/avatar-1.jpg') }}"
+                                            class="rounded-circle" />
+                                    </div>
+                                    <div class="ms-3 lh-1">
+                                        <h5 class="mb-1">Annette Black</h5>
+                                        <p class="mb-0 text-muted">annette@geeksui.com</p>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="dropdown-divider"></div>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        My Learning
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        My Cart
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        My Wihslist
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="dropdown-divider"></div>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Purchase History
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="dropdown-divider"></div>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Public Profile
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="dropdown-divider"></div>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('logout') }}">
+                                        <i class="fe fe-power me-2"></i>Sign Out
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="dropdown-divider"></div>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    My Learning
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    My Cart
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    My Wihslist
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="dropdown-divider"></div>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    Purchase History
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="dropdown-divider"></div>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    Public Profile
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="dropdown-divider"></div>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fe fe-power me-2"></i>Sign Out
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>
