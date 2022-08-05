@@ -52,19 +52,7 @@
 
     <script>
         $(function() {
-            var check = setInterval(() => {
-                val = $('input[name="course_info_29"]').val()
-                if (val != "") {
-                    clearInterval(check);
-
-                    dat = JSON.parse(val);
-
-                    $('#welmess').val(dat.welcome_message);
-                    $('#cermess').val(dat.certification_message);
-                    $('#mycourse_id').val(dat.id);
-                }
-            }, 500);
-
+            
             $('#addMessageForm').submit(function(e) {
                 e.preventDefault();
                 course_id = $('#mycourse_id').val();
