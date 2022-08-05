@@ -95,11 +95,11 @@
                                             <a href="javascript:void(0)" class="custom-file-container__image-clear"
                                                 title="Clear Image"></a></label>
                                         <label class="custom-file-container__custom-file">
-                                            <input type="file" id="course_image"
-                                                class="custom-file-container__custom-file__custom-file-input"
+                                            <input type="file" id="course_image" class="form-control"
                                                 accept=".jpg,.png,.gif,.jpeg" />
                                             <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
-                                            <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                            <span class="custom-file-container__custom-file__custom-file-control"
+                                                hidden></span>
                                         </label>
                                         <small class="mt-3 d-block">Upload your course image here. It must meet
                                             our course image quality standards to be accepted.Important guidelines: 750x422
@@ -159,10 +159,10 @@
                     $(`#selcourse_type option[value="${dat.course_type}"]`).prop("selected", true);
                     $(`#course_level option[value="${dat.level}"]`).prop("selected", true);
                     getCategory();
-                    selTopic();
+
+
                 }
             }, 1000);
-
             $('#selcategory').on("change click", function(e) {
                 e.preventDefault();
                 selTopic();
