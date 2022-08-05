@@ -10,7 +10,8 @@
             <span class="navbar-header">Plan Your Course</span>
             <ul class="list-unstyled ms-n2 mb-4">
                 <li class="nav-item">
-                    <a class="nav-link" href="/instructor/goals/{{$slug}}"><i class="fe fe-home nav-icon"></i>Intended learners</a>
+                    <a class="nav-link" href="/instructor/goals/{{ $slug }}"><i
+                            class="fe fe-home nav-icon"></i>Intended learners</a>
                 </li>
             </ul>
             <span class="navbar-header">Create your content</span>
@@ -25,7 +26,8 @@
                     <a class="nav-link" href="#"><i class="fe fe-settings nav-icon"></i>Course landing page</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fe fe-settings nav-icon"></i>Pricing</a>
+                    <a class="nav-link" href="/instructor/pricing/{{ $slug }}"><i
+                            class="fe fe-settings nav-icon"></i>Pricing</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fe fe-settings nav-icon"></i>Course messages </a>
