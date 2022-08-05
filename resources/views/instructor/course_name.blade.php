@@ -10,7 +10,7 @@
 <script>
     $(function() {
 
-        
+
         function getCategory(cat_id) {
             selCategory = $('#selcategory')
             selCategory.html(`<option value="" disabled selected>Select a category</option>`)
@@ -69,6 +69,12 @@
                 $('.course_price').val(res.data.price)
                 $('input[name="course_update_id"]').val(res.data.id)
                 $(`select[name="currency"] option[value=${res.data.currency}] `).prop('selected', true)
+
+
+                ////messaging
+                $('#welmess').val(dat.welcome_message);
+                $('#cermess').val(dat.certification_message);
+                $('#mycourse_id').val(dat.id);
             }).fail(function(res) {
                 location.href = "/instructor/dashboard"
             })
