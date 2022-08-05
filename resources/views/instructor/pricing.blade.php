@@ -28,11 +28,13 @@
                                         be less than 2 hours.
                                     </p>
                                     <div class="d-flex ">
-                                        <select class="form-control" style="width: 100px" >
-                                            <option selected>NGN</option>
-                                            <option >USD</option>
+                                        <select class="form-control" name="currency" style="width: 100px">
+                                            <option value="NGN" selected>NGN</option>
+                                            <option value="USD">USD</option>
                                         </select>
-                                        <input type="number" class="form-control ms-3" style="width:200px" >
+                                        <input type="number" step='0.1' class="form-control course_price ms-3"
+                                            style="width:200px" />
+                                        <input type="hidden" name="course_update_id"/>
                                         <button type="submit" class=" ms-3 btn btn-success">Save</button>
                                     </div>
                                 </div>
@@ -45,8 +47,67 @@
     </div>
 
     <script>
-        $(function() {
+        $(document).ready(function() {
 
+            function pickInfo() {
+                data = $('#course_info_29').val();
+                return data;
+            }
+
+
+            setTimeout(function() {
+                data = '';
+
+                i = 0;
+                while (!data || data) {
+                    new_data = pickInfo();
+                    if (new_data) {
+                        data = new_data;
+                        return;
+                    }
+
+                    if (i == 1000) {
+                        console.log('we reached');
+                        return;
+                    }
+                    console.log(i++);
+                    console.log(new_data)
+                    data = new_data;
+
+                }
+
+            }, 3000)
+
+        });
+        $(function() {
+            $('#updatePrice').on('submit', function(e) {
+                e.preventDefault();
+                form = $(this);
+                price = $(form).find('input[type="number"]').val();
+                id = $(form).find('input[name="course_update_id"]').val();
+                cur = $(form).find('select[name="currency"]').val();
+                bt = $(form).find('button');
+
+                $.ajax({
+                    method: 'post',
+                    url: api_url + `admin/update_price`,
+                    data: {
+                        course_id: id,
+                        price: price,
+                        currency: cur
+                    },
+                    beforeSend: () => {
+                        btn(bt, '', 'before')
+                    }
+                }).done(function(res) {
+                    btn(bt, 'Save', 'after')
+                    salat(res.message);
+                }).fail(function(res) {
+                    btn(bt, 'Save', 'after')
+                    concatError(res.responseJSON);
+                })
+                console.log(price, cur);
+            })
         })
     </script>
 @endsection

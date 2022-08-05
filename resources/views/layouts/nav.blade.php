@@ -248,7 +248,8 @@
                         </button>
                     </li>
                     <li class="dropdown d-inline-block stopevent m-1">
-                        <button class="btn btn-primary btn-sm" style="border-radius: 1px;" aria-expanded="false">
+                        <button class="btn btn-primary btn-sm" style="border-radius: 1px;" data-bs-target="#signup_modal"
+                            data-bs-toggle="modal" aria-expanded="false">
                             <span><big>Sign up</big></span>
                         </button>
                     </li>

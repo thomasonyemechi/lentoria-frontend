@@ -25,17 +25,21 @@
         <div class="modal-content">
             <div class="modal-body shadow">
                 <form id="loginForm">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    style="float: right;font-size: 40px;">&times;</button>
-                <div class="mb-4 m-0">
-                    <a href="."><img src="{{ asset('assets/images/logo2.png') }}" class="mb-4"
-                            alt=""></a>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <a href="."><img src="{{ asset('assets/images/logo2.png') }}" class="mb-4"
+                                alt=""></a>
+                        <button type="button" class="btn-close mt-0 pt-0" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
+                        </button>
+                    </div>
 
-                    <h1 class="mb-1 fw-bold">Sign in</h1>
-                    <span>Don’t have an account? <a href="signup.php" class="ms-1">Sign up</a></span>
-                </div>
+                    <div class="mb-4 m-0">
+                        <h1 class="mb-1 fw-bold">Sign in</h1>
+                        <span>Don’t have an account? <a type="button" class="ms-1 opensignup ">Sign up</a></span>
+                    </div>
+
                     <div class="mb-3">
-                        <label for="email" class="form-label">Username or email</label>
+                        <label for="email" class="form-label">Email Address</label>
                         <input type="email" id="loginEmail" class="form-control" name="email"
                             placeholder="Email address here" required>
                     </div>
@@ -68,12 +72,19 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body shadow">
-                <div class="mb-4">
-                    <a href="."><img src="assets/images/brand/logo/logo111.png" class="mb-4" alt=""></a>
-                    <h1 class="mb-1 fw-bold">Create Account</h1>
-                    <span>Already have an account? <a href="javascript:;" class="ms-1">Sign In</a></span>
-                </div>
                 <form id="signUpForm">
+                     <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <a href="."><img src="{{ asset('assets/images/logo2.png') }}" class="mb-4"
+                                alt=""></a>
+                        <button type="button" class="btn-close mt-0 pt-0" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
+                        </button>
+                    </div>
+
+                    <div class="mb-4">
+                        <h1 class="mb-1 fw-bold">Create Account</h1>
+                        <span>Already have an account? <a href="javascript:;" class="ms-1 openlogin">Sign In</a></span>
+                    </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Frist Name</label>
@@ -88,16 +99,17 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email Address</label>
-                        <input type="email" class="form-control" name="email" placeholder="Email Address " required>
+                        <input type="email" class="form-control" name="email" placeholder="Email Address "
+                            required>
                     </div>
-					<div class="mb-3">
+                    <div class="mb-3">
                         <label class="form-label">Phone</label>
                         <input type="text" class="form-control" name="phone" placeholder="Phone " required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password"
-                            placeholder="**************" required>
+                        <input type="password" class="form-control" name="password" placeholder="**************"
+                            required>
                     </div>
                     <div>
                         <div class="d-grid">
@@ -115,16 +127,27 @@
 
 <script>
     $(function() {
-        //$('#signup_modal').modal('show');
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
+        $('.opensignup').on('click', function() {
+            $('#login_modal').modal('hide')
+            $('#signup_modal').modal('show')
+        })
+
+
+        $('.openlogin').on('click', function() {
+            $('#signup_modal').modal('hide')
+            $('#login_modal').modal('show')
+
+        })
+
         $('#loginForm').on('submit', function(e) {
             e.preventDefault();
-			form = $(this);
+            form = $(this);
             email = $(form).find('input[name="email"]').val();
             password = $(form).find('input[name="password"]').val();
             bt = $(form).find('button');
@@ -140,13 +163,13 @@
             }
             $.ajax({
                 method: 'post',
-                url: api_url+'user_login',
+                url: api_url + 'user_login',
                 data: {
                     email: email,
                     password: password
                 },
                 beforeSend: () => {
-                    btn(bt,'Sign In', 'before');
+                    btn(bt, 'Sign In', 'before');
                 }
             }).done(function(res) {
                 console.log(res)
@@ -163,14 +186,14 @@
                 });
             }).fail(function(res) {
                 concatError(res.responseJSON);
-				btn(bt,'Sign In', 'after');
+                btn(bt, 'Sign In', 'after');
             });
         })
 
 
-		$('#signUpForm').on('submit', function(e) {
+        $('#signUpForm').on('submit', function(e) {
             e.preventDefault();
-			form = $(this);
+            form = $(this);
             email = $(form).find('input[name="email"]').val();
             fname = $(form).find('input[name="firstname"]').val();
             lname = $(form).find('input[name="lastname"]').val();
@@ -183,39 +206,39 @@
                 return;
             }
 
-			
+
             if (!email) {
                 salat('Pls enter a valid email address', 1);
                 return;
             }
             $.ajax({
                 method: 'post',
-                url: api_url+'user_signup',
+                url: api_url + 'user_signup',
                 data: {
-					firstname: fname,
-					lastname: lname,
-					phone: phone,
+                    firstname: fname,
+                    lastname: lname,
+                    phone: phone,
                     email: email,
                     password: password
                 },
                 beforeSend: () => {
-                    btn(bt,'', 'before');
+                    btn(bt, '', 'before');
                 }
             }).done(function(res) {
                 console.log(res)
-				salat(res.message);
-				setTimeout(function () {
-					$('#signup_modal').modal('hide');
-					$('#login_modal').modal('show');
-				}, 3000);
+                salat(res.message);
+                setTimeout(function() {
+                    $('#signup_modal').modal('hide');
+                    $('#login_modal').modal('show');
+                }, 3000);
             }).fail(function(res) {
                 console.log(res);
                 concatError(res.responseJSON);
-                btn(bt,'Sign Up', 'after');
+                btn(bt, 'Sign Up', 'after');
             });
         })
 
-		
+
 
     })
 </script>
