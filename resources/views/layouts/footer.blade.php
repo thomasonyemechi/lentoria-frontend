@@ -24,19 +24,22 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body shadow">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    style="float: right;font-size: 40px;">&times;</button>
-                <div class="mb-4 m-0">
-                    <a href="."><img src="{{ asset('assets/images/logo2.png') }}" class="mb-4"
-                            alt=""></a>
+                <form id="loginForm">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <a href="."><img src="{{ asset('assets/images/logo2.png') }}" class="mb-4"
+                                alt=""></a>
+                        <button type="button" class="btn-close mt-0 pt-0" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
+                        </button>
+                    </div>
 
-                    <h1 class="mb-1 fw-bold">Sign in</h1>
-                    <span>Don’t have an account? <a href="signup.php" class="ms-1">Sign up</a></span>
-                </div>
-                <form>
-                    <div id="loginAlert"></div>
+                    <div class="mb-4 m-0">
+                        <h1 class="mb-1 fw-bold">Sign in</h1>
+                        <span>Don’t have an account? <a type="button" class="ms-1 opensignup ">Sign up</a></span>
+                    </div>
+
                     <div class="mb-3">
-                        <label for="email" class="form-label">Username or email</label>
+                        <label for="email" class="form-label">Email Address</label>
                         <input type="email" id="loginEmail" class="form-control" name="email"
                             placeholder="Email address here" required>
                     </div>
@@ -53,7 +56,7 @@
                     </div>
                     <div>
                         <div class="d-grid">
-                            <button type="submit" id="submitLogin" class="btn btn-primary">Sign in</button>
+                            <button type="submit" id="submitLogin" class="btn btn-primary ">Sign in</button>
                         </div>
                     </div>
                 </form>
@@ -62,19 +65,92 @@
     </div>
 </div>
 
+
+
+<div class="modal fade" id="signup_modal" tabindex="-1" role="dialog" aria-labelledby="newCatgoryLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body shadow">
+                <form id="signUpForm">
+                     <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <a href="."><img src="{{ asset('assets/images/logo2.png') }}" class="mb-4"
+                                alt=""></a>
+                        <button type="button" class="btn-close mt-0 pt-0" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
+                        </button>
+                    </div>
+
+                    <div class="mb-4">
+                        <h1 class="mb-1 fw-bold">Create Account</h1>
+                        <span>Already have an account? <a href="javascript:;" class="ms-1 openlogin">Sign In</a></span>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Frist Name</label>
+                            <input type="text" class="form-control" name="firstname" placeholder="Enter firstname"
+                                required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" name="lastname" placeholder="Enter Lastname"
+                                required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" name="email" placeholder="Email Address "
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input type="text" class="form-control" name="phone" placeholder="Phone " required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="**************"
+                            required>
+                    </div>
+                    <div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary ">Sign Up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 <script>
     $(function() {
-        // $('#login_modal').modal('show');
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
-        $('#submitLogin').on('click', function(e) {
+        $('.opensignup').on('click', function() {
+            $('#login_modal').modal('hide')
+            $('#signup_modal').modal('show')
+        })
+
+
+        $('.openlogin').on('click', function() {
+            $('#signup_modal').modal('hide')
+            $('#login_modal').modal('show')
+
+        })
+
+        $('#loginForm').on('submit', function(e) {
             e.preventDefault();
-            email = $('input[name="email"]').val();
-            password = $('input[name="password"]').val();
+            form = $(this);
+            email = $(form).find('input[name="email"]').val();
+            password = $(form).find('input[name="password"]').val();
+            bt = $(form).find('button');
 
             if (!email || !password) {
                 salat('All fileds are required', 1);
@@ -87,13 +163,13 @@
             }
             $.ajax({
                 method: 'post',
-                url: 'http://127.0.0.1:8000/api/user_login',
+                url: api_url + 'user_login',
                 data: {
                     email: email,
                     password: password
                 },
                 beforeSend: () => {
-                    btn('#submitLogin', 'Sign In', 'before');
+                    btn(bt, 'Sign In', 'before');
                 }
             }).done(function(res) {
                 console.log(res)
@@ -106,15 +182,63 @@
                     }
                 }).done(function(res) {
                     salat(message)
-                    console.log(res)
                     location.href = '/instructor/dashboard';
                 });
             }).fail(function(res) {
-                console.log(res);
                 concatError(res.responseJSON);
-                btn('#submitLogin', 'Sign In', 'after');
+                btn(bt, 'Sign In', 'after');
             });
         })
+
+
+        $('#signUpForm').on('submit', function(e) {
+            e.preventDefault();
+            form = $(this);
+            email = $(form).find('input[name="email"]').val();
+            fname = $(form).find('input[name="firstname"]').val();
+            lname = $(form).find('input[name="lastname"]').val();
+            phone = $(form).find('input[name="phone"]').val();
+            password = $(form).find('input[name="password"]').val();
+            bt = $(form).find('button');
+
+            if (!email || !password || !fname || !lname || !phone) {
+                salat('All fileds are required', 1);
+                return;
+            }
+
+
+            if (!email) {
+                salat('Pls enter a valid email address', 1);
+                return;
+            }
+            $.ajax({
+                method: 'post',
+                url: api_url + 'user_signup',
+                data: {
+                    firstname: fname,
+                    lastname: lname,
+                    phone: phone,
+                    email: email,
+                    password: password
+                },
+                beforeSend: () => {
+                    btn(bt, '', 'before');
+                }
+            }).done(function(res) {
+                console.log(res)
+                salat(res.message);
+                setTimeout(function() {
+                    $('#signup_modal').modal('hide');
+                    $('#login_modal').modal('show');
+                }, 3000);
+            }).fail(function(res) {
+                console.log(res);
+                concatError(res.responseJSON);
+                btn(bt, 'Sign Up', 'after');
+            });
+        })
+
+
 
     })
 </script>

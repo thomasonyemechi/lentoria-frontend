@@ -30,7 +30,7 @@
     @include('layouts.alert_top')
     @include('layouts.nav')
 
-    
+
 
     @yield('page_content')
 

@@ -126,65 +126,33 @@
 
     <script>
         $(document).ready(function() {
-            function getCategory() {
-                selCategory = $('#selcategory')
-                selCategory.html(`<option value="" disabled selected>Select a category</option>`)
-                $.ajax({
-                    method: 'GET',
-                    url: api_url + 'admin/category',
-                }).done((res) => {
-                    res.data.map(dat => {
-                        selCategory.append(`<option value="${dat.id}">${dat.name}</option>`);
-                    })
-                    $(`#selcategory option[value="${dat.category_id}"]`).prop("selected", true)
-                }).fail((res) => {
-                    concatError(res.responseJSON);
-                    console.log(res)
-                });
-            }
 
 
-
-            var check = setInterval(() => {
-                val = $('input[name="course_info_29"]').val()
-                if (val != "") {
-                    clearInterval(check);
-
-                    dat = JSON.parse(val);
-
-                    $('#courseTitle').val(dat.title);
-                    $('#courseSubtitle').val(dat.subtitle);
-                    $('#course_id').val(dat.id);
-                    $('#course_description').val(dat.description);
-                    $(`#selcourse_type option[value="${dat.course_type}"]`).prop("selected", true);
-                    $(`#course_level option[value="${dat.level}"]`).prop("selected", true);
-                    getCategory();
-
-
-                }
-            }, 1000);
-            $('#selcategory').on("change click", function(e) {
-                e.preventDefault();
-                selTopic();
-            })
-
-            function selTopic() {
-                cat = $('#selcategory :selected').val();
+            function setTopic(category_id) {
+                cat = category_id;
                 $.ajax({
                     method: 'get',
                     url: api_url + 'admin/topics/' + cat,
                 }).done((res) => {
                     selectsub = $('#selsubcat');
-                    selectsub.html('<option selected disabled>Select Course SubCategory</option>')
+                    selectsub.html('<option selected disabled>Select Course Sub Category</option>')
                     res.data.map(dat => {
                         selectsub.append(`<option value="${dat.id}">${dat.name}</option>`);
                     })
-                    $(`#selsubcat option[value="${dat.topic_id}"]`).prop("selected", true)
                 }).fail((res) => {
                     concatError(res.responseJSON);
                     console.log(res)
                 });
             }
+
+
+
+            $('#selcategory').on("change click", function(e) {
+                e.preventDefault();
+                setTopic($(this).val());
+            })
+
+
             $('#updateCourseForm').on('submit', function(e) {
                 e.preventDefault();
                 id = $('#course_id').val();
