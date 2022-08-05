@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light shadow-sm mb-4 mb-lg-0 sidenav">
-	<a class="d-xl-none d-lg-none d-md-none text-inherit fw-bold" href="#">Menu</a>
+	<a class="d-xl-none d-lg-none d-md-none text-inherit fw-bold" href="javascript:void(0)">Menu</a>
 	<button class="navbar-toggler d-md-none icon-shape icon-sm rounded bg-primary text-light" type="button"
 		data-bs-toggle="collapse" data-bs-target="#sidenav" aria-controls="sidenav" aria-expanded="false"
 		aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
 					<a class="nav-link" href="#"><i class="fe fe-refresh-cw nav-icon"></i>Social Profiles</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#"><i class="fe fe-power nav-icon"></i>Sign Out</a>
+					<a class="nav-link" href="{{ route('logout') }}"><i class="fe fe-power nav-icon"></i>Sign Out</a>
 				</li>
 			</ul>
 		</div>

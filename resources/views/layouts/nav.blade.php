@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-default">
     <div class="container-fluid px-0">
-        <a class="navbar-brand" href="#"><img src="{{ asset('assets/images/logo1.png') }}" alt="" /></a>
+        <a class="navbar-brand" href="/"><img src="{{ asset('assets/images/logo1.png') }}" alt="" /></a>
         <!-- Mobile view nav wrap -->
 
         <ul class="navbar-nav navbar-right-wrap ms-auto d-lg-none d-flex nav-top-wrap">
@@ -280,8 +280,8 @@
                                             class="rounded-circle" />
                                     </div>
                                     <div class="ms-3 lh-1">
-                                        <h5 class="mb-1">Annette Black</h5>
-                                        <p class="mb-0 text-muted">annette@geeksui.com</p>
+                                        <h5 class="mb-1">{{ username() }}</h5>
+                                        <p class="mb-0 text-muted">braid@lentoria.com</p>
                                     </div>
                                 </div>
                             </div>

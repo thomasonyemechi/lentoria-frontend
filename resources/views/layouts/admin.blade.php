@@ -54,7 +54,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link " href="#">
+                                    <a class="nav-link " href="/admin/topic">
                                         Course Topics
                                     </a>
                                 </li>
@@ -179,7 +179,7 @@
                     </ul>
                 </nav>
             </div>
- 
+
             <div class="container-fluid p-4">
                 @yield('page_content')
             </div>

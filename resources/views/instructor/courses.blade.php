@@ -107,18 +107,6 @@
 										<td class="border-top-0">
 											<span class="badge bg-info">Pending</span>
 										</td>
-										<td class="text-muted border-top-0">
-											<span class="dropdown dropstart">
-												<a class="text-muted text-decoration-none" href="#" role="button" id="courseDropdown"
-													data-bs-toggle="dropdown" data-bs-offset="-20,20" aria-expanded="false">
-													<i class="fe fe-more-vertical"></i>
-												</a>
-												<span class="dropdown-menu" aria-labelledby="courseDropdown">
-													<span class="dropdown-header">Setting </span>
-													<a class="dropdown-item" href="#"><i class="fe fe-trash dropdown-item-icon"></i>Remove</a>
-												</span>
-											</span>
-										</td>
 									</tr>
                         `)
                     })
