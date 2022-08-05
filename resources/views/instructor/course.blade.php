@@ -126,18 +126,30 @@
 
     <script>
         $(document).ready(function() {
-            
 
 
+            function setTopic(category_id) {
+                cat = category_id;
+                $.ajax({
+                    method: 'get',
+                    url: api_url + 'admin/topics/' + cat,
+                }).done((res) => {
+                    selectsub = $('#selsubcat');
+                    selectsub.html('<option selected disabled>Select Course Sub Category</option>')
+                    res.data.map(dat => {
+                        selectsub.append(`<option value="${dat.id}">${dat.name}</option>`);
+                    })
+                }).fail((res) => {
+                    concatError(res.responseJSON);
+                    console.log(res)
+                });
+            }
 
-            var check = setInterval(() => {
-                val = $('input[name="course_info_29"]').val()
-                
-            }, 1000);
+
 
             $('#selcategory').on("change click", function(e) {
                 e.preventDefault();
-                selTopic();
+                setTopic($(this).val());
             })
 
 
