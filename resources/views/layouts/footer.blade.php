@@ -24,12 +24,16 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body shadow">
-                <div class="mb-4">
-                    <a href="."><img src="assets/images/brand/logo/logo111.png" class="mb-4" alt=""></a>
+                <form id="loginForm">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    style="float: right;font-size: 40px;">&times;</button>
+                <div class="mb-4 m-0">
+                    <a href="."><img src="{{ asset('assets/images/logo2.png') }}" class="mb-4"
+                            alt=""></a>
+
                     <h1 class="mb-1 fw-bold">Sign in</h1>
                     <span>Don’t have an account? <a href="signup.php" class="ms-1">Sign up</a></span>
                 </div>
-                <form id="loginForm">
                     <div class="mb-3">
                         <label for="email" class="form-label">Username or email</label>
                         <input type="email" id="loginEmail" class="form-control" name="email"
