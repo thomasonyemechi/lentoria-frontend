@@ -75,8 +75,12 @@
                                         </select>
                                     </div>
 
+                                    <div class="mb-3 col-4">
+                                        <select class="form-control" name="topic_id" id="selsubcat">
+                                            <option value="">Select a SubCategory</option>
+                                        </select>
+                                    </div>
                                 </div>
-
 
                                 <div class="custom-file-container" data-upload-id="courseCoverImg" id="courseCoverImg">
                                     <label class="form-label"><b>Course image</b>
