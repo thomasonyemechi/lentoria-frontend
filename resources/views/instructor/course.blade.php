@@ -179,9 +179,6 @@
                 form_data.append('topic_id', topic_id);
                 form_data.append('course_type', course_type);
 
-                for (const pair of form_data.entries()) {
-                    console.log(`${pair[0]}, ${pair[1]}`);
-                }
                 $.ajax({
                     method: 'POST',
                     url: api_url + 'admin/course_update',
