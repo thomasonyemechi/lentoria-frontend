@@ -74,7 +74,7 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-between border-bottom pb-3 mb-3">
                                 <div>
-                                    <h4 class="mb-0 fw-bold" id="nos">11,604</h4>
+                                    <h4 class="mb-0 fw-bold" id="nos">No of Students</h4>
                                     <p class="fs-6 mb-0">Total Students</p>
                                 </div>
                                 <div>
@@ -83,7 +83,7 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
-                                    <h4 class="mb-0 fw-bold">12,230</h4>
+                                    <h4 class="mb-0 fw-bold">No of Reviews</h4>
                                     <p class="fs-6 mb-0">Reviews</p>
                                 </div>
                                 <div>
@@ -138,7 +138,7 @@
                     $('#ins-twitter').attr('href',`https://${res.data.instructor_info.twitter}`);
                     $('#ins-facebook').attr('href',`https://${res.data.instructor_info.facebook}`);
                 }).fail(function(res) {
-
+                    // location.href = {{ url()->previous() }}
                 });
             }
         })
