@@ -269,7 +269,7 @@
                     }
                 }).done(function(res) {
                     console.log(res);
-                    location.href = `instructor/course/${res.slug}`
+                    location.href = `/instructor/course/${res.slug}`
                     btn(bt, 'Submit', 'after');
                 }).fail(function(res) {
                     concatError(res.responseJSON);

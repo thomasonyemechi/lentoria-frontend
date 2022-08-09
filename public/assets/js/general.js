@@ -102,19 +102,19 @@ function checkLevel(level) {
 }
 function levelBar(level) {
     if (level == 1) {
-        return `<rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE"></rect>
+        return `<rect x="3" y="8" width="2" height="6" rx="1" fill="#FFD700"></rect>
         <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9"></rect>
         <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9">
         </rect>`
     } else if (level == 2) {
-        return `<rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE"></rect>
-        <rect x="7" y="5" width="2" height="9" rx="1" fill="#754FFE"></rect>
+        return `<rect x="3" y="8" width="2" height="6" rx="1" fill="#FFD700"></rect>
+        <rect x="7" y="5" width="2" height="9" rx="1" fill="#FFD700"></rect>
         <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9">
         </rect>`
     } else if (level == 3) {
-        return `<rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE"></rect>
-        <rect x="7" y="5" width="2" height="9" rx="1" fill="#754FFE"></rect>
-        <rect x="11" y="2" width="2" height="12" rx="1" fill="#754FFE">
+        return `<rect x="3" y="8" width="2" height="6" rx="1" fill="#FFD700"></rect>
+        <rect x="7" y="5" width="2" height="9" rx="1" fill="#FFD700"></rect>
+        <rect x="11" y="2" width="2" height="12" rx="1" fill="#FFD700">
         </rect>`
     } else {
         return `<rect x="3" y="8" width="2" height="6" rx="1" fill="#DBD8E9"></rect>
