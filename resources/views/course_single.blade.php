@@ -1243,7 +1243,7 @@ Course|{{ $slug }}
                                     <!-- Description -->
                                     <div class="mb-4" id="cde">
                                         <h3 class="mb-2">Course Descriptions</h3>
-                                        <p>
+                                        {{-- <p>
                                             If you’re learning to program for the first time, or if you’re coming from a
                                             different language, this course, JavaScript: Getting Started, will give you the
                                             basics for coding in JavaScript. First, you'll discover the types of
@@ -1256,7 +1256,7 @@ Course|{{ $slug }}
                                             responsive web page. When you’re finished with this course, you’ll have the
                                             skills and knowledge in JavaScript
                                             to create simple programs, create simple web applications, and modify web pages.
-                                        </p>
+                                        </p> --}}
                                     </div>
                                     <h4 class="mb-3">What you’ll learn</h4>
                                     <div class="row mb-3">
