@@ -1241,22 +1241,9 @@ Course|{{ $slug }}
                                 <div class="tab-pane fade" id="description" role="tabpanel"
                                     aria-labelledby="description-tab">
                                     <!-- Description -->
-                                    <div class="mb-4">
+                                    <div class="mb-4" id="cde">
                                         <h3 class="mb-2">Course Descriptions</h3>
-                                        <p>
-                                            If you’re learning to program for the first time, or if you’re coming from a
-                                            different language, this course, JavaScript: Getting Started, will give you the
-                                            basics for coding in JavaScript. First, you'll discover the types of
-                                            applications that can be
-                                            built with JavaScript, and the platforms they’ll run on.
-                                        </p>
-                                        <p>
-                                            Next, you’ll explore the basics of the language, giving plenty of examples.
-                                            Lastly, you’ll put your JavaScript knowledge to work and modify a modern,
-                                            responsive web page. When you’re finished with this course, you’ll have the
-                                            skills and knowledge in JavaScript
-                                            to create simple programs, create simple web applications, and modify web pages.
-                                        </p>
+
                                     </div>
                                     <h4 class="mb-3">What you’ll learn</h4>
                                     <div class="row mb-3">
@@ -1752,6 +1739,7 @@ Course|{{ $slug }}
                     console.log(res);
                     // $('#cid').val(res.data.id);
                     $('#c-title').html(res.data.course_info.title);
+                    $('#cde').append(res.data.course_info.description);
                     $('#c-subtitle').html(res.data.course_info.subtitle);
                     $('#cbar').html(levelBar(res.data.course_info.level));
                     $('#c-level').html(checkLevel(res.data.course_info.level));
