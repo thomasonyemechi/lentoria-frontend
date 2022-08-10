@@ -100,6 +100,7 @@ function checkLevel(level) {
         return 'Super'
     }
 }
+
 function levelBar(level) {
     if (level == 1) {
         return `<rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE"></rect>
@@ -126,3 +127,5 @@ function levelBar(level) {
 
 
 
+// bettermake sense else sombody go keill you oooo, seems like you anna dies right you dey mad wotooot wotoooo
+// let us kill the script and lets resyethe1 process you
