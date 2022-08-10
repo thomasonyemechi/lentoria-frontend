@@ -35,9 +35,7 @@
 
                                 <div class="mb-3">
                                     <label class="form-label"><b>Course Description</b></label>
-                                    <textarea class="form-control" name="description" id="course_description">
-
-									</textarea>
+                                    <x-textarea name="description" id="course_description"/>
                                 </div>
 
                                 <div class="row">
@@ -166,7 +164,7 @@
                 if (image != 0) {
                     form_data.append('image', document.getElementById('course_image').files[0]);
                 }
-                if(video != 0){
+                if (video != 0) {
                     form_data.append('video', document.getElementById('promo_video').files[0]);
                 }
 
