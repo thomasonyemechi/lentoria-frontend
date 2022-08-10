@@ -21,6 +21,9 @@ Route::post('/session_login_infomation',[Controller::class, 'sessionLoginInfomat
 Route::get('/', function () { return view('index'); });
 
 
+Route::view('/course/{id}/{slug}','course_single');
+Route::view('/instructor/{id}/profile','instructor_profile')->name('instructor_profile');
+
 Route::group(['prefix'=>'instructor', 'as'=>'instructor.', 'middleware'=> ['auth2'] ], function (){
     Route::get('/dashboard', function () { return view('instructor.index'); });
     Route::view('/courses', 'instructor.courses')->name('courses');

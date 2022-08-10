@@ -30,11 +30,11 @@
 
                                 <div class="mb-3">
                                     <label class="form-label"><b>Welcome Message</b></label>
-                                    <textarea id="welmess" class="form-control"></textarea>
+                                    <x-textarea id="welmess" name="welmess" />
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label"><b>Congratulations Message</b></label>
-                                    <textarea id="cermess" class="form-control"></textarea>
+                                    <x-textarea id="cermess" name="cermess" />
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
                                     <button type="submit" class="btn btn-success btn-block review-btn" id="addMessage">Add
@@ -52,7 +52,7 @@
 
     <script>
         $(function() {
-            
+
             $('#addMessageForm').submit(function(e) {
                 e.preventDefault();
                 course_id = $('#mycourse_id').val();

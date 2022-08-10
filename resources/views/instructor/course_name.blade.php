@@ -56,25 +56,28 @@
                 $('.course-title').html(res.data.title)
 
                 dat = res.data
-                $('#courseTitle').val(dat.title);
-                $('#courseSubtitle').val(dat.subtitle);
-                $('#course_id').val(dat.id);
-                $('#course_description').val(dat.description);
-                $(`#selcourse_type option[value="${dat.course_type}"]`).prop("selected", true);
-                $(`#course_level option[value="${dat.level}"]`).prop("selected", true);
-                getCategory(dat.category_id);
-                setTopic2(dat.category_id, dat.topic_id);
-
-                ////////pricing 
+                if (window.location.pathname == `/instructor/course/{{ $slug }}`) {
+                    $('#courseTitle').val(dat.title);
+                    $('#courseSubtitle').val(dat.subtitle);
+                    $('#course_id').val(dat.id);
+                    description.setData(dat.description ?? '');
+                    $(`#selcourse_type option[value="${dat.course_type}"]`).prop("selected", true);
+                    $(`#course_level option[value="${dat.level}"]`).prop("selected", true);
+                    getCategory(dat.category_id);
+                    setTopic2(dat.category_id, dat.topic_id);
+                }
+                ////////pricing
                 $('.course_price').val(res.data.price)
                 $('input[name="course_update_id"]').val(res.data.id)
                 $(`select[name="currency"] option[value=${res.data.currency}] `).prop('selected', true)
 
 
                 ////messaging
-                $('#welmess').val(dat.welcome_message);
-                $('#cermess').val(dat.certification_message);
+                if (window.location.pathname == `/instructor/course_message/{{ $slug }}`) {
+                welmess.setData(dat.welcome_message ?? '');
+                cermess.setData(dat.certification_message ?? '');
                 $('#mycourse_id').val(dat.id);
+                }
             }).fail(function(res) {
                 location.href = "/instructor/dashboard"
             })
