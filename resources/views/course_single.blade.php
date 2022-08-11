@@ -12,6 +12,7 @@ Course|{{ $slug }}
                     <div>
                         <h3 class="text-white display-4 fw-semi-bold" id="c-title">Course Title</h3>
                         <p class="text-white mb-6 lead" id="c-subtitle">
+                        
                             Course Subtitle
                         </p>
                         <input type="hidden" id="cid">
