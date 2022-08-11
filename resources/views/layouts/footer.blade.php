@@ -25,13 +25,6 @@
         <div class="modal-content">
             <div class="modal-body shadow">
                 <form id="loginForm">
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <a href="."><img src="{{ asset('assets/images/logo2.png') }}" class="mb-4"
-                                alt=""></a>
-                        <button type="button" class="btn-close mt-0 pt-0" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
-                        </button>
-                    </div>
 
                     <div class="mb-4 m-0">
                         <h1 class="mb-1 fw-bold">Sign in</h1>
@@ -73,13 +66,6 @@
         <div class="modal-content">
             <div class="modal-body shadow">
                 <form id="signUpForm">
-                     <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <a href="."><img src="{{ asset('assets/images/logo2.png') }}" class="mb-4"
-                                alt=""></a>
-                        <button type="button" class="btn-close mt-0 pt-0" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
-                        </button>
-                    </div>
 
                     <div class="mb-4">
                         <h1 class="mb-1 fw-bold">Create Account</h1>
