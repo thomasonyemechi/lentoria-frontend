@@ -65,7 +65,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <div class="row justify-content-end">
 
                                     <div class="mb-3 col-4">
                                         <select class="form-control" name="category_id" id="selcategory">
@@ -157,7 +157,7 @@
                 video = $('#promo_video').get(0).files.length;
                 if (!title || !subtitle || !description || !language || !level || !category_id || !
                     topic_id) {
-                    salat('All Fields Required', 1);
+                    salat('All Text Fields Required', 1);
                     return
                 }
                 var form_data = new FormData();

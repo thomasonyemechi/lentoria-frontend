@@ -56,7 +56,7 @@
                 $('.course-title').html(res.data.title)
 
                 dat = res.data
-                if (window.location.pathname == `/instructor/course/{{ $slug }}`) {
+                try {
                     $('#courseTitle').val(dat.title);
                     $('#courseSubtitle').val(dat.subtitle);
                     $('#course_id').val(dat.id);
@@ -65,6 +65,8 @@
                     $(`#course_level option[value="${dat.level}"]`).prop("selected", true);
                     getCategory(dat.category_id);
                     setTopic2(dat.category_id, dat.topic_id);
+                }catch(err){
+                    console.log("Not Available On This Page")
                 }
                 ////////pricing
                 $('.course_price').val(res.data.price)
@@ -73,11 +75,13 @@
 
 
                 ////messaging
-                if (window.location.pathname == `/instructor/course_message/{{ $slug }}`) {
+                try{
                 welmess.setData(dat.welcome_message ?? '');
                 cermess.setData(dat.certification_message ?? '');
                 $('#mycourse_id').val(dat.id);
-                }
+                }catch(err){
+                    console.log("Not Available")
+                };
             }).fail(function(res) {
                 location.href = "/instructor/dashboard"
             })

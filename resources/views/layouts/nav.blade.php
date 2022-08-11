@@ -6,13 +6,13 @@
         <ul class="navbar-nav navbar-right-wrap ms-auto d-lg-none d-flex nav-top-wrap">
             @if (!session('info'))
                 <li class="dropdown d-inline-block stopevent">
-                    <button class="btn btn-outline-white btn-xs me-2" style="border: 1px solid #754ffe;border-radius: 1px;"
+                    <button class="btn btn-outline-white btn-xs me-2" style="border: 1px solid #036;border-radius: 1px;"
                         data-bs-target="#login_modal" data-bs-toggle="modal" aria-expanded="false">
                         <span>Login</span>
                     </button>
                 </li>
                 <li class="dropdown d-inline-block stopevent">
-                    <button class="btn btn-primary btn-xs" style="border-radius: 1px;" aria-expanded="false">
+                    <button class="btn btn-primary btn-xs" data-bs-target="#signup_modal" data-bs-toggle="modal" style="border-radius: 1px;" aria-expanded="false">
                         <span>Sign up</span>
                     </button>
                 </li>
@@ -58,7 +58,7 @@
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">
-                                    My Wihslist
+                                    My Wishlist
                                 </a>
                             </li>
                         </ul>
@@ -242,7 +242,7 @@
                 @if (!session('info'))
                     <li class="dropdown d-inline-block stopevent">
                         <button class="btn btn-outline-white btn-sm"
-                            style="border: 1px solid #754ffe;border-radius: 1px;" data-bs-target="#login_modal"
+                            style="border: 1px solid #036;border-radius: 1px;" data-bs-target="#login_modal"
                             data-bs-toggle="modal" aria-expanded="false">
                             <span><big>Login</big></span>
                         </button>
