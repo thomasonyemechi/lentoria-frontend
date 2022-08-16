@@ -82,180 +82,73 @@
         </div>
     </div>
 
-    <div class="pb-lg-3 pt-lg-3 pt-8 pb-6" style="margin-top: -20px">
-        <div class="container">
-            <div class="row mb-4">
-                <div class="col">
-                    <h2 class="mb-2">Live Bootcamp <div style="float: right; font-size: 14px;"><a
-                                href="courses.php?t=1">LOAD MORE <i class="fe fe-arrow-right me-1"></i></a></div>
-                    </h2>
+    <div class="pb-lg-3 pt-lg-3 pt-4 pb-6" style="margin-top: -20px">
+        <!-- Top courses-->
+        <div class="py-8 py-lg-16 bg-light-gradient-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        {{-- <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-lg"></span> --}}
+                        <h2 class="mb-1 display-4 fw-bold">Browse Courses</h2>
+                        <p class="mb-8 lead">Choose from 32,000 online courses with new additions published every
+                            month.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="position-relative">
-                <ul class="controls " id="sliderSecondControls">
-                    <li class="prev">
-                        <i class="fe fe-chevron-left"></i>
-                    </li>
-                    <li class="next">
-                        <i class="fe fe-chevron-right"></i>
-                    </li>
-                </ul>
-                <div class="sliderSecond">
-                    <div class="item">
-                        <div class="card  mb-1 card-hover">
-                            <a href="course-details.php?s=705333-frontend-development" class="card-img-top"><img
-                                    src="assets/images/course/course_cover_image16427759711862968.jpg" alt=""
-                                    class="card-img-top rounded-top-md main-image object-cover"></a>
-                            <div class="card-body pb-0">
-                                <h4 class="mb-2 text-truncate-line-2 "><a
-                                        href="course-details.php?s=705333-frontend-development"
-                                        class="text-inherit">Frontend Development Training</a></h4>
-                                <ul class="mb-3 list-inline">
-                                    <li class="list-inline-item"><i class="far fa-clock me-1"></i> 12 Weeks
-                                        <svg class="me-1 mt-n1" width="16" height="16" viewBox="0 0 16 16"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="3" y="8" width="2" height="6" rx="1"
-                                                fill="#036"></rect>
-                                            <rect x="7" y="5" width="2" height="9" rx="1"
-                                                fill="#DBD8E9"></rect>
-                                            <rect x="11" y="2" width="2" height="12"
-                                                rx="1" fill="#DBD8E9"></rect>
-                                        </svg>Beginners
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <big><b>₦ 100,000</b></big> <span class="p-2"
-                                            style="text-decoration: line-through;">₦ 160,000</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row align-items-center g-0">
+                <!-- Content -->
+                <div class="pt-lg-12 pb-lg-3 pt-8 pb-6">
+                    <div class="container">
+                        <div class="row mb-4">
+                            <div class="col">
+                                <h2 class="mb-0">Our Most Popular</h2>
 
-                                    <div class="col">
-                                        <span>Adameji Victor</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <a href="javascript:;" class="text-muted bookmark addToBookmark "
-                                            data-user_id="0" data-course_id="2">
-                                            <big><i class="fe fe-bookmark text-danger"></i></big>
-                                        </a>
+                                <div class="position-relative" id="pos-rel">
+                                    <ul class="controls " id="sliderTestControls">
+                                        <li class="prev">
+                                            <i class="fe fe-chevron-left"></i>
+                                        </li>
+                                        <li class="next">
+                                            <i class="fe fe-chevron-right"></i>
+                                        </li>
+                                    </ul>
+
+                                    <div class="sliderTest">
+
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card  mb-1 card-hover">
-                            <a href="course-details.php?s=525761-fullstack-web-development-training"
-                                class="card-img-top"><img src="assets/images/course/cover_image1642751158521444.jpg"
-                                    alt="" class="card-img-top rounded-top-md main-image object-cover"></a>
-                            <div class="card-body pb-0">
-                                <h4 class="mb-2 text-truncate-line-2 "><a
-                                        href="course-details.php?s=525761-fullstack-web-development-training"
-                                        class="text-inherit">Fullstack Web-development Training</a></h4>
-                                <ul class="mb-3 list-inline">
-                                    <li class="list-inline-item"><i class="far fa-clock me-1"></i> 16 weeks
-                                        <svg class="me-1 mt-n1" width="16" height="16" viewBox="0 0 16 16"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="3" y="8" width="2" height="6"
-                                                rx="1" fill="#036"></rect>
-                                            <rect x="7" y="5" width="2" height="9"
-                                                rx="1" fill="#DBD8E9"></rect>
-                                            <rect x="11" y="2" width="2" height="12"
-                                                rx="1" fill="#DBD8E9"></rect>
-                                        </svg>Beginners
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <big><b>₦ 160,000</b></big> <span class="p-2"
-                                            style="text-decoration: line-through;">₦ 256,000</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row align-items-center g-0">
 
-                                    <div class="col">
-                                        <span>Adameji Victor</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <a href="javascript:;" class="text-muted bookmark addToBookmark "
-                                            data-user_id="0" data-course_id="1">
-                                            <big><i class="fe fe-bookmark text-danger"></i></big>
-                                        </a>
-                                    </div>
-                                </div>
+                                {{-- <a href="javascript:void(0)" onclick="getC(1)"> Cat 1</a> <a href="javascript:void(0)"
+                                    onclick="getC(2)"> Cat
+                                    2</a> <a href="javascript:void(0)" onclick="getC(3)"> Cat 3</a> --}}
                             </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="card  mb-1 card-hover">
-                            <a href="course-details.php?s=737984-backend-development" class="card-img-top"><img
-                                    src="assets/images/course/course_cover_image16427815091874534.jpg" alt=""
-                                    class="card-img-top rounded-top-md main-image object-cover"></a>
-                            <div class="card-body pb-0">
-                                <h4 class="mb-2 text-truncate-line-2 "><a
-                                        href="course-details.php?s=737984-backend-development"
-                                        class="text-inherit">Backend Development Training</a></h4>
-                                <ul class="mb-3 list-inline">
-                                    <li class="list-inline-item"><i class="far fa-clock me-1"></i> 12 Weeks
-                                        <svg class="me-1 mt-n1" width="16" height="16" viewBox="0 0 16 16"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="3" y="8" width="2" height="6"
-                                                rx="1" fill="#036"></rect>
-                                            <rect x="7" y="5" width="2" height="9"
-                                                rx="1" fill="#DBD8E9"></rect>
-                                            <rect x="11" y="2" width="2" height="12"
-                                                rx="1" fill="#DBD8E9"></rect>
-                                        </svg>Beginners
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <big><b>₦ 120,000</b></big> <span class="p-2"
-                                            style="text-decoration: line-through;">₦ 192,000</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row align-items-center g-0">
 
-                                    <div class="col">
-                                        <span>Adameji Victor</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <a href="javascript:;" class="text-muted bookmark addToBookmark "
-                                            data-user_id="0" data-course_id="3">
-                                            <big><i class="fe fe-bookmark text-danger"></i></big>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="pt-lg-4 pb-lg-3 pt-4 pb-6">
         <div class="container">
-            <h2>Popular Categories</h2>
-            <a href="category-topics.php?s=833808-graphics-design" class="btn btn-outline-primary m-1">Graphics Design</a>
-            <a href="category-topics.php?s=891823-user-experience-design" class="btn btn-outline-primary m-1">User
+            <h2>Top Categories</h2>
+            <a href="javascript:void(0)" class="btn btn-outline-primary rounded-pill m-1">Graphics Design</a>
+            <a href="javascript:void(0)" class="btn btn-outline-primary rounded-pill m-1">User
                 Experience Design</a>
-            <a href="category-topics.php?s=568499-logo-design" class="btn btn-outline-primary m-1">Logo Design</a>
-            <a href="category-topics.php?s=496077-digital-marketing" class="btn btn-outline-primary m-1">Digital
+            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Logo Design</a>
+            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Digital
                 Marketing</a>
-            <a href="category-topics.php?s=957020-web-development" class="btn btn-outline-primary m-1">Web Development</a>
-            <a href="category-topics.php?s=792960-mobile-development" class="btn btn-outline-primary m-1">Mobile
+            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Web Development</a>
+            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Mobile
                 Development</a>
-            <a href="category-topics.php?s=33097-database-design-and-development"
-                class="btn btn-outline-primary m-1">Database Design and Development</a>
-            <a href="category-topics.php?s=314771-content-marketing" class="btn btn-outline-primary m-1">Content
+            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Database Design and
+                Development</a>
+            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Content
                 Marketing</a>
-            <a href="category-topics.php?s=127608-social-media-marketing" class="btn btn-outline-primary m-1">Social Media
+            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Social Media
                 Marketing</a>
         </div>
     </div>
-
 
     <div class="pt-lg-12 pb-lg-3 pt-8 pb-6">
         <div class="row bg-secondary">
@@ -264,7 +157,8 @@
             </div>
             <div class="col-lg-6 text-center m-0 p-8">
                 <h1 class="text-white display-4">Skillup with Speed</h1>
-                <h2 class="lead text-white">It does not require a lifetime to become a professional and land the right job.
+                <h2 class="lead text-white">It does not require a lifetime to become a professional and land the right
+                    job.
                     Our master classes are designed to get you to master new skills with well planned practical sessions and
                     simplified class activities tailored towards completing certain class projects</h2>
                 <a href="" class="btn btn-outline-white text-white mt-4">Learn more</a>
@@ -274,7 +168,8 @@
         <div class="row bg-primary">
             <div class="col-lg-6 text-center m-0 p-8">
                 <h1 class="text-white display-4">Learn with Comfort</h1>
-                <h2 class="lead text-white">Lentoria makes it possible for you to learn from any where with maximum comfort
+                <h2 class="lead text-white">Lentoria makes it possible for you to learn from any where with maximum
+                    comfort
                     and at the pace that suits you. Our step-by-step approach make the entire process a lot easier than you
                     can imagine. Take a bold step today and kick-start your journey to expertise</h2>
                 <a href="courses.php?all" class="btn btn-outline-white text-white mt-4">Explore courses</a>
@@ -362,7 +257,8 @@
                                 class="rounded-top-md img-fluid">
                         </div>
                         <div class="card-body">
-                            <h3 class="mb-0 fw-semi-bold"> <a href="#" class="text-inherit">Ehakfe Andrew</a></h3>
+                            <h3 class="mb-0 fw-semi-bold"> <a href="#" class="text-inherit">Ehakfe Andrew</a>
+                            </h3>
                             <p class="mb-3">UI/UX Designer</p>
                         </div>
                     </div>
@@ -374,7 +270,8 @@
                                 class="rounded-top-md img-fluid">
                         </div>
                         <div class="card-body">
-                            <h3 class="mb-0 fw-semi-bold"><a href="#" class="text-inherit">Orija Olumide</a></h3>
+                            <h3 class="mb-0 fw-semi-bold"><a href="#" class="text-inherit">Orija Olumide</a>
+                            </h3>
                             <p class="mb-3">Back-End Developer</p>
                         </div>
                     </div>
@@ -385,7 +282,8 @@
                             <img src="assets/images/instructor/sina.jpg" alt="" class="rounded-top-md img-fluid">
                         </div>
                         <div class="card-body">
-                            <h3 class="mb-0 fw-semi-bold"><a href="#" class="text-inherit">Adebayo Adesina</a></h3>
+                            <h3 class="mb-0 fw-semi-bold"><a href="#" class="text-inherit">Adebayo Adesina</a>
+                            </h3>
                             <p class="mb-3">Back-End Developer</p>
                         </div>
                     </div>
@@ -500,7 +398,8 @@
                                                 <i class="mdi mdi-star text-warning"></i>
                                             </span>
                                         </div>
-                                        <p class="lead text-dark font-italic fw-medium mb-0">"Interning at Lentoria offered
+                                        <p class="lead text-dark font-italic fw-medium mb-0">"Interning at Lentoria
+                                            offered
                                             me the opportunity to develop as a professional and to help the organization
                                             develop in the tech industry. As an intern, your thoughts and your contributions
                                             will be valued every day as you work alongside the respectful staff. The mission
@@ -603,4 +502,145 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(function() {
+            getCourses();
+
+            function getMyCategories() {
+                $.ajax({
+                        type: "get",
+                        url: api_url + "category",
+                    }).done(res => {
+                        console.log(res);
+                    })
+                    .fail(res => {
+                        console.log(res);
+                    })
+            }
+
+
+            function getCourses() {
+                $.ajax({
+                    url: api_url + 'courses'
+                }).done(res => {
+                    console.log(res);
+                    res.data.map(cor => {
+                        $('.sliderTest').append(`
+                <div class="item">
+                    <!-- Card -->
+                    <div class="card card-hover mb-3" data-bs-toggle="popover"
+                        data-bs-trigger="hover" data-bs-html="true"
+                        data-bs-content="<h2>This is a popover</h2>">
+                        <a href="course-single.html" class="card-img-top"><img
+                                src="../../assets/images/course/course-react.jpg" alt=""
+                                class="rounded-top-md card-img-top"></a>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <h4 class="mb-2 text-truncate-line-2 "><a href="course-single.html"
+                                    class="text-inherit">${cor.title}</a></h4>
+                            <!-- List -->
+                            <ul class="mb-3 list-inline">
+                                <li class="list-inline-item"><i class="far fa-clock me-1"></i>3h
+                                    56m</li>
+                                <li class="list-inline-item">
+                                    <svg class="me-1 mt-n1" width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="3" y="8" width="2"
+                                            height="6" rx="1" fill="#754FFE" />
+                                        <rect x="7" y="5" width="2"
+                                            height="9" rx="1" fill="#DBD8E9" />
+                                        <rect x="11" y="2" width="2"
+                                            height="12" rx="1" fill="#DBD8E9" />
+                                    </svg>
+                                    Beginner
+                                </li>
+                            </ul>
+                            <div class="lh-1">
+                                <span>
+                                    <i class="mdi mdi-star text-warning me-n1"></i>
+                                    <i class="mdi mdi-star text-warning me-n1"></i>
+                                    <i class="mdi mdi-star text-warning me-n1"></i>
+                                    <i class="mdi mdi-star text-warning me-n1"></i>
+                                    <i class="mdi mdi-star text-warning"></i>
+                                </span>
+                                <span class="text-warning">4.5</span>
+                                <span class="fs-6 text-muted">(7,700)</span>
+                            </div>
+                        </div>
+                        <!-- Card Footer -->
+                        <div class="card-footer">
+                            <div class="row align-items-center g-0">
+                                <div class="col-auto">
+                                    <img src="../../assets/images/avatar/avatar-1.jpg"
+                                        class="rounded-circle avatar-xs" alt="">
+                                </div>
+                                <div class="col ms-2">
+                                    <span>Morris Mccoy</span>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="#" class="text-muted bookmark">
+                                        <i class="fe fe-bookmark  "></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`);
+                    })
+
+                    if ($('.sliderTest').length) {
+                        tns({
+                            container: ".sliderTest",
+                            loop: !1,
+                            startIndex: 1,
+                            items: 1,
+                            nav: !1,
+                            autoplay: true,
+                            swipeAngle: !1,
+                            speed: 400,
+                            autoplayButtonOutput: !1,
+                            mouseDrag: !0,
+                            lazyload: !0,
+                            gutter: 20,
+                            controlsContainer: "#sliderTestControls",
+                            responsive: {
+                                768: {
+                                    items: 2
+                                },
+                                990: {
+                                    items: 4
+                                }
+                            }
+                        });
+                    }
+
+                }).fail(res => {
+                    console.log(res);
+
+                })
+
+
+            }
+        });
+
+
+        // function getC(v) {
+
+        //     var i = 1;
+        //     while (i <= 3) {
+        //         var y = document.getElementsByClassName('cat' + i);
+        //         y[0].style.display = 'none';
+        //         y[1].style.display = 'none';
+        //         y[2].style.display = 'none';
+
+        //         i++;
+        //     }
+        //     // var x = document.getElementsByClassName('cat' + v);
+        //     // x[0].style.display = 'block';
+        //     // x[1].style.display = 'block';
+        //     // x[2].style.display = 'block';
+        // }
+    </script>
 @endsection

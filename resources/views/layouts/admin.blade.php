@@ -186,7 +186,6 @@
         </div>
     </div>
 
-
     {{-- Javascripts Here .... --}}
 
     <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
@@ -218,6 +217,9 @@
     <script src="{{ asset('assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('assets/cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js') }}"></script>
     <script src="{{ asset('assets/js/theme.min.js') }}"></script>
+    <script>
+       
+    </script>
 </body>
 
 </html>

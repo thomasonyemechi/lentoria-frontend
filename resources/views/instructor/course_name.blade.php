@@ -80,7 +80,7 @@
                 cermess.setData(dat.certification_message ?? '');
                 $('#mycourse_id').val(dat.id);
                 }catch(err){
-                    console.log("Not Available")
+                    console.log("Not Available On This Page")
                 };
             }).fail(function(res) {
                 location.href = "/instructor/dashboard"
