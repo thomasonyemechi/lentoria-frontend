@@ -125,6 +125,10 @@ function levelBar(level) {
     }
 }
 
+function stripLower(str) {
+    return str.toLowerCase().replace(/ /g, '')
+}
+
 
 
 // bettermake sense else sombody go keill you oooo, seems like you anna dies right you dey mad wotooot wotoooo

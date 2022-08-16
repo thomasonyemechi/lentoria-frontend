@@ -30,8 +30,6 @@
     @include('layouts.alert_top')
     @include('layouts.nav')
 
-
-
     @yield('page_content')
 
     @include('layouts.footer')
@@ -68,6 +66,9 @@
     <script src="{{ asset('assets/cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js') }}"></script>
     <script src="{{ asset('assets/js/theme.min.js') }}"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+</body>
+
+</html>
 </body>
 
 </html>

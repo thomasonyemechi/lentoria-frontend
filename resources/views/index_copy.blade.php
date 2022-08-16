@@ -1,6 +1,5 @@
 @extends('layouts.instructor')
 @section('page_title')
-Lentoria
 @endsection
 
 @section('page_content')
@@ -85,33 +84,25 @@ Lentoria
 
     <div class="pb-lg-3 pt-lg-3 pt-4 pb-6" style="margin-top: -20px">
         <!-- Top courses-->
-        <!-- Top courses-->
         <div class="py-8 py-lg-16 bg-light-gradient-bottom">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-lg">Browse Categories</span>
-                        <h2 class="mb-1 display-4 fw-bold">The world's top courses</h2>
-                        <p class="mb-8 lead">Choose from 32,000 online video courses with new additions published every
+                        {{-- <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-lg"></span> --}}
+                        <h2 class="mb-1 display-4 fw-bold">Browse Courses</h2>
+                        <p class="mb-8 lead">Choose from 32,000 online courses with new additions published every
                             month.</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Nav tab -->
-                        <ul class="nav nav-lb-tab mb-6" id="pills-tab" role="tablist">
-                            <li class="nav-item ms-0" role="presentation">
-                                <a class="nav-link active" id="pills-allcategory-tab" data-bs-toggle="pill"
-                                    href="#pills-allcategory" role="tab" aria-controls="pills-allcategory"
-                                    aria-selected="true">Top Courses</a>
-                            </li>
-                        </ul>
-                        <!-- Tab content -->
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-allcategory" role="tabpanel"
-                                aria-labelledby="pills-allcategory-tab">
-                                <div class="position-relative">
-                                    <ul class="controls " id="firstSliderControls">
+                <!-- Content -->
+                <div class="pt-lg-12 pb-lg-3 pt-8 pb-6">
+                    <div class="container">
+                        <div class="row mb-4">
+                            <div class="col">
+                                <h2 class="mb-0">Our Most Popular</h2>
+
+                                <div class="position-relative" id="pos-rel">
+                                    <ul class="controls " id="sliderTestControls">
                                         <li class="prev">
                                             <i class="fe fe-chevron-left"></i>
                                         </li>
@@ -120,12 +111,17 @@ Lentoria
                                         </li>
                                     </ul>
 
-                                    <div class="firstSlider">
+                                    <div class="sliderTest">
+
                                     </div>
                                 </div>
 
+                                {{-- <a href="javascript:void(0)" onclick="getC(1)"> Cat 1</a> <a href="javascript:void(0)"
+                                    onclick="getC(2)"> Cat
+                                    2</a> <a href="javascript:void(0)" onclick="getC(3)"> Cat 3</a> --}}
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -476,7 +472,7 @@ Lentoria
                                     <div class="card-footer px-5 py-4">
                                         <div class="d-flex align-items-center">
                                             <div class="ms-3">
-                                                <h4 class="mb-0">OluwasolaTaiwo</h4>
+                                                <h4 class="mb-0">Oluwasola Taiwo</h4>
                                                 <p class="mb-0 small">Web-Developer</p>
                                             </div>
                                         </div>
@@ -509,161 +505,29 @@ Lentoria
 
     <script>
         $(function() {
-            getMyCategories();
-            getRandomCourses()
+            getCourses();
 
             function getMyCategories() {
                 $.ajax({
                         type: "get",
                         url: api_url + "category",
                     }).done(res => {
-                        res.data.map(cat => {
-                            $('#pills-tab').append(`
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link getcourses" id="pills-${stripLower(cat.name)}-tab" data-bs-toggle="pill" href="#pills-${stripLower(cat.name)}" data-id="${cat.id}"
-                                    role="tab" aria-controls="pills-${stripLower(cat.name)}" aria-selected="false">${cat.name}</a>
-                            </li>`)
-                        });
-                        res.data.map(cat => {
-                            $('#pills-tabContent').append(
-                            `<div class="tab-pane fade" id="pills-${stripLower(cat.name)}" role="tabpanel" data-id="${cat.id}"
-                                aria-labelledby="pills-${stripLower(cat.name)}-tab">
-                                <div class="position-relative">
-
-                                    <ul class="controls" id="slider_${cat.id}_Controls">
-                                        <li class="prev d-block" id="slider_${cat.id}_prev">
-                                            <i class="fe fe-chevron-left"></i>
-                                        </li>
-                                        <li class="next d-block" id="slider_${cat.id}_next">
-                                            <i class="fe fe-chevron-right"></i>
-                                        </li>
-                                    </ul>
-
-                                    <div class="no_${cat.id}_Slider" id="no_${cat.id}_Slider">
-                                    </div>
-                                </div>
-                            </div>`)
-                            getCoursesByCategory(cat.id);
-
-                        })
-
-
+                        console.log(res);
                     })
                     .fail(res => {
                         console.log(res);
                     })
             }
 
-            function getCoursesByCategory(id) {
-                catid = id;
-                $.ajax({
-                    url: api_url + `courses/${catid}`
-                }).done(res => {
-                    res.data.data.map(cor => {
-                        $(document).find(`#no_${cor.category_id}_Slider`).append(`
-                        <div class="item">
-                    <!-- Card -->
-                    <div class="card card-hover mb-3" data-bs-toggle="popover"
-                        data-bs-trigger="hover" data-bs-html="true"
-                        data-bs-content="<h2>This is a popover</h2>">
-                        <a href="course/${cor.id}/${cor.slug}" class="card-img-top"><img
-                                src="../../assets/images/course/course-react.jpg" alt=""
-                                class="rounded-top-md card-img-top"></a>
-                        <!-- Card Body -->
-                        <div class="card-body">
-                            <h4 class="mb-2 text-truncate-line-2 "><a href="course/${cor.id}/${cor.slug}"
-                                    class="text-inherit">${cor.title}</a></h4>
-                            <!-- List -->
-                            <ul class="mb-3 list-inline">
-                                <li class="list-inline-item">
-                                    <svg class="me-1 mt-n1" width="16" height="16"
-                                        viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        ${levelBar(cor.level)}
-                                    </svg>
-                                    ${checkLevel(cor.level)}
-                                </li>
-                            </ul>
-                            <div class="lh-1">
-                                <span>
-                                    <i class="mdi mdi-star text-warning me-n1"></i>
-                                    <i class="mdi mdi-star text-warning me-n1"></i>
-                                    <i class="mdi mdi-star text-warning me-n1"></i>
-                                    <i class="mdi mdi-star text-warning me-n1"></i>
-                                    <i class="mdi mdi-star text-warning"></i>
-                                </span>
-                                <span class="text-warning">0.0</span>
-                                <span class="fs-6 text-muted">(0)</span>
-                            </div>
-                        </div>
-                        <!-- Card Footer -->
-                        <div class="card-footer">
-                            <div class="row align-items-center g-0">
-                                <div class="col-auto">
-                                    <img src="../../assets/images/avatar/avatar-1.jpg"
-                                        class="rounded-circle avatar-xs" alt="">
-                                </div>
-                                <div class="col ms-2">
-                                    <span>${cor.user.firstname} ${cor.user.lastname}</span>
-                                </div>
-                                <div class="col-auto">
-                                    <a href="#" class="text-muted bookmark">
-                                        <i class="fe fe-bookmark  "></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>`)
-                        if ($(`.no_${cor.category_id}_Slider`).length) {
-                            tns({
-                                container: `.no_${cor.category_id}_Slider`,
-                                loop: false,
-                                startIndex: 1,
-                                items: 1,
-                                edgePadding: 10,
-                                nav: false,
-                                autoplay: true,
-                                autoplayTimeout:3500,
-                                swipeAngle: false,
-                                speed: 2000,
-                                autoplayButtonOutput: false,
-                                mouseDrag: true,
-                                lazyload: true,
-                                gutter: 10,
-                                // controlsContainer: `#slider_${cor.category_id}_Controls`,
-                                // controls:true,
-                                prevButton:`#slider_${cor.category_id}_prev`,
-                                nextButton:`#slider_${cor.category_id}_next`,
-                                responsive: {
-                                    768: {
-                                        items: 2
-                                    },
-                                    990: {
-                                        items: 4
-                                    }
-                                }
-                            })
-                        }
-                    })
 
-
-                }).fail(res => {
-                    console.log(res);
-                })
-
-            }
-
-
-
-            function getRandomCourses() {
+            function getCourses() {
                 $.ajax({
                     url: api_url + 'courses'
                 }).done(res => {
                     console.log(res);
                     res.data.map(cor => {
-                        $('.firstSlider').append(`
-                        <div class="item">
+                        $('.sliderTest').append(`
+                <div class="item">
                     <!-- Card -->
                     <div class="card card-hover mb-3" data-bs-toggle="popover"
                         data-bs-trigger="hover" data-bs-html="true"
@@ -673,17 +537,24 @@ Lentoria
                                 class="rounded-top-md card-img-top"></a>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <h4 class="mb-2 text-truncate-line-2 "><a href="course/${cor.id}/${cor.slug}"
+                            <h4 class="mb-2 text-truncate-line-2 "><a href="course-single.html"
                                     class="text-inherit">${cor.title}</a></h4>
                             <!-- List -->
                             <ul class="mb-3 list-inline">
+                                <li class="list-inline-item"><i class="far fa-clock me-1"></i>3h
+                                    56m</li>
                                 <li class="list-inline-item">
                                     <svg class="me-1 mt-n1" width="16" height="16"
                                         viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        ${levelBar(cor.level)}
+                                        <rect x="3" y="8" width="2"
+                                            height="6" rx="1" fill="#754FFE" />
+                                        <rect x="7" y="5" width="2"
+                                            height="9" rx="1" fill="#DBD8E9" />
+                                        <rect x="11" y="2" width="2"
+                                            height="12" rx="1" fill="#DBD8E9" />
                                     </svg>
-                                    ${checkLevel(cor.level)}
+                                    Beginner
                                 </li>
                             </ul>
                             <div class="lh-1">
@@ -694,8 +565,8 @@ Lentoria
                                     <i class="mdi mdi-star text-warning me-n1"></i>
                                     <i class="mdi mdi-star text-warning"></i>
                                 </span>
-                                <span class="text-warning">0.0</span>
-                                <span class="fs-6 text-muted">(0)</span>
+                                <span class="text-warning">4.5</span>
+                                <span class="fs-6 text-muted">(7,700)</span>
                             </div>
                         </div>
                         <!-- Card Footer -->
@@ -706,7 +577,7 @@ Lentoria
                                         class="rounded-circle avatar-xs" alt="">
                                 </div>
                                 <div class="col ms-2">
-                                    <span>${cor.user.firstname} ${cor.user.lastname}</span>
+                                    <span>Morris Mccoy</span>
                                 </div>
                                 <div class="col-auto">
                                     <a href="#" class="text-muted bookmark">
@@ -719,9 +590,9 @@ Lentoria
                 </div>`);
                     })
 
-                    if ($('.firstSlider').length) {
+                    if ($('.sliderTest').length) {
                         tns({
-                            container: ".firstSlider",
+                            container: ".sliderTest",
                             loop: !1,
                             startIndex: 1,
                             items: 1,
@@ -733,7 +604,7 @@ Lentoria
                             mouseDrag: !0,
                             lazyload: !0,
                             gutter: 20,
-                            controlsContainer: "#firstSliderControls",
+                            controlsContainer: "#sliderTestControls",
                             responsive: {
                                 768: {
                                     items: 2
