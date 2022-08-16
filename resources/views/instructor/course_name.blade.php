@@ -74,6 +74,9 @@
                 $(`select[name="currency"] option[value=${res.data.currency}] `).prop('selected', true)
 
 
+                $('#updateLearners').find('input[name="course_id"]').val(res.data.id)
+
+
                 ////messaging
                 try{
                 welmess.setData(dat.welcome_message ?? '');

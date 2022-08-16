@@ -47,6 +47,8 @@
                                     </a>
                                 </div>
 
+                                
+
                                 <div class="mb-3">
                                     <label for="courseTitle" class="form-label"><b>What are the requirements or
                                             prerequisites for taking your course?</b></label>
@@ -74,6 +76,20 @@
                                         <b> <i class="fe fe-plus"></i> Add More To your Response</b>
                                     </a>
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="purposeTitle" class="form-label"><b>Purpose Of taking this course</b></label>
+                                    <p></p>
+                                    <input class="form-control purpose mb-2" type="text"
+                                        placeholder="Purpose Of taking this course?"
+                                        maxlength="160" />
+                                    <a href="javascript:;" class="mt-3 add_input" data-class="purpose">
+                                        <b> <i class="fe fe-plus"></i> Add More To your Response</b>
+                                    </a>
+                                </div>
+
+                                
+                                <input type="hidden" name="course_id">
                                 <div class="d-flex justify-content-end mt-3">
                                     <button type="submit" class="updateLearners btn btn-success">Save
                                         Answers</button>
@@ -93,6 +109,9 @@
             $('body').on('click', '.updateLearners', function(e) {
                 e.preventDefault();
                 form = $('#updateLearners'); ///wywl == what you will learn
+                bt = $(form).find('button');
+
+                id = $(form).find('input[name="course_id"]').val()
 
                 wywls = $(form).find('.what_you_will_learn');
                 new_wywl = [];
@@ -122,12 +141,39 @@
                     }
                 })
 
-                console.log(new_wywl, new_req, new_len);
+                purpose = $(form).find('.purpose');
+                new_pur = []
+                purpose.map(pu => {
+                    pu = purpose[le];
+                    if (pu.value) {
+                        new_pur.push(pu.value)
+                    }
+                })
+
+                
                 bt = $(form).find('button');
 
                 $.ajax({
                     method: 'post',
-                    url: api_url + 'instructor/course_update_info'
+                    url: api_url + 'admin/course_update_info',
+                    data: {
+                        course_id: id,
+                        what_you_will_learn: new_wywl,
+                        course_requirement: new_req,
+                        course_audience: new_len,
+                        purpose: new_pur
+                    },
+                    beforeSend:() => {
+                        btn(bt, '', 'before')
+                    }
+                }).done(function(res) {
+                    console.log(res);
+                    btn(bt, 'Save Answers', 'after')
+                    salat(res.message);
+                }).fail(function (res) {
+                    console.log(res);
+                    concatError(res.responseJSON);
+                    btn(bt, 'Save Answers', 'after')
                 })
 
             })

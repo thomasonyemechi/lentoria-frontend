@@ -242,96 +242,12 @@ Lentoria
     </div>
 
     <hr class="my-0">
-    <div class="py-2 py-lg-8 bg-light-gradient-top ">
-        <div class="container">
-            <div class="row mb-8 justify-content-center">
-                <div class="col-lg-8 col-md-12 col-12 text-center">
-                    <span class="text-primary-a mb-3 d-block text-uppercase fw-semi-bold ls-xl">World-class
-                        Instructors</span>
-                    <h2 class="mb-2 display-4 fw-bold">Classes Taught by Industry Expert</h2>
-                    <p class="lead">Lentoria teachers are icons, experts, and industry rock stars excited to share their
-                        experience, wisdom, and trusted tools with you</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-3 col-lg-4 col-md-6 col-12">
-                    <div class="card mb-4 card-hover">
-                        <div class="card-img-top">
-                            <img src="assets/images/instructor/andrew.jpg" alt=""
-                                class="rounded-top-md img-fluid">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="mb-0 fw-semi-bold"> <a href="#" class="text-inherit">Ehakfe Andrew</a>
-                            </h3>
-                            <p class="mb-3">UI/UX Designer</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-12">
-                    <div class="card mb-4 card-hover">
-                        <div class="card-img-top">
-                            <img src="assets/images/instructor/olumide.jpg" alt=""
-                                class="rounded-top-md img-fluid">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="mb-0 fw-semi-bold"><a href="#" class="text-inherit">Orija Olumide</a>
-                            </h3>
-                            <p class="mb-3">Back-End Developer</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-12">
-                    <div class="card mb-4 card-hover">
-                        <div class="card-img-top">
-                            <img src="assets/images/instructor/sina.jpg" alt="" class="rounded-top-md img-fluid">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="mb-0 fw-semi-bold"><a href="#" class="text-inherit">Adebayo Adesina</a>
-                            </h3>
-                            <p class="mb-3">Back-End Developer</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-12 d-lg-none d-xl-block">
-                    <div class="card mb-4 card-hover">
-                        <div class="card-img-top">
-                            <img src="assets/images/instructor/victor.jpg" alt=""
-                                class="rounded-top-md img-fluid">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="mb-0 fw-semi-bold"><a href="#" class="text-inherit">Victor</a></h3>
-                            <p class="mb-3">Web Developer and Designer</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="pb-lg-3 pt-lg-3 pt-8 pb-6 mt-3">
         <div class="container">
             <div class="row mb-4 justify-content-center">
                 <div class="col-lg-11 col-md-12">
                     <div class="row align-items-center">
-                        <div class="col-md-12 col-12 mb-4">
-                            <div class="avatar-group me-5">
-                                <span class="avatar avatar-lg ">
-                                    <img alt="avatar" src="assets/images/instructor/victor.jpg" class="rounded-circle">
-                                </span>
-                                <span class="avatar avatar-lg ">
-                                    <img alt="avatar" src="assets/images/instructor/sina.jpg" class="rounded-circle">
-                                </span>
-                                <span class="avatar avatar-lg ">
-                                    <img alt="avatar" src="assets/images/instructor/andrew.jpg" class="rounded-circle">
-                                </span>
-                                <span class="avatar avatar-lg ">
-                                    <img alt="avatar" src="assets/images/instructor/olumide.jpg"
-                                        class="rounded-circle">
-                                </span>
-                                <span class="avatar avatar-lg avatar-danger">
-                                    <span class="avatar-initials rounded-circle fs-5 fw-bold">2000+</span>
-                                </span>
-                            </div>
-                        </div>
+
                         <div class="col-lg-4 col-md-5 col-12 mb-6">
                             <h2 class="display-4 fw-bold">Become an Instructor</h2>
                         </div>
@@ -371,7 +287,7 @@ Lentoria
 
     <div class="pb-lg-3 pt-lg-3 pt-8 pb-6 mt-3">
         <div class="container">
-            <hr class="my-10 my-lg-16">
+            <hr class="">
             <div class="row mb-8 justify-content-center">
                 <div class="col-lg-8 col-md-12 col-12 text-center">
                     <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-xl">Testimonials</span>
@@ -402,7 +318,7 @@ Lentoria
                                                 <i class="mdi mdi-star text-warning"></i>
                                             </span>
                                         </div>
-                                        <p class="lead text-dark font-italic fw-medium mb-0">"Interning at Lentoria
+                                        <p class="text-dark font-italic fw-medium mb-0 five-line">"Interning at Lentoria
                                             offered
                                             me the opportunity to develop as a professional and to help the organization
                                             develop in the tech industry. As an intern, your thoughts and your contributions
@@ -434,7 +350,7 @@ Lentoria
                                                 <i class="mdi mdi-star text-warning"></i>
                                             </span>
                                         </div>
-                                        <p class="lead text-dark font-italic fw-medium mb-0">"I have developed many skills
+                                        <p class="text-dark font-italic fw-medium mb-0 five-line">"I have developed many skills
                                             and have a much greater concept of what to expect after school. I was able to
                                             work with experts that guided me through any difficulty I encounter. It also
                                             allowed me to apply it to real life situations, Rather than feeling lost and
@@ -465,7 +381,7 @@ Lentoria
                                                 <i class="mdi mdi-star text-warning"></i>
                                             </span>
                                         </div>
-                                        <p class="lead text-dark font-italic fw-medium mb-0">"During my industrial
+                                        <p class=" text-dark font-italic fw-medium mb-0 five-line">"During my industrial
                                             training,I was posted to wen development unit which is mainly for developing
                                             applications. I learnt how to create a standard website with the help of
                                             HTML,CSS, JavaScript and php. I also learnt how to install Database and linking

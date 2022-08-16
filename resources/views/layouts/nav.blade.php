@@ -1,3 +1,15 @@
+<style>
+    .five-line {
+            text-overflow:ellipsis;
+            overflow:hidden;
+            display: -webkit-box !important;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            white-space: normal;
+        }
+</style>
+
+
 <nav class="navbar navbar-expand-lg navbar-default">
     <div class="container-fluid px-0">
         <a class="navbar-brand" href="/"><img src="{{ asset('assets/images/logo1.png') }}" alt="" /></a>
