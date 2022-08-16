@@ -573,7 +573,7 @@
                                     <div class="card-footer px-5 py-4">
                                         <div class="d-flex align-items-center">
                                             <div class="ms-3">
-                                                <h4 class="mb-0">Oluwasola Taiwo</h4>
+                                                <h4 class="mb-0">OluwasolaTaiwo</h4>
                                                 <p class="mb-0 small">Web-Developer</p>
                                             </div>
                                         </div>
