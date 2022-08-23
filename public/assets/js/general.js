@@ -21,7 +21,7 @@ function salat(msg, t = 0) {
     alat.fadeIn();
     alat.html(ret);
 
-    setTimeout(function() {
+    setTimeout(function () {
         alat.fadeOut();
     }, 3000);
 }
@@ -46,7 +46,7 @@ function concatError(error) {
 }
 
 function btn(selector, btn_text, moment) {
-    if (typeof(selector) == 'object') { selector = selector; } else { selector = $(selector); }
+    if (typeof (selector) == 'object') { selector = selector; } else { selector = $(selector); }
     if (moment == 'before') {
         selector.attr('disabled', 'disabled');
         selector.html(`<span class="spinner-border spinner-border-sm" aria-hidden="true"></span> <i>processing request ... </i>`);
@@ -61,13 +61,13 @@ function btn(selector, btn_text, moment) {
 function dropPaginatedPages(links) {
     link_txt = ''
     links.forEach(link => {
-        link_txt += ` <li class = "page-item goToList ${ (link.active == true) ? 'active' :''}"data - data = '${JSON.stringify(link)}' >
-        <a href = "?page=${link.label}"class = "page-link" > ${ link.label } </a></li > `;
+        link_txt += ` <li class = "page-item goToList ${(link.active == true) ? 'active' : ''}"data - data = '${JSON.stringify(link)}' >
+        <a href = "?page=${link.label}"class = "page-link" > ${link.label} </a></li > `;
     });
 
     body = ` <div class = "d-flex justify-content-center mt-3 mb-3" >
         <div class = "card-tools" >
-        <ul class = "pagination" >${ link_txt }</ul> </div> </div>
+        <ul class = "pagination" >${link_txt}</ul> </div> </div>
     `
     return (links.length > 3) ? body : '';
 }
@@ -127,6 +127,28 @@ function levelBar(level) {
 
 function stripLower(str) {
     return str.toLowerCase().replace(/ /g, '')
+}
+
+let parse = (data) => {
+    return JSON.parse(data);
+}
+
+function serialNo() {
+    body = $("#faq_table tbody");
+    check = body.find('tr:first').hasClass('que-tr');
+    trlength = $("#faq_table tbody tr").length;
+    if (check) {
+        return trlength + 1;
+    } else {
+        return trlength + 1;
+    }
+}
+
+function randomString(length) {
+    chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var result = '';
+    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    return result;
 }
 
 

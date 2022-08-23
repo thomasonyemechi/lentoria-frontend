@@ -16,9 +16,6 @@
     </div>
 </div>
 
-
-
-
 <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="newCatgoryLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -26,9 +23,14 @@
             <div class="modal-body shadow">
                 <form id="loginForm">
 
-                    <div class="mb-4 m-0">
-                        <h1 class="mb-1 fw-bold">Sign in</h1>
-                        <span>Don’t have an account? <a type="button" class="ms-1 opensignup ">Sign up</a></span>
+                    <div class="mb-4 m-0 d-flex justify-content-between">
+                        <div>
+                            <h1 class="mb-1 fw-bold">Sign in</h1>
+                            <span>Don’t have an account? <a type="button" class="ms-1 opensignup ">Sign up</a></span>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="fe fe-x-circle"></i>
+                        </button>
                     </div>
 
                     <div class="mb-3">
@@ -58,8 +60,6 @@
     </div>
 </div>
 
-
-
 <div class="modal fade" id="signup_modal" tabindex="-1" role="dialog" aria-labelledby="newCatgoryLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -67,9 +67,15 @@
             <div class="modal-body shadow">
                 <form id="signUpForm">
 
-                    <div class="mb-4">
-                        <h1 class="mb-1 fw-bold">Create Account</h1>
-                        <span>Already have an account? <a href="javascript:;" class="ms-1 openlogin">Sign In</a></span>
+                    <div class="mb-4 d-flex justify-content-between">
+                        <div>
+                            <h1 class="mb-1 fw-bold">Create Account</h1>
+                            <span>Already have an account? <a href="javascript:;" class="ms-1 openlogin">Sign
+                                    In</a></span>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
+                        </button>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -85,8 +91,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email Address</label>
-                        <input type="email" class="form-control" name="email" placeholder="Email Address "
-                            required>
+                        <input type="email" class="form-control" name="email" placeholder="Email Address " required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Phone</label>
@@ -107,9 +112,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 <script>
     $(function() {
@@ -136,7 +138,7 @@
             form = $(this);
             email = $(form).find('input[name="email"]').val();
             password = $(form).find('input[name="password"]').val();
-            bt = $(form).find('button');
+            bt = $(form).find('button[type="submit"]');
 
             if (!email || !password) {
                 salat('All fileds are required', 1);
@@ -185,7 +187,7 @@
             lname = $(form).find('input[name="lastname"]').val();
             phone = $(form).find('input[name="phone"]').val();
             password = $(form).find('input[name="password"]').val();
-            bt = $(form).find('button');
+            bt = $(form).find('button[type="submit"]');
 
             if (!email || !password || !fname || !lname || !phone) {
                 salat('All fileds are required', 1);

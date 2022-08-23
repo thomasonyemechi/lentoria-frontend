@@ -1,14 +1,13 @@
 <style>
     .five-line {
-            text-overflow:ellipsis;
-            overflow:hidden;
-            display: -webkit-box !important;
-            -webkit-line-clamp: 5;
-            -webkit-box-orient: vertical;
-            white-space: normal;
-        }
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+    }
 </style>
-
 
 <nav class="navbar navbar-expand-lg navbar-default">
     <div class="container-fluid px-0">
@@ -24,7 +23,8 @@
                     </button>
                 </li>
                 <li class="dropdown d-inline-block stopevent">
-                    <button class="btn btn-primary btn-xs" data-bs-target="#signup_modal" data-bs-toggle="modal" style="border-radius: 1px;" aria-expanded="false">
+                    <button class="btn btn-primary btn-xs" data-bs-target="#signup_modal" data-bs-toggle="modal"
+                        style="border-radius: 1px;" aria-expanded="false">
                         <span>Sign up</span>
                     </button>
                 </li>
@@ -119,126 +119,8 @@
                         aria-haspopup="true" aria-expanded="false" data-bs-display="static">
                         Course Categories
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-arrow" aria-labelledby="navbarBrowse">
-                        <li class="dropdown-submenu dropend">
-                            <a class="dropdown-item dropdown-list-group-item dropdown-toggle" href="#">
-                                Web Development
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        Bootstrap</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        React
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        GraphQl</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        Gatsby</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        Grunt</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        Svelte</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        Meteor</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        HTML5</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        Angular</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-submenu dropend">
-                            <a class="dropdown-item dropdown-list-group-item dropdown-toggle" href="#">
-                                Design
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        Graphic Design</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        Illustrator
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        UX / UI Design</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        Figma Design</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        Adobe XD</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        Sketch</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        Icon Design</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="course-category.html">
-                                        Photoshop</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="course-category.html" class="dropdown-item">
-                                Mobile App
-                            </a>
-                        </li>
-                        <li>
-                            <a href="course-category.html" class="dropdown-item">
-                                IT Software
-                            </a>
-                        </li>
-                        <li>
-                            <a href="course-category.html" class="dropdown-item">
-                                Marketing
-                            </a>
-                        </li>
-                        <li>
-                            <a href="course-category.html" class="dropdown-item">
-                                Music
-                            </a>
-                        </li>
-                        <li>
-                            <a href="course-category.html" class="dropdown-item">
-                                Life Style
-                            </a>
-                        </li>
-                        <li>
-                            <a href="course-category.html" class="dropdown-item">
-                                Business
-                            </a>
-                        </li>
-                        <li>
-                            <a href="course-category.html" class="dropdown-item">
-                                Photography
-                            </a>
-                        </li>
+                    <ul class="dropdown-menu dropdown-menu-arrow" style="width:200px" id="drop_categories" aria-labelledby="navbarBrowse">
+
                     </ul>
                 </li>
             </ul>
@@ -253,20 +135,18 @@
 
                 @if (!session('info'))
                     <li class="dropdown d-inline-block stopevent">
-                        <button class="btn btn-outline-white btn-sm"
-                            style="border: 1px solid #036;border-radius: 1px;" data-bs-target="#login_modal"
-                            data-bs-toggle="modal" aria-expanded="false">
+                        <button class="btn btn-outline-white btn-sm" style="border: 1px solid #036;border-radius: 1px;"
+                            data-bs-target="#login_modal" data-bs-toggle="modal" aria-expanded="false">
                             <span><big>Login</big></span>
                         </button>
                     </li>
                     <li class="dropdown d-inline-block stopevent m-1">
-                        <button class="btn btn-primary btn-sm" style="border-radius: 1px;" data-bs-target="#signup_modal"
-                            data-bs-toggle="modal" aria-expanded="false">
+                        <button class="btn btn-primary btn-sm" style="border-radius: 1px;"
+                            data-bs-target="#signup_modal" data-bs-toggle="modal" aria-expanded="false">
                             <span><big>Sign up</big></span>
                         </button>
                     </li>
                 @endif
-
 
                 @if (session('info'))
                     <li class="dropdown d-inline-block stopevent">
@@ -293,8 +173,8 @@
                                             class="rounded-circle" />
                                     </div>
                                     <div class="ms-3 lh-1">
-                                        <h5 class="mb-1">{{ username() }}</h5>
-                                        <p class="mb-0 text-muted">braid@lentoria.com</p>
+                                        <h5 class="mb-1">{{ userDetail(1) }}</h5>
+                                        <p class="mb-0 text-muted">{{ userDetail(2) }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -347,3 +227,52 @@
         </div>
     </div>
 </nav>
+
+{{-- <li class="dropdown-submenu dropend">
+    <a class="dropdown-item dropdown-list-group-item dropdown-toggle" href="#">
+        Web Development
+    </a>
+    <ul class="dropdown-menu">
+        <li>
+            <a class="dropdown-item" href="course-category.html">
+                Bootstrap</a>
+        </li>
+    </ul>
+</li> --}}
+
+<script>
+    $(function() {
+        getCats();
+
+        function getCats() {
+            $.ajax({
+                url: api_url + 'category'
+            }).done(res => {
+                console.log(res);
+                console.log(res.data);
+                res.data.map(cats => {
+                    sub_topic = ''
+
+                    cats.topics.map(tops => {
+                        sub_topic += `
+                        <li>
+                            <a class="dropdown-item fw-light" href="javascript:void(0)">${tops.name}</a>
+                        </li>
+                        `
+                    })
+                    $("#drop_categories").append(`
+                <li class="dropdown-submenu dropend">
+                    <a class="dropdown-item dropdown-list-group-item dropdown-toggle fw-light" href="#">${cats.name}</a>
+                    <ul class="dropdown-menu" style="width: 310px;">
+                       ${sub_topic}
+                    </ul>
+                </li>
+                    `)
+                })
+            }).fail(res => {
+                console.log(res);
+                concatError(res);
+            });
+        }
+    })
+</script>

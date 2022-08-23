@@ -47,7 +47,7 @@
                                     </a>
                                 </div>
 
-                                
+
 
                                 <div class="mb-3">
                                     <label for="courseTitle" class="form-label"><b>What are the requirements or
@@ -88,7 +88,7 @@
                                     </a>
                                 </div>
 
-                                
+
                                 <input type="hidden" name="course_id">
                                 <div class="d-flex justify-content-end mt-3">
                                     <button type="submit" class="updateLearners btn btn-success">Save
@@ -145,13 +145,13 @@
                 purpose = $(form).find('.purpose');
                 new_pur = []
                 purpose.map(pu => {
-                    pu = purpose[le];
+                    pu = purpose[pu];
                     if (pu.value) {
                         new_pur.push(pu.value)
                     }
                 })
 
-                
+
                 bt = $(form).find('button');
 
                 $.ajax({
