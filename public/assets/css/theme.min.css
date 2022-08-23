@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap");
-@import url("../../../../cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css");
-@import url("../../../../emoji-css.afeld.me/emoji.css");
+@import url("../cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css");
+/* @import url("../emoji-css.afeld.me/emoji.css"); */
 .icon-xs {
     width: 1.5rem;
     height: 1.5rem;
@@ -3060,11 +3060,11 @@ progress {
 }
 
 .form-control:focus {
-    color: #18113c;
-    background-color: #fff;
-    border-color: #036;
+    /* color: #18113c; */
+    /* background-color: #fff; */
+    border-color: none;
     outline: 0;
-    box-shadow: 0 0 0 3px rgba(231, 225, 253, .75)
+    /* box-shadow: 0 0 0 3px rgba(231, 225, 253, .75) */
 }
 
 .form-control::-webkit-date-and-time-value {

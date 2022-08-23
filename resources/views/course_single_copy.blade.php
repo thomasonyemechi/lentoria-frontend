@@ -1,6 +1,6 @@
 @extends('layouts.instructor')
 @section('page_title')
-Course|{{ $slug }}
+    Course | {{ $slug }}
 @endsection
 
 @section('page_content')
@@ -12,6 +12,7 @@ Course|{{ $slug }}
                     <div>
                         <h3 class="text-white display-4 fw-semi-bold" id="c-title">Course Title</h3>
                         <p class="text-white mb-6 lead" id="c-subtitle">
+
                             Course Subtitle
                         </p>
                         <input type="hidden" id="cid">
@@ -65,12 +66,12 @@ Course|{{ $slug }}
                                 <!-- Nav -->
                                 <ul class="nav nav-lb-tab" id="tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="table-tab" data-bs-toggle="pill" href="#table"
-                                            role="tab" aria-controls="table" aria-selected="true">Contents</a>
+                                        <a class="nav-link active" id="table-tab" data-bs-toggle="pill" href="#overview"
+                                            role="tab" aria-controls="table" aria-selected="true">Overview</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="description-tab" data-bs-toggle="pill" href="#description"
-                                            role="tab" aria-controls="description" aria-selected="false">Description</a>
+                                        <a class="nav-link" id="table-tab" data-bs-toggle="pill" href="#curriculum"
+                                            role="tab" aria-controls="table" aria-selected="true">Curriculum</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="review-tab" data-bs-toggle="pill" href="#review"
@@ -85,9 +86,53 @@ Course|{{ $slug }}
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
+
+                            <div class="rating"></div>
                             <div class="tab-content" id="tabContent">
-                                <div class="tab-pane fade show active" id="table" role="tabpanel"
-                                    aria-labelledby="table-tab">
+                                <div class="tab-pane fade show active overlay" id="overview" role="tabpanel"
+                                    aria-labelledby="description-tab">
+
+                                    <h3 class="mb-3 he d-none">What you’ll learn</h3>
+                                    <div class="row mb-3">
+                                        <ul class="list-unstyled" id="wywl_list">
+                                            <div class="row">
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <h3 class="mb-3 he d-none">Requirements</h3>
+                                    <div class="row mb-3">
+                                        <ul class="list-unstyled" id="req_list">
+                                            <div class="row">
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center opacity-50"
+                                        id="loader">
+                                        <div class="spinner-border text-black-100" style="width: 5rem; height: 5rem;"
+                                            role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
+                                    <h3 class="mb-3 he d-none">Who is This Course For:</h3>
+                                    <div class="row mb-3">
+                                        <ul class="list-unstyled" id="learn_list">
+                                            <div class="row">
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <h3 class="mb-3 he d-none">Opportunities</h3>
+                                    <div class="row mb-3">
+                                        <ul class="list-unstyled" id="purpose_list">
+                                            <div class="row">
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <!-- Description -->
+                                    <div class="mb-4" id="cde">
+                                        <h3 class="mb-2 he d-none">Course Description</h3>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="table-tab">
                                     <!-- Card -->
                                     <div class="accordion" id="courseAccordion">
                                         <div>
@@ -1238,71 +1283,6 @@ Course|{{ $slug }}
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="description" role="tabpanel"
-                                    aria-labelledby="description-tab">
-                                    <!-- Description -->
-                                    <div class="mb-4" id="cde">
-                                        <h3 class="mb-2">Course Descriptions</h3>
-                                        {{-- <p>
-                                            If you’re learning to program for the first time, or if you’re coming from a
-                                            different language, this course, JavaScript: Getting Started, will give you the
-                                            basics for coding in JavaScript. First, you'll discover the types of
-                                            applications that can be
-                                            built with JavaScript, and the platforms they’ll run on.
-                                        </p>
-                                        <p>
-                                            Next, you’ll explore the basics of the language, giving plenty of examples.
-                                            Lastly, you’ll put your JavaScript knowledge to work and modify a modern,
-                                            responsive web page. When you’re finished with this course, you’ll have the
-                                            skills and knowledge in JavaScript
-                                            to create simple programs, create simple web applications, and modify web pages.
-                                        </p> --}}
-                                    </div>
-                                    <h4 class="mb-3">What you’ll learn</h4>
-                                    <div class="row mb-3">
-                                        <div class="col-12 col-md-6">
-                                            <ul class="list-unstyled">
-                                                <li class="d-flex mb-2">
-                                                    <i class="far fa-check-circle text-success me-2 mt-2"></i>
-                                                    <span>Recognize the importance of understanding your objectives when
-                                                        addressing an
-                                                        audience.</span>
-                                                </li>
-                                                <li class="d-flex mb-2">
-                                                    <i class="far fa-check-circle text-success me-2 mt-2"></i>
-                                                    <span>Identify the fundaments of composing a successful close.</span>
-                                                </li>
-                                                <li class="d-flex mb-2">
-                                                    <i class="far fa-check-circle text-success me-2 mt-2"></i>
-                                                    <span>Explore how to connect with your audience through crafting
-                                                        compelling stories.</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <ul class="list-unstyled">
-                                                <li class="d-flex mb-2">
-                                                    <i class="far fa-check-circle text-success me-2 mt-2"></i>
-                                                    <span>Examine ways to connect with your audience by personalizing your
-                                                        content.</span>
-                                                </li>
-                                                <li class="d-flex mb-2">
-                                                    <i class="far fa-check-circle text-success me-2 mt-2"></i>
-                                                    <span>Break down the best ways to exude executive presence.</span>
-                                                </li>
-                                                <li class="d-flex mb-2">
-                                                    <i class="far fa-check-circle text-success me-2 mt-2"></i>
-                                                    <span>Explore how to communicate the unknown in an impromptu
-                                                        communication.</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <p>Maecenas viverra condimentum nulla molestie condimentum. Nunc ex libero, feugiat quis
-                                        lectus vel, ornare euismod ligula. Aenean sit amet arcu nulla.</p>
-                                    <p>Duis facilisis ex a urna blandit ultricies. Nullam sagittis ligula non eros semper,
-                                        nec mattis odio ullamcorper. Phasellus feugiat sit amet leo eget consectetur.</p>
-                                </div>
                                 <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                                     <!-- Reviews -->
                                     <div class="mb-3">
@@ -1665,9 +1645,11 @@ Course|{{ $slug }}
                                     </div>
                                 </div>
                             </div>
-                            <p id="ins-bio">I am an Innovation designer focussing on UX/UI based in Berlin. As a creative resident at
+                            <p id="ins-bio">I am an Innovation designer focussing on UX/UI based in Berlin. As a creative
+                                resident at
                                 Figma explored the city of the future and how new technologies.</p>
-                            <a href="javascript:void(0)" id="ins-link" class="btn btn-outline-white btn-sm">View Details</a>
+                            <a href="javascript:void(0)" id="ins-link" class="btn btn-outline-white btn-sm">View
+                                Details</a>
                         </div>
                     </div>
                 </div>
@@ -1741,10 +1723,92 @@ Course|{{ $slug }}
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="ratingModal" tabindex="-1" role="dialog"
+        aria-labelledby="ratingModallLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="d-flex justify-content-end me-3 mt-4 old-close">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
+                    </button>
+                </div>
+                <div class="d-flex justify-content-between me-3 mt-4 d-none new-close">
+                    <span class="text-primary fs-4 fw-semi-bold ms-3 bk-btn" style="cursor: pointer;">Back</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="d-flex justify-content-center">
+                            <h2>How would you rate this course?</h2>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <h5>Select Rating</h5>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <div class="ratings"></div>
+                        </div>
+                        <br>
+                        <div class="hidden_txt d-none">
+                            <textarea name="" id="" cols="57"
+                                placeholder="Tell us about your own personal experience taking this course. Was it a good match for you?"
+                                rows="5" style="resize: none;"></textarea>
+                            <div class="d-flex float-end mt-3">
+                                <button class="btn btn-primary" style="border-radius: 1px;">Save and Continue</button>
+                            </div>
+                        </div>
+                        <br><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        $(function(){
+        $(function() {
             fetchCourseInfo();
-            function fetchCourseInfo(){
+
+            var myRating = raterJs({
+                element: document.querySelector(".rating"),
+                starSize: 16,
+                step: 0.5,
+                readOnly: true,
+
+                rateCallback:function(rating,done){
+                    done();
+                }
+            });
+
+            var myRating = raterJs({
+                element: document.querySelector(".ratings"),
+                starSize: 40,
+                step: 0.5,
+
+                rateCallback: function rateCallback(rating, done) {
+                    $("#ratingModal").find($("div.hidden_txt")).removeClass("d-none");
+                    $("#ratingModal").find($("div.new-close")).removeClass("d-none");
+                    $("#ratingModal").find($("div.old-close")).addClass("d-none");
+                    this.setRating(rating);
+                    done();
+                }
+            });
+            $("#ratingModal").find($("span.bk-btn")).click(function(e){
+                e.preventDefault();
+                $("#ratingModal").find($("div.hidden_txt")).addClass("d-none");
+                $("#ratingModal").find($("div.new-close")).addClass("d-none");
+                $("#ratingModal").find($("div.old-close")).removeClass("d-none");
+
+            })
+
+            $('.rating').click(() => {
+                $('#ratingModal').modal('show');
+            });
+
+            function fetchCourseInfo() {
                 $.ajax({
                     type: "get",
                     url: api_url + `course_info/{{ $id }}`,
@@ -1757,15 +1821,61 @@ Course|{{ $slug }}
                     $('#cbar').html(levelBar(res.data.course_info.level));
                     $('#c-level').html(checkLevel(res.data.course_info.level));
                     $('#c-price').html(`&#8358 ${res.data.course_info.price}`);
-                    $('#ins-name').html(`${res.data.basic_info.firstname} ${res.data.basic_info.lastname}`);
+                    $('#ins-name').html(
+                        `${res.data.basic_info.firstname} ${res.data.basic_info.lastname}`);
                     $('#ins-exps').html(`${res.data.instructor.headline}`);
                     $('#ins-bio').html(`${res.data.instructor.biography}`);
-                    $('#ins-link').attr('href', `/instructor/${res.data.course_info.user_id}/profile`);
+                    $('#ins-link').attr('href',
+                        `/instructor/${res.data.course_info.user_id}/profile`);
+                    other_info = res.data.other_info
+                    course_audience = parse(other_info.course_audience);
+                    course_requirement = parse(other_info.course_requirement);
+                    purpose = parse(other_info.purpose);
+                    wywl = parse(other_info.what_you_will_learn);
 
-                    }).fail(function(res) {
-                        location.href = '/';
+                    $('#overview').find($("h3.he")).removeClass('d-none');
+                    $('#overview').find($("#loader")).addClass('d-none');
+                    wywl.map(data => {
+                        $('#wywl_list').find($("div.row")).append(`
+                        <li class="d-flex mb-2 col-6">
+                            <i class="far fa-check-circle text-success me-2 mt-2"></i>
+                                <span>${data}</span>
+                        </li>
+                        `);
+                    });
+
+                    course_requirement.map(data => {
+                        $('#req_list').find($('div.row')).append(`
+                        <li class="d-flex mb-2 col-6">
+                            <i class="far fa-check-circle text-success me-2 mt-2"></i>
+                                <span>${data}</span>
+                        </li>
+                        `);
+                    });
+
+                    course_audience.map(data => {
+                        $('#learn_list').find($('div.row')).append(`
+                        <li class="d-flex mb-2 col-6">
+                            <i class="far fa-check-circle text-success me-2 mt-2"></i>
+                                <span>${data}</span>
+                        </li>
+                        `);
+                    });
+
+                    purpose.map(data => {
+                        $('#purpose_list').find($('div.row')).append(`
+                        <li class="d-flex mb-2 col-6">
+                            <i class="far fa-check-circle text-success me-2 mt-2"></i>
+                                <span>${data}</span>
+                        </li>
+                        `);
+                    });
+
+                }).fail(function(res) {
+                    location.href = '/';
                 });
             }
+
 
 
         })

@@ -8,8 +8,6 @@
         <div class="container">
             {!! instructorInfo() !!}
 
-
-
             <div class="row mt-0 mt-md-4">
                 <div class="col-lg-3 col-md-4 col-12">
                     @include('layouts.sidebar')
@@ -65,11 +63,24 @@
             fetchCourses();
 
             function fetchCourses() {
+                body = $('#course_table tbody')
                 $.ajax({
                     method: 'get',
                     url: api_url + 'admin/fetch_my_course',
+                    beforeSend: () => {
+                        body.html(`
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </div>
+                            </td>
+                        </tr>
+                        `)
+                    },
                 }).done(function(res) {
-                    body = $('#course_table tbody')
                     body.html('')
                     console.log(res.data.data)
                     res.data.data.map(cat => {

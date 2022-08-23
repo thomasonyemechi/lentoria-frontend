@@ -1,7 +1,5 @@
 @extends('layouts.instructor')
-@section('page_title')
-Lentoria
-@endsection
+@section('page_title', 'Lentoria | Welcome')
 
 @section('page_content')
     <div class="bg-primary-a" style="background-color: #036">
@@ -75,8 +73,8 @@ Lentoria
                         and transform your experience and knowledge into a thriving business
                     </div>
                     <div class="col-md-3 justify-content-center">
-                        <a href="instructor-page.php" style="float:right"
-                            class="btn btn-outline-white mb-2 mb-md-0 text-white">Get Started</a>
+                        <button type="button" style="float:right" id="gsbtn"
+                            class="btn btn-outline-white mb-2 mb-md-0 text-white">Get Started</button>
                     </div>
                 </div>
             </div>
@@ -84,7 +82,6 @@ Lentoria
     </div>
 
     <div class="pb-lg-3 pt-lg-3 pt-4 pb-6" style="margin-top: -20px">
-        <!-- Top courses-->
         <!-- Top courses-->
         <div class="py-8 py-lg-16 bg-light-gradient-bottom">
             <div class="container">
@@ -110,7 +107,13 @@ Lentoria
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-allcategory" role="tabpanel"
                                 aria-labelledby="pills-allcategory-tab">
-                                <div class="position-relative">
+                                <div class="d-flex justify-content-center opacity-50" id="loader">
+                                    <div class="spinner-grow text-black-100" style="width: 5rem; height: 5rem;"
+                                        role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="position-relative d-none">
                                     <ul class="controls " id="firstSliderControls">
                                         <li class="prev">
                                             <i class="fe fe-chevron-left"></i>
@@ -121,6 +124,7 @@ Lentoria
                                     </ul>
 
                                     <div class="firstSlider">
+
                                     </div>
                                 </div>
 
@@ -134,23 +138,8 @@ Lentoria
     </div>
 
     <div class="pt-lg-4 pb-lg-3 pt-4 pb-6">
-        <div class="container">
+        <div class="container" id="cat_pills">
             <h2>Top Categories</h2>
-            <a href="javascript:void(0)" class="btn btn-outline-primary rounded-pill m-1">Graphics Design</a>
-            <a href="javascript:void(0)" class="btn btn-outline-primary rounded-pill m-1">User
-                Experience Design</a>
-            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Logo Design</a>
-            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Digital
-                Marketing</a>
-            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Web Development</a>
-            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Mobile
-                Development</a>
-            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Database Design and
-                Development</a>
-            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Content
-                Marketing</a>
-            <a href="javascript:void(0)" class="btn btn-outline-primary m-1 rounded-pill">Social Media
-                Marketing</a>
         </div>
     </div>
 
@@ -276,7 +265,8 @@ Lentoria
                             </p>
                         </div>
                         <div class="col-md-12 mt-3 justify-content-center">
-                            <a href="instructor-page.php" class="btn btn-primary-a"> Start Teaching Today</a>
+                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signup_modal"
+                                class="btn btn-primary-a"> Start Teaching Today</a>
                         </div>
                     </div>
                 </div>
@@ -350,7 +340,8 @@ Lentoria
                                                 <i class="mdi mdi-star text-warning"></i>
                                             </span>
                                         </div>
-                                        <p class="text-dark font-italic fw-medium mb-0 five-line">"I have developed many skills
+                                        <p class="text-dark font-italic fw-medium mb-0 five-line">"I have developed many
+                                            skills
                                             and have a much greater concept of what to expect after school. I was able to
                                             work with experts that guided me through any difficulty I encounter. It also
                                             allowed me to apply it to real life situations, Rather than feeling lost and
@@ -425,8 +416,36 @@ Lentoria
 
     <script>
         $(function() {
+
             getMyCategories();
-            getRandomCourses()
+            getRandomCourses();
+            getCategories();
+
+            $("#gsbtn").click(function(e) {
+                e.preventDefault();
+                bt = $("#gsbtn")
+                if (@js(session('info'))) {
+                    $.ajax({
+                        url: api_url + 'admin/become_instructor',
+                        method: 'POST',
+                        beforeSend: () => {
+                            btn(bt, '', 'before');
+                        }
+                    }).done(res => {
+                        salat(res.message);
+                        btn(bt, 'Get Started', 'after')
+                        window.location.href = '/instructor/add_course';
+                    }).fail(res => {
+                        console.log(res);
+                        concatError(res.responseJSON);
+                        btn(bt, 'Get Started', 'after')
+                        // window.location.href = '/activate_account';
+                    });
+                } else {
+                    $('#signup_modal').modal('show');
+                }
+            })
+
 
             function getMyCategories() {
                 $.ajax({
@@ -442,7 +461,7 @@ Lentoria
                         });
                         res.data.map(cat => {
                             $('#pills-tabContent').append(
-                            `<div class="tab-pane fade" id="pills-${stripLower(cat.name)}" role="tabpanel" data-id="${cat.id}"
+                                `<div class="tab-pane fade" id="pills-${stripLower(cat.name)}" role="tabpanel" data-id="${cat.id}"
                                 aria-labelledby="pills-${stripLower(cat.name)}-tab">
                                 <div class="position-relative">
 
@@ -540,7 +559,7 @@ Lentoria
                                 edgePadding: 10,
                                 nav: false,
                                 autoplay: true,
-                                autoplayTimeout:3500,
+                                autoplayTimeout: 3500,
                                 swipeAngle: false,
                                 speed: 2000,
                                 autoplayButtonOutput: false,
@@ -549,8 +568,8 @@ Lentoria
                                 gutter: 10,
                                 // controlsContainer: `#slider_${cor.category_id}_Controls`,
                                 // controls:true,
-                                prevButton:`#slider_${cor.category_id}_prev`,
-                                nextButton:`#slider_${cor.category_id}_next`,
+                                prevButton: `#slider_${cor.category_id}_prev`,
+                                nextButton: `#slider_${cor.category_id}_next`,
                                 responsive: {
                                     768: {
                                         items: 2
@@ -574,9 +593,11 @@ Lentoria
 
             function getRandomCourses() {
                 $.ajax({
-                    url: api_url + 'courses'
+                    url: api_url + 'courses',
                 }).done(res => {
-                    console.log(res);
+                    $('#pills-allcategory').find('#loader').addClass('d-none');
+                    $('#pills-allcategory').find('.position-relative').toggleClass('d-none');
+                    $('.firstSlider').html('');
                     res.data.map(cor => {
                         $('.firstSlider').append(`
                         <div class="item">
@@ -652,10 +673,10 @@ Lentoria
                             controlsContainer: "#firstSliderControls",
                             responsive: {
                                 768: {
-                                    items: 2
+                                    items: 2,
                                 },
                                 990: {
-                                    items: 4
+                                    items: 4,
                                 }
                             }
                         });
@@ -668,24 +689,20 @@ Lentoria
 
 
             }
+
+            function getCategories() {
+                $.ajax({
+                    url: api_url + 'category',
+                }).done(res => {
+                    res.data.map(cat=>{
+                        $("#cat_pills").append(`
+                        <a href="javascript:void(0)" class="btn btn-outline-primary rounded-pill m-1">${cat.name}</a>
+                        `);
+                    })
+                }).fail(res => {
+                    concatError(res.responseJSON);
+                })
+            }
         });
-
-
-        // function getC(v) {
-
-        //     var i = 1;
-        //     while (i <= 3) {
-        //         var y = document.getElementsByClassName('cat' + i);
-        //         y[0].style.display = 'none';
-        //         y[1].style.display = 'none';
-        //         y[2].style.display = 'none';
-
-        //         i++;
-        //     }
-        //     // var x = document.getElementsByClassName('cat' + v);
-        //     // x[0].style.display = 'block';
-        //     // x[1].style.display = 'block';
-        //     // x[2].style.display = 'block';
-        // }
     </script>
 @endsection
