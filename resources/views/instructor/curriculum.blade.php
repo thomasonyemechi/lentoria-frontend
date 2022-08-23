@@ -107,7 +107,7 @@
                             <input class="form-control" name="title" type="text" placeholder="Enter Lecture Title">
                         </div>
                         <div class="col-12 mt-3">
-                            <label for="" class="text-bold fw-semi-bold text-dark">Lecture Description</label>
+                            <label for="c_desc" class="text-bold fw-semi-bold text-dark">Lecture Description</label>
                             <x-textarea id="c_desc" name="c_desc" />
                         </div>
                         <div class="d-flex justify-content-between">
@@ -125,6 +125,46 @@
         </div>
     </div>
 
+    <!--Modal -->
+    <div class="modal fade" id="editLectureModal" tabindex="-1" role="dialog" aria-labelledby="editLectureModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="editLectureModalLabel">
+                        Edit Lecture
+                    </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form class="row text-start g-3" id="editLectureForm">
+                        <input type="hidden" name="lecture_id">
+                        <input type="hidden" name="section_id">
+                        <div class="col-md-12">
+                            <label for="" class="text-bold fw-semi-bold text-dark">Lecture Title</label>
+                            <input class="form-control" name="title" type="text" placeholder="Enter Lecture Title">
+                        </div>
+                        <div class="col-12 mt-3">
+                            <label for="edit_desc" class="text-bold fw-semi-bold text-dark">Lecture Description</label>
+                            <x-textarea id="edit_desc" name="edit_desc" />
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-primary btn-sm" type="submit">
+                                Save
+                            </button>
+                            <button class="btn btn-outline-white btn-sm" data-bs-dismiss="modal" aria-label="Close">
+                                Close
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         $(document).ready(function() {
 
@@ -144,7 +184,7 @@
                     card.addClass('d-none');
                     card.find($('form'))[0].reset();
                 }
-                $('#addseccard').fadeOut('slow',()=>{
+                $('#addseccard').fadeOut('slow', () => {
                     $('#addseccard').removeClass('d-none');
                 })
 
@@ -253,16 +293,17 @@
                         if (lec) {
                             $(document).find($(`#lecture${lec.section_id}`)).append(`
                         <div class="list-group-item rounded px-3 mb-1" id="${stripLower(lec.title+lec.id)}">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h5 class="mb-0 lec_details">
+                            <div class="d-flex align-items-center justify-content-between lec_details">
+                                <h5 class="mb-0">
                                 <a href="#" class="text-inherit">
                                     <i class="fe fe-menu me-1 text-muted align-middle"></i>
-                                    <span class="align-middle text-capitalize">${lec.title}</span>
-                                    <input type="hidden" name="lec_desc" value="${lec.description}" />
-                                    <input type="hidden" name="lec_id" value="${lec.id}" />
+                                    <span class="align-middle text-capitalize lec_tit">${lec.title}</span>
+                                    <input type="hidden" name="lec_desc" class="lec_desc" value="${lec.description}" />
+                                    <input type="hidden" name="lec_id" class="lec_id" value="${lec.id}" />
+                                    <input type="hidden" name="sec_id" class="sec_id" value="${lec.section_id}" />
                                 </a>
                                 </h5>
-                                <div><a href="#" class="me-1 text-inherit" data-bs-toggle="tooltip" data-placement="top"
+                                <div><a href="javascript:void(0)" class="me-1 text-inherit edit_lec" data-bs-toggle="tooltip" data-placement="top"
                                     title="Edit"><i class="fe fe-edit fs-6"></i></a>
                                 <a href="#" class="me-1 text-inherit" data-bs-toggle="tooltip" data-placement="top"
                                     title="Delete"><i class="fe fe-trash-2 fs-6"></i></a>
@@ -474,16 +515,17 @@
                     btn(bt, 'Save Lecture', 'after');
                     $(document).find($(`#lecture${section_id}`)).append(`
                         <div class="list-group-item rounded px-3 mb-1" id="${stripLower(title+res.id)}">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h5 class="mb-0 lec_details">
+                            <div class="d-flex align-items-center justify-content-between lec_details">
+                                <h5 class="mb-0">
                                 <a href="#" class="text-inherit">
                                     <i class="fe fe-menu me-1 text-muted align-middle"></i>
-                                    <span class="align-middle text-capitalize">${title}</span>
-                                    <input type="hidden" name="lec_desc" value="${description}" />
-                                    <input type="hidden" name="lec_id" value="${res.id}" />
+                                    <span class="align-middle text-capitalize lec_tit">${title}</span>
+                                    <input type="hidden" name="lec_desc" class="lec_desc" value="${description}" />
+                                    <input type="hidden" name="lec_id" class="lec_id" value="${res.id}" />
+                                    <input type="hidden" name="sec_id" class="sec_id" value="${section_id}" />
                                 </a>
                                 </h5>
-                                <div><a href="#" class="me-1 text-inherit" data-bs-toggle="tooltip" data-placement="top"
+                                <div><a href="javascript:void(0)" class="me-1 text-inherit edit_lec" data-bs-toggle="tooltip" data-placement="top"
                                     title="Edit"><i class="fe fe-edit fs-6"></i></a>
                                 <a href="#" class="me-1 text-inherit" data-bs-toggle="tooltip" data-placement="top"
                                     title="Delete"><i class="fe fe-trash-2 fs-6"></i></a>
@@ -517,6 +559,62 @@
                     btn(bt, 'Save Lecture', 'after');
 
                 })
+            })
+
+            $(document).on('click', '.edit_lec', function(e) {
+                e.preventDefault();
+                parent = $(this).closest($("div.lec_details"));
+
+                title = parent.find($("span.lec_tit")).html();
+                id = parent.find($("input[name='lec_id']")).val();
+                description = parent.find($("input[name='lec_desc']")).val();
+                sec_id = parent.find($("input[name='sec_id']")).val();
+
+                form = $("#editLectureModal").find($('form'));
+                form.find($('input[name="title"]')).val(title);
+                form.find($('input[name="lecture_id"]')).val(id);
+                form.find($('input[name="section_id"]')).val(sec_id);
+                edit_desc.setData(description);
+                $("#editLectureModal").modal('show');
+
+            })
+
+            $("#editLectureForm").submit(function(e) {
+                e.preventDefault();
+                form = $(this);
+                title = form.find($('input[name="title"]')).val();
+                id = form.find($('input[name="lecture_id"]')).val();
+                section_id = form.find($('input[name="section_id"]')).val();
+                description = form.find($('textarea[name="edit_desc"]')).val();
+                bt = form.find($('button[type="submit"]'));
+
+                $.ajax({
+                    url: api_url + 'admin/update_lecture',
+                    method: 'POST',
+                    data: {
+                        title: title,
+                        section_id: section_id,
+                        id: id,
+                        description: description,
+                    },
+                    beforeSend: () => {
+                        btn(bt, '', 'before');
+                    }
+                }).done(res => {
+                    console.log(res);
+                    btn(bt, 'Save', 'after');
+                    salat(res.message);
+                    parent.find($("span.lec_tit")).html(title);
+                    parent.find($("input[name='lec_id']")).val(id);
+                    parent.find($("input[name='lec_desc']")).val(description);
+                    parent.find($("input[name='sec_id']")).val(section_id);
+                    $("#editLectureModal").modal('hide');
+                }).fail(res => {
+                    console.log(res);
+                    btn(bt, 'Save', 'after');
+                    concatError(res.responseJSON);
+                })
+
             })
 
 

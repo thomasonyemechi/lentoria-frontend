@@ -569,8 +569,8 @@
                     $('#c-price').html(`&#8358 ${res.data.course_info.price}`);
                     $('#ins-name').html(
                         `${res.data.basic_info.firstname} ${res.data.basic_info.lastname}`);
-                    $('#ins-exps').html(`${res.data.instructor.headline}`);
-                    $('#ins-bio').html(`${res.data.instructor.biography}`);
+                    $('#ins-exps').html(`${res.data.instructor.headline ?? ''}`);
+                    $('#ins-bio').html(`${res.data.instructor.biography ?? ''}`);
                     $('#ins-link').attr('href',
                         `/instructor/${res.data.course_info.user_id}/profile`);
 
