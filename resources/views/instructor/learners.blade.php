@@ -121,6 +121,7 @@
                         new_wywl.push(len.value)
                     }
                 })
+                
 
                 requirements = $(form).find('.requirements');
                 new_req = []
