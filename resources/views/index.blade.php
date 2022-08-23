@@ -450,7 +450,7 @@
             function getMyCategories() {
                 $.ajax({
                         type: "get",
-                        url: api_url + "category",
+                        url: api_url + "categories",
                     }).done(res => {
                         res.data.map(cat => {
                             $('#pills-tab').append(`

@@ -119,7 +119,7 @@
                         aria-haspopup="true" aria-expanded="false" data-bs-display="static">
                         Course Categories
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-arrow w-75" id="drop_categories" aria-labelledby="navbarBrowse">
+                    <ul class="dropdown-menu dropdown-menu-arrow" style="width:200px" id="drop_categories" aria-labelledby="navbarBrowse">
 
                     </ul>
                 </li>
@@ -256,14 +256,14 @@
                     cats.topics.map(tops => {
                         sub_topic += `
                         <li>
-                            <a class="dropdown-item fw-light" style="overflow-x: auto; " href="javascript:void(0)">${tops.name}</a>
+                            <a class="dropdown-item fw-light" href="javascript:void(0)">${tops.name}</a>
                         </li>
                         `
                     })
                     $("#drop_categories").append(`
                 <li class="dropdown-submenu dropend">
                     <a class="dropdown-item dropdown-list-group-item dropdown-toggle fw-light" href="#">${cats.name}</a>
-                    <ul class="dropdown-menu" style="width: 330px;">
+                    <ul class="dropdown-menu" style="width: 310px;">
                        ${sub_topic}
                     </ul>
                 </li>

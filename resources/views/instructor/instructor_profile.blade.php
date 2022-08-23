@@ -42,12 +42,12 @@
                                             <div class="col-md-6">
                                                 <div class="form-group mb-3">
                                                     <label for="fristname" class="form-label">First Name</label>
-                                                    <input type="text" class="form-control" id="firstname"
+                                                    <input type="text" class="form-control" id="firstname" readonly
                                                         value="{{ names(1) }}" name="fname" />
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="lastname" class="form-label">Last Name</label>
-                                                    <input type="text" class="form-control" id="lastname"
+                                                    <input type="text" class="form-control" id="lastname" readonly
                                                         value="{{ names(2) }}" name="lname" />
                                                 </div>
                                                 <div class="form-group mb-3">
@@ -193,7 +193,7 @@
                     form.find($('input[name="headline"]')).val(data.headline);
                     biography.setData(data.biography);
                     form.find($('select[name="lang"]')).val(data.language);
-                    form.find($('input[name="site"]')).val(data.site);
+                    form.find($('input[name="site"]')).val(data.website_url);
                     form.find($('input[name="twitter"]')).val(data.twitter);
                     form.find($('input[name="face"]')).val(data.facebook);
                     form.find($('input[name="linked"]')).val(data.linkedin);
