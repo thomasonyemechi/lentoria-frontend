@@ -23,8 +23,13 @@
                                 <input type="hidden" id="course_id">
                                 <div class="mb-3">
                                     <label for="courseTitle" class="form-label"><b>Course Title</b></label>
-                                    <input id="courseTitle" name="title" class="form-control" type="text"
-                                        placeholder="Course Title" maxlength="60" />
+                                    <div class="d-flex justify-content-center align-items-center border bg-white pe-2">
+                                        <input id="courseTitle" name="title" class="form-control border-0" type="text"
+                                            placeholder="Course Title" maxlength="60">
+                                        <div>
+                                            <span id="count" class="fw-bold">60</span>
+                                        </div>
+                                    </div>
                                     <small>Write a 60 character course title.</small>
                                 </div>
                                 <div class="mb-3">
@@ -35,7 +40,7 @@
 
                                 <div class="mb-3">
                                     <label class="form-label"><b>Course Description</b></label>
-                                    <x-textarea name="description" id="course_description"/>
+                                    <x-textarea name="description" id="course_description" />
                                 </div>
 
                                 <div class="row">
@@ -133,6 +138,13 @@
                 });
             }
 
+
+            $("#courseTitle").on("keyup",function(e) {
+                e.preventDefault();
+                length = $(this).val().length
+                maxlength = 60;
+                counter = $('#count').html(maxlength - length);
+            })
 
 
             $('#selcategory').on("change click", function(e) {

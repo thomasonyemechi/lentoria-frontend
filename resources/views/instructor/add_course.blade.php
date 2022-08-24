@@ -166,9 +166,14 @@
                                         <div class="card-body ">
                                             <div class="mb-3">
                                                 <label for="courseTitle" class="form-label">Course Title</label>
-                                                <input id="courseTitle" class="form-control" type="text"
-                                                    placeholder="Course Title" />
-                                                <small>Write a 60 character course title.</small>
+                                                <div
+                                                    class="d-flex justify-content-center align-items-center border bg-white pe-2">
+                                                    <input id="courseTitle" name="title" class="form-control border-0"
+                                                        type="text" placeholder="Course Title" maxlength="60">
+                                                    <div>
+                                                        <span id="count" class="fw-bold">60</span>
+                                                    </div>
+                                                </div>
 
                                             </div>
 
@@ -199,6 +204,14 @@
 
     <script>
         $(function() {
+
+            $("#courseTitle").on("keyup", function(e) {
+                e.preventDefault();
+                length = $(this).val().length
+                maxlength = 60;
+                counter = $('#count').html(maxlength - length);
+            })
+
 
             $('.seltype').on('click', function(e) {
                 e.preventDefault();

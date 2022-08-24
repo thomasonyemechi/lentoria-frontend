@@ -58,6 +58,9 @@
                 dat = res.data
                 try {
                     $('#courseTitle').val(dat.title);
+                    length = (dat.title).length;
+                    $('#count').html(60 - length);
+                    $('#courseTitle').html(res.data.title);
                     $('#courseSubtitle').val(dat.subtitle);
                     $('#course_id').val(dat.id);
                     description.setData(dat.description ?? '');
@@ -65,9 +68,7 @@
                     $(`#course_level option[value="${dat.level}"]`).prop("selected", true);
                     getCategory(dat.category_id);
                     setTopic2(dat.category_id, dat.topic_id);
-                } catch (err) {
-                    console.log("Not Available On This Page")
-                }
+                } catch (err) {}
                 ////////pricing
                 $('.course_price').val(res.data.price)
                 $('input[name="course_update_id"]').val(res.data.id)
@@ -82,9 +83,7 @@
                     welmess.setData(dat.welcome_message ?? '');
                     cermess.setData(dat.certification_message ?? '');
                     $('#mycourse_id').val(dat.id);
-                } catch (err) {
-                    console.log("Not Available On This Page")
-                };
+                } catch (err) {};
 
                 ///section
                 $('#course_id').val(dat.id)
@@ -97,6 +96,12 @@
 
         fetchLearners();
 
+        function countWord(object) {
+            length = object.val().length;
+            maxlength = 60;
+            count = maxlength - length;
+            return count;
+        }
 
 
     })

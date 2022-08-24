@@ -41,7 +41,7 @@
             <ul class="list-unstyled ms-n2 mb-4">
                 <li class="nav-item @if (request()->routeIs('instructor.faq')) active @endif">
                     <a class="nav-link" href="/instructor/faq/{{ $slug }}"><i
-                            class="bi bi-question-circle nav-icon"></i>FAQ</a>
+                            class="bi bi-question nav-icon"></i>FAQ</a>
                 </li>
             </ul>
 

@@ -494,6 +494,7 @@
                 $.ajax({
                     url: api_url + `courses/${catid}`
                 }).done(res => {
+                    console.log(res.data);
                     res.data.data.map(cor => {
                         $(document).find(`#no_${cor.category_id}_Slider`).append(`
                         <div class="item">
@@ -502,8 +503,8 @@
                         data-bs-trigger="hover" data-bs-html="true"
                         data-bs-content="<h2>This is a popover</h2>">
                         <a href="course/${cor.id}/${cor.slug}" class="card-img-top"><img
-                                src="../../assets/images/course/course-react.jpg" alt=""
-                                class="rounded-top-md card-img-top"></a>
+                                src="${imageUrl(cor.image)}" onerror="this.src='../../assets/images/course/course-react.jpg';" alt=""
+                                class="rounded-top-md card-img-top course_image"></a>
                         <!-- Card Body -->
                         <div class="card-body">
                             <h4 class="mb-2 text-truncate-line-2 "><a href="course/${cor.id}/${cor.slug}"
@@ -595,6 +596,7 @@
                 $.ajax({
                     url: api_url + 'courses',
                 }).done(res => {
+                    console.log(res.data);
                     $('#pills-allcategory').find('#loader').addClass('d-none');
                     $('#pills-allcategory').find('.position-relative').toggleClass('d-none');
                     $('.firstSlider').html('');
@@ -606,8 +608,8 @@
                         data-bs-trigger="hover" data-bs-html="true"
                         data-bs-content="<h2>This is a popover</h2>">
                         <a href="course-single.html" class="card-img-top"><img
-                                src="../../assets/images/course/course-react.jpg" alt=""
-                                class="rounded-top-md card-img-top"></a>
+                                src="${imageUrl(cor.image)}" onerror="this.src='../../assets/images/course/course-react.jpg';" alt=""
+                                class="rounded-top-md card-img-top course_image"></a>
                         <!-- Card Body -->
                         <div class="card-body">
                             <h4 class="mb-2 text-truncate-line-2 "><a href="course/${cor.id}/${cor.slug}"
@@ -681,7 +683,6 @@
                             }
                         });
                     }
-
                 }).fail(res => {
                     console.log(res);
 
@@ -694,7 +695,7 @@
                 $.ajax({
                     url: api_url + 'category',
                 }).done(res => {
-                    res.data.map(cat=>{
+                    res.data.map(cat => {
                         $("#cat_pills").append(`
                         <a href="javascript:void(0)" class="btn btn-outline-primary rounded-pill m-1">${cat.name}</a>
                         `);
