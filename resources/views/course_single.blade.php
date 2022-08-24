@@ -716,7 +716,7 @@
 
             function getFaq(id) {
                 $.ajax({
-                    url: api_url + `admin/fetch_faq/${id}`,
+                    url: api_url + `fetch_faq/${id}`,
                 }).done(res => {
                     console.log(res);
                     $("#loader3").remove();
