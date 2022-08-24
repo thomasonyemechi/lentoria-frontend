@@ -439,7 +439,7 @@
                         console.log(res);
                         concatError(res.responseJSON);
                         btn(bt, 'Get Started', 'after')
-                        // window.location.href = '/activate_account';
+                        window.location.href = '/activate_account';
                     });
                 } else {
                     $('#signup_modal').modal('show');
@@ -587,7 +587,6 @@
                 }).fail(res => {
                     console.log(res);
                 })
-
             }
 
 
@@ -607,7 +606,7 @@
                     <div class="card card-hover mb-3" data-bs-toggle="popover"
                         data-bs-trigger="hover" data-bs-html="true"
                         data-bs-content="<h2>This is a popover</h2>">
-                        <a href="course-single.html" class="card-img-top"><img
+                        <a href="course/${cor.id}/${cor.slug}" class="card-img-top"><img
                                 src="${imageUrl(cor.image)}" onerror="this.src='../../assets/images/course/course-react.jpg';" alt=""
                                 class="rounded-top-md card-img-top course_image"></a>
                         <!-- Card Body -->
@@ -658,6 +657,8 @@
                 </div>`);
                     })
 
+
+
                     if ($('.firstSlider').length) {
                         tns({
                             container: ".firstSlider",
@@ -687,7 +688,6 @@
                     console.log(res);
 
                 })
-
 
             }
 

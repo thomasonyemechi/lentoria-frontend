@@ -285,16 +285,14 @@
                                 <!-- Tab pane -->
                                 <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab">
                                     <!-- FAQ -->
-                                    <div>
+                                    <div id="faq_div">
                                         <h3 class="mb-3">Course - Frequently Asked Questions</h3>
-                                        <div class="mb-4">
-                                            <h4>How this course help me to design layout?</h4>
-                                            <p>
-                                                My name is Jason Woo and I work as human duct tape at Gatsby, that means
-                                                that I do a lot of different things. Everything from dev roll to writing
-                                                content to writing code. And I used to work as an architect at IBM. I live
-                                                in Portland, Oregon.
-                                            </p>
+                                        <div class="d-flex justify-content-center align-items-start opacity-50 my-10"
+                                            id="loader3">
+                                            <div class="spinner-border text-primary" style="width: 4rem; height: 4rem;"
+                                                role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -516,6 +514,7 @@
             fetchCourseInfo();
 
             getSections(@js($id));
+            getFaq(@js($id));
 
             // var myRating = raterJs({
             //     element: document.querySelector(".rating"),
@@ -559,7 +558,6 @@
                     type: "get",
                     url: api_url + `course_info/{{ $id }}`,
                 }).done(function(res) {
-                    console.log(res);
                     // $('#cid').val(res.data.id);
                     $('#c-title').html(res.data.course_info.title);
                     $('#cde').append(res.data.course_info.description);
@@ -569,8 +567,8 @@
                     $('#c-price').html(`&#8358 ${res.data.course_info.price}`);
                     $('#ins-name').html(
                         `${res.data.basic_info.firstname} ${res.data.basic_info.lastname}`);
-                    $('#ins-exps').html(`${res.data.instructor.headline ?? ''}`);
-                    $('#ins-bio').html(`${res.data.instructor.biography ?? ''}`);
+                    $('#ins-exps').html(`${res.data.instructor.headline ?? 'Instructor\'s Expertise'}`);
+                    $('#ins-bio').html(`${res.data.instructor.biography ?? 'Instructor\'s Biography'}`);
                     $('#ins-link').attr('href',
                         `/instructor/${res.data.course_info.user_id}/profile`);
 
@@ -650,7 +648,6 @@
                         `)
                     }
                 }).done(res => {
-                    console.log(res);
                     course = $(document).find($(`div#course${sec_id}`))
                     $(document).find($("div.lec-loader")).remove();
                     if (res.data.length === 0) {
@@ -662,7 +659,7 @@
                     }
                     res.data.map(lec => {
                         course.find($("div.lec-content")).append(`
-                        <a href="course-resume.html" class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
+                        <a href="javascript:void(0)" class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
                             <div class="text-truncate lec-tit">
                                 <span class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i class="mdi mdi-play fs-4"></i></span>
                                 <span>${lec.title}</span>
@@ -678,18 +675,18 @@
                     console.log(res);
                     concatError(res.responseJSON);
                 })
+
             }
 
             function getSections(id) {
                 $.ajax({
                     url: api_url + `get_sections/${id}`,
                 }).done(res => {
-                    console.log(res);
                     $('#courseAccordion').find($('div#loader2')).remove();
                     res.data.map(sec => {
                         $('#courseAccordion').find($('ul#curri')).append(`
                         <li class="list-group-item px-0 pt-0">
-                            <a class=" h4 mb-0 d-flex align-items-center text-inherit text-decoration-none" data-bs-toggle="collapse" href="#course${sec.id}" aria-expanded="false" aria-controls="course${sec.id}">
+                            <a class=" h4 mb-0 d-flex align-items-center text-inherit text-decoration-none lecu" data-bs-toggle="collapse" href="#course${sec.id}" aria-expanded="false" aria-controls="course${sec.id}">
                                 <div class="me-auto">
                                     ${sec.title}
                                 </div>
@@ -697,7 +694,7 @@
                                         <i class="fe fe-chevron-down fs-4"></i>
                                     </span>
                             </a>
-                                <div class="collapse" id="course${sec.id}"
+                                <div class="collapse sh" id="course${sec.id}"
                                     data-bs-parent="#courseAccordion">
                                         <div class="pt-3 pb-2 lec-content">
                                         </div>
@@ -706,9 +703,38 @@
                         `)
                         getLectures(sec.id)
                     })
+                    first = document.querySelector(".lecu");
+                    sh = document.querySelector(".sh")
+                    $(first).addClass('active');
+                    $(first).attr("aria-expanded", "true");
+                    $(sh).addClass('show')
 
                 }).fail(res => {
                     concatError(res.responseJSON);
+                })
+            }
+
+            function getFaq(id) {
+                $.ajax({
+                    url: api_url + `admin/fetch_faq/${id}`,
+                }).done(res => {
+                    console.log(res);
+                    $("#loader3").remove();
+                    res.data.map(faq => {
+                        $("#faq_div").append(`
+                        <div class="mb-4">
+                            <h4>${faq.question}</h4>
+                                <p>
+                                    ${faq.answer}
+                                </p>
+                        </div>
+                        `)
+                    })
+
+                }).fail(res => {
+                    console.log(res);
+                    concatError(res);
+                    $("#loader3").remove();
                 })
             }
 
