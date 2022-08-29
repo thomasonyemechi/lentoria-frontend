@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ Route::post('/session_login_infomation', [Controller::class, 'sessionLoginInfoma
 Route::get('/', function () {
     return view('index');
 });
+
 
 Route::view('/course/{id}/{slug}', 'course_single');
 Route::view('/instructor/{id}/profile', 'instructor_profile')->name('instructor_profile');
@@ -36,6 +38,7 @@ Route::group(['prefix' => 'instructor', 'as' => 'instructor.', 'middleware' => [
     Route::view('/curriculum/{slug}', 'instructor.curriculum')->name('curriculum');
     Route::view('/faq/{slug}', 'instructor.faq')->name('faq');
     Route::view('/profile', 'instructor.instructor_profile')->name('instructor_profile');
+    Route::view('/course_review', 'instructor.course_review')->name('course_review');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth2']], function () {

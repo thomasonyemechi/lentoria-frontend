@@ -35,6 +35,7 @@
                             <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" id="addsec2">Add
                                 Section</a>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -165,8 +166,93 @@
             </div>
         </div>
     </div>
+
+    <!--Modal -->
+    <div class="modal fade" id="addVideoModal" tabindex="-1" role="dialog" aria-labelledby="addVideoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="addVideoModalLabel">
+                        Add Video Content
+                    </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form hidden id="video_info">
+                        <input type="hidden" name="lecture_id" id="lecu_id" />
+                        <input type="hidden" name="section_id" />
+                        <input type="hidden" name="lecture_title" id="lecu_title" />
+                        <input type="hidden" name="lecture_description" id="lecu_desc" />
+                    </form>
+                    <form class="row text-start g-3" id="addVideoForm" enctype="multipart/form-data">
+                        <div class="col-md-12">
+                            <input name="video" type="file" id="file_upload" />
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-outline-white btn-sm" data-bs-dismiss="modal" aria-label="Close">
+                                Close
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         $(document).ready(function() {
+
+            $('#vimeo_del').click(function(e){
+                e.preventDefault();
+                $.ajax({
+                    url: "https://test.lentoria.com/api/delete_video",
+                    method: "POST",
+                    data:{
+                        uri: "/videos/743381459",
+                    }
+                }).done(res=>{
+                    console.log(res);
+                }).fail(res=>{
+                    console.log(res);
+                })
+            })
+
+
+
+
+            $("#file_upload").fileinput({
+                uploadUrl: "https://test.lentoria.com/api/upload_video",
+                allowedFileExtensions: ['mp4', 'mkv', 'ogg'],
+                removeFromPreviewOnError: true,
+                theme: "bs5",
+                browseOnZoneClick: true,
+                uploadAsync: true,
+                fileActionSettings: {
+                    showZoom: false,
+                    showUpload: false,
+                },
+                uploadExtraData: function(previewId, index) {
+                    return {
+                        title: $("#lecu_title").val(),
+                        description: $("#lecu_desc").val(),
+                        lecture_id: $("#lecu_id").val(),
+                    };
+                },
+            }).on('fileuploaded', function(event, data) {
+                var form = data.form,
+                    files = data.files,
+                    extra = data.extra,
+                    response = data.response,
+                    reader = data.reader;
+                console.log(response);
+                $("#file_upload").fileinput('clear');
+            });
 
             interval = setInterval(() => {
                 cid = $("#course_id").val();
@@ -316,13 +402,11 @@
                             <div id="collapselist${lec.id}" class="collapse" aria-labelledby="${stripLower(lec.title+lec.id)}"
                                 data-bs-parent="#lecture${lec.section_id}">
                                 <div class="card-body">
-                                <a href="#" class="btn btn-secondary btn-sm">Add
-                                    Article +</a>
-                                <a href="#" class="btn btn-secondary btn-sm">Add
-                                    Description +</a>
+                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal">Add
+                                    Content +</a>
                                 </div>
                             </div>
-                            </div>
+                        </div>
                         `)
                         }
                     })
@@ -538,10 +622,8 @@
                             <div id="collapselist${res.id}" class="collapse" aria-labelledby="${stripLower(title+res.id)}"
                                 data-bs-parent="#lecture${section_id}">
                                 <div class="card-body">
-                                <a href="#" class="btn btn-secondary btn-sm">Add
-                                    Article +</a>
-                                <a href="#" class="btn btn-secondary btn-sm">Add
-                                    Description +</a>
+                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal">Add
+                                    Content +</a>
                                 </div>
                             </div>
                             </div>
@@ -615,7 +697,22 @@
                     concatError(res.responseJSON);
                 })
 
+            });
+
+            $(document).on('click', '.vidmodal', function(e) {
+                e.preventDefault();
+                grandparent = $(this).parent().parent().parent();
+                title = grandparent.find($("span.lec_tit")).html();
+                description = grandparent.find($("input.lec_desc")).val();
+                lecture_id = grandparent.find($("input.lec_id")).val();
+
+                video_form = $("#video_info");
+                video_form.find($('input[name="lecture_id"]')).val(lecture_id);
+                video_form.find($('input[name="lecture_title"]')).val(title);
+                video_form.find($('input[name="lecture_description"]')).val(description);
             })
+
+
 
 
         });
