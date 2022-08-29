@@ -227,7 +227,7 @@
 
 
             $("#file_upload").fileinput({
-                uploadUrl: "https://test.lentoria.com/api/upload_video",
+                uploadUrl: "https://test.lentoria.com/instructor/upload_video",
                 allowedFileExtensions: ['mp4', 'mkv', 'ogg'],
                 removeFromPreviewOnError: true,
                 theme: "bs5",

@@ -25,8 +25,9 @@ class VimeoController extends Controller
         $validate = Validator::make($request->all(), [
             'video' => 'required|mimes:mp4,mkv,ogg,ts',
         ]);
+
         if ($validate->fails()) {
-            return response(['errors' => $validate->errors()->all()], 422);
+            return response(['error' => 'Error Occured While Uploading'], 422);
         }
         $video = $request->file('video');
         $uri = self::client()->upload($video, array(
@@ -41,8 +42,16 @@ class VimeoController extends Controller
         $lec_id = $request->lecture_id;
 
 
-        return response(['data' => ['link' => $link, 'uri' => $uri, 'lecture_id' => $lec_id]], 200);
+
+        $res = Http::asForm()->withHeaders([
+            'Authorization' => 'Bearer ' . access_token()
+        ])->post('https://api.lentoria.com/api/admin/update_lecture_video', [
+            'lecture_id' => $lec_id,
+            'uri' => $uri,
+        ]);
+        return $res;
     }
+
 
     public function getOembed($link)
     {

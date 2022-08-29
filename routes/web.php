@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
+use App\Http\Controllers\VimeoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +39,11 @@ Route::group(['prefix' => 'instructor', 'as' => 'instructor.', 'middleware' => [
     Route::view('/faq/{slug}', 'instructor.faq')->name('faq');
     Route::view('/profile', 'instructor.instructor_profile')->name('instructor_profile');
     Route::view('/course_review', 'instructor.course_review')->name('course_review');
+    Route::get('vimeo_testing', [VimeoController::class, 'testing']);
+    Route::post('upload_video', [VimeoController::class, 'uploadVideo']);
+    Route::post('delete_video', [VimeoController::class, 'deleteVideo']);
+    Route::post('get_oembed', [VimeoController::class, 'getOembed2']);
+    Route::post('get_vimeo_status', [VimeoController::class, 'getTranscodingStatus']);
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth2']], function () {
