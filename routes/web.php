@@ -20,6 +20,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::view('/virtual_class', 'virtual_class.classroom');
+
 
 Route::view('/course/{id}/{slug}', 'course_single');
 Route::view('/instructor/{id}/profile', 'instructor_profile')->name('instructor_profile');
@@ -38,7 +40,7 @@ Route::group(['prefix' => 'instructor', 'as' => 'instructor.', 'middleware' => [
     Route::view('/curriculum/{slug}', 'instructor.curriculum')->name('curriculum');
     Route::view('/faq/{slug}', 'instructor.faq')->name('faq');
     Route::view('/profile', 'instructor.instructor_profile')->name('instructor_profile');
-    Route::view('/course_review', 'instructor.course_review')->name('course_review');
+    Route::view('/course_review/{slug}', 'instructor.course_review')->name('course_review');
     Route::get('vimeo_testing', [VimeoController::class, 'testing']);
     Route::post('upload_video', [VimeoController::class, 'uploadVideo']);
     Route::post('delete_video', [VimeoController::class, 'deleteVideo']);

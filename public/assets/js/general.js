@@ -1,3 +1,4 @@
+
 api_url = 'http://127.0.0.1:8000/api/';
 image_url = 'http://127.0.0.1:8000/assets/uploads/';
 vimeo_player = "https://player.vimeo.com/video/";
@@ -155,6 +156,17 @@ function randomString(length) {
 
 let imageUrl = (image) => image_url + image;
 
+function getVimeoId(str) {
+    if (str.includes("/videos/")) {
+        after = str.split('/videos/')[1];
+        return after;
+    } else {
+        return null;
+    }
+
+}
+
+let vimeoUrl = (id) => `https://player.vimeo.com/video/${id}?portrait=0&byline=0&title=0`;
 
 // bettermake sense else sombody go keill you oooo, seems like you anna dies right you dey mad wotooot wotoooo
 // let us kill the script and lets resyethe1 process you

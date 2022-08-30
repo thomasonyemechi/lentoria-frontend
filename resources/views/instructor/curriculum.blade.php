@@ -208,17 +208,17 @@
     <script>
         $(document).ready(function() {
 
-            $('#vimeo_del').click(function(e){
+            $('#vimeo_del').click(function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: "https://test.lentoria.com/api/delete_video",
+                    url: "https://test.lentoria.com/instructor/delete_video",
                     method: "POST",
-                    data:{
+                    data: {
                         uri: "/videos/743381459",
                     }
-                }).done(res=>{
+                }).done(res => {
                     console.log(res);
-                }).fail(res=>{
+                }).fail(res => {
                     console.log(res);
                 })
             })
@@ -304,6 +304,7 @@
                         `);
                     },
                 }).done(res => {
+                    console.log(res);
                     if (res.data.length == 0) {
                         cardbody.html(`<div class="bg-light-secondary rounded p-2 mb-4 dummy">
                         <div class="d-inline-block me-3"><p class="text-capitalize fw-bold text-dark fs-4">Section 1:</p></div>

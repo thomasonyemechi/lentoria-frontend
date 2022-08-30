@@ -320,7 +320,8 @@
                                 {{-- <del class="fs-4 text-muted">$750</del> --}}
                             </div>
                             <div class="d-grid">
-                                <a href="#" class="btn btn-primary mb-2  ">Start Free Month</a>
+                                <a href="javascript:void(0)" class="btn btn-primary mb-2" id="pay">Start Free
+                                    Month</a>
                                 <a href="pricing.html" class="btn btn-outline-primary">Get Full Access</a>
                             </div>
                         </div>
@@ -464,6 +465,43 @@
         </div>
     </div>
 
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="newCatgoryLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body shadow">
+                    <form id="payForm">
+                        <div class="mb-4 m-0 d-flex justify-content-between">
+                            <div>
+                                <h2 class="mb-1 fw-bold">Make Payment With:</h2>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="fe fe-x-circle"></i>
+                            </button>
+
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="d-inline-block">
+                                <a href="javascript:void(0)">
+                                    <img src="{{ asset('assets/images/150x30.png') }}" alt="livepetal" id="livepay">
+                                </a>
+                            </div>
+                            <div class="d-inline-block">
+                                <a href="javascript:void(0)">
+                                    <img src="{{ asset('assets/images/flutterwave.256x48.png') }}" alt="flutterwave"
+                                        id="flutterpay">
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="d-flex float-end mt-3">
+                        <button class="btn btn-primary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal -->
     <div class="modal fade" id="ratingModal" tabindex="-1" role="dialog" aria-labelledby="ratingModallLabel"
         aria-hidden="true">
@@ -509,6 +547,7 @@
         </div>
     </div>
 
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
     <script>
         $(function() {
             fetchCourseInfo();
@@ -540,6 +579,90 @@
             //         done();
             //     }
             // });
+
+            $('#pay').click(function(e) {
+                e.preventDefault();
+                if (!@js(session('info'))) {
+                    $("#signup_modal").modal('show');
+                } else {
+                    $("#paymentModal").modal('show');
+                }
+            })
+            $("#flutterpay").click(function(e) {
+                e.preventDefault();
+                info = @js(session('info'));
+                user_id = info.data.id;
+                email = info.data.email;
+                phone = info.data.phone;
+                name = `${info.data.firstname} ${info.data.lastname}`;
+                price = $("#c-price").text();
+                price = price.split(' ')[1]
+                console.log(price);
+                makePayment();
+            })
+
+            function makePayment() {
+                price = $("#c-price").text();
+                prices = price.split(' ')[1]
+                FlutterwaveCheckout({
+                    public_key: "FLWPUBK_TEST-8c6efffe5995bec0a8aa9e9d3699589e-X",
+                    tx_ref: randomString(12),
+                    amount: prices,
+                    currency: "NGN",
+                    payment_options: "card,ussd",
+                    callback: function(payment) {
+                        console.log(payment);
+                        if (payment.status == "successful") {
+                            tx_id = payment.tx_ref;
+                            amount = payment.amount;
+                            verifyTransactionOnBackend(tx_id, amount);
+                        }
+                    },
+                    onclose: function(incomplete) {
+                        if (incomplete || window.verified === false) {
+                            salat('Transaction cancelled', 1);
+                        }
+                    },
+                    meta: {
+                        user_id: user_id,
+                    },
+                    customer: {
+                        email: email,
+                        phone_number: phone,
+                        name: name,
+                    },
+                    customizations: {
+                        title: "Become an Instructor",
+                        description: "Payment for becoming an instructor",
+                    },
+                });
+            }
+
+            function verifyTransactionOnBackend(tx_id, amount) {
+                $.ajax({
+                    url: api_url + "admin/payto_become_instructor",
+                    method: "POST",
+                    data: {
+                        amount: amount,
+                        transaction_id: tx_id,
+                    },
+                }).done(res => {
+                    console.log(res);
+                    salat(res.message);
+                    setTimeout(() => {
+                        window.location.href = "instructor/dashboard";
+                    }, 2000);
+
+                }).fail(res => {
+                    console.log(res);
+                    concatError(res);
+                })
+            }
+
+
+
+
+
             $("#ratingModal").find($("span.bk-btn")).click(function(e) {
                 e.preventDefault();
                 $("#ratingModal").find($("div.hidden_txt")).addClass("d-none");

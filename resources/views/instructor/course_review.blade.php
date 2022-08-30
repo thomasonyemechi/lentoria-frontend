@@ -1,5 +1,5 @@
 @extends('layouts.instructor')
-@section('page_title', 'Course | Course Review')
+@section('page_title', "Course Review | $slug")
 
 @section('page_content')
     <div class="mt-5 course-container">
@@ -8,11 +8,10 @@
                 <div class="col-12">
                     <!-- Tab content -->
                     <div class="tab-content content" id="course-tabContent">
-                        <div class="tab-pane fade show active" id="course-intro" role="tabpanel"
-                            aria-labelledby="course-intro-tab">
+                        <div class="tab-pane fade show active">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div>
-                                    <h3 class=" mb-0  text-truncate-line-2">Introduction </h3>
+                                    <h3 class=" mb-0  text-truncate-line-2" id="lt">Lecture Title</h3>
                                 </div>
                                 <div>
                                     <!-- Dropdown -->
@@ -23,8 +22,7 @@
                                         </a>
                                         <span class="dropdown-menu dropdown-menu-lg p-3 dropdown-menu-end"
                                             aria-labelledby="dropdownInfo">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            cupiditate consequatur rerum eius ad ut officiis
+                                            Video for the selected course
                                         </span>
                                     </span>
                                     <!-- Dropdown -->
@@ -61,19 +59,76 @@
         </div>
     </div>
     <!-- Card -->
-    <div class="card course-sidebar " id="courseAccordion">
+    <div class="card course-sidebar" id="courseAccordion">
         <!-- List group -->
-        <ul class="list-group list-group-flush course-list">
+        <ul class="list-group list-group-flush" id="course_list">
             <li class="list-group-item">
                 <h4 class="mb-0">Table of Content</h4>
             </li>
             <!-- List group item -->
-            <li class="list-group-item">
+            <div class="d-flex justify-content-center opacity-50 align-self-lg-center mt-lg-22" id="loader">
+                <div class="spinner-grow text-black-100" style="width: 5rem; height: 5rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </ul>
+    </div>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+
+    <script>
+
+        $(function() {
+
+            str = getVimeoId("/videos/744185309");
+            url = vimeoUrl(str);
+            console.log(url);
+            const slug = @js($slug);
+            getSections(slug);
+
+            function getSections(slug) {
+                $.ajax({
+                    method: 'GET',
+                    url: api_url + 'admin/sections_lectures/' + slug,
+                }).done(res => {
+                    console.log(res);
+                    $("#loader").remove();
+                    res.data.map(sections => {
+                        lectures = "";
+                        if (sections.lectures.length > 0) {
+                            sections.lectures.map(lecs => {
+                                lectures += `
+                            <a class="mb-2 d-flex justify-content-between align-items-center text-decoration-none" data-vid="${lecs.main_content}" style="cursor: pointer;">
+                            <div class="text-truncate">
+                                <span class="icon-shape bg-light text-primary icon-sm  rounded-circle me-2"><i
+                                        class="fe fe-play  fs-6"></i></span>
+                                <span>${lecs.title}</span>
+                            </div>
+                            <div class="text-truncate">
+                                <span>1m 7s</span>
+                            </div>
+                        </a>
+                            `
+                            })
+                        } else {
+                            lectures += `
+                        <a class="mb-2 d-flex justify-content-between align-items-center text-decoration-none" style="cursor: pointer;">
+                            <div class="text-truncate">
+                                <span class="icon-shape bg-light text-primary icon-sm  rounded-circle me-2"><i
+                                        class="fe fe-x-circle  fs-6"></i></span>
+                                <span>No Lectures Available For This Section</span>
+                            </div>
+                        </a>
+                            `
+                        }
+
+                        $("#course_list").append(`
+                        <li class="list-group-item">
                 <!-- Toggle -->
-                <a class="d-flex align-items-center text-inherit text-decoration-none h4 mb-0" data-bs-toggle="collapse"
-                    href="#courseTwo" role="button" aria-expanded="false" aria-controls="courseTwo">
+                <a class="d-flex align-items-center text-inherit text-decoration-none h4 mb-0 cr_con" data-bs-toggle="collapse"
+                    href="#course${sections.id}" role="button" aria-expanded="false" aria-controls="#course${sections.id}">
                     <div class="me-auto">
-                        Introduction to JavaScript
+                            ${sections.title}
                     </div>
                     <!-- Chevron -->
                     <span class="chevron-arrow  ms-4">
@@ -82,67 +137,42 @@
                 </a>
                 <!-- Row -->
                 <!-- Collapse -->
-                <div class="collapse show" id="courseTwo" data-bs-parent="#courseAccordion">
-                    <div class="py-4 nav" id="course-tabOne" role="tablist" aria-orientation="vertical"
+                <div class="collapse" id="course${sections.id}" data-bs-parent="#courseAccordion">
+                    <div class="py-4 nav" id="course-tab${sections.id}" role="tablist" aria-orientation="vertical"
                         style="display: inherit;">
-                        <a class="mb-2 d-flex justify-content-between align-items-center text-decoration-none"
-                            id="course-intro-tab" href="javascript:void(0)" role="tab" aria-selected="true">
-                            <div class="text-truncate">
-                                <span class="icon-shape bg-light text-primary icon-sm  rounded-circle me-2"><i
-                                        class="fe fe-play  fs-6"></i></span>
-                                <span>Introduction</span>
-                            </div>
-                            <div class="text-truncate">
-                                <span>1m 7s</span>
-                            </div>
-                        </a>
-                        <a class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none"
-                            id="course-development-tab" role="tab" aria-selected="false">
-                            <div class="text-truncate">
-                                <span class="icon-shape bg-light text-primary icon-sm  rounded-circle me-2"><i
-                                        class="fe fe-play  fs-6"></i></span>
-                                <span>Installing Development Software</span>
-                            </div>
-                            <div class="text-truncate">
-                                <span>3m 11s</span>
-                            </div>
-                        </a>
-                        <a class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none"
-                            id="course-project-tab" role="tab" aria-selected="false">
-                            <div class="text-truncate">
-                                <span class="icon-shape bg-light text-primary icon-sm  rounded-circle me-2"><i
-                                        class="fe fe-play  fs-6"></i></span>
-                                <span>Hello World Project from GitHub</span>
-                            </div>
-                            <div class="text-truncate">
-                                <span>2m 33s</span>
-                            </div>
-                        </a>
-                        <a class="d-flex justify-content-between align-items-center text-inherit text-decoration-none"
-                            id="course-website-tab" role="tab" aria-selected="false">
-                            <div class="text-truncate">
-                                <span class="icon-shape bg-light text-primary icon-sm  rounded-circle me-2"><i
-                                        class="fe fe-play  fs-6"></i></span>
-                                <span>Our Sample Website</span>
-                            </div>
-                            <div class="text-truncate">
-                                <span>2m 15s</span>
-                            </div>
-                        </a>
+                        ${lectures}
                     </div>
                 </div>
             </li>
-        </ul>
-    </div>
+                        `)
+                    })
+                    if (res.data.length > 0) {
+                        first = document.querySelector('.cr_con');
+                        $(first).attr('aria-expanded', true);
+                        next = first.nextElementSibling;
+                        next.classList.add('show');
+                    }
 
-    <script src="https://player.vimeo.com/api/player.js"></script>
+                    $("#course_list").slimScroll({
+                // width: '500px',
+                height: 'auto',
+                size: '10px',
+                color: 'grey',
+                // alwaysVisible: true,
+                // distance: '20px',
+                railVisible: true,
+                railColor: '#222',
+                railOpacity: 0.3,
+                wheelStep: 10,
+                allowPageScroll: false,
+                disableFadeOut: true
+            });
 
-    <script>
-        const iframe = document.querySelector('iframe');
-        const player = new Vimeo.Player(iframe);
-
-        player.on('play', function() {
-            console.log('played the video!');
-        });
+                }).fail(res => {
+                    console.log(res);
+                    concatError(res.responseJSON);
+                })
+            }
+        })
     </script>
 @endsection

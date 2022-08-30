@@ -18,7 +18,7 @@
                             </p>
                         </div>
                         <div>
-                            <a href="{{ route('instructor.courses') }}" class="btn btn-white ">Back to Course</a>
+                            <a href="{{ route('instructor.courses') }}" class="btn btn-white ">Back to Courses</a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                             <div class="bs-stepper-line"></div>
                             <div class="step" data-target="#test-l-2">
                                 <button type="button" class="step-trigger" role="tab" id="courseFormtrigger2"
-                                    aria-controls="test-l-2">
+                                    aria-controls="test-l-2" disabled>
                                     <span class="bs-stepper-circle">2</span>
                                     <span class="bs-stepper-label">Course Category</span>
                                 </button>
@@ -51,7 +51,7 @@
                             <div class="bs-stepper-line"></div>
                             <div class="step" data-target="#test-l-3">
                                 <button type="button" class="step-trigger" role="tab" id="courseFormtrigger3"
-                                    aria-controls="test-l-3">
+                                    aria-controls="test-l-3" disabled>
                                     <span class="bs-stepper-circle">3 </span>
                                     <span class="bs-stepper-label">Course Title</span>
                                 </button>
@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-4">
+                                                <div class="col-md-4">
                                                     <div class="card bg-dark-primary shadow-none text-center mx-4 my-8">
                                                         <div class="card-body py-6">
                                                             <div class="mt-4">
@@ -78,12 +78,12 @@
                                                                 </p>
                                                                 <a href="javascript:void(0)"
                                                                     class="btn btn-white btn-sm mt-2 seltype"
-                                                                    data-type="1">Select</a>
+                                                                    data-type="1" onclick="courseForm.next()">Select</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-4">
+                                                <div class="col-md-4">
                                                     <div class="card bg-dark-primary shadow-none text-center mx-4 my-8">
                                                         <div class="card-body py-6">
                                                             <div class="mt-4">
@@ -94,12 +94,12 @@
                                                                 </p>
                                                                 <a href="javascript:void(0)"
                                                                     class="btn btn-white btn-sm mt-2 seltype"
-                                                                    data-type="2">Select</a>
+                                                                    data-type="2" onclick="courseForm.next()">Select</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-4">
+                                                <div class="col-md-4">
                                                     <div class="card bg-dark-primary shadow-none text-center mx-4 my-8">
                                                         <div class="card-body py-6">
                                                             <div class="mt-4">
@@ -111,7 +111,7 @@
                                                                 </p>
                                                                 <a href="javascript:void(0)"
                                                                     class="btn btn-white btn-sm mt-2 seltype"
-                                                                    data-type="3">Select</a>
+                                                                    data-type="3" onclick="courseForm.next()">Select</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -122,9 +122,6 @@
 
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary" onclick="courseForm.next()">
-                                        Next
-                                    </button>
                                 </div>
                                 <div id="test-l-2" role="tabpanel" class="bs-stepper-pane fade"
                                     aria-labelledby="courseFormtrigger2">

@@ -18,11 +18,3 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('vimeo_testing', [VimeoController::class, 'testing']);
-
-Route::post('upload_video', [VimeoController::class, 'uploadVideo']);
-
-Route::post('delete_video', [VimeoController::class, 'deleteVideo']);
-
-Route::post('get_oembed', [VimeoController::class, 'getOembed2']);

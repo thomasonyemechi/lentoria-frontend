@@ -24,6 +24,10 @@
             </ul>
             <span class="navbar-header">Publish your course</span>
             <ul class="list-unstyled ms-n2 mb-0">
+                <li class="nav-item @if (request()->routeIs('instructor.course_review')) active @endif">
+                    <a class="nav-link" href="/instructor/course_review/{{ $slug }}"><i
+                            class="fe fe-video nav-icon"></i>Course Review</a>
+                </li>
                 <li class="nav-item @if (request()->routeIs('instructor.course')) active @endif">
                     <a class="nav-link" href="/instructor/course/{{ $slug }}"><i
                             class="fe fe-home nav-icon"></i>Course landing page</a>

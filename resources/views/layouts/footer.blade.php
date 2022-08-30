@@ -46,7 +46,7 @@
                     <div class="d-lg-flex justify-content-end align-items-center mb-4">
 
                         <div>
-                            <a href="forgot-password.php">Forgot your password?</a>
+                            <a href="javascript:void(0)">Forgot your password?</a>
                         </div>
                     </div>
                     <div>
