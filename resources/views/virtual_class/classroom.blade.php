@@ -35,7 +35,8 @@
                                     <div class="swiper-slide">
                                         <div class="top-contacts-box">
                                             <div class="profile-img online">
-                                                <img src="assets/img/avatar/avatar-8.jpg" alt="">
+                                                <img
+                                                    src="{{ asset('assets/chat_assets/img/avatar/avatar-8.jpg') }}"alt="" />
                                             </div>
                                             <div class="profile-name">
                                                 <span>helen</span>
@@ -45,7 +46,7 @@
                                     <div class="swiper-slide">
                                         <div class="top-contacts-box">
                                             <div class="profile-img online">
-                                                <img src="assets/img/avatar/avatar-7.jpg" alt="">
+                                                <img src="{{ asset('assets/chat_assets/img/avatar-3.jpg') }}" alt="">
                                             </div>
                                             <div class="profile-name">
                                                 <span>Prince</span>
@@ -55,7 +56,7 @@
                                     <div class="swiper-slide">
                                         <div class="top-contacts-box">
                                             <div class="profile-img online">
-                                                <img src="assets/img/avatar/avatar-13.jpg" alt="">
+                                                <img src="{{ asset('assets/chat_assets/img/avatar/avatar-13.jpg') }}" alt="">
                                             </div>
                                             <div class="profile-name">
                                                 <span>Nathan</span>
@@ -65,7 +66,7 @@
                                     <div class="swiper-slide">
                                         <div class="top-contacts-box">
                                             <div class="profile-img online">
-                                                <img src="assets/img/avatar/avatar-3.jpg" alt="">
+                                                <img src="{{ asset('assets/chat_assets/img/avatar/avatar-3.jpg') }}" alt="">
                                             </div>
                                             <div class="profile-name">
                                                 <span>Maria</span>
@@ -75,7 +76,7 @@
                                     <div class="swiper-slide">
                                         <div class="top-contacts-box">
                                             <div class="profile-img online">
-                                                <img src="assets/img/avatar/avatar-4.jpg" alt="">
+                                                <img src="{{ asset('assets/chat_assets/img/avatar/avatar-4.jpg') }}" alt="">
                                             </div>
                                             <div class="profile-name">
                                                 <span>Prince</span>
@@ -85,7 +86,7 @@
                                     <div class="swiper-slide">
                                         <div class="top-contacts-box">
                                             <div class="profile-img online">
-                                                <img src="assets/img/avatar/avatar-2.jpg" alt="">
+                                                <img src="{{ asset('assets/chat_assets/img/avatar/avatar-2.jpg') }}" alt="">
                                             </div>
                                             <div class="profile-name">
                                                 <span>Maria</span>
@@ -110,7 +111,7 @@
                             <ul class="user-list mt-2">
                                 <li class="user-list-item">
                                     <div class="avatar avatar-online">
-                                        <img src="assets/img/avatar/avatar-8.jpg" class="rounded-circle" alt="image">
+                                        <img src="{{ asset('assets/chat_assets/img/avatar/avatar-8.jpg') }}" class="rounded-circle" alt="image">
                                     </div>
                                     <div class="users-list-body">
                                         <div>
@@ -126,7 +127,7 @@
                                 <li class="user-list-item">
                                     <div>
                                         <div class="avatar avatar-away">
-                                            <img src="assets/img/avatar/avatar-9.jpg" class="rounded-circle" alt="image">
+                                            <img src="{{ asset('assets/chat_assets/img/avatar/avatar-9.jpg') }}" class="rounded-circle" alt="image">
                                         </div>
                                     </div>
                                     <div class="users-list-body">
@@ -143,7 +144,7 @@
                                 <li class="user-list-item item-typing">
                                     <div>
                                         <div class="avatar avatar-online">
-                                            <img src="assets/img/avatar/avatar-10.jpg" class="rounded-circle"
+                                            <img src="{{ asset('assets/chat_assets/img/avatar/avatar-10.jpg') }}" class="rounded-circle"
                                                 alt="image">
                                         </div>
                                     </div>
@@ -183,7 +184,7 @@
                                 <li class="user-list-item">
                                     <div>
                                         <div class="avatar avatar-online">
-                                            <img src="assets/img/avatar/avatar-11.jpg" class="rounded-circle"
+                                            <img src="{{ asset('assets/chat_assets/img/avatar/avatar-11.jpg') }}" class="rounded-circle"
                                                 alt="image">
                                         </div>
                                     </div>
@@ -201,7 +202,7 @@
                                 <li class="user-list-item">
                                     <div>
                                         <div class="avatar avatar-away">
-                                            <img src="assets/img/avatar/avatar-2.jpg" class="rounded-circle"
+                                            <img src="{{ asset('assets/chat_assets/img/avatar/avatar-2.jpg') }}" class="rounded-circle"
                                                 alt="image">
                                         </div>
                                     </div>
@@ -238,7 +239,7 @@
                                 <li class="user-list-item">
                                     <div>
                                         <div class="avatar avatar-away">
-                                            <img src="assets/img/avatar/avatar-12.jpg" class="rounded-circle"
+                                            <img src="{{ asset('assets/chat_asssets/img/avatar/avatar-12.jpg') }}" class="rounded-circle"
                                                 alt="image">
                                         </div>
                                     </div>
@@ -255,7 +256,7 @@
                                 <li class="user-list-item">
                                     <div>
                                         <div class="avatar avatar-online">
-                                            <img src="assets/img/avatar/avatar-4.jpg" class="rounded-circle"
+                                            <img src="{{ asset('assets/chat_assets/img/avatar/avatar-4.jpg') }}" class="rounded-circle"
                                                 alt="image">
                                         </div>
                                     </div>
@@ -290,7 +291,7 @@
                                 </ul>
                             </div>
                             <figure class="avatar me-2">
-                                <img src="assets/img/avatar/avatar-8.jpg" class="rounded-circle" alt="image">
+                                <img src="{{ asset('assets/chat_assets/img/avatar/avatar-8.jpg') }}" class="rounded-circle" alt="image">
                             </figure>
                             <div class="mt-1">
                                 <h5>Doris Brown</h5>
@@ -357,7 +358,7 @@
                         <div class="messages">
                             <div class="chats">
                                 <div class="chat-avatar">
-                                    <img src="assets/img/avatar/avatar-8.jpg" class="rounded-circle dreams_chat"
+                                    <img src="{{ asset('assets/chat_assets/img/avatar/avatar-8.jpg') }}" class="rounded-circle dreams_chat"
                                         alt="image">
                                 </div>
                                 <div class="chat-content">
@@ -406,7 +407,7 @@
                                     </div>
                                 </div>
                                 <div class="chat-avatar">
-                                    <img src="assets/img/avatar/avatar-12.jpg" class="rounded-circle dreams_chat"
+                                    <img src="{{ asset('assets/chat_assets/img/avatar/avatar-12.jpg') }}" class="rounded-circle dreams_chat"
                                         alt="image">
                                 </div>
                                 <div class="chat-action-btns me-2">
@@ -432,7 +433,7 @@
                             </div>
                             <div class="chats">
                                 <div class="chat-avatar">
-                                    <img src="assets/img/avatar/avatar-8.jpg" class="rounded-circle dreams_chat"
+                                    <img src="{{ asset('assets/chat_assets/img/avatar/avatar-8.jpg') }}" class="rounded-circle dreams_chat"
                                         alt="image">
                                 </div>
                                 <div class="chat-content">
@@ -484,7 +485,7 @@
                                     </div>
                                 </div>
                                 <div class="chat-avatar">
-                                    <img src="assets/img/avatar/avatar-12.jpg" class="rounded-circle dreams_chat"
+                                    <img src="{{ asset('assets/chat_assets/img/avatar/avatar-12.jpg') }}" class="rounded-circle dreams_chat"
                                         alt="image">
                                 </div>
                                 <div class="chat-action-btns me-2">
@@ -510,7 +511,7 @@
                             </div>
                             <div class="chats">
                                 <div class="chat-avatar">
-                                    <img src="assets/img/avatar/avatar-8.jpg" class="rounded-circle dreams_chat"
+                                    <img src="{{ asset('assets/chat_assets/img/avatar/avatar-8.jpg') }}" class="rounded-circle dreams_chat"
                                         alt="image">
                                 </div>
                                 <div class="chat-content">
@@ -519,9 +520,9 @@
                                             <ul>
                                                 <li>
                                                     <div class="image-download-col">
-                                                        <a href="assets/img/chat-download.jpg" data-fancybox="gallery"
+                                                        <a href="{{ asset('assets/chat_assets/img/chat-download.jpg') }}" data-fancybox="gallery"
                                                             class="fancybox">
-                                                            <img src="assets/img/chat-download.jpg" alt="">
+                                                            <img src="{{ asset('assets/chat_assets/img/chat-download.jpg') }}" alt="">
                                                         </a>
                                                         <div class="download-action d-flex align-items-center">
                                                             <div><a href="javascript:void(0)"><i
@@ -534,9 +535,9 @@
                                                 </li>
                                                 <li>
                                                     <div class="image-download-col">
-                                                        <a href="assets/img/chat-download.jpg" data-fancybox="gallery"
+                                                        <a href="{{ asset('assets/chat_assets/img/chat-download.jpg') }}" data-fancybox="gallery"
                                                             class="fancybox">
-                                                            <img src="assets/img/chat-download.jpg" alt="">
+                                                            <img src="{{ asset('assets/chat_assets/img/chat-download.jpg') }}" alt="">
                                                         </a>
                                                         <div class="download-action d-flex align-items-center">
                                                             <div><a href="javascript:void(0)"><i
@@ -549,9 +550,9 @@
                                                 </li>
                                                 <li>
                                                     <div class="image-download-col">
-                                                        <a href="assets/img/chat-download.jpg" data-fancybox="gallery"
+                                                        <a href="{{ asset('assets/chat_assets/img/chat-download.jpg') }}" data-fancybox="gallery"
                                                             class="fancybox">
-                                                            <img src="assets/img/chat-download.jpg" alt="">
+                                                            <img src="{{ asset('assets/chat_assets/img/chat-download.jpg') }}" alt="">
                                                         </a>
                                                         <div class="download-action d-flex align-items-center">
                                                             <div><a href="javascript:void(0)"><i
@@ -619,7 +620,7 @@
                                     </div>
                                 </div>
                                 <div class="chat-avatar">
-                                    <img src="assets/img/avatar/avatar-12.jpg" class="rounded-circle dreams_chat"
+                                    <img src="{{ asset('assets/chat_assets/img/avatar/avatar-12.jpg') }}" class="rounded-circle dreams_chat"
                                         alt="image">
                                 </div>
                                 <div class="chat-action-btns me-2">
@@ -684,7 +685,7 @@
                             <div class="mt-0 right_sidebar_logo">
                                 <div class="text-center mb-2 right-sidebar-profile">
                                     <figure class="avatar avatar-xl mb-3">
-                                        <img src="assets/img/avatar/avatar-2.jpg" class="rounded-circle" alt="image">
+                                        <img src="{{ asset('assets/chat_assets/img/avatar/avatar-2.jpg') }}" class="rounded-circle" alt="image">
                                     </figure>
                                     <h5 class="profile-name">Scott Albright</h5>
                                     <div class="online-profile">
@@ -770,9 +771,9 @@
                                                     <ul>
                                                         <li>
                                                             <div class="image-download-col">
-                                                                <a href="assets/img/chat-download.jpg"
+                                                                <a href="{{ asset('assets/chat_assets/img/chat-download.jpg') }}
                                                                     data-fancybox="gallery" class="fancybox">
-                                                                    <img src="assets/img/chat-download.jpg"
+                                                                    <img src="{{ asset('assets/chat_assets/img/chat-download.jpg') }}"
                                                                         alt="">
                                                                 </a>
                                                                 <div class="download-action d-flex align-items-center">
@@ -787,9 +788,9 @@
                                                         </li>
                                                         <li>
                                                             <div class="image-download-col">
-                                                                <a href="assets/img/chat-download.jpg"
+                                                                <a href="{{ asset('assets/chat_assets/img/chat-download.jpg') }}"
                                                                     data-fancybox="gallery" class="fancybox">
-                                                                    <img src="assets/img/chat-download.jpg"
+                                                                    <img src="{{ asset('assets/chat_assets/img/chat-download.jpg') }}"
                                                                         alt="">
                                                                 </a>
                                                                 <div class="download-action d-flex align-items-center">
@@ -804,9 +805,9 @@
                                                         </li>
                                                         <li>
                                                             <div class="image-download-col">
-                                                                <a href="assets/img/chat-download.jpg"
+                                                                <a href="{{ asset('assets/chat_assets/img/chat-download.jpg') }}"
                                                                     data-fancybox="gallery" class="fancybox">
-                                                                    <img src="assets/img/chat-download.jpg"
+                                                                    <img src="{{ asset('assets/chat_assets/img/chat-download.jpg') }}"
                                                                         alt="">
                                                                 </a>
                                                                 <div class="download-action d-flex align-items-center">
@@ -821,9 +822,9 @@
                                                         </li>
                                                         <li>
                                                             <div class="image-download-col">
-                                                                <a href="assets/img/chat-download.jpg"
+                                                                <a href="{{ asset('assets/chat_assets/img/chat-download.jpg') }}"
                                                                     data-fancybox="gallery" class="fancybox">
-                                                                    <img src="assets/img/chat-download.jpg"
+                                                                    <img src="{{ asset('assets/chat_assets/img/chat-download.jpg') }}"
                                                                         alt="">
                                                                 </a>
                                                                 <div class="download-action d-flex align-items-center">
@@ -838,9 +839,9 @@
                                                         </li>
                                                         <li>
                                                             <div class="image-download-col">
-                                                                <a href="assets/img/chat-download.jpg"
+                                                                <a href="{{ asset('assets/chat_assets/img/chat-download.jpg') }}"
                                                                     data-fancybox="gallery" class="fancybox">
-                                                                    <img src="assets/img/chat-download.jpg"
+                                                                    <img src="{{ asset('assets/chat_assets/img/chat-download.jpg') }}"
                                                                         alt="">
                                                                 </a>
                                                                 <div class="download-action d-flex align-items-center">
@@ -855,9 +856,9 @@
                                                         </li>
                                                         <li>
                                                             <div class="image-download-col">
-                                                                <a href="assets/img/chat-download.jpg"
+                                                                <a href="{{ asset('assets/chat_assets/img/chat-download.jpg') }}"
                                                                     data-fancybox="gallery" class="fancybox">
-                                                                    <img src="assets/img/chat-download.jpg"
+                                                                    <img src="{{ asset('assets/chat_assets/img/chat-download.jpg') }}"
                                                                         alt="">
                                                                 </a>
                                                                 <div class="download-action d-flex align-items-center">
@@ -949,7 +950,7 @@
                         </div>
                         <div class="modal-body">
 
-                            <form action="">
+                            <form>
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input class="form-control form-control-lg group_formcontrol" name="new-chat-title"
@@ -1002,7 +1003,7 @@
                         </div>
                         <div class="modal-body">
 
-                            <form action="https://dreamschat-laravel.dreamguystech.com/template2/public/new-friends">
+                            <form>
                                 <div class="form-group">
                                     <label>Group Name</label>
                                     <input class="form-control form-control-lg group_formcontrol" name="new-chat-title"
@@ -1078,7 +1079,7 @@
                                 <ul class="user-list mt-2">
                                     <li class="user-list-item">
                                         <div class="avatar avatar-online">
-                                            <img src="assets/img/avatar/avatar-1.jpg" class="rounded-circle"
+                                            <img src="{{ asset('assets/chat_assets/img/avatar/avatar-1.jpg') }}" class="rounded-circle"
                                                 alt="image">
                                         </div>
                                         <div class="users-list-body align-items-center">
@@ -1095,7 +1096,7 @@
                                     </li>
                                     <li class="user-list-item">
                                         <div class="avatar avatar-online">
-                                            <img src="assets/img/avatar/avatar-2.jpg" class="rounded-circle"
+                                            <img src="{{ asset('assets/chat_assets/img/avatar/avatar-2.jpg') }}" class="rounded-circle"
                                                 alt="image">
                                         </div>
                                         <div class="users-list-body align-items-center">
@@ -1115,7 +1116,7 @@
                                 <ul class="user-list mt-2">
                                     <li class="user-list-item">
                                         <div class="avatar avatar-online">
-                                            <img src="assets/img/avatar/avatar-3.jpg" class="rounded-circle"
+                                            <img src="{{ asset('assets/chat_assets/img/avatar/avatar-3.jpg') }}" class="rounded-circle"
                                                 alt="image">
                                         </div>
                                         <div class="users-list-body align-items-center">
@@ -1132,7 +1133,7 @@
                                     </li>
                                     <li class="user-list-item">
                                         <div class="avatar avatar-online">
-                                            <img src="assets/img/avatar/avatar-4.jpg" class="rounded-circle"
+                                            <img src="{{ asset('assets/chat_assets/img/avatar/avatar-4.jpg') }}" class="rounded-circle"
                                                 alt="image">
                                         </div>
                                         <div class="users-list-body align-items-center">
@@ -1181,7 +1182,7 @@
                                 <div class="call-wrapper">
                                     <div class="call-inner">
                                         <div class="call-user">
-                                            <img alt="User Image" src="assets/img/avatar/avatar-8.jpg"
+                                            <img alt="User Image" src="{{ asset('assets/chat_assets/img/avatar/avatar-8.jpg') }}"
                                                 class="call-avatar">
                                             <h4>Brietta Blogg <span>video calling</span>
                                             </h4>
@@ -1210,7 +1211,7 @@
                                 <div class="call-wrapper">
                                     <div class="call-inner">
                                         <div class="call-user">
-                                            <img alt="User Image" src="assets/img/avatar/avatar-8.jpg"
+                                            <img alt="User Image" src="{{ asset('assets/chat_assets/img/avatar/avatar-8 .jpg') }}"
                                                 class="call-avatar">
                                             <h4>Brietta Blogg <span>voice calling</span>
                                             </h4>

@@ -482,14 +482,19 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <div class="d-inline-block">
-                                <a href="javascript:void(0)">
-                                    <img src="{{ asset('assets/images/150x30.png') }}" alt="livepetal" id="livepay">
+                                <a href="javascript:void(0)" id="livepay">
+                                    <img src="{{ asset('assets/images/150x30.png') }}" alt="livepetal" />
+                                    <div class="spinner-border text-success ms-9 mt-1 d-none" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
                                 </a>
+                                <br> <br>
+                                <span class="ms-9" id="bal">&#8358 0</span>
                             </div>
+
                             <div class="d-inline-block">
                                 <a href="javascript:void(0)">
-                                    <img src="{{ asset('assets/images/flutterwave.256x48.png') }}" alt="flutterwave"
-                                        id="flutterpay">
+                                    <img src="{{ asset('assets/images/flutterwave.256x48.png') }}" alt="flutterwave" />
                                 </a>
                             </div>
                         </div>
@@ -551,9 +556,9 @@
     <script>
         $(function() {
             fetchCourseInfo();
-
             getSections(@js($id));
             getFaq(@js($id));
+            getBalance();
 
             // var myRating = raterJs({
             //     element: document.querySelector(".rating"),
@@ -580,6 +585,54 @@
             //     }
             // });
 
+            $("#livepay").click(function(e) {
+                e.preventDefault();
+                if (window.confirm("Confirm Payment")) {
+                    livepay = $(this);
+                    course_id = @js($id);
+                    $.ajax({
+                        url: api_url + `admin/wallet_purchase`,
+                        method: 'POST',
+                        data: {
+                            course_id: course_id,
+                        },
+                        beforeSend: () => {
+                            livepay.find($("img")).addClass("d-none");
+                            livepay.find($("div")).removeClass("d-none");
+                        },
+                    }).done(res => {
+                        console.log(res);
+                        livepay.find($("img")).removeClass("d-none");
+                        livepay.find($("div")).addClass("d-none");
+                        salat(res.message);
+                        $("#paymentModal").modal('hide');
+                        $("#pay").html("Go to Course");
+                        // $("#pay").attr("href","course_single")
+
+                    }).fail(res => {
+                        console.log(res);
+                        livepay.find($("img")).removeClass("d-none");
+                        livepay.find($("div")).addClass("d-none");
+                        concatError(res.responseJSON);
+                    })
+                }
+            })
+
+            function getBalance() {
+                if (@js(session('info'))) {
+                    info = @js(session('info'));
+                    live_id = info.data.live_id;
+                    $.ajax({
+                        url: api_url + `admin/balance/${live_id}`,
+                    }).done(res => {
+                        $("span#bal").html(`&#8358 ${res.balance}`);
+                    }).fail(res => {
+                        console.log(res);
+                        concatError(res.responseJSON);
+                    })
+                }
+            }
+
             $('#pay').click(function(e) {
                 e.preventDefault();
                 if (!@js(session('info'))) {
@@ -588,22 +641,26 @@
                     $("#paymentModal").modal('show');
                 }
             })
+
             $("#flutterpay").click(function(e) {
                 e.preventDefault();
-                info = @js(session('info'));
-                user_id = info.data.id;
-                email = info.data.email;
-                phone = info.data.phone;
-                name = `${info.data.firstname} ${info.data.lastname}`;
-                price = $("#c-price").text();
-                price = price.split(' ')[1]
-                console.log(price);
-                makePayment();
+                if (window.confirm('Confirm Payment')) {
+                    info = @js(session('info'));
+                    user_id = info.data.id;
+                    email = info.data.email;
+                    phone = info.data.phone;
+                    name = `${info.data.firstname} ${info.data.lastname}`;
+                    price = $("#c-price").text();
+                    price = price.split(' ')[1]
+                    console.log(price);
+                    makePayment();
+                }
+
             })
 
             function makePayment() {
                 price = $("#c-price").text();
-                prices = price.split(' ')[1]
+                prices = price.split(' ')[1];
                 FlutterwaveCheckout({
                     public_key: "FLWPUBK_TEST-8c6efffe5995bec0a8aa9e9d3699589e-X",
                     tx_ref: randomString(12),
@@ -632,8 +689,8 @@
                         name: name,
                     },
                     customizations: {
-                        title: "Become an Instructor",
-                        description: "Payment for becoming an instructor",
+                        title: "Course Purchase",
+                        description: "Payment for buying a course",
                     },
                 });
             }
@@ -652,7 +709,6 @@
                     setTimeout(() => {
                         window.location.href = "instructor/dashboard";
                     }, 2000);
-
                 }).fail(res => {
                     console.log(res);
                     concatError(res);
