@@ -193,8 +193,6 @@
                 salat('All fileds are required', 1);
                 return;
             }
-
-
             if (!email) {
                 salat('Pls enter a valid email address', 1);
                 return;

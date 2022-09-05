@@ -187,6 +187,7 @@
                         <input type="hidden" name="section_id" />
                         <input type="hidden" name="lecture_title" id="lecu_title" />
                         <input type="hidden" name="lecture_description" id="lecu_desc" />
+                        <input type="hidden" name="video_length" id="video_length" />
                     </form>
                     <form class="row text-start g-3" id="addVideoForm" enctype="multipart/form-data">
                         <div class="col-md-12">
@@ -208,28 +209,56 @@
     <script>
         $(document).ready(function() {
 
-            $('#vimeo_del').click(function(e) {
-                e.preventDefault();
+            window.URL = window.URL || window.webkitURL;
+
+            document.getElementById('file_upload').onchange = setFileInfo;
+
+            function setFileInfo() {
+                var file = this.files;
+                var video = document.createElement('video');
+                video.preload = 'metadata';
+
+                video.onloadedmetadata = function() {
+                    window.URL.revokeObjectURL(video.src);
+                    var duration = video.duration;
+                    // console.log(duration);
+                    if (duration > 654) {
+                        salat("This file is more than 10 minutes long", 1);
+                        $("#file_upload").fileinput('clear');
+                    } else {
+                        $("input#video_length").val(duration);
+                    }
+
+                }
+
+                video.src = URL.createObjectURL(file[0]);
+            }
+
+            function updateMainContent(url) {
+                lecture_id = $("#lecu_id").val();
+                duration = $("input#video_length").val();
                 $.ajax({
-                    url: "https://test.lentoria.com/instructor/delete_video",
+                    url: api_url + "admin/update_lecture_video",
                     method: "POST",
                     data: {
-                        uri: "/videos/743381459",
+                        uri: url,
+                        lecture_id: lecture_id,
+                        duration: duration,
                     }
                 }).done(res => {
                     console.log(res);
                 }).fail(res => {
                     console.log(res);
                 })
-            })
-
-
+            }
 
 
             $("#file_upload").fileinput({
-                uploadUrl: "https://test.lentoria.com/instructor/upload_video",
-                allowedFileExtensions: ['mp4', 'mkv', 'ogg'],
+                uploadUrl: "http://127.0.0.1:8070/api/video",
+                // allowedFileExtensions: ['mp4', 'mkv', 'ogg'],
+                allowedFileTypes: ['video'],
                 removeFromPreviewOnError: true,
+                dropZoneEnabled: false,
                 theme: "bs5",
                 browseOnZoneClick: true,
                 uploadAsync: true,
@@ -240,8 +269,8 @@
                 uploadExtraData: function(previewId, index) {
                     return {
                         title: $("#lecu_title").val(),
-                        description: $("#lecu_desc").val(),
                         lecture_id: $("#lecu_id").val(),
+                        duration: $("input#video_length").val(),
                     };
                 },
             }).on('fileuploaded', function(event, data) {
@@ -251,6 +280,7 @@
                     response = data.response,
                     reader = data.reader;
                 console.log(response);
+                updateMainContent(response.url);
                 $("#file_upload").fileinput('clear');
             });
 
@@ -274,7 +304,7 @@
                     $('#addseccard').removeClass('d-none');
                 })
 
-            })
+            });
             $('#addsec2').click(function(e) {
                 e.preventDefault();
                 card = $(document).find($('#addseccard'))
@@ -283,7 +313,7 @@
                     card.find($('form'))[0].reset();
                 }
                 $('#addseccard2').removeClass('d-none');
-            })
+            });
 
 
 
@@ -492,14 +522,14 @@
                 })
 
 
-            })
+            });
             $('.closecard').each((i, obj) => {
                 $(obj).find($('a')).on('click', function(e) {
                     e.preventDefault();
                     $(this).closest($('.addseccard')).addClass('d-none');
                     $(this).closest($('.addseccard')).find('form')[0].reset()
                 });
-            })
+            });
 
 
             $(document).on('click', '.section', function(e) {
@@ -571,7 +601,7 @@
                     form.find($('input[name="section_id"]')).val(section_id);
                 }
 
-            })
+            });
             $('#addLectureModal').find($('form')).submit(function(e) {
                 e.preventDefault();
                 title = $(this).find($('input[name="title"]')).val();

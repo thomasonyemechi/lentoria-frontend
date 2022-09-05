@@ -1,7 +1,7 @@
 
 api_url = 'http://127.0.0.1:8000/api/';
 image_url = 'http://127.0.0.1:8000/assets/uploads/';
-vimeo_player = "https://player.vimeo.com/video/";
+video_url = "http://127.0.0.1:8070/watchvideo/";
 
 
 function validateEmail(email) {

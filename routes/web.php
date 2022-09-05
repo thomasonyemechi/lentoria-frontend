@@ -20,12 +20,13 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('check_vimeo', [VimeoController::class, 'check_remote_video_exists']);
 Route::view('/virtual_class', 'virtual_class.classroom');
-
 
 Route::view('/course/{id}/{slug}', 'course_single');
 Route::view('/instructor/{id}/profile', 'instructor_profile')->name('instructor_profile');
 Route::view('activate_account', 'activation')->name('activation');
+Route::view('video', 'instructor.video');
 
 Route::group(['prefix' => 'instructor', 'as' => 'instructor.', 'middleware' => ['auth2']], function () {
     Route::get('/dashboard', function () {

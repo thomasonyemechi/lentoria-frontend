@@ -7,6 +7,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('page_title')</title>
     <link href="{{ asset('assets/fonts/feather/feather.css') }}" rel="stylesheet" />
+    <link href="https://vjs.zencdn.net/7.20.2/video-js.css" rel="stylesheet" />
+    <!-- Fantasy -->
+    <link href="https://unpkg.com/@videojs/themes@1/dist/fantasy/index.css" rel="stylesheet">
     <link href="{{ asset('assets/libs/bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/libs/dragula/dist/dragula.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/libs/%40mdi/font/css/materialdesignicons.min.css') }}" rel="stylesheet" />
@@ -39,10 +42,13 @@
     @includeUnless(request()->routeIs('instructor.course_review'), 'layouts.footer', ['status' => 'complete'])
 
     {{-- Javascripts Here .... --}}
-
+    <script>
+        window.HELP_IMPROVE_VIDEOJS = false;
+    </script>
     <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/libs/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js') }}"></script>
+    <script src="https://vjs.zencdn.net/7.20.2/video.min.js"></script>
     <script src="{{ asset('assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('assets/libs/flatpickr/dist/flatpickr.min.js') }}"></script>
     <script src="{{ asset('assets/libs/inputmask/dist/jquery.inputmask.min.js') }}"></script>

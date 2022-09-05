@@ -5,6 +5,7 @@
 @section('page_content')
     <div class="main-wrapper">
         <div class="content main_content">
+            @include('virtual_class.chat_side')
             <div class="sidebar-group left-sidebar chat_sidebar">
 
                 <div id="chats" class="left-sidebar-wrap sidebar active slimscroll">

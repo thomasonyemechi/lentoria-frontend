@@ -46,11 +46,17 @@
                                 </div>
                             </div>
                             <!-- Video -->
-                            <div class="embed-responsive  position-relative w-100 d-block overflow-hidden p-0"
-                                style="height: 600px;">
-                                <iframe class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100"
-                                    src="https://player.vimeo.com/video/743561062?portrait=0&byline=0&title=0"
-                                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            <div class="embed-responsive position-relative w-100 d-block overflow-hidden p-0 d-block"
+                                id="vid_container" style="height: 600px;">
+                                <video-js
+                                    class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100 vjs-theme-fantasy"
+                                    id="vid">
+                                </video-js>
+                            </div>
+                            <div class="d-flex justify-content-center my-22 d-none" id="vid_preloader">
+                                <div class="spinner-grow" role="status" style="width: 5rem; height: 5rem;">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -74,15 +80,43 @@
         </ul>
     </div>
 
-    <script src="https://player.vimeo.com/api/player.js"></script>
-
     <script>
-
         $(function() {
+            $("#vid").bind("contextmenu", function() {
+                return false;
+            })
+            const player = videojs('vid', {
+                "controls": true,
+                autoplay: false,
+                preload: "auto",
+                responsive: true,
+                liveui: true,
+                fill: true,
+                playbackRates: [1, 1.5, 2],
+                userActions: {
+                    hotkeys: function(event) {
+                        // `this` is the player in this context
 
-            str = getVimeoId("/videos/744185309");
-            url = vimeoUrl(str);
-            console.log(url);
+                        // `x` key = pause
+                        if (event.which === 32) {
+                            if (this.paused()) {
+                                this.play();
+                            } else {
+                                this.pause()
+                            }
+                        }
+                    }
+                }
+            });
+            player.ready(function() {
+                player.src({
+                    type: 'video/mp4',
+                    src: 'http://127.0.0.1:8000/assets/uploads/44744788448488848484.mp4'
+                });
+                this.on("ended", function() {
+                    console.log("Hello");
+                })
+            });
             const slug = @js($slug);
             getSections(slug);
 
@@ -98,7 +132,7 @@
                         if (sections.lectures.length > 0) {
                             sections.lectures.map(lecs => {
                                 lectures += `
-                            <a class="mb-2 d-flex justify-content-between align-items-center text-decoration-none" data-vid="${lecs.main_content}" style="cursor: pointer;">
+                            <a class="mb-2 d-flex justify-content-between align-items-center vidwatch text-decoration-none" data-vid="${lecs.main_content}" style="cursor: pointer;">
                             <div class="text-truncate">
                                 <span class="icon-shape bg-light text-primary icon-sm  rounded-circle me-2"><i
                                         class="fe fe-play  fs-6"></i></span>
@@ -154,25 +188,52 @@
                     }
 
                     $("#course_list").slimScroll({
-                // width: '500px',
-                height: 'auto',
-                size: '10px',
-                color: 'grey',
-                // alwaysVisible: true,
-                // distance: '20px',
-                railVisible: true,
-                railColor: '#222',
-                railOpacity: 0.3,
-                wheelStep: 10,
-                allowPageScroll: false,
-                disableFadeOut: true
-            });
+                        // width: '500px',
+                        height: 'auto',
+                        size: '10px',
+                        color: 'grey',
+                        // alwaysVisible: true,
+                        // distance: '20px',
+                        railVisible: true,
+                        railColor: '#222',
+                        railOpacity: 0.3,
+                        wheelStep: 10,
+                        allowPageScroll: false,
+                        disableFadeOut: true
+                    });
 
                 }).fail(res => {
                     console.log(res);
                     concatError(res.responseJSON);
                 })
             }
+            $(document).on('click', '.vidwatch', function(e) {
+                var video_link = $(this).data('vid');
+                e.preventDefault();
+                player.ready(function() {
+                    player.src(
+                        video_url + video_link
+                    );
+                    console.log(player.duration());
+                    this.on("ended", function() {
+                        // document.querySelector("#vid_container").classList.replace(
+                        //     "d-block", "d-none");
+                        // document.querySelector("#vid_preloader").classList.replace("d-none",
+                        //     "d-block");
+                        // setTimeout(() => {
+                        //     this.src({
+                        //         type: 'video/mp4',
+                        //         src: 'http://127.0.0.1:8000/assets/uploads/44744788448488848484.mp4'
+                        //     });
+                        //     document.querySelector("#vid_container").classList
+                        //         .replace("d-none", "d-block");
+                        //     document.querySelector("#vid_preloader").classList
+                        //         .replace("d-block", "d-none");
+                        // }, 3000);
+                            console.log("Temmuy");
+                    })
+                });
+            })
         })
     </script>
 @endsection

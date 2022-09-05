@@ -29,17 +29,31 @@ class VimeoController extends Controller
         if ($validate->fails()) {
             return response(['error' => 'Error Occured While Uploading'], 422);
         }
+        $lec_id = $request->lecture_id;
         $video = $request->file('video');
-        $uri = self::client()->upload($video, array(
+        $check = Http::asForm()->withHeaders([
+        'Authorization' => 'Bearer ' . access_token()
+        ])->post('https://api.lentoria.com/api/admin/get_video_link', [
+        'lecture_id' => $lec_id,
+        ]);
+        if ($check['data'] == null || $check['data'] == "")
+        {
+            $uri = self::client()->upload($video, array(
             "name" => $request->title,
             "description" => $request->description,
         ));
+        }
+        else
+        {
+            $uri = self::client()->replace($check['data'], $video);
+        }
+
         $status = self::client()->request($uri . '?fields=transcode.status');
 
         $response = self::client()->request($uri . '?fields=link');
 
         $link = $response['body']['link'];
-        $lec_id = $request->lecture_id;
+
 
 
 

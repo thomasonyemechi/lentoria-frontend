@@ -47,8 +47,6 @@
                                     </a>
                                 </div>
 
-
-
                                 <div class="mb-3">
                                     <label for="courseTitle" class="form-label"><b>What are the requirements or
                                             prerequisites for taking your course?</b></label>
@@ -78,16 +76,20 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="purposeTitle" class="form-label"><b>Purpose Of taking this course</b></label>
+                                    <label for="purposeTitle" class="form-label"><b>Purpose Of taking this
+                                            course</b></label>
                                     <p></p>
                                     <input class="form-control purpose mb-2" type="text"
-                                        placeholder="Purpose Of taking this course?"
-                                        maxlength="160" />
+                                        placeholder="Purpose Of taking this course?" maxlength="160" />
                                     <a href="javascript:;" class="mt-3 add_input" data-class="purpose">
                                         <b> <i class="fe fe-plus"></i> Add More To your Response</b>
                                     </a>
                                 </div>
 
+                                <div class="mb-3">
+                                    <label for="purposeTitle" class="form-label"><b>Job Opportunities</b></label>
+                                    <x-textarea id="opportunities" name="opportunities" />
+                                </div>
 
                                 <input type="hidden" name="course_id">
                                 <div class="d-flex justify-content-end mt-3">
@@ -114,6 +116,7 @@
                 id = $(form).find('input[name="course_id"]').val()
 
                 wywls = $(form).find('.what_you_will_learn');
+                jo = opportunities.getData();
                 new_wywl = [];
                 wywls.map(len => {
                     len = wywls[len];
@@ -121,7 +124,7 @@
                         new_wywl.push(len.value)
                     }
                 })
-                
+
 
                 requirements = $(form).find('.requirements');
                 new_req = []
@@ -162,16 +165,17 @@
                         what_you_will_learn: new_wywl,
                         course_requirement: new_req,
                         course_audience: new_len,
-                        purpose: new_pur
+                        purpose: new_pur,
+                        opportunities: jo,
                     },
-                    beforeSend:() => {
+                    beforeSend: () => {
                         btn(bt, '', 'before')
                     }
                 }).done(function(res) {
                     console.log(res);
                     btn(bt, 'Save Answers', 'after')
                     salat(res.message);
-                }).fail(function (res) {
+                }).fail(function(res) {
                     console.log(res);
                     concatError(res.responseJSON);
                     btn(bt, 'Save Answers', 'after')
