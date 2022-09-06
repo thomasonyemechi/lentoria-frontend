@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('page_title')</title>
+    <link rel="icon" href="{{ asset('assets/images/logo2.png') }}" />
     <link href="{{ asset('assets/fonts/feather/feather.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/libs/bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/libs/dragula/dist/dragula.min.css') }}" rel="stylesheet" />
