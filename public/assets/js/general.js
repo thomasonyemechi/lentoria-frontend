@@ -1,11 +1,14 @@
-api_url = 'http://127.0.0.1:8000/api/'
+
+api_url = 'http://127.0.0.1:8000/api/';
+image_url = 'http://127.0.0.1:8000/assets/uploads/';
+video_url = "http://video.beelsacademy.com/watchvideo/";
 
 
-const validateEmail = (email) => {
+function validateEmail(email) {
     return email.match(
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
-};
+}
 
 
 
@@ -49,7 +52,7 @@ function btn(selector, btn_text, moment) {
     if (typeof (selector) == 'object') { selector = selector; } else { selector = $(selector); }
     if (moment == 'before') {
         selector.attr('disabled', 'disabled');
-        selector.html(`<span class="spinner-border spinner-border-sm" aria-hidden="true"></span> <i>processing request ... </i>`);
+        selector.html(`<span class="spinner-border spinner-border-sm" aria-hidden="true"></span> <i>processing ... </i>`);
     } else if (moment == 'after') {
         selector.removeAttr('disabled');
         selector.html(btn_text);
@@ -145,13 +148,26 @@ function serialNo() {
 }
 
 function randomString(length) {
-    chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    chars = '0123456789';
     var result = '';
     for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
     return result;
 }
 
+let imageUrl = (image) => image_url + image;
 
+
+
+function convertStoMs(seconds) {
+    if (seconds != 0) {
+        let minutes = ~~(seconds / 60);
+        let extraSeconds = seconds % 60;
+        // output.innerHTML += seconds + " == " + minutes + " : " + extraSeconds + "<br/>";
+        return `${minutes}m${Math.trunc(extraSeconds)}s`
+    } else {
+        return "0m0s"
+    }
+}
 
 // bettermake sense else sombody go keill you oooo, seems like you anna dies right you dey mad wotooot wotoooo
 // let us kill the script and lets resyethe1 process you

@@ -66,12 +66,18 @@
                                 <!-- Nav -->
                                 <ul class="nav nav-lb-tab" id="tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="table-tab" data-bs-toggle="pill" href="#overview"
-                                            role="tab" aria-controls="table" aria-selected="true">Overview</a>
+                                        <a class="nav-link active" id="description-tab" data-bs-toggle="pill"
+                                            href="#overview" role="tab" aria-controls="overview"
+                                            aria-selected="true">Overview</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="table-tab" data-bs-toggle="pill" href="#curriculum"
-                                            role="tab" aria-controls="table" aria-selected="true">Curriculum</a>
+                                        <a class="nav-link" id="opportunities-tab" data-bs-toggle="pill"
+                                            href="#opportunities" role="tab" aria-controls="opportunities"
+                                            aria-selected="false">Opportunities</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="curriculum-tab" data-bs-toggle="pill" href="#curriculum"
+                                            role="tab" aria-controls="curriculum" aria-selected="false">Curriculum</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="review-tab" data-bs-toggle="pill" href="#review"
@@ -110,16 +116,16 @@
                                             <span class="visually-hidden">Loading...</span>
                                         </div>
                                     </div>
-                                    <h3 class="mb-3 he d-none">Who is This Course For:</h3>
+                                    <h3 class="mb-3 he d-none">Purpose of Taking this Course</h3>
                                     <div class="row mb-3">
-                                        <ul class="list-unstyled" id="learn_list">
+                                        <ul class="list-unstyled" id="purpose_list">
                                             <div class="row">
                                             </div>
                                         </ul>
                                     </div>
-                                    <h3 class="mb-3 he d-none">Opportunities</h3>
+                                    <h3 class="mb-3 he d-none">Who is This Course For:</h3>
                                     <div class="row mb-3">
-                                        <ul class="list-unstyled" id="purpose_list">
+                                        <ul class="list-unstyled" id="learn_list">
                                             <div class="row">
                                             </div>
                                         </ul>
@@ -129,7 +135,22 @@
                                         <h3 class="mb-2 he d-none">Course Description</h3>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="table-tab">
+                                <div class="tab-pane fade" id="opportunities" role="tabpanel"
+                                    aria-labelledby="opportunities-tab">
+                                    <div id="job_div">
+                                        <h3 class="mb-3">Job Opportunities</h3>
+                                        <div class="d-flex justify-content-center align-items-start opacity-50 my-10"
+                                            id="loader5">
+                                            <div class="spinner-border text-primary" style="width: 4rem; height: 4rem;"
+                                                role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane fade" id="curriculum" role="tabpanel"
+                                    aria-labelledby="curriculum-tab">
                                     <!-- Card -->
                                     <div class="accordion" id="courseAccordion">
                                         <div>
@@ -243,7 +264,7 @@
                                             </div>
                                             <div>
                                                 <!-- Form -->
-                                                <form class="form-inline">
+                                                {{-- <form class="form-inline">
                                                     <div class="d-flex align-items-center me-2">
                                                         <span class="position-absolute ps-3">
                                                             <i class="fe fe-search"></i>
@@ -251,12 +272,12 @@
                                                         <input type="search" class="form-control ps-6"
                                                             placeholder="Search Review" />
                                                     </div>
-                                                </form>
+                                                </form> --}}
                                             </div>
                                         </div>
                                         <!-- Rating -->
                                         <div class="d-flex border-bottom pb-4 mb-4">
-                                            <img src="{{ asset('assets/images/avatar/avatar-2.jpg') }}" alt=""
+                                            <img src="{{ asset('assets/images/avatar/avatar-1.jpg') }}" alt=""
                                                 class="rounded-circle avatar-lg" />
                                             <div class=" ms-3">
                                                 <h4 class="mb-1">
@@ -272,12 +293,6 @@
                                                 </div>
                                                 <p>Lectures were at a really good pace and I never felt lost. The instructor
                                                     was well informed and allowed me to learn and navigate Figma easily.</p>
-                                                <div class="d-lg-flex">
-                                                    <a href="javascript:void(0)" class="ms-0"><i
-                                                            class="mdi mdi-thumb-up" id="review"></i></a>
-                                                    <a href="javascript:void(0)" class="ms-1"><i
-                                                            class="mdi mdi-thumb-down"></i></a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -285,16 +300,14 @@
                                 <!-- Tab pane -->
                                 <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab">
                                     <!-- FAQ -->
-                                    <div>
+                                    <div id="faq_div">
                                         <h3 class="mb-3">Course - Frequently Asked Questions</h3>
-                                        <div class="mb-4">
-                                            <h4>How this course help me to design layout?</h4>
-                                            <p>
-                                                My name is Jason Woo and I work as human duct tape at Gatsby, that means
-                                                that I do a lot of different things. Everything from dev roll to writing
-                                                content to writing code. And I used to work as an architect at IBM. I live
-                                                in Portland, Oregon.
-                                            </p>
+                                        <div class="d-flex justify-content-center align-items-start opacity-50 my-10"
+                                            id="loader3">
+                                            <div class="spinner-border text-primary" style="width: 4rem; height: 4rem;"
+                                                role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -322,7 +335,8 @@
                                 {{-- <del class="fs-4 text-muted">$750</del> --}}
                             </div>
                             <div class="d-grid">
-                                <a href="#" class="btn btn-primary mb-2  ">Start Free Month</a>
+                                <a href="javascript:void(0)" class="btn btn-primary mb-2" id="pay">Start Free
+                                    Month</a>
                                 <a href="pricing.html" class="btn btn-outline-primary">Get Full Access</a>
                             </div>
                         </div>
@@ -340,7 +354,7 @@
                                 <li class="list-group-item bg-transparent"><i
                                         class="fe fe-award me-2 align-middle text-success"></i>Certificate</li>
                                 <li class="list-group-item bg-transparent"><i
-                                        class="fe fe-calendar align-middle me-2 text-info"></i>No of Articles
+                                        class="mdi mdi-presentation align-middle me-2 text-info"></i>Mentorship
                                 </li>
                                 <li class="list-group-item bg-transparent border-bottom-0"><i
                                         class="fe fe-clock align-middle me-2 text-warning"></i>Lifetime access</li>
@@ -466,6 +480,67 @@
         </div>
     </div>
 
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="newCatgoryLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body shadow">
+                    <form id="payForm">
+                        <div class="mb-4 m-0 d-flex justify-content-between">
+                            <div>
+                                <h2 class="mb-1 fw-bold">Make Payment With:</h2>
+                            </div>
+                            <button type="button" class="btn-close canc" aria-label="Close">
+                                <i class="fe fe-x-circle"></i>
+                            </button>
+
+                        </div>
+                        {{-- <div class="d-flex justify-content-between">
+                            <div class="d-inline-block">
+                                <a href="javascript:void(0)" id="livepay">
+                                    <img src="{{ asset('assets/images/150x30.png') }}" alt="livepetal" />
+                                    <div class="spinner-border text-success ms-9 mt-1 d-none" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </a>
+                                <br> <br>
+                                <span class="ms-9" id="bal">&#8358 0</span>
+                            </div>
+
+                            <div class="d-inline-block">
+                                <a href="javascript:void(0)">
+                                    <img src="{{ asset('assets/images/flutterwave.256x48.png') }}" alt="flutterwave" />
+                                </a>
+                            </div>
+                        </div> --}}
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-transparent">
+                                <div class="d-inline-flex"><input type="radio" name="paymode" id="wallpay2"
+                                        class="me-2" />
+                                </div><a href="javascript:void(0)" id="wallpay"><i
+                                        class="bi-wallet align-middle me-2 text-primary"></i>Wallet </a><span
+                                    style="float: right" id="bal">Balance: &#8358 0</span>
+                            </li>
+                            <input type="hidden" id="hidbal">
+                            <li class="list-group-item bg-transparent">
+                                <div class="d-inline-flex"><input type="radio" class="me-2" name="paymode"
+                                        id="cardpay2" />
+                                </div><a href="javascript:void(0)" id="cardpay"><i
+                                        class="bi-credit-card me-2 align-middle text-success"></i>Card</a>
+                            </li>
+                        </ul>
+                    </form>
+                    <div>
+                        <div class="d-flex float-end mt-3"><button class="btn btn-primary btn-sm d-none pay-btn">Pay
+                                Now</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal -->
     <div class="modal fade" id="ratingModal" tabindex="-1" role="dialog" aria-labelledby="ratingModallLabel"
         aria-hidden="true">
@@ -511,11 +586,13 @@
         </div>
     </div>
 
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
     <script>
         $(function() {
             fetchCourseInfo();
-
             getSections(@js($id));
+            getFaq(@js($id));
+            getBalance();
 
             // var myRating = raterJs({
             //     element: document.querySelector(".rating"),
@@ -541,6 +618,185 @@
             //         done();
             //     }
             // });
+
+            $("#wallpay,#wallpay2").click(function(e) {
+                var previous = $("#wallpay").prev();
+                previous.find($('input[type="radio"]')).prop('checked', true);
+                var button = $("button.pay-btn");
+                if (button.hasClass("d-none")) {
+                    button.attr("id", "livepay");
+                    button.removeClass("d-none");
+                    button.html("Wallet Payment");
+                } else if (!button.hasClass("d-none")) {
+                    button.attr("id", "livepay");
+                    button.html("Wallet Payment");
+                }
+
+            });
+
+            $("#cardpay,#cardpay2").click(function(e) {
+                var previous = $("#cardpay").prev();
+                previous.find($('input[type="radio"]')).prop('checked', true);
+                var button = $("button.pay-btn");
+                if (button.hasClass("d-none")) {
+                    button.attr("id", "flutterpay");
+                    button.removeClass("d-none");
+                    button.html("Card Payment");
+                } else if (!button.hasClass("d-none")) {
+                    button.attr("id", "flutterpay");
+                    button.html("Card Payment");
+                }
+            });
+
+            function resetButton() {
+                $('input[name="paymode"]').prop('checked', false);
+                $("button.pay-btn").addClass("d-none");
+                $("button.pay-btn").removeAttr("id");
+                $("button.pay-btn").html("Pay Now");
+
+            }
+
+            $(".canc").click(function(e) {
+                e.preventDefault();
+                resetButton();
+                var md = $("#paymentModal");
+                md.modal('hide');
+            });
+            $(document).on('click', '#livepay', function(e) {
+                e.preventDefault();
+                price = $("#c-price").text();
+                price = price.split(' ')[1];
+                bal = $("input#hidbal").val();
+                if (bal < price) {
+                    salat("Insufficient funds", 1);
+                    return;
+                }
+                if (window.confirm("Confirm Wallet Payment")) {
+                    livepay = $(this);
+                    course_id = @js($id);
+                    $.ajax({
+                        url: api_url + `admin/wallet_purchase`,
+                        method: 'POST',
+                        data: {
+                            course_id: course_id,
+                        },
+                        beforeSend: () => {
+                            btn(livepay, '', 'before');
+                        },
+                    }).done(res => {
+                        $("#paymentModal").modal('hide');
+                        resetButton();
+                        salat(res.message);
+                        $("#pay").html("Go to Course");
+                        // $("#pay").attr("href","course_single")
+                    }).fail(res => {
+                        console.log(res);
+                        btn(livepay, 'Wallet Payment', 'after');
+                        concatError(res.responseJSON);
+                    })
+                }
+            })
+
+            function getBalance() {
+                if (@js(session('info'))) {
+                    info = @js(session('info'));
+                    live_id = info.data.live_id;
+                    $.ajax({
+                        url: api_url + `admin/balance/${live_id}`,
+                    }).done(res => {
+                        $("input#hidbal").val(res.balance);
+                        $("span#bal").html(`Balance: &#8358 ${res.balance}`);
+                    }).fail(res => {
+                        console.log(res);
+                        concatError(res.responseJSON);
+                    })
+                }
+            }
+
+            $('#pay').click(function(e) {
+                e.preventDefault();
+                if (!@js(session('info'))) {
+                    $("#signup_modal").modal('show');
+                } else {
+                    $("#paymentModal").modal('show');
+                }
+            })
+
+            $(document).on('click', '#flutterpay', function(e) {
+                e.preventDefault();
+                if (window.confirm('Confirm Card Payment')) {
+                    info = @js(session('info'));
+                    user_id = info.data.id;
+                    email = info.data.email;
+                    phone = info.data.phone;
+                    name = `${info.data.firstname} ${info.data.lastname}`;
+                    price = $("#c-price").text();
+                    price = price.split(' ')[1]
+                    makePayment();
+                }
+
+            })
+
+            function makePayment() {
+                price = $("#c-price").text();
+                prices = price.split(' ')[1];
+                FlutterwaveCheckout({
+                    public_key: "FLWPUBK_TEST-8c6efffe5995bec0a8aa9e9d3699589e-X",
+                    tx_ref: randomString(12),
+                    amount: prices,
+                    currency: "NGN",
+                    payment_options: "card,ussd",
+                    callback: function(payment) {
+                        console.log(payment);
+                        if (payment.status == "successful") {
+                            tx_id = payment.tx_ref;
+                            amount = payment.amount;
+                            verifyTransactionOnBackend(tx_id, amount);
+                        }
+                    },
+                    onclose: function(incomplete) {
+                        if (incomplete || window.verified === false) {
+                            salat('Transaction cancelled', 1);
+                        }
+                    },
+                    meta: {
+                        user_id: user_id,
+                    },
+                    customer: {
+                        email: email,
+                        phone_number: phone,
+                        name: name,
+                    },
+                    customizations: {
+                        title: "Course Purchase",
+                        description: "Payment for buying a course",
+                    },
+                });
+            }
+
+            function verifyTransactionOnBackend(tx_id, amount) {
+                $.ajax({
+                    url: api_url + "admin/card_purchase",
+                    method: "POST",
+                    data: {
+                        amount: amount,
+                        transaction_id: tx_id,
+                    },
+                }).done(res => {
+                    salat(res.message);
+                    // setTimeout(() => {
+                    //     window.location.href = "instructor/dashboard";
+                    // }, 2000);
+                }).fail(res => {
+                    console.log(res);
+                    concatError(res);
+                })
+            }
+
+
+
+
+
             $("#ratingModal").find($("span.bk-btn")).click(function(e) {
                 e.preventDefault();
                 $("#ratingModal").find($("div.hidden_txt")).addClass("d-none");
@@ -559,7 +815,6 @@
                     type: "get",
                     url: api_url + `course_info/{{ $id }}`,
                 }).done(function(res) {
-                    console.log(res);
                     // $('#cid').val(res.data.id);
                     $('#c-title').html(res.data.course_info.title);
                     $('#cde').append(res.data.course_info.description);
@@ -569,8 +824,8 @@
                     $('#c-price').html(`&#8358 ${res.data.course_info.price}`);
                     $('#ins-name').html(
                         `${res.data.basic_info.firstname} ${res.data.basic_info.lastname}`);
-                    $('#ins-exps').html(`${res.data.instructor.headline}`);
-                    $('#ins-bio').html(`${res.data.instructor.biography}`);
+                    $('#ins-exps').html(`${res.data.instructor.headline ?? 'Instructor\'s Expertise'}`);
+                    $('#ins-bio').html(`${res.data.instructor.biography ?? 'Instructor\'s Biography'}`);
                     $('#ins-link').attr('href',
                         `/instructor/${res.data.course_info.user_id}/profile`);
 
@@ -622,11 +877,11 @@
                     if (purpose) {
                         purpose.map(data => {
                             $('#purpose_list').find($('div.row')).append(`
-                        <li class="d-flex mb-2 col-6">
-                            <i class="far fa-check-circle text-success me-2 mt-2"></i>
-                                <span>${data}</span>
-                        </li>
-                        `);
+                    <li class="d-flex mb-2 col-6">
+                        <i class="far fa-check-circle text-success me-2 mt-2"></i>
+                            <span>${data}</span>
+                    </li>
+                    `);
                         });
                     }
 
@@ -650,7 +905,6 @@
                         `)
                     }
                 }).done(res => {
-                    console.log(res);
                     course = $(document).find($(`div#course${sec_id}`))
                     $(document).find($("div.lec-loader")).remove();
                     if (res.data.length === 0) {
@@ -662,7 +916,7 @@
                     }
                     res.data.map(lec => {
                         course.find($("div.lec-content")).append(`
-                        <a href="course-resume.html" class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
+                        <a href="javascript:void(0)" class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
                             <div class="text-truncate lec-tit">
                                 <span class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i class="mdi mdi-play fs-4"></i></span>
                                 <span>${lec.title}</span>
@@ -678,18 +932,18 @@
                     console.log(res);
                     concatError(res.responseJSON);
                 })
+
             }
 
             function getSections(id) {
                 $.ajax({
                     url: api_url + `get_sections/${id}`,
                 }).done(res => {
-                    console.log(res);
                     $('#courseAccordion').find($('div#loader2')).remove();
                     res.data.map(sec => {
                         $('#courseAccordion').find($('ul#curri')).append(`
                         <li class="list-group-item px-0 pt-0">
-                            <a class=" h4 mb-0 d-flex align-items-center text-inherit text-decoration-none" data-bs-toggle="collapse" href="#course${sec.id}" aria-expanded="false" aria-controls="course${sec.id}">
+                            <a class=" h4 mb-0 d-flex align-items-center text-inherit text-decoration-none lecu" data-bs-toggle="collapse" href="#course${sec.id}" aria-expanded="false" aria-controls="course${sec.id}">
                                 <div class="me-auto">
                                     ${sec.title}
                                 </div>
@@ -697,7 +951,7 @@
                                         <i class="fe fe-chevron-down fs-4"></i>
                                     </span>
                             </a>
-                                <div class="collapse" id="course${sec.id}"
+                                <div class="collapse sh" id="course${sec.id}"
                                     data-bs-parent="#courseAccordion">
                                         <div class="pt-3 pb-2 lec-content">
                                         </div>
@@ -706,9 +960,37 @@
                         `)
                         getLectures(sec.id)
                     })
+                    first = document.querySelector(".lecu");
+                    sh = document.querySelector(".sh")
+                    $(first).addClass('active');
+                    $(first).attr("aria-expanded", "true");
+                    $(sh).addClass('show')
 
                 }).fail(res => {
                     concatError(res.responseJSON);
+                })
+            }
+
+            function getFaq(id) {
+                $.ajax({
+                    url: api_url + `fetch_faq/${id}`,
+                }).done(res => {
+                    $("#loader3").remove();
+                    res.data.map(faq => {
+                        $("#faq_div").append(`
+                        <div class="mb-4">
+                            <h4>${faq.question}</h4>
+                                <p>
+                                    ${faq.answer}
+                                </p>
+                        </div>
+                        `)
+                    })
+
+                }).fail(res => {
+                    console.log(res);
+                    concatError(res);
+                    $("#loader3").remove();
                 })
             }
 

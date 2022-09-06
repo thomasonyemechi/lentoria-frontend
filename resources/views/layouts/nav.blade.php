@@ -51,13 +51,20 @@
                                         class="rounded-circle" />
                                 </div>
                                 <div class="ms-3 lh-1">
-                                    <h5 class="mb-1">Annette Black</h5>
-                                    <p class="mb-0 text-muted">annette@geeksui.com</p>
+                                    <h5 class="mb-1">{{ userDetail(1) }}</h5>
+                                    <p class="mb-0 text-muted">{{ userDetail(2) }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="dropdown-divider"></div>
                         <ul class="list-unstyled">
+                            @if (session('info')['instructor'] == 1 && !request()->is('instructor/*'))
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('instructor.dashboard') }}">
+                                        Instructor
+                                    </a>
+                                </li>
+                            @endif
                             <li>
                                 <a class="dropdown-item" href="#">
                                     My Learning
@@ -93,7 +100,7 @@
                         <div class="dropdown-divider"></div>
                         <ul class="list-unstyled">
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('logout') }}">
                                     <i class="fe fe-power me-2"></i>Sign Out
                                 </a>
                             </li>
@@ -119,7 +126,8 @@
                         aria-haspopup="true" aria-expanded="false" data-bs-display="static">
                         Course Categories
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-arrow" style="width:200px" id="drop_categories" aria-labelledby="navbarBrowse">
+                    <ul class="dropdown-menu dropdown-menu-arrow" style="width:200px" id="drop_categories"
+                        aria-labelledby="navbarBrowse">
 
                     </ul>
                 </li>
@@ -135,8 +143,9 @@
 
                 @if (!session('info'))
                     <li class="dropdown d-inline-block stopevent">
-                        <button class="btn btn-outline-white btn-sm" style="border: 1px solid #036;border-radius: 1px;"
-                            data-bs-target="#login_modal" data-bs-toggle="modal" aria-expanded="false">
+                        <button class="btn btn-outline-white btn-sm"
+                            style="border: 1px solid #036;border-radius: 1px;" data-bs-target="#login_modal"
+                            data-bs-toggle="modal" aria-expanded="false">
                             <span><big>Login</big></span>
                         </button>
                     </li>
@@ -180,6 +189,13 @@
                             </div>
                             <div class="dropdown-divider"></div>
                             <ul class="list-unstyled">
+                                @if (session('info')['instructor'] == 1 && !request()->is('instructor/*'))
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('instructor.dashboard') }}">
+                                            Instructor
+                                        </a>
+                                    </li>
+                                @endif
                                 <li>
                                     <a class="dropdown-item" href="#">
                                         My Learning

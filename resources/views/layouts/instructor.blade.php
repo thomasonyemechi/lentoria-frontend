@@ -8,6 +8,9 @@
     <title>@yield('page_title')</title>
     <link rel="icon" href="{{ asset('assets/images/logo2.png') }}" />
     <link href="{{ asset('assets/fonts/feather/feather.css') }}" rel="stylesheet" />
+    <link href="https://vjs.zencdn.net/7.20.2/video-js.css" rel="stylesheet" />
+    <!-- Fantasy -->
+    <link href="https://unpkg.com/@videojs/themes@1/dist/fantasy/index.css" rel="stylesheet">
     <link href="{{ asset('assets/libs/bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/libs/dragula/dist/dragula.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/libs/%40mdi/font/css/materialdesignicons.min.css') }}" rel="stylesheet" />
@@ -21,6 +24,10 @@
     <link rel="stylesheet" href="{{ asset('assets/cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css') }}">
     <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css') }}">
+    <link href="{{ asset('assets/libs/bootstrap_file_input/css/fileinput.min.css') }}" media="all" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('assets/libs/bootstrap_file_input/explorer/theme.min.css') }}" media="all" rel="stylesheet"
+        type="text/css" />
     <script src="{{ asset('assets/js/general.js') }}"></script>
 
 </head>
@@ -29,23 +36,30 @@
 
     <div class="littleAlert"></div>
     @include('layouts.alert_top')
-    @include('layouts.nav')
+    @includeUnless(request()->routeIs('instructor.course_review'), 'layouts.nav', ['status' => 'complete'])
 
     @yield('page_content')
 
-    @include('layouts.footer')
+    @includeUnless(request()->routeIs('instructor.course_review'), 'layouts.footer', ['status' => 'complete'])
 
     {{-- Javascripts Here .... --}}
-
+    <script>
+        window.HELP_IMPROVE_VIDEOJS = false;
+    </script>
     <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/libs/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js') }}"></script>
+    <script src="https://vjs.zencdn.net/7.20.2/video.min.js"></script>
     <script src="{{ asset('assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('assets/libs/flatpickr/dist/flatpickr.min.js') }}"></script>
     <script src="{{ asset('assets/libs/inputmask/dist/jquery.inputmask.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js') }}"></script>
     <script src="{{ asset('assets/libs/dragula/dist/dragula.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap_file_input/js/plugins/buffer.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap_file_input/js/plugins/filetype.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap_file_input/js/fileinput.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap_file_input/bs5/theme.min.js') }}"></script>
     <script src="{{ asset('assets/libs/bs-stepper/dist/js/bs-stepper.min.js') }}"></script>
     <script src="{{ asset('assets/libs/jQuery.print/jQuery.print.js') }}"></script>
     <script src="{{ asset('assets/libs/prismjs/prism.js') }}"></script>

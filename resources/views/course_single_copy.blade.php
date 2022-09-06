@@ -66,12 +66,16 @@
                                 <!-- Nav -->
                                 <ul class="nav nav-lb-tab" id="tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="table-tab" data-bs-toggle="pill" href="#overview"
-                                            role="tab" aria-controls="table" aria-selected="true">Overview</a>
+                                        <a class="nav-link active" id="description-tab" data-bs-toggle="pill" href="#overview"
+                                            role="tab" aria-controls="overview" aria-selected="true">Overview</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="table-tab" data-bs-toggle="pill" href="#curriculum"
-                                            role="tab" aria-controls="table" aria-selected="true">Curriculum</a>
+                                        <a class="nav-link" id="opportunities-tab" data-bs-toggle="pill" href="#opportunities"
+                                            role="tab" aria-controls="opportunities" aria-selected="false">Opportunities</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="curriculum-tab" data-bs-toggle="pill" href="#curriculum"
+                                            role="tab" aria-controls="curriculum" aria-selected="false">Curriculum</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="review-tab" data-bs-toggle="pill" href="#review"
@@ -86,12 +90,9 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-
-                            <div class="rating"></div>
                             <div class="tab-content" id="tabContent">
                                 <div class="tab-pane fade show active overlay" id="overview" role="tabpanel"
                                     aria-labelledby="description-tab">
-
                                     <h3 class="mb-3 he d-none">What you’ll learn</h3>
                                     <div class="row mb-3">
                                         <ul class="list-unstyled" id="wywl_list">
@@ -108,7 +109,7 @@
                                     </div>
                                     <div class="d-flex justify-content-center align-items-center opacity-50"
                                         id="loader">
-                                        <div class="spinner-border text-black-100" style="width: 5rem; height: 5rem;"
+                                        <div class="spinner-border text-primary" style="width: 5rem; height: 5rem;"
                                             role="status">
                                             <span class="visually-hidden">Loading...</span>
                                         </div>
@@ -132,1153 +133,61 @@
                                         <h3 class="mb-2 he d-none">Course Description</h3>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="table-tab">
+                                <div class="tab-pane fade" id="opportunities" role="tabpanel"
+                                    aria-labelledby="opportunities-tab">
+                                    <h3 class="mb-3 he d-none">What you’ll learn</h3>
+                                    <div class="row mb-3">
+                                        <ul class="list-unstyled" id="wywl_list">
+                                            <div class="row">
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <h3 class="mb-3 he d-none">Requirements</h3>
+                                    <div class="row mb-3">
+                                        <ul class="list-unstyled" id="req_list">
+                                            <div class="row">
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center opacity-50"
+                                        id="loader">
+                                        <div class="spinner-border text-primary" style="width: 5rem; height: 5rem;"
+                                            role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
+                                    <h3 class="mb-3 he d-none">Who is This Course For:</h3>
+                                    <div class="row mb-3">
+                                        <ul class="list-unstyled" id="learn_list">
+                                            <div class="row">
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <h3 class="mb-3 he d-none">Opportunities</h3>
+                                    <div class="row mb-3">
+                                        <ul class="list-unstyled" id="purpose_list">
+                                            <div class="row">
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <!-- Description -->
+                                    <div class="mb-4" id="cde">
+                                        <h3 class="mb-2 he d-none">Course Description</h3>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
                                     <!-- Card -->
                                     <div class="accordion" id="courseAccordion">
                                         <div>
                                             <!-- List group -->
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item px-0 pt-0">
-                                                    <!-- Toggle -->
-                                                    <a class=" h4 mb-0 d-flex align-items-center text-inherit text-decoration-none active"
-                                                        data-bs-toggle="collapse" href="#courseTwo" aria-expanded="true"
-                                                        aria-controls="courseTwo">
-                                                        <div class="me-auto">
-                                                            Introduction to JavaScript
-                                                        </div>
-                                                        <!-- Chevron -->
-                                                        <span class="chevron-arrow ms-4">
-                                                            <i class="fe fe-chevron-down fs-4"></i>
-                                                        </span>
-                                                    </a>
-                                                    <!-- Row -->
-                                                    <!-- Collapse -->
-                                                    <div class="collapse show" id="courseTwo"
-                                                        data-bs-parent="#courseAccordion">
-                                                        <div class="pt-3 pb-2">
-                                                            <a href="course-resume.html"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
-                                                                            class="mdi mdi-play fs-4"></i></span>
-                                                                    <span>Introduction</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 7s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="course-resume.html"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
-                                                                            class="mdi mdi-play fs-4"></i></span>
-                                                                    <span>Installing Development Software</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 11s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="course-resume.html"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
-                                                                            class="mdi mdi-play fs-4"></i></span>
-                                                                    <span>Hello World Project from GitHub</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 33s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="course-resume.html"
-                                                                class="d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
-                                                                            class="mdi mdi-play fs-4"></i></span>
-                                                                    <span>Our Sample Website</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 15s</span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
+                                            <ul class="list-group list-group-flush" id="curri">
+                                                <div class="d-flex justify-content-center align-items-center opacity-50 my-10"
+                                                    id="loader2">
+                                                    <div class="spinner-border text-primary"
+                                                        style="width: 5rem; height: 5rem;" role="status">
+                                                        <span class="visually-hidden">Loading...</span>
                                                     </div>
-                                                </li>
-                                                <!-- List group item -->
-                                                <li class="list-group-item px-0">
-                                                    <!-- Toggle -->
-                                                    <a class="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none"
-                                                        data-bs-toggle="collapse" href="#courseThree"
-                                                        aria-expanded="false" aria-controls="courseThree">
-                                                        <div class="me-auto">
-                                                            <!-- Title -->
-                                                            JavaScript Beginning
-                                                        </div>
-                                                        <!-- Chevron -->
-                                                        <span class="chevron-arrow ms-4">
-                                                            <i class="fe fe-chevron-down fs-4"></i>
-                                                        </span>
-                                                    </a>
-                                                    <!-- Row -->
-                                                    <!-- Collapse -->
-                                                    <div class="collapse" id="courseThree"
-                                                        data-bs-parent="#courseAccordion">
-                                                        <div class="pt-3 pb-2">
-                                                            <a href="course-resume.html"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
-                                                                            class="mdi mdi-play fs-4"></i></span>
-                                                                    <span>Introduction</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 41s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="course-resume.html"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
-                                                                            class="mdi mdi-play fs-4"></i></span>
-                                                                    <span>Adding JavaScript Code to a Web Page</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 39s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="course-resume.html"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
-                                                                            class="mdi mdi-play fs-4"></i></span>
-                                                                    <span>
-                                                                        Working with JavaScript Files
-                                                                    </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>6m 18s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="course-resume.html"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
-                                                                            class="mdi mdi-play fs-4"></i></span>
-                                                                    <span>Formatting Code </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 18s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="course-resume.html"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
-                                                                            class="mdi mdi-play fs-4"></i></span>
-                                                                    <span>
-                                                                        Detecting and Fixing Errors
-                                                                    </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 14s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="course-resume.html"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
-                                                                            class="mdi mdi-play fs-4"></i></span>
-                                                                    <span>Case Sensitivity </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 48s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="course-resume.html"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
-                                                                            class="mdi mdi-play fs-4"></i></span>
-                                                                    <span>Commenting Code </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 24s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="course-resume.html"
-                                                                class="mb-0 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
-                                                                            class="mdi mdi-play fs-4"></i></span>
-                                                                    <span>Summary</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 14s</span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- List group item -->
-                                                <li class="list-group-item px-0">
-                                                    <!-- Toggle -->
-                                                    <a class="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none"
-                                                        data-bs-toggle="collapse" href="#courseFour"
-                                                        aria-expanded="false" aria-controls="courseFour">
-                                                        <div class="me-auto">
-                                                            <!-- Title -->
-                                                            Variables and Constants
-                                                        </div>
-                                                        <!-- Chevron -->
-                                                        <span class="chevron-arrow ms-4">
-                                                            <i class="fe fe-chevron-down fs-4"></i>
-                                                        </span>
-                                                    </a>
-                                                    <!-- Row -->
-                                                    <!-- Collapse -->
-                                                    <div class="collapse" id="courseFour"
-                                                        data-bs-parent="#courseAccordion">
-                                                        <div class="pt-3 pb-2">
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Introduction</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 19s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>What Is a Variable?</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 11s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Declaring Variables </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 30s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Using let to Declare Variables </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 28s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Naming Variables </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 14s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Common Errors Using Variables </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 30s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Changing Variable Values </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 4s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Constants </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 15s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>The var Keyword </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 20s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-0 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Summary</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 49s</span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- List group item -->
-                                                <li class="list-group-item px-0">
-                                                    <!-- Toggle -->
-                                                    <a class="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none"
-                                                        data-bs-toggle="collapse" href="#courseFive"
-                                                        aria-expanded="false" aria-controls="courseFive">
-                                                        <div class="me-auto">
-                                                            <!-- Title -->
-                                                            Types and Operators
-                                                        </div>
-                                                        <!-- Chevron -->
-                                                        <span class="chevron-arrow ms-4">
-                                                            <i class="fe fe-chevron-down fs-4"></i>
-                                                        </span>
-                                                    </a>
-                                                    <!-- Row -->
-                                                    <!-- Collapse -->
-                                                    <div class="collapse" id="courseFive"
-                                                        data-bs-parent="#courseAccordion">
-                                                        <div class="pt-3 pb-2">
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Introduction</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 55s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Numbers </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>6m 14s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Operator Precedence </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 58s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Number Precision</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 22s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Negative Numbers </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 35s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Strings </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>4m 7s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Manipulating Strings </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>5m 8s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Converting Strings and Numbers </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 55s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-0 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Boolean Variables </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 39s</span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- List group item -->
-                                                <li class="list-group-item px-0">
-                                                    <!-- Toggle -->
-                                                    <a class="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none"
-                                                        data-bs-toggle="collapse" href="#courseSix" aria-expanded="false"
-                                                        aria-controls="courseSix">
-                                                        <div class="me-auto">
-                                                            <!-- Title -->
-                                                            Program Flow
-                                                        </div>
-                                                        <!-- Chevron -->
-                                                        <span class="chevron-arrow ms-4">
-                                                            <i class="fe fe-chevron-down fs-4"></i>
-                                                        </span>
-                                                    </a>
-                                                    <!-- Row -->
-                                                    <!-- Collapse -->
-                                                    <div class="collapse" id="courseSix"
-                                                        data-bs-parent="#courseAccordion">
-                                                        <div class="pt-3 pb-2">
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Introduction</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 52s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Clip Watched </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>4m 27s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Conditionals Using if() </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>4m 25s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Truthy and Falsy</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 30s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>if ... else </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 30s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Comparing === and == </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 52s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>The Ternary Operator </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 47s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Block Scope Using let </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 21s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Looping with for() </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>5m 30s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Looping with do ... while() </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 58s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-0 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Summary </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 21s</span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- List group item -->
-                                                <li class="list-group-item px-0">
-                                                    <!-- Toggle -->
-                                                    <a class="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none"
-                                                        data-bs-toggle="collapse" href="#courseSeven"
-                                                        aria-expanded="false" aria-controls="courseSeven">
-                                                        <div class="me-auto">
-                                                            <!-- Title -->
-                                                            Functions
-                                                        </div>
-                                                        <!-- Chevron -->
-                                                        <span class="chevron-arrow ms-4">
-                                                            <i class="fe fe-chevron-down fs-4"></i>
-                                                        </span>
-                                                    </a>
-                                                    <!-- Row -->
-                                                    <!-- Collapse -->
-                                                    <div class="collapse" id="courseSeven"
-                                                        data-bs-parent="#courseAccordion">
-                                                        <div class="pt-3 pb-2">
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Introduction</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 52s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Function Basics </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 46s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Function Expressions </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 32s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Passing Information to Functions</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 19s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Function Return Values </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 13s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Function Scope </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>4m 20s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Using Functions to Modify Web Pages </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 42s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-0 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Summary </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 3s</span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- List group item -->
-                                                <li class="list-group-item px-0">
-                                                    <!-- Toggle -->
-                                                    <a class="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none"
-                                                        data-bs-toggle="collapse" href="#courseEight"
-                                                        aria-expanded="false" aria-controls="courseEight">
-                                                        <div class="me-auto">
-                                                            <!-- Title -->
-                                                            Objects and the DOM
-                                                        </div>
-                                                        <!-- Chevron -->
-                                                        <span class="chevron-arrow ms-4">
-                                                            <i class="fe fe-chevron-down fs-4"></i>
-                                                        </span>
-                                                    </a>
-                                                    <!-- Row -->
-                                                    <!-- Collapse -->
-                                                    <div class="collapse" id="courseEight"
-                                                        data-bs-parent="#courseAccordion">
-                                                        <div class="pt-3 pb-2">
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Introduction</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 48s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Object Properties </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>4m 28s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Object Methods </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 3s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Passing Objects to Functions</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 27s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Standard Built-in Objects </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>6m 55s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>The Document Object Model (DOM) </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 29s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Styling DOM Elements </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 42s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Detecting Button Clicks </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 3s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Showing and Hiding DOM Elements </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>4m 37s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Summary </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 47s</span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- List group item -->
-                                                <li class="list-group-item px-0">
-                                                    <!-- Toggle -->
-                                                    <a class="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none"
-                                                        data-bs-toggle="collapse" href="#courseNine"
-                                                        aria-expanded="false" aria-controls="courseNine">
-                                                        <div class="me-auto">
-                                                            <!-- Title -->
-                                                            Arrays
-                                                        </div>
-                                                        <!-- Chevron -->
-                                                        <span class="chevron-arrow ms-4">
-                                                            <i class="fe fe-chevron-down fs-4"></i>
-                                                        </span>
-                                                    </a>
-                                                    <!-- Row -->
-                                                    <!-- Collapse -->
-                                                    <div class="collapse" id="courseNine"
-                                                        data-bs-parent="#courseAccordion">
-                                                        <div class="pt-3 pb-2">
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Introduction</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 48s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Creating and Initializing Arrays </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>4m 7s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Accessing Array Items </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 4s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Manipulating Arrays </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>4m 3s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>slice() and splice() </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>5m 54s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Array Searching and Looping </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>7m 32s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Arrays in the DOM </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>4m 11s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Summary </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 28s</span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- List group item -->
-                                                <li class="list-group-item px-0">
-                                                    <!-- Toggle -->
-                                                    <a class="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none"
-                                                        data-bs-toggle="collapse" href="#courseTen" aria-expanded="false"
-                                                        aria-controls="courseTen">
-                                                        <div class="me-auto">
-                                                            <!-- Title -->
-                                                            Scope and Hoisting
-                                                        </div>
-                                                        <!-- Chevron -->
-                                                        <span class="chevron-arrow ms-4">
-                                                            <i class="fe fe-chevron-down fs-4"></i>
-                                                        </span>
-                                                    </a>
-                                                    <!-- Row -->
-                                                    <!-- Collapse -->
-                                                    <div class="collapse" id="courseTen"
-                                                        data-bs-parent="#courseAccordion">
-                                                        <div class="pt-3 pb-2">
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Introduction</span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 20s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Global Scope </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>4m 7s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Clip Watched </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 14s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Function Scope </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>3m 45s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Var and Hoisting </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 21s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Undeclared Variables and Strict Mode </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>2m 16s</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                <div class="text-truncate">
-                                                                    <span
-                                                                        class="icon-shape bg-light text-secondary icon-sm rounded-circle me-2"><i
-                                                                            class="fe fe-lock fs-4"></i></span>
-                                                                    <span>Summary </span>
-                                                                </div>
-                                                                <div class="text-truncate">
-                                                                    <span>1m 33s</span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- List group item -->
-                                                <li class="list-group-item px-0 pb-0">
-                                                    <!-- Toggle -->
-                                                    <a class="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none"
-                                                        data-bs-toggle="collapse" href="#courseEleven"
-                                                        aria-expanded="false" aria-controls="courseEleven">
-                                                        <div class="me-auto">
-                                                            <!-- Title -->
-                                                            Summary
-                                                        </div>
-                                                        <!-- Chevron -->
-                                                        <span class="chevron-arrow ms-4">
-                                                            <i class="fe fe-chevron-down fs-4"></i>
-                                                        </span>
-                                                    </a>
-                                                    <!-- Row -->
-                                                    <!-- Collapse -->
-                                                    <div class="collapse" id="courseEleven"
-                                                        data-bs-parent="#courseAccordion">
-                                                        <div class="pt-3 pb-2">
-                                                            <p>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Repudiandae esse velit eos sunt ab inventore est tenetur
-                                                                blanditiis? Voluptas eius molestiae ad itaque tempora nobis
-                                                                minima eveniet aperiam molestias, maiores natus expedita
-                                                                dolores ea non possimus
-                                                                magnam corrupt i quas rem unde quo enim porro culpa! Quaerat
-                                                                veritatis veniam corrupti iusto.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                </div>
                                             </ul>
                                         </div>
                                     </div>
@@ -1393,7 +302,7 @@
                                         </div>
                                         <!-- Rating -->
                                         <div class="d-flex border-bottom pb-4 mb-4">
-                                            <img src="../assets/images/avatar/avatar-2.jpg" alt=""
+                                            <img src="{{ asset('assets/images/avatar/avatar-2.jpg') }}" alt=""
                                                 class="rounded-circle avatar-lg" />
                                             <div class=" ms-3">
                                                 <h4 class="mb-1">
@@ -1410,148 +319,26 @@
                                                 <p>Lectures were at a really good pace and I never felt lost. The instructor
                                                     was well informed and allowed me to learn and navigate Figma easily.</p>
                                                 <div class="d-lg-flex">
-                                                    <p class="mb-0">Was this review helpful?</p>
-                                                    <a href="#" class="btn btn-xs btn-primary ms-lg-3">Yes</a>
-                                                    <a href="#" class="btn btn-xs btn-outline-white ms-1">No</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Rating -->
-                                        <div class="d-flex border-bottom pb-4 mb-4">
-                                            <img src="../assets/images/avatar/avatar-3.jpg" alt=""
-                                                class="rounded-circle avatar-lg" />
-                                            <div class=" ms-3">
-                                                <h4 class="mb-1">Arthur Williamson <span class="ms-1 fs-6 text-muted">3
-                                                        Days ago</span>
-                                                </h4>
-                                                <div class="fs-6 mb-2">
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                </div>
-                                                <p>Its pretty good.Just a reminder that there are also students with
-                                                    Windows, meaning Figma its a bit different of yours. Thank you!</p>
-                                                <div class="d-lg-flex">
-                                                    <p class="mb-0">Was this review helpful?</p>
-                                                    <a href="#" class="btn btn-xs btn-primary ms-lg-3">Yes</a>
-                                                    <a href="#" class="btn btn-xs btn-outline-white ms-1">No</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Rating -->
-                                        <div class="d-flex border-bottom pb-4 mb-4">
-                                            <img src="../assets/images/avatar/avatar-4.jpg" alt=""
-                                                class="rounded-circle avatar-lg" />
-                                            <div class=" ms-3">
-                                                <h4 class="mb-1">Claire Jones <span class="ms-1 fs-6 text-muted">4 Days
-                                                        ago</span></h4>
-                                                <div class="fs-6 mb-2">
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                </div>
-                                                <p>
-                                                    Great course for learning Figma, the only bad detail would be that some
-                                                    icons are not included in the assets. But 90% of the icons needed are
-                                                    included, and the voice of the instructor was very clear and easy to
-                                                    understood.
-                                                </p>
-                                                <div class="d-lg-flex">
-                                                    <p class="mb-0">Was this review helpful?</p>
-                                                    <a href="#" class="btn btn-xs btn-primary ms-lg-3">Yes</a>
-                                                    <a href="#" class="btn btn-xs btn-outline-white ms-1">No</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Rating -->
-                                        <div class="d-flex">
-                                            <img src="../assets/images/avatar/avatar-5.jpg" alt=""
-                                                class="rounded-circle avatar-lg" />
-                                            <div class=" ms-3">
-                                                <h4 class="mb-1">
-                                                    Bessie Pena
-                                                    <span class="ms-1 fs-6 text-muted">5 Days ago</span>
-                                                </h4>
-                                                <div class="fs-6 mb-2">
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                    <i class="mdi mdi-star me-n1 text-warning"></i>
-                                                </div>
-                                                <p>
-                                                    I have really enjoyed this class and learned a lot, found it very
-                                                    inspiring and helpful, thank you!
-                                                    <i class="em em-heart_eyes ms-2 fs-6"></i>
-                                                </p>
-                                                <div class="d-lg-flex">
-                                                    <p class="mb-0">Was this review helpful?</p>
-                                                    <a href="#" class="btn btn-xs btn-primary ms-lg-3">Yes</a>
-                                                    <a href="#" class="btn btn-xs btn-outline-white ms-1">No</a>
+                                                    <a href="javascript:void(0)" class="ms-0"><i
+                                                            class="mdi mdi-thumb-up" id="review"></i></a>
+                                                    <a href="javascript:void(0)" class="ms-1"><i
+                                                            class="mdi mdi-thumb-down"></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="transcript" role="tabpanel"
-                                    aria-labelledby="transcript-tab">
-                                    <!-- Description -->
-
-                                </div>
                                 <!-- Tab pane -->
                                 <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab">
                                     <!-- FAQ -->
-                                    <div>
+                                    <div id="faq_div">
                                         <h3 class="mb-3">Course - Frequently Asked Questions</h3>
-                                        <div class="mb-4">
-                                            <h4>How this course help me to design layout?</h4>
-                                            <p>
-                                                My name is Jason Woo and I work as human duct tape at Gatsby, that means
-                                                that I do a lot of different things. Everything from dev roll to writing
-                                                content to writing code. And I used to work as an architect at IBM. I live
-                                                in Portland, Oregon.
-                                            </p>
-                                        </div>
-                                        <div class="mb-4">
-                                            <h4>What is important of this course?</h4>
-                                            <p>
-                                                We'll dive into GraphQL, the fundamentals of GraphQL. We're only gonna use
-                                                the pieces of it that we need to build in Gatsby. We're not gonna be doing a
-                                                deep dive into what GraphQL is or the language specifics. We're also gonna
-                                                get into MDX. MDX is a way
-                                                to write React components in your markdown.
-                                            </p>
-                                        </div>
-                                        <div class="mb-4">
-                                            <h4>Why Take This Course?</h4>
-                                            <p>
-                                                We'll dive into GraphQL, the fundamentals of GraphQL. We're only gonna use
-                                                the pieces of it that we need to build in Gatsby. We're not gonna be doing a
-                                                deep dive into what GraphQL is or the language specifics. We're also gonna
-                                                get into MDX. MDX is a way
-                                                to write React components in your markdown.
-                                            </p>
-                                        </div>
-                                        <div class="mb-4">
-                                            <h4>Is able to create application after this course?</h4>
-                                            <p>
-                                                We'll dive into GraphQL, the fundamentals of GraphQL. We're only gonna use
-                                                the pieces of it that we need to build in Gatsby. We're not gonna be doing a
-                                                deep dive into what GraphQL is or the language specifics. We're also gonna
-                                                get into MDX. MDX is a way
-                                                to write React components in your markdown.
-                                            </p>
-                                            <p>
-                                                We'll dive into GraphQL, the fundamentals of GraphQL. We're only gonna use
-                                                the pieces of it that we need to build in Gatsby. We're not gonna be doing a
-                                                deep dive into what GraphQL is or the language specifics. We're also gonna
-                                                get into MDX. MDX is a way
-                                                to write React components in your markdown.
-                                            </p>
+                                        <div class="d-flex justify-content-center align-items-start opacity-50 my-10"
+                                            id="loader3">
+                                            <div class="spinner-border text-primary" style="width: 4rem; height: 4rem;"
+                                                role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1579,7 +366,8 @@
                                 {{-- <del class="fs-4 text-muted">$750</del> --}}
                             </div>
                             <div class="d-grid">
-                                <a href="#" class="btn btn-primary mb-2  ">Start Free Month</a>
+                                <a href="javascript:void(0)" class="btn btn-primary mb-2" id="pay">Start Free
+                                    Month</a>
                                 <a href="pricing.html" class="btn btn-outline-primary">Get Full Access</a>
                             </div>
                         </div>
@@ -1666,7 +454,7 @@
                         <!-- Card -->
                         <div class="card mb-4 card-hover">
                             <a href="course-single.html" class="card-img-top"><img
-                                    src="../assets/images/course/course-react.jpg" alt=""
+                                    src="{{ asset('assets/images/course/course-react.jpg') }}" alt=""
                                     class="card-img-top rounded-top-md" /></a>
                             <!-- Card body -->
                             <div class="card-body">
@@ -1723,9 +511,51 @@
         </div>
     </div>
 
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="newCatgoryLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body shadow">
+                    <form id="payForm">
+                        <div class="mb-4 m-0 d-flex justify-content-between">
+                            <div>
+                                <h2 class="mb-1 fw-bold">Make Payment With:</h2>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="fe fe-x-circle"></i>
+                            </button>
+
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="d-inline-block">
+                                <a href="javascript:void(0)" id="livepay">
+                                    <img src="{{ asset('assets/images/150x30.png') }}" alt="livepetal" />
+                                    <div class="spinner-border text-success ms-9 mt-1 d-none" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </a>
+                                <br> <br>
+                                <span class="ms-9" id="bal">&#8358 0</span>
+                            </div>
+
+                            <div class="d-inline-block">
+                                <a href="javascript:void(0)">
+                                    <img src="{{ asset('assets/images/flutterwave.256x48.png') }}" alt="flutterwave" />
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="d-flex float-end mt-3">
+                        <button class="btn btn-primary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal -->
-    <div class="modal fade" id="ratingModal" tabindex="-1" role="dialog"
-        aria-labelledby="ratingModallLabel" aria-hidden="true">
+    <div class="modal fade" id="ratingModal" tabindex="-1" role="dialog" aria-labelledby="ratingModallLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="d-flex justify-content-end me-3 mt-4 old-close">
@@ -1768,41 +598,180 @@
         </div>
     </div>
 
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
     <script>
         $(function() {
             fetchCourseInfo();
+            getSections(@js($id));
+            getFaq(@js($id));
+            getBalance();
 
-            var myRating = raterJs({
-                element: document.querySelector(".rating"),
-                starSize: 16,
-                step: 0.5,
-                readOnly: true,
+            // var myRating = raterJs({
+            //     element: document.querySelector(".rating"),
+            //     starSize: 16,
+            //     step: 0.5,
+            //     readOnly: true,
 
-                rateCallback:function(rating,done){
-                    done();
+            //     rateCallback:function(rating,done){
+            //         done();
+            //     }
+            // });
+
+            // var myRating = raterJs({
+            //     element: document.querySelector(".ratings"),
+            //     starSize: 40,
+            //     step: 0.5,
+
+            //     rateCallback: function rateCallback(rating, done) {
+            //         $("#ratingModal").find($("div.hidden_txt")).removeClass("d-none");
+            //         $("#ratingModal").find($("div.new-close")).removeClass("d-none");
+            //         $("#ratingModal").find($("div.old-close")).addClass("d-none");
+            //         this.setRating(rating);
+            //         done();
+            //     }
+            // });
+
+            $("#livepay").click(function(e) {
+                e.preventDefault();
+                if (window.confirm("Confirm Payment")) {
+                    livepay = $(this);
+                    course_id = @js($id);
+                    $.ajax({
+                        url: api_url + `admin/wallet_purchase`,
+                        method: 'POST',
+                        data: {
+                            course_id: course_id,
+                        },
+                        beforeSend: () => {
+                            livepay.find($("img")).addClass("d-none");
+                            livepay.find($("div")).removeClass("d-none");
+                        },
+                    }).done(res => {
+                        console.log(res);
+                        livepay.find($("img")).removeClass("d-none");
+                        livepay.find($("div")).addClass("d-none");
+                        salat(res.message);
+                        $("#paymentModal").modal('hide');
+                        $("#pay").html("Go to Course");
+                        // $("#pay").attr("href","course_single")
+
+                    }).fail(res => {
+                        console.log(res);
+                        livepay.find($("img")).removeClass("d-none");
+                        livepay.find($("div")).addClass("d-none");
+                        concatError(res.responseJSON);
+                    })
                 }
-            });
+            })
 
-            var myRating = raterJs({
-                element: document.querySelector(".ratings"),
-                starSize: 40,
-                step: 0.5,
-
-                rateCallback: function rateCallback(rating, done) {
-                    $("#ratingModal").find($("div.hidden_txt")).removeClass("d-none");
-                    $("#ratingModal").find($("div.new-close")).removeClass("d-none");
-                    $("#ratingModal").find($("div.old-close")).addClass("d-none");
-                    this.setRating(rating);
-                    done();
+            function getBalance() {
+                if (@js(session('info'))) {
+                    info = @js(session('info'));
+                    live_id = info.data.live_id;
+                    $.ajax({
+                        url: api_url + `admin/balance/${live_id}`,
+                    }).done(res => {
+                        $("span#bal").html(`&#8358 ${res.balance}`);
+                    }).fail(res => {
+                        console.log(res);
+                        concatError(res.responseJSON);
+                    })
                 }
-            });
-            $("#ratingModal").find($("span.bk-btn")).click(function(e){
+            }
+
+            $('#pay').click(function(e) {
+                e.preventDefault();
+                if (!@js(session('info'))) {
+                    $("#signup_modal").modal('show');
+                } else {
+                    $("#paymentModal").modal('show');
+                }
+            })
+
+            $("#flutterpay").click(function(e) {
+                e.preventDefault();
+                if (window.confirm('Confirm Payment')) {
+                    info = @js(session('info'));
+                    user_id = info.data.id;
+                    email = info.data.email;
+                    phone = info.data.phone;
+                    name = `${info.data.firstname} ${info.data.lastname}`;
+                    price = $("#c-price").text();
+                    price = price.split(' ')[1]
+                    makePayment();
+                }
+
+            })
+
+            function makePayment() {
+                price = $("#c-price").text();
+                prices = price.split(' ')[1];
+                FlutterwaveCheckout({
+                    public_key: "FLWPUBK_TEST-8c6efffe5995bec0a8aa9e9d3699589e-X",
+                    tx_ref: randomString(12),
+                    amount: prices,
+                    currency: "NGN",
+                    payment_options: "card,ussd",
+                    callback: function(payment) {
+                        console.log(payment);
+                        if (payment.status == "successful") {
+                            tx_id = payment.tx_ref;
+                            amount = payment.amount;
+                            verifyTransactionOnBackend(tx_id, amount);
+                        }
+                    },
+                    onclose: function(incomplete) {
+                        if (incomplete || window.verified === false) {
+                            salat('Transaction cancelled', 1);
+                        }
+                    },
+                    meta: {
+                        user_id: user_id,
+                    },
+                    customer: {
+                        email: email,
+                        phone_number: phone,
+                        name: name,
+                    },
+                    customizations: {
+                        title: "Course Purchase",
+                        description: "Payment for buying a course",
+                    },
+                });
+            }
+
+            function verifyTransactionOnBackend(tx_id, amount) {
+                $.ajax({
+                    url: api_url + "admin/payto_become_instructor",
+                    method: "POST",
+                    data: {
+                        amount: amount,
+                        transaction_id: tx_id,
+                    },
+                }).done(res => {
+                    console.log(res);
+                    salat(res.message);
+                    setTimeout(() => {
+                        window.location.href = "instructor/dashboard";
+                    }, 2000);
+                }).fail(res => {
+                    console.log(res);
+                    concatError(res);
+                })
+            }
+
+
+
+
+
+            $("#ratingModal").find($("span.bk-btn")).click(function(e) {
                 e.preventDefault();
                 $("#ratingModal").find($("div.hidden_txt")).addClass("d-none");
                 $("#ratingModal").find($("div.new-close")).addClass("d-none");
                 $("#ratingModal").find($("div.old-close")).removeClass("d-none");
 
             })
+
 
             $('.rating').click(() => {
                 $('#ratingModal').modal('show');
@@ -1813,7 +782,6 @@
                     type: "get",
                     url: api_url + `course_info/{{ $id }}`,
                 }).done(function(res) {
-                    console.log(res);
                     // $('#cid').val(res.data.id);
                     $('#c-title').html(res.data.course_info.title);
                     $('#cde').append(res.data.course_info.description);
@@ -1823,10 +791,11 @@
                     $('#c-price').html(`&#8358 ${res.data.course_info.price}`);
                     $('#ins-name').html(
                         `${res.data.basic_info.firstname} ${res.data.basic_info.lastname}`);
-                    $('#ins-exps').html(`${res.data.instructor.headline}`);
-                    $('#ins-bio').html(`${res.data.instructor.biography}`);
+                    $('#ins-exps').html(`${res.data.instructor.headline ?? 'Instructor\'s Expertise'}`);
+                    $('#ins-bio').html(`${res.data.instructor.biography ?? 'Instructor\'s Biography'}`);
                     $('#ins-link').attr('href',
                         `/instructor/${res.data.course_info.user_id}/profile`);
+
                     other_info = res.data.other_info
                     course_audience = parse(other_info.course_audience);
                     course_requirement = parse(other_info.course_requirement);
@@ -1834,46 +803,163 @@
                     wywl = parse(other_info.what_you_will_learn);
 
                     $('#overview').find($("h3.he")).removeClass('d-none');
-                    $('#overview').find($("#loader")).addClass('d-none');
-                    wywl.map(data => {
-                        $('#wywl_list').find($("div.row")).append(`
-                        <li class="d-flex mb-2 col-6">
-                            <i class="far fa-check-circle text-success me-2 mt-2"></i>
-                                <span>${data}</span>
-                        </li>
-                        `);
-                    });
+                    $('#overview').find($("#loader")).remove();
 
-                    course_requirement.map(data => {
-                        $('#req_list').find($('div.row')).append(`
+                    if (wywl) {
+                        wywl.map(data => {
+                            $('#wywl_list').find($("div.row")).append(`
                         <li class="d-flex mb-2 col-6">
                             <i class="far fa-check-circle text-success me-2 mt-2"></i>
                                 <span>${data}</span>
                         </li>
                         `);
-                    });
+                        });
+                    }
 
-                    course_audience.map(data => {
-                        $('#learn_list').find($('div.row')).append(`
-                        <li class="d-flex mb-2 col-6">
-                            <i class="far fa-check-circle text-success me-2 mt-2"></i>
-                                <span>${data}</span>
-                        </li>
-                        `);
-                    });
 
-                    purpose.map(data => {
-                        $('#purpose_list').find($('div.row')).append(`
+                    if (course_requirement) {
+                        course_requirement.map(data => {
+                            $('#req_list').find($('div.row')).append(`
                         <li class="d-flex mb-2 col-6">
                             <i class="far fa-check-circle text-success me-2 mt-2"></i>
                                 <span>${data}</span>
                         </li>
                         `);
-                    });
+                        });
+                    }
+
+
+                    if (course_audience) {
+                        course_audience.map(data => {
+                            $('#learn_list').find($('div.row')).append(`
+                        <li class="d-flex mb-2 col-6">
+                            <i class="far fa-check-circle text-success me-2 mt-2"></i>
+                                <span>${data}</span>
+                        </li>
+                        `);
+                        });
+                    }
+
+
+                    if (purpose) {
+                        purpose.map(data => {
+                            $('#purpose_list').find($('div.row')).append(`
+                        <li class="d-flex mb-2 col-6">
+                            <i class="far fa-check-circle text-success me-2 mt-2"></i>
+                                <span>${data}</span>
+                        </li>
+                        `);
+                        });
+                    }
 
                 }).fail(function(res) {
                     location.href = '/';
                 });
+            }
+
+
+            function getLectures(sec_id) {
+                course = $(document).find($(`div#course${sec_id}`))
+                $.ajax({
+                    url: api_url + `fetch_lectures/${sec_id}`,
+                    beforeSend: () => {
+                        course.find($("div.lec-content")).html(`
+                        <div class="d-flex justify-content-center align-items-center opacity-50 lec-loader">
+                            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        `)
+                    }
+                }).done(res => {
+                    course = $(document).find($(`div#course${sec_id}`))
+                    $(document).find($("div.lec-loader")).remove();
+                    if (res.data.length === 0) {
+                        course.find($("div.lec-content")).append(`
+                            <div class="text-truncate">
+                                    <span>No Lectures Available Yet</span>
+                                </div>
+                            `)
+                    }
+                    res.data.map(lec => {
+                        course.find($("div.lec-content")).append(`
+                        <a href="javascript:void(0)" class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
+                            <div class="text-truncate lec-tit">
+                                <span class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i class="mdi mdi-play fs-4"></i></span>
+                                <span>${lec.title}</span>
+                            </div>
+                            {{-- <div class="text-truncate">
+                                    <span>1m 7s</span>
+                                </div> --}}
+                        </a>
+                        `)
+                    })
+
+                }).fail(res => {
+                    console.log(res);
+                    concatError(res.responseJSON);
+                })
+
+            }
+
+            function getSections(id) {
+                $.ajax({
+                    url: api_url + `get_sections/${id}`,
+                }).done(res => {
+                    $('#courseAccordion').find($('div#loader2')).remove();
+                    res.data.map(sec => {
+                        $('#courseAccordion').find($('ul#curri')).append(`
+                        <li class="list-group-item px-0 pt-0">
+                            <a class=" h4 mb-0 d-flex align-items-center text-inherit text-decoration-none lecu" data-bs-toggle="collapse" href="#course${sec.id}" aria-expanded="false" aria-controls="course${sec.id}">
+                                <div class="me-auto">
+                                    ${sec.title}
+                                </div>
+                                    <span class="chevron-arrow ms-4">
+                                        <i class="fe fe-chevron-down fs-4"></i>
+                                    </span>
+                            </a>
+                                <div class="collapse sh" id="course${sec.id}"
+                                    data-bs-parent="#courseAccordion">
+                                        <div class="pt-3 pb-2 lec-content">
+                                        </div>
+                                </div>
+                        </li>
+                        `)
+                        getLectures(sec.id)
+                    })
+                    first = document.querySelector(".lecu");
+                    sh = document.querySelector(".sh")
+                    $(first).addClass('active');
+                    $(first).attr("aria-expanded", "true");
+                    $(sh).addClass('show')
+
+                }).fail(res => {
+                    concatError(res.responseJSON);
+                })
+            }
+
+            function getFaq(id) {
+                $.ajax({
+                    url: api_url + `fetch_faq/${id}`,
+                }).done(res => {
+                    console.log(res);
+                    $("#loader3").remove();
+                    res.data.map(faq => {
+                        $("#faq_div").append(`
+                        <div class="mb-4">
+                            <h4>${faq.question}</h4>
+                                <p>
+                                    ${faq.answer}
+                                </p>
+                        </div>
+                        `)
+                    })
+
+                }).fail(res => {
+                    console.log(res);
+                    concatError(res);
+                    $("#loader3").remove();
+                })
             }
 
 

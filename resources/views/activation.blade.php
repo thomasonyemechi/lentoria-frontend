@@ -154,13 +154,17 @@
             function makePayment() {
                 FlutterwaveCheckout({
                     public_key: "FLWPUBK_TEST-8c6efffe5995bec0a8aa9e9d3699589e-X",
-                    tx_ref: randomString(32),
+                    tx_ref: randomString(12),
                     amount: 2500,
                     currency: "NGN",
                     payment_options: "card,ussd",
                     callback: function(payment) {
                         console.log(payment);
-                        window.location.href = 'activate_account';
+                        if (payment.status == "successful") {
+                            tx_id = payment.tx_ref;
+                            amount = payment.amount;
+                            verifyTransactionOnBackend(tx_id, amount);
+                        }
                     },
                     onclose: function(incomplete) {
                         if (incomplete || window.verified === false) {
@@ -183,10 +187,25 @@
             }
 
 
-            function verifyTransactionOnBackend(transactionId) {
-                setTimeout(function() {
-                    window.verified === true;
-                }, 200);
+            function verifyTransactionOnBackend(tx_id, amount) {
+                $.ajax({
+                    url: api_url + "admin/payto_become_instructor",
+                    method: "POST",
+                    data: {
+                        amount: amount,
+                        transaction_id: tx_id,
+                    },
+                }).done(res => {
+                    console.log(res);
+                    salat(res.message);
+                    setTimeout(() => {
+                        window.location.href = "instructor/dashboard";
+                    }, 2000);
+
+                }).fail(res => {
+                    console.log(res);
+                    concatError(res);
+                })
             }
         })
     </script>

@@ -46,7 +46,7 @@
                     <div class="d-lg-flex justify-content-end align-items-center mb-4">
 
                         <div>
-                            <a href="forgot-password.php">Forgot your password?</a>
+                            <a href="javascript:void(0)">Forgot your password?</a>
                         </div>
                     </div>
                     <div>
@@ -170,7 +170,7 @@
                     }
                 }).done(function(res) {
                     salat(message)
-                    location.href = '/instructor/dashboard';
+                    location.href = '/';
                 });
             }).fail(function(res) {
                 concatError(res.responseJSON);
@@ -193,8 +193,6 @@
                 salat('All fileds are required', 1);
                 return;
             }
-
-
             if (!email) {
                 salat('Pls enter a valid email address', 1);
                 return;
