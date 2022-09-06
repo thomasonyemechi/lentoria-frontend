@@ -58,6 +58,13 @@
                         </div>
                         <div class="dropdown-divider"></div>
                         <ul class="list-unstyled">
+                            @if (session('info')['instructor'] == 1 && !request()->is('instructor/*'))
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('instructor.dashboard') }}">
+                                        Instructor
+                                    </a>
+                                </li>
+                            @endif
                             <li>
                                 <a class="dropdown-item" href="#">
                                     My Learning
@@ -136,8 +143,9 @@
 
                 @if (!session('info'))
                     <li class="dropdown d-inline-block stopevent">
-                        <button class="btn btn-outline-white btn-sm" style="border: 1px solid #036;border-radius: 1px;"
-                            data-bs-target="#login_modal" data-bs-toggle="modal" aria-expanded="false">
+                        <button class="btn btn-outline-white btn-sm"
+                            style="border: 1px solid #036;border-radius: 1px;" data-bs-target="#login_modal"
+                            data-bs-toggle="modal" aria-expanded="false">
                             <span><big>Login</big></span>
                         </button>
                     </li>
@@ -181,6 +189,13 @@
                             </div>
                             <div class="dropdown-divider"></div>
                             <ul class="list-unstyled">
+                                @if (session('info')['instructor'] == 1 && !request()->is('instructor/*'))
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('instructor.dashboard') }}">
+                                            Instructor
+                                        </a>
+                                    </li>
+                                @endif
                                 <li>
                                     <a class="dropdown-item" href="#">
                                         My Learning

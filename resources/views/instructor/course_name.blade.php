@@ -54,10 +54,11 @@
             }).done(function(res) {
                 $('input[name="course_info_29"]').val(JSON.stringify(res.data))
                 $('.course-title').html(res.data.title)
-
+                sessionStorage.setItem("courseimage", res.data.image);
                 dat = res.data
                 try {
                     $('#courseTitle').val(dat.title);
+                    sessionStorage.setItem("courseimage", dat.image);
                     length = (dat.title).length;
                     $('#count').html(60 - length);
                     $('#courseTitle').html(res.data.title);

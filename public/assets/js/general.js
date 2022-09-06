@@ -1,7 +1,7 @@
 
 api_url = 'http://127.0.0.1:8000/api/';
 image_url = 'http://127.0.0.1:8000/assets/uploads/';
-video_url = "http://127.0.0.1:8070/watchvideo/";
+video_url = "http://video.beelsacademy.com/watchvideo/";
 
 
 function validateEmail(email) {
@@ -52,7 +52,7 @@ function btn(selector, btn_text, moment) {
     if (typeof (selector) == 'object') { selector = selector; } else { selector = $(selector); }
     if (moment == 'before') {
         selector.attr('disabled', 'disabled');
-        selector.html(`<span class="spinner-border spinner-border-sm" aria-hidden="true"></span> <i>processing request ... </i>`);
+        selector.html(`<span class="spinner-border spinner-border-sm" aria-hidden="true"></span> <i>processing ... </i>`);
     } else if (moment == 'after') {
         selector.removeAttr('disabled');
         selector.html(btn_text);
@@ -156,17 +156,18 @@ function randomString(length) {
 
 let imageUrl = (image) => image_url + image;
 
-function getVimeoId(str) {
-    if (str.includes("/videos/")) {
-        after = str.split('/videos/')[1];
-        return after;
+
+
+function convertStoMs(seconds) {
+    if (seconds != 0) {
+        let minutes = ~~(seconds / 60);
+        let extraSeconds = seconds % 60;
+        // output.innerHTML += seconds + " == " + minutes + " : " + extraSeconds + "<br/>";
+        return `${minutes}m${Math.trunc(extraSeconds)}s`
     } else {
-        return null;
+        return "0m0s"
     }
-
 }
-
-let vimeoUrl = (id) => `https://player.vimeo.com/video/${id}?portrait=0&byline=0&title=0`;
 
 // bettermake sense else sombody go keill you oooo, seems like you anna dies right you dey mad wotooot wotoooo
 // let us kill the script and lets resyethe1 process you

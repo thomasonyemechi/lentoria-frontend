@@ -170,7 +170,7 @@
                     }
                 }).done(function(res) {
                     salat(message)
-                    location.href = '/instructor/dashboard';
+                    location.href = '/';
                 });
             }).fail(function(res) {
                 concatError(res.responseJSON);

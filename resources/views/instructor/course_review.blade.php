@@ -11,7 +11,10 @@
                         <div class="tab-pane fade show active">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div>
-                                    <h3 class=" mb-0  text-truncate-line-2" id="lt">Lecture Title</h3>
+                                    <h3 class="mb-0 text-truncate-line-2 d-inline-flex" id="st">Section Title </h3><i
+                                        class="fe fe-chevron-right mt-1 d-inline-flex"></i><span class="d-inline-flex"
+                                        id="lt">Lecture
+                                        Title</span>
                                 </div>
                                 <div>
                                     <!-- Dropdown -->
@@ -85,6 +88,7 @@
             $("#vid").bind("contextmenu", function() {
                 return false;
             })
+            console.log(sessionStorage.getItem("courseimage"))
             const player = videojs('vid', {
                 "controls": true,
                 autoplay: false,
@@ -92,12 +96,13 @@
                 responsive: true,
                 liveui: true,
                 fill: true,
-                playbackRates: [1, 1.5, 2],
+                fluid: true,
+                metadata: true,
+                notSupportedMessage: "An Error Occured While Fetching Video or No Video Available For This Course",
+                // playbackRates: [1, 1.5, 2],
                 userActions: {
                     hotkeys: function(event) {
-                        // `this` is the player in this context
-
-                        // `x` key = pause
+                        // `space` key = pause
                         if (event.which === 32) {
                             if (this.paused()) {
                                 this.play();
@@ -108,15 +113,17 @@
                     }
                 }
             });
-            player.ready(function() {
-                player.src({
-                    type: 'video/mp4',
-                    src: 'http://127.0.0.1:8000/assets/uploads/44744788448488848484.mp4'
-                });
-                this.on("ended", function() {
-                    console.log("Hello");
-                })
+            player.on('error', function(e) {
+                console.log(e);
+                e.stopImmediatePropagation();
+                var error = player.error();
+                // player.createModal('Error Occured!');
+                error.message = "An Error Occured";
             });
+            player.on('pause', function(e) {
+                whereYouAt = player.currentTime();
+                console.log(whereYouAt);
+            })
             const slug = @js($slug);
             getSections(slug);
 
@@ -136,19 +143,19 @@
                             <div class="text-truncate">
                                 <span class="icon-shape bg-light text-primary icon-sm  rounded-circle me-2"><i
                                         class="fe fe-play  fs-6"></i></span>
-                                <span>${lecs.title}</span>
+                                <span class="lectit active">${lecs.title}</span>
                             </div>
                             <div class="text-truncate">
-                                <span>1m 7s</span>
+                                <span>${convertStoMs(lecs.duration)}</span>
                             </div>
                         </a>
                             `
                             })
                         } else {
                             lectures += `
-                        <a class="mb-2 d-flex justify-content-between align-items-center text-decoration-none" style="cursor: pointer;">
+                        <a class="mb-2 d-flex justify-content-between align-items-center text-decoration-none text-black" style="cursor: pointer;">
                             <div class="text-truncate">
-                                <span class="icon-shape bg-light text-primary icon-sm  rounded-circle me-2"><i
+                                <span class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
                                         class="fe fe-x-circle  fs-6"></i></span>
                                 <span>No Lectures Available For This Section</span>
                             </div>
@@ -161,7 +168,7 @@
                 <!-- Toggle -->
                 <a class="d-flex align-items-center text-inherit text-decoration-none h4 mb-0 cr_con" data-bs-toggle="collapse"
                     href="#course${sections.id}" role="button" aria-expanded="false" aria-controls="#course${sections.id}">
-                    <div class="me-auto">
+                    <div class="me-auto sectit">
                             ${sections.title}
                     </div>
                     <!-- Chevron -->
@@ -186,10 +193,9 @@
                         next = first.nextElementSibling;
                         next.classList.add('show');
                     }
-
                     $("#course_list").slimScroll({
                         // width: '500px',
-                        height: 'auto',
+                        height: '500px',
                         size: '10px',
                         color: 'grey',
                         // alwaysVisible: true,
@@ -201,39 +207,28 @@
                         allowPageScroll: false,
                         disableFadeOut: true
                     });
-
                 }).fail(res => {
                     console.log(res);
                     concatError(res.responseJSON);
                 })
-            }
+            };
+
+
             $(document).on('click', '.vidwatch', function(e) {
                 var video_link = $(this).data('vid');
+                grandparent = $(this).parent().parent().prev();
+                $("#st").html(grandparent.find($("div.sectit")).text());
+                lecture_title = $(this).find($("span.lectit")).html();
+                $("#lt").html(lecture_title);
                 e.preventDefault();
                 player.ready(function() {
                     player.src(
                         video_url + video_link
                     );
-                    console.log(player.duration());
-                    this.on("ended", function() {
-                        // document.querySelector("#vid_container").classList.replace(
-                        //     "d-block", "d-none");
-                        // document.querySelector("#vid_preloader").classList.replace("d-none",
-                        //     "d-block");
-                        // setTimeout(() => {
-                        //     this.src({
-                        //         type: 'video/mp4',
-                        //         src: 'http://127.0.0.1:8000/assets/uploads/44744788448488848484.mp4'
-                        //     });
-                        //     document.querySelector("#vid_container").classList
-                        //         .replace("d-none", "d-block");
-                        //     document.querySelector("#vid_preloader").classList
-                        //         .replace("d-block", "d-none");
-                        // }, 3000);
-                            console.log("Temmuy");
-                    })
                 });
             })
+
+
         })
     </script>
 @endsection

@@ -20,18 +20,17 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('check_vimeo', [VimeoController::class, 'check_remote_video_exists']);
 Route::view('/virtual_class', 'virtual_class.classroom');
 
 Route::view('/course/{id}/{slug}', 'course_single');
 Route::view('/instructor/{id}/profile', 'instructor_profile')->name('instructor_profile');
 Route::view('activate_account', 'activation')->name('activation');
-Route::view('video', 'instructor.video');
+Route::view('become_instructor', 'become_instructor')->name('become_instructor');
 
-Route::group(['prefix' => 'instructor', 'as' => 'instructor.', 'middleware' => ['auth2']], function () {
+Route::group(['prefix' => 'instructor', 'as' => 'instructor.', 'middleware' => ['auth2', 'instructor']], function () {
     Route::get('/dashboard', function () {
         return view('instructor.index');
-    });
+    })->name('dashboard');
     Route::view('/courses', 'instructor.courses')->name('courses');
     Route::view('/add_course', 'instructor.add_course')->name('add_course');
     Route::view('/course/{slug}', 'instructor.course')->name('course');
@@ -49,7 +48,7 @@ Route::group(['prefix' => 'instructor', 'as' => 'instructor.', 'middleware' => [
     Route::post('get_vimeo_status', [VimeoController::class, 'getTranscodingStatus']);
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth2']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth2', 'admin']], function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });

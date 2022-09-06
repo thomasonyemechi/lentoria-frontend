@@ -209,6 +209,8 @@
     <script>
         $(document).ready(function() {
 
+            console.log(sessionStorage.getItem("courseimage"))
+
             window.URL = window.URL || window.webkitURL;
 
             document.getElementById('file_upload').onchange = setFileInfo;
@@ -252,15 +254,14 @@
                 })
             }
 
-
             $("#file_upload").fileinput({
-                uploadUrl: "http://127.0.0.1:8070/api/video",
-                // allowedFileExtensions: ['mp4', 'mkv', 'ogg'],
-                allowedFileTypes: ['video'],
+                uploadUrl: "http://video.beelsacademy.com/api/video",
+                allowedFileExtensions: ['mp4', 'ogg'],
+                // allowedFileTypes: ['video'],
                 removeFromPreviewOnError: true,
                 dropZoneEnabled: false,
                 theme: "bs5",
-                browseOnZoneClick: true,
+                // browseOnZoneClick: true,
                 uploadAsync: true,
                 fileActionSettings: {
                     showZoom: false,
@@ -279,8 +280,8 @@
                     extra = data.extra,
                     response = data.response,
                     reader = data.reader;
-                console.log(response);
                 updateMainContent(response.url);
+                $("#addVideoModal").modal("hide");
                 $("#file_upload").fileinput('clear');
             });
 

@@ -515,14 +515,16 @@
                         </div> --}}
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item bg-transparent">
-                                <div class="d-inline-flex"><input type="radio" name="paymode" id="wallpay2" class="me-2" />
+                                <div class="d-inline-flex"><input type="radio" name="paymode" id="wallpay2"
+                                        class="me-2" />
                                 </div><a href="javascript:void(0)" id="wallpay"><i
                                         class="bi-wallet align-middle me-2 text-primary"></i>Wallet </a><span
                                     style="float: right" id="bal">Balance: &#8358 0</span>
                             </li>
                             <input type="hidden" id="hidbal">
                             <li class="list-group-item bg-transparent">
-                                <div class="d-inline-flex"><input type="radio" class="me-2" name="paymode" id="cardpay2" />
+                                <div class="d-inline-flex"><input type="radio" class="me-2" name="paymode"
+                                        id="cardpay2" />
                                 </div><a href="javascript:void(0)" id="cardpay"><i
                                         class="bi-credit-card me-2 align-middle text-success"></i>Card</a>
                             </li>
@@ -774,7 +776,7 @@
 
             function verifyTransactionOnBackend(tx_id, amount) {
                 $.ajax({
-                    url: api_url + "admin/payto_become_instructor",
+                    url: api_url + "admin/card_purchase",
                     method: "POST",
                     data: {
                         amount: amount,
@@ -782,9 +784,9 @@
                     },
                 }).done(res => {
                     salat(res.message);
-                    setTimeout(() => {
-                        window.location.href = "instructor/dashboard";
-                    }, 2000);
+                    // setTimeout(() => {
+                    //     window.location.href = "instructor/dashboard";
+                    // }, 2000);
                 }).fail(res => {
                     console.log(res);
                     concatError(res);
