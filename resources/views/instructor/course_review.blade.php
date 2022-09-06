@@ -96,7 +96,7 @@
                 responsive: true,
                 liveui: true,
                 fill: true,
-                fluid: true,
+                // fluid: true,
                 metadata: true,
                 notSupportedMessage: "An Error Occured While Fetching Video or No Video Available For This Course",
                 // playbackRates: [1, 1.5, 2],
