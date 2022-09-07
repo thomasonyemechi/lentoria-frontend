@@ -264,8 +264,6 @@
             $.ajax({
                 url: api_url + 'category'
             }).done(res => {
-                console.log(res);
-                console.log(res.data);
                 res.data.map(cats => {
                     sub_topic = ''
 
@@ -280,7 +278,7 @@
                 <li class="dropdown-submenu dropend">
                     <a class="dropdown-item dropdown-list-group-item dropdown-toggle fw-light" href="#">${cats.name}</a>
                     <ul class="dropdown-menu" style="width: 310px;">
-                       ${sub_topic}
+                        ${sub_topic}
                     </ul>
                 </li>
                     `)

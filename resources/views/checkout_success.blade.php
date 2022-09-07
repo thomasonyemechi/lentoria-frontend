@@ -1,0 +1,97 @@
+@extends('layouts.instructor')
+@section('page_title', 'Course | Checkout Success')
+@section('page_content')
+    <div class="py-lg-6 py-4 bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                    <div>
+                        <h2 class="text-white display-4 mb-0">Checkout</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content -->
+    <div class="py-6">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-12 col-12">
+                    <!-- Card -->
+                    <div class="card  mb-3 mb-lg-0">
+                        <div class="card-body text-center">
+                            <h1 class="mb-0" style="font-size:80px"> <i class="fa fa-check-circle text-success"></i></h1>
+
+                            <h1> PAYMENT SUCCESSFUL!</h1>
+                            <button class="btn btn-primary">Dashboard</button>
+                        </div>
+                    </div>
+                    <div class="card  mb-4 bg-white mt-10">
+                        <div class="card-header">
+                            <h3 class="mb-0">Order details</h3>
+                        </div>
+                        <div class="card-body">
+                            <h4>title</h4>
+                            <span id="ctitle"></span>
+                            <hr>
+
+                            <h4>Description</h4>
+                            <span id="cdesc"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-12 col-12">
+                    <div class="card mb-3 mb-4">
+                        <div class="card-header">
+                            <h3 class="mb-0">Payment Summary</h3>
+                        </div>
+
+                        <div class="p-4">
+                            <div class="mb-1">
+                                <span class="text-dark h4" id="prodprice">Price:</span>
+                            </div>
+                            <div class="mb-3">
+                                <span class="text-dark h4" id="prodtype">Product Type: product design</span>
+                            </div>
+                            <b>Other Information</b>
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-1">
+                                    <span class="text-success me-1"><i class="fas fa-user"></i></span>
+                                    <span>3-6 months mentorship</span>
+                                </li>
+                                <li class="mb-1">
+                                    <span class="text-success me-1"><i class="fa fa-scroll"></i></span>
+                                    <span><span class="fw-bold text-dark">offline </span>materials </span>
+                                </li>
+                                <li class="mb-1">
+                                    <span class="text-success me-1"><i class="fa fa-trophy"></i></span>
+                                    <span><span class="fw-bold text-dark">certificate </span>upon completion</span>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if (sessionStorage.getItem("courseinfo") == "" || sessionStorage.getItem("courseinfo") == null) {
+            window.location.href = "/";
+        }
+        $(function() {
+            course_info = JSON.parse(sessionStorage.getItem("courseinfo"));
+            console.log(course_info);
+            $("#prodprice").html(`Price: &#8358; ${course_info.course_price}`);
+            $("#ctitle").html(`${course_info.course_title}`);
+            $("#cdesc").html(`${course_info.course_description}`);
+
+            $("button").click(function(e){
+                sessionStorage.removeItem("courseinfo");
+                window.location.href="/"
+            })
+        })
+    </script>
+@endsection
