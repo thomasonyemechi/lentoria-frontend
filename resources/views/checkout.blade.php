@@ -424,7 +424,7 @@
                         concatError(res.responseJSON);
                     })
                 } else {
-                    $("#bal").html(`Login to see balance`);
+                    $("#bal").html(`Login for balance`);
                 }
             };
 
@@ -625,6 +625,10 @@
 
             $(document).on('click', '#flutterpay', function(e) {
                 e.preventDefault();
+                if (!@js(session('info'))) {
+                    $("#signup_modal").modal("show");
+                    return;
+                }
                 trans_type = $(this).attr("trans-type");
                 info = @js(session('info'));
                 course_id = $("#cid").val();
@@ -632,10 +636,7 @@
                 email = info.data.email;
                 phone = info.data.phone;
                 name = `${info.data.firstname} ${info.data.lastname}`;
-                if (!@js(session('info'))) {
-                    $("#signup_modal").modal("show");
-                    return;
-                }
+
                 if (window.confirm('Confirm Card Payment')) {
                     if (trans_type.trim() == "course_purchase") {
                         price = $("#c-price").val();

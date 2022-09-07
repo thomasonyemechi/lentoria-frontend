@@ -375,41 +375,9 @@
                     cardbody.html('');
                     i = 1;
                     res.data.map(sec => {
-                        cardbody.append(`
-                    <div class="bg-light-secondary rounded p-2 mb-4 section">
-                            <div class="d-inline-block me-3"><p class="text-capitalize fw-bold text-dark fs-4">Section ${i++}:</p></div>
-                            <div class="d-inline-block me-3">
-                            <input type="hidden" name="section_id" value="${sec.id}" />
-                            <input type="hidden" name="gain" value="${sec.course_gain}" />
-                            <span class="d-inline-block me-3"><h4 class="text-capitalize sec_title">${sec.title}</h4></span>
-                            <span class="d-inline-block"><a href="javascript:void(0)" class="me-1 text-inherit" data-bs-toggle="tooltip" data-placement="top"
-                                title="Edit"><i class="sec_edit fe fe-edit fs-6"></i></a>
-                                <a href="javascript:void(0)" class="me-1 text-inherit sec_del" data-bs-toggle="tooltip" data-placement="top"
-                                title="Delete"><i class="fe fe-trash-2 fs-6"></i></a></span></div>
-                                <div class="list-group list-group-flush border-top-0" id="lecList${sec.id}">
-                                    <div id="lecture${sec.id}">
-
-                                    </div>
-                                </div>
-                            <div><button class="btn btn-outline-primary btn-sm mt-3 addlec" data-bs-toggle="modal"
-                                data-bs-target="#addLectureModal">Add Lecture +</button></div>
-
-                        </div>
-                `)
-                        fetchLectures(sec.id);
-                    })
-                }).fail(res => {
-                    concatError(res.responseJSON);
-                })
-            }
-
-            function fetchLectures(sid) {
-                $.ajax({
-                    url: api_url + `admin/fetch_lectures/${sid}`,
-                }).done(res => {
-                    res.data.map(lec => {
-                        if (lec) {
-                            $(document).find($(`#lecture${lec.section_id}`)).append(`
+                        lectures = ''
+                        sec.lectures.forEach(lec=>{
+                            lectures += `
                         <div class="list-group-item rounded px-3 mb-1" id="${stripLower(lec.title+lec.id)}">
                             <div class="d-flex align-items-center justify-content-between lec_details">
                                 <h5 class="mb-0">
@@ -439,19 +407,34 @@
                                 </div>
                             </div>
                         </div>
-                        `)
-                        }
+                        `
+                        })
+                        cardbody.append(`
+                    <div class="bg-light-secondary rounded p-2 mb-4 section">
+                            <div class="d-inline-block me-3"><p class="text-capitalize fw-bold text-dark fs-4">Section ${i++}:</p></div>
+                            <div class="d-inline-block me-3">
+                            <input type="hidden" name="section_id" value="${sec.id}" />
+                            <input type="hidden" name="gain" value="${sec.course_gain}" />
+                            <span class="d-inline-block me-3"><h4 class="text-capitalize sec_title">${sec.title}</h4></span>
+                            <span class="d-inline-block"><a href="javascript:void(0)" class="me-1 text-inherit" data-bs-toggle="tooltip" data-placement="top"
+                                title="Edit"><i class="sec_edit fe fe-edit fs-6"></i></a>
+                                <a href="javascript:void(0)" class="me-1 text-inherit sec_del" data-bs-toggle="tooltip" data-placement="top"
+                                title="Delete"><i class="fe fe-trash-2 fs-6"></i></a></span></div>
+                                <div class="list-group list-group-flush border-top-0" id="lecList${sec.id}">
+                                    <div id="lecture${sec.id}">
+                                        ${lectures}
+                                    </div>
+                                </div>
+                            <div><button class="btn btn-outline-primary btn-sm mt-3 addlec" data-bs-toggle="modal"
+                                data-bs-target="#addLectureModal">Add Lecture +</button></div>
+
+                        </div>
+                `)
                     })
-
                 }).fail(res => {
-                    console.log(res);
-
                     concatError(res.responseJSON);
                 })
             }
-
-
-
             $(document).on('click', '.alt_section', function(e) {
                 e.preventDefault();
                 card = $(document).find($('#addseccard2'))

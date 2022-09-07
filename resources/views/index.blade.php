@@ -258,8 +258,6 @@
         </div>
     </div>
 
-    {{-- Live Classes Slider --}}
-
     <div class="pt-lg-3 pt-lg-3 pt-8 pb-6" style="margin-top: -10px">
         <!-- Online courses-->
         <div class="container">
@@ -286,7 +284,6 @@
                 </div>
             </div>
         </div>
-        {{-- </div> --}}
     </div>
 
     <!-- Features -->
@@ -420,7 +417,6 @@
                     type: "get",
                     url: api_url + "fetchcourse_by_type",
                 }).done(res => {
-                    console.log(res);
                     fillCateory($('.firstSlider_body'), res.data[0]);
                     $(".firstSlider_body").parent().prev().find($(".ctype")).html(res.data[0].type);
                     fillCateory($('.secondSlider_body'), res.data[1]);
@@ -453,16 +449,14 @@
                         course_string += `
                         <div class="item">
                     <!-- Card -->
-                    <div class="card card-hover mb-3" data-bs-toggle="popover"
-                        data-bs-trigger="hover" data-bs-html="true"
-                        data-bs-content="<h2>This is a popover</h2>">
+                    <div class="card card-hover mb-3">
                         <a href="course/${cor.id}/${cor.slug}" class="card-img-top"><img
                                 src="${imageUrl(cor.image)}" onerror="this.src='../../assets/images/course/course-react.jpg';" alt=""
                                 class="rounded-top-md card-img-top course_image"></a>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <h4 class="mb-2 text-truncate-line-2 "><a href="course/${cor.id}/${cor.slug}"
-                                    class="text-inherit">${cor.title}</a></h4>
+                            <h5 class="mb-2 text-truncate-line-2 "><a href="course/${cor.id}/${cor.slug}"
+                                    class="text-inherit">${cor.title}</a></h5>
                             <!-- List -->
                             <ul class="mb-3 list-inline">
                                 <li class="list-inline-item">
@@ -533,18 +527,18 @@
                         if ($(`.no_${type}${cor.category_id}_Slider`).length) {
                             tns({
                                 container: `.no_${type}${cor.category_id}_Slider`,
-                                loop: false,
+                                loop: true,
                                 startIndex: 0,
-                                items: 1,
+                                items: 2,
                                 nav: false,
                                 autoplay: true,
                                 autoplayTimeout: 3500,
                                 swipeAngle: false,
                                 speed: 2000,
                                 autoplayButtonOutput: false,
-                                mouseDrag: true,
+                                mouseDrag: false,
                                 lazyload: true,
-                                gutter: 7,
+                                gutter: 12,
                                 controlsContainer: `#slider_${type}${cor.category_id}_Controls`,
                                 // controls:true,
                                 // prevButton: `#slider_${cor.category_id}_prev`,
