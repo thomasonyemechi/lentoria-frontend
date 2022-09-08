@@ -36,7 +36,7 @@
 
     <div class="littleAlert"></div>
     @include('layouts.alert_top')
-    @includeUnless(request()->routeIs('instructor.course_review'), 'layouts.nav', ['status' => 'complete'])
+    @includeUnless(request()->routeIs('instructor.course_review')||request()->routeIs('checkout_success'), 'layouts.nav', ['status' => 'complete'])
 
     @yield('page_content')
 
@@ -52,6 +52,7 @@
     <script src="https://vjs.zencdn.net/7.20.2/video.min.js"></script>
     <script src="{{ asset('assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('assets/libs/flatpickr/dist/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/odometer/odometer.min.js') }}"></script>
     <script src="{{ asset('assets/libs/inputmask/dist/jquery.inputmask.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js') }}"></script>

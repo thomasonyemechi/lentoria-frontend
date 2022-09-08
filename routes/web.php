@@ -25,7 +25,13 @@ Route::view('/virtual_class', 'virtual_class.classroom');
 Route::view('/course/{id}/{slug}', 'course_single');
 Route::view('/instructor/{id}/profile', 'instructor_profile')->name('instructor_profile');
 Route::view('activate_account', 'activation')->name('activation');
-Route::view('become_instructor', 'become_instructor')->name('become_instructor');
+Route::view('become-instructor', 'become_instructor')->name('become_instructor');
+Route::view('become-affiliate', 'affiliate')->name('affiliate');
+Route::view('checkout/course/{slug}', 'checkout')->name('course.checkout');
+Route::view('checkout/instructor_activation/{id}/{package_id}', 'checkout')->name('instructor.activation.checkout');
+Route::view('checkout/affiliate_activation/{id}/{package_id}', 'checkout')->name('affliate.activation.checkout');
+Route::view('checkout_success', 'checkout_success')->name('checkout_success');
+
 
 Route::group(['prefix' => 'instructor', 'as' => 'instructor.', 'middleware' => ['auth2', 'instructor']], function () {
     Route::get('/dashboard', function () {

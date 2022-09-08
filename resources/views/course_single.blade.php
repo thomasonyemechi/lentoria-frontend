@@ -335,7 +335,7 @@
                                 {{-- <del class="fs-4 text-muted">$750</del> --}}
                             </div>
                             <div class="d-grid">
-                                <a href="javascript:void(0)" class="btn btn-primary mb-2" id="pay">Start Free
+                                <a href="/checkout/course/{{ $slug }}" class="btn btn-primary mb-2" id="pay">Start Free
                                     Month</a>
                                 <a href="pricing.html" class="btn btn-outline-primary">Get Full Access</a>
                             </div>
@@ -427,7 +427,7 @@
                                     class="card-img-top rounded-top-md" /></a>
                             <!-- Card body -->
                             <div class="card-body">
-                                <h4 class="mb-2 text-truncate-line-2"><a href="course-single.html"
+                                <h4 class="mb-2 text-truncate-line-2"><a href=""
                                         class="text-inherit">How to
                                         easily create a website with React</a></h4>
                                 <ul class="mb-3 list-inline">
@@ -619,6 +619,7 @@
             //     }
             // });
 
+
             $("#wallpay,#wallpay2").click(function(e) {
                 var previous = $("#wallpay").prev();
                 previous.find($('input[type="radio"]')).prop('checked', true);
@@ -713,14 +714,14 @@
                 }
             }
 
-            $('#pay').click(function(e) {
-                e.preventDefault();
-                if (!@js(session('info'))) {
-                    $("#signup_modal").modal('show');
-                } else {
-                    $("#paymentModal").modal('show');
-                }
-            })
+            // $('#pay').click(function(e) {
+            //     e.preventDefault();
+            //     if (!@js(session('info'))) {
+            //         $("#signup_modal").modal('show');
+            //     } else {
+            //         $("#paymentModal").modal('show');
+            //     }
+            // })
 
             $(document).on('click', '#flutterpay', function(e) {
                 e.preventDefault();

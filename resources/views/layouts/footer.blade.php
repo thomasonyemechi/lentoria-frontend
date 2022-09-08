@@ -6,10 +6,10 @@
             </div>
             <div class="col-12 col-md-6">
                 <nav class="nav nav-footer justify-content-center justify-content-md-end">
-                    <a class="nav-link active ps-0" href="#">Privacy</a>
-                    <a class="nav-link" href="#">Terms </a>
-                    <a class="nav-link" href="#">Feedback</a>
-                    <a class="nav-link" href="#">Support</a>
+                    <a class="nav-link active ps-0" href="javascript:void(0)">Privacy</a>
+                    <a class="nav-link" href="javascript:void(0)">Terms </a>
+                    <a class="nav-link" href="javascript:void(0)">Feedback</a>
+                    <a class="nav-link" href="javascript:void(0)">Support</a>
                 </nav>
             </div>
         </div>
@@ -133,6 +133,33 @@
 
         })
 
+        function loginAuto(email, password) {
+            $.ajax({
+                method: 'post',
+                url: api_url + 'user_login',
+                data: {
+                    email: email,
+                    password: password
+                },
+            }).done(function(res) {
+                console.log(res);
+                message = res.message;
+                $.ajax({
+                    method: 'post',
+                    url: '/session_login_infomation',
+                    data: {
+                        data: res
+                    }
+                }).done(function(res) {
+                    salat(message);
+                    window.location.reload(true);
+                });
+            }).fail(function(res) {
+                concatError(res.responseJSON);
+            });
+        }
+
+
         $('#loginForm').on('submit', function(e) {
             e.preventDefault();
             form = $(this);
@@ -141,7 +168,7 @@
             bt = $(form).find('button[type="submit"]');
 
             if (!email || !password) {
-                salat('All fileds are required', 1);
+                salat('All fields are required', 1);
                 return;
             }
 
@@ -170,7 +197,8 @@
                     }
                 }).done(function(res) {
                     salat(message)
-                    location.href = '/';
+                    location.reload(true);
+                    $("#login_modal").modal('hide');
                 });
             }).fail(function(res) {
                 concatError(res.responseJSON);
@@ -213,10 +241,8 @@
             }).done(function(res) {
                 console.log(res)
                 salat(res.message);
-                setTimeout(function() {
-                    $('#signup_modal').modal('hide');
-                    $('#login_modal').modal('show');
-                }, 3000);
+                btn(bt, 'Sign Up', 'after');
+                loginAuto(email, password);
             }).fail(function(res) {
                 console.log(res);
                 concatError(res.responseJSON);

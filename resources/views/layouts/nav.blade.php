@@ -244,28 +244,13 @@
     </div>
 </nav>
 
-{{-- <li class="dropdown-submenu dropend">
-    <a class="dropdown-item dropdown-list-group-item dropdown-toggle" href="#">
-        Web Development
-    </a>
-    <ul class="dropdown-menu">
-        <li>
-            <a class="dropdown-item" href="course-category.html">
-                Bootstrap</a>
-        </li>
-    </ul>
-</li> --}}
-
 <script>
     $(function() {
         getCats();
-
         function getCats() {
             $.ajax({
                 url: api_url + 'category'
             }).done(res => {
-                console.log(res);
-                console.log(res.data);
                 res.data.map(cats => {
                     sub_topic = ''
 
@@ -280,7 +265,7 @@
                 <li class="dropdown-submenu dropend">
                     <a class="dropdown-item dropdown-list-group-item dropdown-toggle fw-light" href="#">${cats.name}</a>
                     <ul class="dropdown-menu" style="width: 310px;">
-                       ${sub_topic}
+                        ${sub_topic}
                     </ul>
                 </li>
                     `)
