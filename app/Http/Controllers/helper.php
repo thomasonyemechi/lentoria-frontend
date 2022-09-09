@@ -18,6 +18,7 @@ function userDetail($detail)
     } else if ($detail == 2) {
         return $user->email;
     }
+    
 }
 
 

@@ -72,6 +72,27 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth2', '
     Route::get('/topic', function () {
         return view('admin.course_topics');
     });
+
+    Route::get('/course/{id}/{slug}', function($id, $slug) {
+        $published = $_GET['published'];
+        if($published = 5){
+            return view('course_single');
+        }
+        return back()->with('error', 'You cannot access the page');
+    });
+    Route::get('/course_review/{slug}', function($slug) {
+        $published = $_GET['published'] ?? 0;
+        if($published == 5){
+            return view('instructor.course_review', compact('slug'));
+        }
+        return back()->with('error', 'You cannot access the page');
+    });
+
+    Route::view('/courses', 'admin.all_courses');
+    Route::view('/under_review', 'admin.review_courses');
+    Route::view('/published_courses', 'admin.published_courses');
+    Route::view('/purchase_history', 'admin.course_purchase_history');
+
 });
 
 Route::get('/logout', function () {
