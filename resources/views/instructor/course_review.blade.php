@@ -41,19 +41,40 @@
                                             <a class="dropdown-item" href="#"><i
                                                     class="fab fa-twitter dropdown-item-icon"></i>Twitter</a>
                                             <a class="dropdown-item" href="#"><i
-                                                    class="fab fa-linkedin dropdown-item-icon"></i>Linked In</a>
+                                                        class="fab fa-linkedin dropdown-item-icon"></i>Linked In</a>
                                             <a class="dropdown-item" href="#"><i
-                                                    class="fas fa-copy dropdown-item-icon"></i>Copy Link</a>
+                                                        class="fas fa-copy dropdown-item-icon"></i>Copy Link</a>
                                         </span>
                                     </span>
                                 </div>
                             </div>
                             <!-- Video -->
                             <div class="embed-responsive position-relative w-100 d-block overflow-hidden p-0 d-block"
-                                id="vid_container" style="height: 600px;">
+                                 id="vid_container" style="height: 600px;">
+                                <pre>
+                                    <code class="language-aspnet">
+
+                                        @{
+                                            // Working with numbers.
+                                            var a = 4;
+                                            var b = 5;
+                                            var theSum = a + b;
+
+                                            // Working with characters (strings).
+                                            var technology = "ASP.NET";
+                                            var product ="Web Pages";
+
+                                            // Working with objects.
+                                            var rightNow = DateTime.Now;
+                                         }
+                                    </code>
+                                 </pre>
+                            </div>
+                            <div class="embed-responsive position-relative w-100 d-block overflow-hidden p-0 d-block"
+                                 id="vid_container" style="height: 600px;">
                                 <video-js
-                                    class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100 vjs-theme-fantasy"
-                                    id="vid">
+                                        class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100 vjs-theme-fantasy"
+                                        id="vid">
                                 </video-js>
                             </div>
                             <div class="d-flex justify-content-center my-22 d-none" id="vid_preloader">

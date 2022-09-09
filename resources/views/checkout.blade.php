@@ -33,6 +33,7 @@
                                 <input type="hidden" id="inspackid" value="{{ $id }}" />
                             @elseif (request()->is('checkout/affiliate_activation/*/*'))
                                 <input type="hidden" id="affpackid" value="{{ $id }}" />
+
                             @endif
                             <div class="row">
                                 <label>
@@ -92,11 +93,13 @@
                             <div class="card-body">
 
                                 <h4>Title</h4>
-                                <span id="ctit"><span class="text-muted">loading...</span></span>
+                                <span id="ctit"><p
+                                            class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                                 <hr>
 
                                 <h4>Description</h4>
-                                <span id="cdesc"><span class="text-muted">loading...</span></span>
+                                <span id="cdesc"><p
+                                            class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                             </div>
                         </div>
                     @elseif (request()->is('checkout/instructor_activation/3/*'))
@@ -216,8 +219,8 @@
                         <div class="p-4">
                             <div class="mb-1">
                                 @if (request()->is('checkout/course/*'))
-                                    <span class="text-dark h4" id="prodprice">Price: <span
-                                            class="text-muted">loading...</span></span>
+                                    <span class="text-dark h4" id="prodprice">Price: <p
+                                                class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                                     <input type="hidden" id="c-price">
                                 @elseif(request()->is('checkout/instructor_activation/3/*'))
                                     <span class="text-dark h4" id="actprice">Price: &#8358;

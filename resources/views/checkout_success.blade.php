@@ -44,20 +44,24 @@
                         @if (request()->routeIs('checkout_success.course'))
                             <div class="card-body">
                                 <h4>Course Title</h4>
-                                <span id="ctitle"><span class="text-muted">loading...</span></span>
+                                <span id="ctitle"><p
+                                            class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                                 <hr>
 
                                 <h4>Description</h4>
-                                <span id="cdesc"><span class="text-muted">loading...</span></span>
+                                <span id="cdesc"><p
+                                            class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                             </div>
                         @elseif (request()->routeIs('checkout_success.activation'))
                             <div class="card-body">
                                 <h4>Package</h4>
-                                <span id="pname"><span class="text-muted">loading...</span></span>
+                                <span id="pname"><p
+                                            class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                                 <hr>
 
                                 <h4>Description</h4>
-                                <span id="pdesc"><span class="text-muted">loading...</span></span>
+                                <span id="pdesc"><p
+                                            class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                             </div>
                         @endif
                     </div>
@@ -72,12 +76,14 @@
                         <div class="p-4">
                             <div class="mb-1">
                                 <span class="text-dark h4" id="prodprice">
-                                    Price: <span class="text-muted">loading...</span>
+                                    Price: <p
+                                            class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p>
                                 </span>
                             </div>
                             <div class="mb-3">
                                 <span class="text-dark h4" id="prodtype">
-                                    Transaction Type: <span class="text-muted">loading...</span>
+                                    Transaction Type: <p
+                                            class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p>
                                 </span>
                             </div>
                             <b>Other Information</b>
@@ -98,15 +104,18 @@
                                 @elseif (request()->routeIs('checkout_success.activation'))
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span class="pinfo"><span class="text-muted">loading...</span></span>
+                                        <span class="pinfo"><p
+                                                    class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span class="pinfo"><span class="text-muted">loading...</span></span>
+                                        <span class="pinfo"><p
+                                                    class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span class="pinfo"><span class="text-muted">loading...</span></span>
+                                        <span class="pinfo"><p
+                                                    class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                                     </li>
                                 @endif
                             </ul>

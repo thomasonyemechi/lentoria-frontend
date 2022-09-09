@@ -33,7 +33,7 @@
         <nav class="navbar-vertical navbar">
             <div class="nav-scroller">
                 <a class="navbar-brand" href="#">
-                    <img src="../../assets/images/brand/logo/logo-inverse.svg" alt="" />
+                    <img src="{{ asset('assets/images/logo1.png')}}" alt="" />
                 </a>
                 <ul class="navbar-nav flex-column" id="sideNavbar">
                     <li class="nav-item">
@@ -44,7 +44,7 @@
                     <li class="nav-item">
                         <a class="nav-link  collapsed " href="#!" data-bs-toggle="collapse"
                             data-bs-target="#navCourses" aria-expanded="false" aria-controls="navCourses">
-                            <i class="nav-icon fe fe-book me-2"></i> Courses Category
+                            <i class="nav-icon mdi mdi-trello me-2"></i> Courses Category
                         </a>
                         <div id="navCourses" class="collapse " data-bs-parent="#sideNavbar">
                             <ul class="nav flex-column">
@@ -61,23 +61,103 @@
                             </ul>
                         </div>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link   collapsed " href="#!" data-bs-toggle="collapse"
-                            data-bs-target="#navProfile" aria-expanded="false" aria-controls="navProfile">
-                            <i class="nav-icon fe fe-user me-2"></i> User
+                        <a class="nav-link " href="#">
+                            <i class="nav-icon fe fe-video me-2"></i> Course Types
                         </a>
-                        <div id="navProfile" class="collapse " data-bs-parent="#sideNavbar">
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link  collapsed " href="#!" data-bs-toggle="collapse"
+                            data-bs-target="#navCourses0" aria-expanded="false" aria-controls="navCourses0">
+                            <i class="nav-icon fe fe-book me-2"></i> Courses Management
+                        </a>
+                        <div id="navCourses0" class="collapse " data-bs-parent="#sideNavbar">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        Instructor
+                                    <a class="nav-link " href="/admin/courses">
+                                        All Courses
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link " href="#">Students</a>
+                                    <a class="nav-link " href="/admin/under_review">
+                                        Submited For Review
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="/admin/published_courses">
+                                        Published Courses
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="/admin/purchase_history">
+                                        Course Purchase
+                                    </a>
                                 </li>
                             </ul>
                         </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link   collapsed " href="#!" data-bs-toggle="collapse"
+                            data-bs-target="#navProfile1" aria-expanded="false" aria-controls="navProfile1">
+                            <i class="nav-icon fe fe-user-check me-2"></i> Instructor Management
+                        </a>
+                        <div id="navProfile1" class="collapse " data-bs-parent="#sideNavbar">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        All Instructors
+                                    </a>
+                                </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        Instructor Challenges
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link   collapsed " href="#!" data-bs-toggle="collapse"
+                            data-bs-target="#navProfile2" aria-expanded="false" aria-controls="navProfile2">
+                            <i class="nav-icon fe fe-link me-2"></i> Affiliate
+                        </a>
+                        <div id="navProfile2" class="collapse " data-bs-parent="#sideNavbar">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        All Affilates
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        Affliate Challenges
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">
+                            <i class="nav fe fe-check me-2"></i> Activation History
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">
+                            <i class="nav-icon fe fe-paperclip  me-2"></i> Questionaire
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">
+                            <i class="nav-icon fe fe-message-square me-2"></i> Support/Contact
+                        </a>
                     </li>
                 </ul>
 
@@ -189,37 +269,13 @@
     {{-- Javascripts Here .... --}}
 
     <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/odometer/odometer.min.js') }}"></script>
     <script src="{{ asset('assets/libs/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/flatpickr/dist/flatpickr.min.js') }}"></script>
     <script src="{{ asset('assets/libs/inputmask/dist/jquery.inputmask.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/quill/dist/quill.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js') }}"></script>
     <script src="{{ asset('assets/libs/dragula/dist/dragula.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/bs-stepper/dist/js/bs-stepper.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/dropzone/dist/min/dropzone.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/jQuery.print/jQuery.print.js') }}"></script>
-    <script src="{{ asset('assets/libs/prismjs/prism.js') }}"></script>
-    <script src="{{ asset('assets/libs/prismjs/components/prism-scss.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/%40yaireo/tagify/dist/tagify.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/tiny-slider/dist/min/tiny-slider.js') }}"></script>
-    <script src="{{ asset('assets/libs/%40popperjs/core/dist/umd/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/tippy.js/dist/tippy-bundle.umd.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/typed.js/lib/typed.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/jsvectormap/dist/js/jsvectormap.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/jsvectormap/dist/maps/world.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('assets/cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js') }}"></script>
+
+
     <script src="{{ asset('assets/js/theme.min.js') }}"></script>
-    <script>
-       
-    </script>
+    <script></script>
 </body>
 
 </html>

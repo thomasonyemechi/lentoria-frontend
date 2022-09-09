@@ -321,7 +321,7 @@
                             <div
                                 class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover info-div">
                                 <a class="popup-youtube icon-shape rounded-circle btn-play icon-xl text-decoration-none"
-                                    href="https://www.youtube.com/watch?v=JRzWRZahOVU">
+                                   href="https://www.youtube.com/watch?v=JRzWRZahOVU">
                                     <i class="fe fe-play"></i>
                                 </a>
                             </div>
@@ -330,14 +330,17 @@
                         <div class="card-body">
                             <!-- Price single page -->
                             <div class="mb-3">
-                                <span class="text-dark fw-bold h2" id="c-price"><span
-                                        class="text-muted text-sm">loading...</span></span>
+                                <span class="text-dark fw-bold h2" id="c-price">
+                                    <p
+                                            class="text-sm fw-light animate__animated animate__flash animate__slow animate__infinite">
+                                        loading...</p>
+                                </span>
                                 <del class="fs-4 text-muted" id="slash"></del>
                             </div>
                             <div class="d-grid">
                                 <a href="javascript:void(0)" class="btn btn-outline-primary mb-2" id="pay">
-                                    <div class="spinner-border text-primary text-center text-sm mb-2 mt-2"
-                                        role="status">
+                                    <div class="spinner-border spinner-border-sm text-primary text-center text-sm mb-2 mt-2"
+                                         role="status">
                                         <span class="visually-hidden">Loading...</span>
                                     </div>
                                 </a>
@@ -499,24 +502,6 @@
                             </button>
 
                         </div>
-                        {{-- <div class="d-flex justify-content-between">
-                            <div class="d-inline-block">
-                                <a href="javascript:void(0)" id="livepay">
-                                    <img src="{{ asset('assets/images/150x30.png') }}" alt="livepetal" />
-                                    <div class="spinner-border text-success ms-9 mt-1 d-none" role="status">
-                                        <span class="visually-hidden">Loading...</span>
-                                    </div>
-                                </a>
-                                <br> <br>
-                                <span class="ms-9" id="bal">&#8358 0</span>
-                            </div>
-
-                            <div class="d-inline-block">
-                                <a href="javascript:void(0)">
-                                    <img src="{{ asset('assets/images/flutterwave.256x48.png') }}" alt="flutterwave" />
-                                </a>
-                            </div>
-                        </div> --}}
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item bg-transparent">
                                 <div class="d-inline-flex"><input type="radio" name="paymode" id="wallpay2"
@@ -596,7 +581,6 @@
             fetchCourseInfo();
             getSections(@js($id));
             getFaq(@js($id));
-            getBalance();
 
             // var myRating = raterJs({
             //     element: document.querySelector(".rating"),
@@ -622,103 +606,6 @@
             //         done();
             //     }
             // });
-
-
-            $("#wallpay,#wallpay2").click(function(e) {
-                var previous = $("#wallpay").prev();
-                previous.find($('input[type="radio"]')).prop('checked', true);
-                var button = $("button.pay-btn");
-                if (button.hasClass("d-none")) {
-                    button.attr("id", "livepay");
-                    button.removeClass("d-none");
-                    button.html("Wallet Payment");
-                } else if (!button.hasClass("d-none")) {
-                    button.attr("id", "livepay");
-                    button.html("Wallet Payment");
-                }
-
-            });
-
-            $("#cardpay,#cardpay2").click(function(e) {
-                var previous = $("#cardpay").prev();
-                previous.find($('input[type="radio"]')).prop('checked', true);
-                var button = $("button.pay-btn");
-                if (button.hasClass("d-none")) {
-                    button.attr("id", "flutterpay");
-                    button.removeClass("d-none");
-                    button.html("Card Payment");
-                } else if (!button.hasClass("d-none")) {
-                    button.attr("id", "flutterpay");
-                    button.html("Card Payment");
-                }
-            });
-
-            function resetButton() {
-                $('input[name="paymode"]').prop('checked', false);
-                $("button.pay-btn").addClass("d-none");
-                $("button.pay-btn").removeAttr("id");
-                $("button.pay-btn").html("Pay Now");
-
-            }
-
-            $(".canc").click(function(e) {
-                e.preventDefault();
-                resetButton();
-                var md = $("#paymentModal");
-                md.modal('hide');
-            });
-            $(document).on('click', '#livepay', function(e) {
-                e.preventDefault();
-                price = $("#c-price").text();
-                price = price.split(' ')[1];
-                bal = $("input#hidbal").val();
-                if (bal < price) {
-                    salat("Insufficient funds", 1);
-                    return;
-                }
-                if (window.confirm("Confirm Wallet Payment")) {
-                    livepay = $(this);
-                    course_id = @js($id);
-                    $.ajax({
-                        url: api_url + `admin/wallet_purchase`,
-                        method: 'POST',
-                        data: {
-                            course_id: course_id,
-                        },
-                        beforeSend: () => {
-                            btn(livepay, '', 'before');
-                        },
-                    }).done(res => {
-                        $("#paymentModal").modal('hide');
-                        resetButton();
-                        salat(res.message);
-                        $("#pay").html("Go to Course");
-                        // $("#pay").attr("href","course_single")
-                    }).fail(res => {
-                        console.log(res);
-                        btn(bt, 'Buy now', 'after');
-                        concatError(res.responseJSON);
-                    })
-                }
-            })
-
-            function getBalance() {
-                if (@js(session('info'))) {
-                    info = @js(session('info'));
-                    live_id = info.data.live_id;
-                    $.ajax({
-                        url: api_url + `admin/balance/${live_id}`,
-                    }).done(res => {
-                        $("input#hidbal").val(res.balance);
-                        $("span#bal").html(`Balance: &#8358 ${res.balance}`);
-                    }).fail(res => {
-                        console.log(res);
-                        concatError(res.responseJSON);
-                    })
-                }
-            }
-
-
             $(document).on('click', '.pay-btn', function(e) {
                 console.log(e);
                 if (!@js(session('info'))) {
@@ -771,7 +658,7 @@
                             if (price == 0) {
                                 $("#pay").attr("href", "javascript:void(0)");
                                 $("#pay").addClass('pay-btn');
-                                $("#pay").html("Buy Now")
+                                $("#pay").html("Enroll Now")
                             } else {
                                 $("#pay").attr("href", `/checkout/course/${slug}`);
                                 $("#pay").html("Buy Now")
@@ -793,78 +680,6 @@
                 }
             }
 
-            $(document).on('click', '#flutterpay', function(e) {
-                e.preventDefault();
-                if (window.confirm('Confirm Card Payment')) {
-                    info = @js(session('info'));
-                    user_id = info.data.id;
-                    email = info.data.email;
-                    phone = info.data.phone;
-                    name = `${info.data.firstname} ${info.data.lastname}`;
-                    price = $("#c-price").text();
-                    price = price.split(' ')[1]
-                    makePayment();
-                }
-
-            })
-
-            function makePayment() {
-                price = $("#c-price").text();
-                prices = price.split(' ')[1];
-                FlutterwaveCheckout({
-                    public_key: "FLWPUBK_TEST-8c6efffe5995bec0a8aa9e9d3699589e-X",
-                    tx_ref: randomString(12),
-                    amount: prices,
-                    currency: "NGN",
-                    payment_options: "card,ussd",
-                    callback: function(payment) {
-                        console.log(payment);
-                        if (payment.status == "successful") {
-                            tx_id = payment.tx_ref;
-                            amount = payment.amount;
-                            verifyTransactionOnBackend(tx_id, amount);
-                        }
-                    },
-                    onclose: function(incomplete) {
-                        if (incomplete || window.verified === false) {
-                            salat('Transaction cancelled', 1);
-                        }
-                    },
-                    meta: {
-                        user_id: user_id,
-                    },
-                    customer: {
-                        email: email,
-                        phone_number: phone,
-                        name: name,
-                    },
-                    customizations: {
-                        title: "Course Purchase",
-                        description: "Payment for buying a course",
-                    },
-                });
-            }
-
-            function verifyTransactionOnBackend(tx_id, amount) {
-                $.ajax({
-                    url: api_url + "admin/card_purchase",
-                    method: "POST",
-                    data: {
-                        amount: amount,
-                        transaction_id: tx_id,
-                    },
-                }).done(res => {
-                    salat(res.message);
-                    // setTimeout(() => {
-                    //     window.location.href = "instructor/dashboard";
-                    // }, 2000);
-                }).fail(res => {
-                    console.log(res);
-                    concatError(res);
-                })
-            }
-
-
             $("#ratingModal").find($("span.bk-btn")).click(function(e) {
                 e.preventDefault();
                 $("#ratingModal").find($("div.hidden_txt")).addClass("d-none");
@@ -881,7 +696,7 @@
                 $.ajax({
                     type: "get",
                     url: api_url + `course_info/{{ $id }}`,
-                }).done(function(res) {
+                }).done(function (res) {
                     console.log(res)
                     // $('#cid').val(res.data.id);
                     $('#c-title').html(res.data.course_info.title);
@@ -889,10 +704,17 @@
                     $('#c-subtitle').html(res.data.course_info.subtitle);
                     $('#cbar').html(levelBar(res.data.course_info.level));
                     $('#c-level').html(checkLevel(res.data.course_info.level));
-                    $('#c-price').html(`&#8358;${money(percentage(res.data.course_info.price,50))}`);
+                    if (res.data.course_info.price == 0) {
+                        $('#c-price').html('Free');
+                        $("#slash").html('');
+                    } else {
+                        $('#c-price').html(`&#8358;${money(percentage(res.data.course_info.price, 50))}`);
+                        $("#slash").html(`&#8358 ${money(res.data.course_info.price)}`);
+                    }
+
                     $("#pri").val(res.data.course_info.price);
                     hasCourse(res.data.course_info.id, res.data.course_info.price, @js($slug));
-                    $("#slash").html(`&#8358 ${money(res.data.course_info.price)}`);
+
                     $(".info-div").css("background-image",
                         `url(${imageUrl(res.data.course_info.image)}),url(/assets/images/course/course-javascript.jpg)`
                     );
@@ -958,52 +780,9 @@
                         });
                     }
 
-                }).fail(function(res) {
+                }).fail(function (res) {
                     location.href = '/';
                 });
-            }
-
-            function getLectures(sec_id) {
-                course = $(document).find($(`div#course${sec_id}`))
-                $.ajax({
-                    url: api_url + `fetch_lectures/${sec_id}`,
-                    beforeSend: () => {
-                        course.find($("div.lec-content")).html(`
-                        <div class="d-flex justify-content-center align-items-center opacity-50 lec-loader">
-                            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
-                        `)
-                    }
-                }).done(res => {
-                    course = $(document).find($(`div#course${sec_id}`))
-                    $(document).find($("div.lec-loader")).remove();
-                    if (res.data.length === 0) {
-                        course.find($("div.lec-content")).append(`
-                            <div class="text-truncate">
-                                    <span>No Lectures Available Yet</span>
-                                </div>
-                            `)
-                    }
-                    res.data.map(lec => {
-                        course.find($("div.lec-content")).append(`
-                        <a href="javascript:void(0)" class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                            <div class="text-truncate lec-tit">
-                                <span class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i class="mdi mdi-play fs-4"></i></span>
-                                <span>${lec.title}</span>
-                            </div>
-                            {{-- <div class="text-truncate">
-                                    <span>1m 7s</span>
-                                </div> --}}
-                        </a>
-                        `)
-                    })
-
-                }).fail(res => {
-                    console.log(res);
-                    concatError(res.responseJSON);
-                })
             }
 
             function getSections(id) {
@@ -1012,6 +791,26 @@
                 }).done(res => {
                     $('#courseAccordion').find($('div#loader2')).remove();
                     res.data.map(sec => {
+                        var lect = '';
+                        if (sec.lectures.length == 0) {
+                            lect += `<div class="text-truncate">
+                                    <span>No Lectures Available Yet</span>
+                                </div>`
+                        } else {
+                            sec.lectures.forEach(lec => {
+                                lect += `
+                            <a href="javascript:void(0)" class="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
+                                <div class="text-truncate lec-tit">
+                                    <span class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i class="mdi mdi-play fs-4"></i></span>
+                                    <span>${lec.title}</span>
+                                </div>
+                            {{-- <div class="text-truncate">
+                                    <span>1m 7s</span>
+                                </div> --}}
+                                </a>
+`
+                            });
+                        }
                         $('#courseAccordion').find($('ul#curri')).append(`
                         <li class="list-group-item px-0 pt-0">
                             <a class=" h4 mb-0 d-flex align-items-center text-inherit text-decoration-none lecu" data-bs-toggle="collapse" href="#course${sec.id}" aria-expanded="false" aria-controls="course${sec.id}">
@@ -1025,18 +824,17 @@
                                 <div class="collapse sh" id="course${sec.id}"
                                     data-bs-parent="#courseAccordion">
                                         <div class="pt-3 pb-2 lec-content">
+                                            ${lect}
                                         </div>
                                 </div>
                         </li>
                         `)
-                        getLectures(sec.id)
                     })
                     first = document.querySelector(".lecu");
                     sh = document.querySelector(".sh")
                     $(first).addClass('active');
                     $(first).attr("aria-expanded", "true");
-                    $(sh).addClass('show')
-
+                    $(sh).addClass('show');
                 }).fail(res => {
                     concatError(res.responseJSON);
                 })

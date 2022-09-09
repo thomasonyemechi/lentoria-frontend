@@ -145,7 +145,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-lg">Browse Courses</span>
-                    <h2 class="mb-1 display-4 fw-bold ctype"><span class="text-muted">loading...</span></h2>
+                    <h2 class="mb-1 display-4 fw-bold ctype"><p
+                                class="d-inline text-sm animate__animated animate__flash animate__slow animate__infinite">
+                            ...</p></h2>
                 </div>
             </div>
             <div class="row">
@@ -211,7 +213,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-lg">Browse Courses</span>
-                    <h2 class="mb-1 display-4 fw-bold ctype"><span class="text-muted">loading...</span></h2>
+                    <h2 class="mb-1 display-4 fw-bold ctype"><p
+                                class="d-inline text-sm animate__animated animate__flash animate__slow animate__infinite">
+                            ...</p></h2>
                 </div>
             </div>
             <div class="row">
@@ -265,7 +269,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-lg">Browse Courses</span>
-                    <h2 class="mb-1 display-4 fw-bold ctype"><span class="text-muted">loading...</span></h2>
+                    <h2 class="mb-1 display-4 fw-bold ctype"><p
+                                class="d-inline text-sm animate__animated animate__flash animate__slow animate__infinite">
+                            ...</p></h2>
                 </div>
             </div>
             <div class="row">
@@ -374,8 +380,6 @@
 
     <script>
         $(function() {
-
-            session = sessionStorage.getItem('courseinfo')
             getCategories();
             getCoursesByType();
 
@@ -425,7 +429,6 @@
                             role="tab" aria-controls="pills-${type}${stripLower(cat.name)}" aria-selected="${ (i == 0) ? 'true' : 'false' }">${cat.name}</a>
                     </li>`)
 
-
                     course_string = '';
 
                     cat.courses.forEach(cor => {
@@ -434,7 +437,7 @@
                     <!-- Card -->
                     <div class="card card-hover mb-3">
                         <a href="course/${cor.id}/${cor.slug}" class="card-img-top"><img
-                                src="${imageUrl(cor.image)}" onerror="this.src='../../assets/images/course/course-react.jpg';" alt=""
+                                src="${imageUrl(cor.image)}" onerror="this.src='../../assets/images/image.jpeg';" alt=""
                                 class="rounded-top-md card-img-top course_image"></a>
                         <!-- Card Body -->
                         <div class="card-body">
@@ -501,7 +504,6 @@
                         </div>
                     </div>
                     `)
-
 
                     cat.courses.forEach(cor => {
                         if ($(`.no_${type}${cor.category_id}_Slider`).length) {

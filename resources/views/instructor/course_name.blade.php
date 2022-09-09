@@ -7,8 +7,9 @@
     </div>
 </div>
 <input type="hidden" name="course_info_29" id="course_info_29">
+<input type="hidden" id="ctype"/>
 <script>
-    $(function() {
+    $(function () {
 
 
         function getCategory(cat_id) {
@@ -51,10 +52,11 @@
             $.ajax({
                 method: 'get',
                 url: api_url + `admin/course/{{ $slug }}`
-            }).done(function(res) {
+            }).done(function (res) {
                 console.log(res);
-                $('input[name="course_info_29"]').val(JSON.stringify(res.data))
-                $('.course-title').html(res.data.title)
+                $('input[name="course_info_29"]').val(JSON.stringify(res.data));
+                $('.course-title').html(res.data.title);
+                $("#ctype").val(res.data.course_type);
                 sessionStorage.setItem("courseimage", res.data.image);
                 dat = res.data
                 try {

@@ -21,7 +21,7 @@
                 <div class="offset-xl-1 col-xl-2 col-lg-12 col-md-12 col-12">
                     <div class="mt-4">
                         <a class="navbar-brand" href="/"><img src="{{ asset('assets/images/logo1.png') }}"
-                                alt="" /></a>
+                                                              alt=""/></a>
                     </div>
                 </div>
             </div>
@@ -30,13 +30,13 @@
                 <div class="offset-xl-1 col-xl-4 col-lg-6 col-md-12 col-12 text-center text-lg-start">
                     <h1 class="display-1 mb-3">404</h1>
 
-                    <p class="mb-5 lead">Oops! Sorry, we couldn’t find the page you were looking for. If you think this
+                    <p class="mb-5 lead">Oops! Sorry, we could not find the page you were looking for. If you think this
                         is a problem with us, please <a href="#" class="btn-link">Contact us</a></p>
                     <a href="/" class="btn btn-primary me-2">Back to Dashboard</a>
                 </div>
                 <!-- img -->
                 <div class="offset-xl-1 col-xl-6 col-lg-6 col-md-12 col-12 mt-8 mt-lg-0">
-                    <img src="{{ asset('assets/images/error/error404-01.svg') }}" alt="" class="w-100" />
+                    <img src="{{ asset('assets/images/error404-01.svg') }}" alt="" class="w-100"/>
                 </div>
             </div>
         </div>

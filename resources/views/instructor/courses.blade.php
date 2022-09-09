@@ -80,7 +80,7 @@
                         </tr>
                         `)
                     },
-                }).done(function(res) {
+                }).done(function (res) {
                     body.html('')
                     console.log(res.data.data)
                     res.data.data.map(cat => {
@@ -90,7 +90,7 @@
 											<div class="d-lg-flex">
 												<div>
 													<a href="#">
-														<img src="{{ asset('assets/images/course/course-wordpress.jpg') }}" alt=""
+														<img src="${imageUrl(cat.image)}" alt="" onerror="this.src='../../assets/images/image.jpeg';"
 															class="rounded img-4by3-lg" /></a>
 												</div>
 												<div class="ms-lg-3 mt-2 mt-lg-0">

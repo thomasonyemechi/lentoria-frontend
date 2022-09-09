@@ -20,7 +20,7 @@ class Instructor
         if ($info['instructor'] == 1) {
             return $next($request);
         } else {
-            return redirect('/')->with('error', "Become an instructor to view page");
+            return redirect('/become-instructor')->with('error', "Become an instructor to view page");
         }
     }
 }

@@ -7,7 +7,7 @@
             <div class="col-12 col-md-6">
                 <nav class="nav nav-footer justify-content-center justify-content-md-end">
                     <a class="nav-link active ps-0" href="javascript:void(0)">Privacy</a>
-                    <a class="nav-link" href="javascript:void(0)">Terms </a>
+                    <a class="nav-link" href="{{ route('terms') }}">Terms </a>
                     <a class="nav-link" href="javascript:void(0)">Feedback</a>
                     <a class="nav-link" href="javascript:void(0)">Support</a>
                 </nav>
@@ -16,8 +16,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="newCatgoryLabel"
-    aria-hidden="true">
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body shadow">
@@ -36,12 +36,12 @@
                     <div class="mb-3">
                         <label for="email" class="form-label">Email Address</label>
                         <input type="email" id="loginEmail" class="form-control" name="email"
-                            placeholder="Email address here" required>
+                               placeholder="Email address here" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" id="loginPassword" class="form-control" name="password"
-                            placeholder="**************" required>
+                        <input class="form-control" id="loginPassword" name="password" placeholder="**************"
+                               required type="password">
                     </div>
                     <div class="d-lg-flex justify-content-end align-items-center mb-4">
 
@@ -61,7 +61,7 @@
 </div>
 
 <div class="modal fade" id="signup_modal" tabindex="-1" role="dialog" aria-labelledby="newCatgoryLabel"
-    aria-hidden="true">
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body shadow">
@@ -70,7 +70,7 @@
                     <div class="mb-4 d-flex justify-content-between">
                         <div>
                             <h1 class="mb-1 fw-bold">Create Account</h1>
-                            <span>Already have an account? <a href="javascript:;" class="ms-1 openlogin">Sign
+                            <span>Already have an account? <a href="javascript:" class="ms-1 openlogin">Sign
                                     In</a></span>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -100,7 +100,7 @@
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" name="password" placeholder="**************"
-                            required>
+                               required>
                     </div>
                     <div>
                         <div class="d-grid">
@@ -108,13 +108,17 @@
                         </div>
                     </div>
                 </form>
+                <div class="mt-3"><span class="fs-5">By Clicking Sign Up, you agree to our <a
+                                href="{{ route('terms') }}" target="_blank" class="fw-bold text-primary">Terms and Conditions</a></span>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    $(function() {
+    $(function () {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
