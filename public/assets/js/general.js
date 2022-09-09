@@ -1,5 +1,5 @@
-
 api_url = 'http://127.0.0.1:8000/api/';
+api_root = 'http://127.0.0.1:8000/';
 image_url = 'http://127.0.0.1:8000/assets/uploads/';
 video_url = "http://video.beelsacademy.com/watchvideo/";
 
@@ -24,7 +24,7 @@ function salat(msg, t = 0) {
     alat.fadeIn();
     alat.html(ret);
 
-    setTimeout(function () {
+    setTimeout(function() {
         alat.fadeOut();
     }, 3000);
 }
@@ -49,7 +49,7 @@ function concatError(error) {
 }
 
 function btn(selector, btn_text, moment) {
-    if (typeof (selector) == 'object') { selector = selector; } else { selector = $(selector); }
+    if (typeof(selector) == 'object') { selector = selector; } else { selector = $(selector); }
     if (moment == 'before') {
         selector.attr('disabled', 'disabled');
         selector.html(`<span class="spinner-border spinner-border-sm" aria-hidden="true"></span> <i>processing ... </i>`);
@@ -71,6 +71,30 @@ function dropPaginatedPages(links) {
     body = ` <div class = "d-flex justify-content-center mt-3 mb-3" >
         <div class = "card-tools" >
         <ul class = "pagination" >${link_txt}</ul> </div> </div>
+    `
+    return (links.length > 3) ? body : '';
+}
+
+function adminPaginate(links) {
+    link_txt = ''
+    links.forEach(link => {
+        num = link.label
+        ck = parseInt(link.label);
+        if (!ck) {
+            if (link.url) {
+                num = link.url.split('=')[1];
+            } else { num = 1; }
+        }
+        link_txt += ` <li class = "page-item ${(link.active == true) ? 'active' : ''}">
+        <a href="?page=${num}" class = "page-link mx-1 rounded" > ${link.label} </a></li > `;
+    });
+
+    body = `
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center mb-0">
+                ${link_txt}
+            </ul>
+        </nav>
     `
     return (links.length > 3) ? body : '';
 }
