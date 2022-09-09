@@ -20,6 +20,13 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::post('/addtosession', [Controller::class, 'updateInstructorSession']);
+
+Route::get('/c/{link}', [Controller::class, 'fetchCourseInfoByLink']);
+
+
+
+
 Route::view('/virtual_class', 'virtual_class.classroom');
 
 Route::view('/course/{id}/{slug}', 'course_single');
@@ -30,7 +37,8 @@ Route::view('become-affiliate', 'affiliate')->name('affiliate');
 Route::view('checkout/course/{slug}', 'checkout')->name('course.checkout');
 Route::view('checkout/instructor_activation/{id}/{package_id}', 'checkout')->name('instructor.activation.checkout');
 Route::view('checkout/affiliate_activation/{id}/{package_id}', 'checkout')->name('affliate.activation.checkout');
-Route::view('checkout_success', 'checkout_success')->name('checkout_success');
+Route::view('checkout_success/course', 'checkout_success')->name('checkout_success.course');
+Route::view('checkout_success/activation', 'checkout_success')->name('checkout_success.activation');
 
 
 Route::group(['prefix' => 'instructor', 'as' => 'instructor.', 'middleware' => ['auth2', 'instructor']], function () {

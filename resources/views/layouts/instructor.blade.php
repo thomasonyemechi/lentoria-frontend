@@ -28,6 +28,49 @@
         type="text/css" />
     <link href="{{ asset('assets/libs/bootstrap_file_input/explorer/theme.min.css') }}" media="all" rel="stylesheet"
         type="text/css" />
+    <style>
+        .animated-background {
+            animation-duration: 1.25s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+            animation-name: placeHolderShimmer;
+            animation-timing-function: linear;
+            background: #F6F6F6;
+            background: linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+            background-size: 800px 104px;
+            height: 96px;
+            position: relative;
+        }
+
+        .text {
+            margin-left: 20px
+        }
+
+        .text-line {
+            height: 20px;
+            width: 100px;
+            @ .animated-background;
+        }
+
+        .vstack {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -ms-flex-item-align: stretch;
+            align-self: stretch;
+        }
+
+        .gap-2 {
+            gap: 0.5rem !important;
+        }
+    </style>
     <script src="{{ asset('assets/js/general.js') }}"></script>
 
 </head>
@@ -36,7 +79,9 @@
 
     <div class="littleAlert"></div>
     @include('layouts.alert_top')
-    @includeUnless(request()->routeIs('instructor.course_review')||request()->routeIs('checkout_success'), 'layouts.nav', ['status' => 'complete'])
+    @includeUnless(request()->routeIs('instructor.course_review') || request()->routeIs('checkout_success'),
+        'layouts.nav',
+        ['status' => 'complete'])
 
     @yield('page_content')
 

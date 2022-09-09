@@ -60,7 +60,8 @@
                                                 class="form-check-input" />Livepetal Account
                                             <div style="float:right; padding-right:10px">
                                                 <span id="bal" class="text-sm">
-                                                    <div class="spinner-border text-primary mb-2" role="status">
+                                                    <div class="spinner-border spinner-border-sm text-primary text-sm mb-2 mt-2"
+                                                        role="status">
                                                         <span class="visually-hidden">Loading...</span>
                                                     </div>
                                                 </span>
@@ -73,12 +74,14 @@
 
                             <div class="col-md-6 col-12">
                                 <div class="col-md-12 mt-3 justify-content-center">
-                                    <button class="btn btn-primary pay-btn" id="flutterpay" disabled
+                                    <button class="btn btn-primary pay-btn" id="flutterpay"
+                                        {{ request()->is('checkout/course/*') ? 'disabled' : '' }}
                                         trans-type="@if (request()->is('checkout/instructor_activation/*/*')) ins_activation @elseif(request()->is('checkout/affiliate_activation/*/*')) aff_activation @elseif(request()->is('checkout/course/*'))course_purchase @endif">Card
                                         Payment</button>
                                 </div>
 
                             </div>
+
                         </div>
                     </div>
                     @if (request()->is('checkout/course/*'))
@@ -89,11 +92,11 @@
                             <div class="card-body">
 
                                 <h4>Title</h4>
-                                <span id="ctit">The title</span>
+                                <span id="ctit"><span class="text-muted">loading...</span></span>
                                 <hr>
 
                                 <h4>Description</h4>
-                                <span id="cdesc">The description</span>
+                                <span id="cdesc"><span class="text-muted">loading...</span></span>
                             </div>
                         </div>
                     @elseif (request()->is('checkout/instructor_activation/3/*'))
@@ -109,8 +112,9 @@
 
                                 <h4>Description</h4>
                                 <h5 class="mb-1">Everything in Starter, plus:</h5>
-                                <span>Access to become an instructor,Access to instructor training package & 1 paid
-                                    course.</span>
+                                <span id="pdesc">
+                                    Access to become an instructor,Access to instructor training package & 1 paid course.
+                                </span>
                             </div>
                         </div>
                     @elseif (request()->is('checkout/instructor_activation/4/*'))
@@ -121,12 +125,14 @@
                             <div class="card-body">
 
                                 <h4>Package</h4>
-                                <span>Premium</span>
+                                <span id="ptit">Premium</span>
                                 <hr>
 
                                 <h4>Description</h4>
                                 <h5 class="mb-1">Everything in Standard, plus:</h5>
-                                <span>Access to instuctor success challenge, a Unique store, and to 3 paid courses.</span>
+                                <span id="pdesc">
+                                    Access to instuctor success challenge, a Unique store, and to 3 paid courses.
+                                </span>
                             </div>
                         </div>
                     @elseif (request()->is('checkout/instructor_activation/5/*'))
@@ -137,13 +143,14 @@
                             <div class="card-body">
 
                                 <h4>Package</h4>
-                                <span>Professional</span>
+                                <span id="ptit">Professional</span>
                                 <hr>
 
                                 <h4>Description</h4>
                                 <h5 class="mb-1">Everything in Premium, plus:</h5>
-                                <span>Access to store automation, customizable store and access to unlimited paid
-                                    courses.</span>
+                                <span id="pdesc">
+                                    Access to store automation, customizable store and access to unlimited paid courses.
+                                </span>
                             </div>
                         </div>
                     @elseif (request()->is('checkout/affiliate_activation/2/*'))
@@ -154,12 +161,13 @@
                             <div class="card-body">
 
                                 <h4>Package</h4>
-                                <span>Basic</span>
+                                <span id="ptit">Basic</span>
                                 <hr>
 
                                 <h4>Description</h4>
-                                <span>To start your Affiliate journey today you will get access to all our Core
-                                    Services.</span>
+                                <span id="pdesc">
+                                    To start your Affiliate journey today you will get access to all our Core Services.
+                                </span>
                             </div>
                         </div>
                     @elseif (request()->is('checkout/affiliate_activation/3/*'))
@@ -170,11 +178,13 @@
                             <div class="card-body">
 
                                 <h4>Package</h4>
-                                <span>Standard</span>
+                                <span id="ptit">Standard</span>
                                 <hr>
 
                                 <h4>Description</h4>
-                                <span>Become Instructor unlimited team profits, and access to Short Links Services.</span>
+                                <span id="pdesc">
+                                    Become Instructor unlimited team profits, and access to Short Links Services.
+                                </span>
                             </div>
                         </div>
                     @elseif (request()->is('checkout/affiliate_activation/4/*'))
@@ -185,11 +195,13 @@
                             <div class="card-body">
 
                                 <h4>Package</h4>
-                                <span>Premium</span>
+                                <span id="ptit">Premium</span>
                                 <hr>
 
                                 <h4>Description</h4>
-                                <span>Access to special features and all features in the previous packages.</span>
+                                <span id="pdesc">
+                                    Access to special features and all features in the previous packages.
+                                </span>
                             </div>
                         </div>
                     @endif
@@ -204,7 +216,8 @@
                         <div class="p-4">
                             <div class="mb-1">
                                 @if (request()->is('checkout/course/*'))
-                                    <span class="text-dark h4" id="prodprice">Price: &#8358; 20,000</span>
+                                    <span class="text-dark h4" id="prodprice">Price: <span
+                                            class="text-muted">loading...</span></span>
                                     <input type="hidden" id="c-price">
                                 @elseif(request()->is('checkout/instructor_activation/3/*'))
                                     <span class="text-dark h4" id="actprice">Price: &#8358;
@@ -220,26 +233,26 @@
                                     <input type="hidden" id="a-price" value="115000">
                                 @elseif (request()->is('checkout/affiliate_activation/2/*'))
                                     <span class="text-dark h4" id="actprice">Price: &#8358; 5,000</span>
-                                    <input type="hidden" id="af-price" value="5000">
+                                    <input type="hidden" id="a-price" value="5000">
                                 @elseif (request()->is('checkout/affiliate_activation/3/*'))
                                     <span class="text-dark h4" id="actprice">Price: &#8358; 15,000</span>
-                                    <input type="hidden" id="af-price" value="15000">
+                                    <input type="hidden" id="a-price" value="15000">
                                 @elseif (request()->is('checkout/affiliate_activation/4/*'))
                                     <span class="text-dark h4" id="actprice">Price: &#8358; 40,000</span>
-                                    <input type="hidden" id="af-price" value="40000">
+                                    <input type="hidden" id="a-price" value="40000">
                                 @endif
                             </div>
                             <div class="mb-3">
                                 @if (request()->is('checkout/course/*'))
-                                    <span class="text-dark h4" id="prodtype">Transaction Type: Course
-                                        Purchase</span>
+                                    <span class="text-dark h4" id="prodtype">Transaction Type: Course Purchase</span>
                                 @elseif (request()->is('checkout/instructor_activation/*/*'))
-                                    <span class="text-dark h4" id="prodtype">Transaction Type:
-                                        Instructor
-                                        Activation</span>
-                                @elseif (request()->is('checkout/affliate_activation/*'))
-                                    <span class="text-dark h4" id="prodtype">Transaction Type: Affliate
-                                        Activation</span>
+                                    <span class="text-dark h4" id="prodtype">
+                                        Transaction Type: Instructor Activation
+                                    </span>
+                                @elseif (request()->is('checkout/affiliate_activation/*'))
+                                    <span class="text-dark h4" id="prodtype">
+                                        Transaction Type: Affiliate Activation
+                                    </span>
                                 @endif
                             </div>
                             <b>Other Information</b>
@@ -263,80 +276,80 @@
                                 @elseif (request()->is('checkout/instructor_activation/3/*'))
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Become an Instructor</span>
+                                        <span class="pinfo">Become an Instructor</span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Instructor Paid Training Package </span>
+                                        <span class="pinfo">Instructor Paid Training Package </span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>1 Paid Course</span>
+                                        <span class="pinfo">1 Paid Course</span>
                                     </li>
                                 @elseif (request()->is('checkout/instructor_activation/4/*'))
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Instructor success challenge</span>
+                                        <span class="pinfo">Instructor success challenge</span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Unique Store</span>
+                                        <span class="pinfo">Unique Store</span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>3 Paid Courses</span>
+                                        <span class="pinfo">3 Paid Courses</span>
                                     </li>
                                 @elseif (request()->is('checkout/instructor_activation/5/*'))
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Store Automation</span>
+                                        <span class="pinfo">Store Automation</span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Customizable Store</span>
+                                        <span class="pinfo">Customizable Store</span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Unlimited Paid Courses</span>
+                                        <span class="pinfo">Unlimited Paid Courses</span>
                                     </li>
                                 @elseif (request()->is('checkout/affiliate_activation/2/*'))
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Affiliate Training Package</span>
+                                        <span class="pinfo">Affiliate Training Package</span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Free Unique Affiliate Links</span>
+                                        <span class="pinfo">Free Unique Affiliate Links</span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Unlimited Store Links</span>
+                                        <span class="pinfo">Unlimited Store Links</span>
                                     </li>
                                 @elseif (request()->is('checkout/affiliate_activation/3/*'))
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Become Instuctor</span>
+                                        <span class="pinfo">Become Instuctor</span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Team Profits</span>
+                                        <span class="pinfo">Team Profits</span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Short Links Services</span>
+                                        <span class="pinfo">Short Links Services</span>
                                     </li>
                                 @elseif (request()->is('checkout/affiliate_activation/4/*'))
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Access to Success Challenge</span>
+                                        <span class="pinfo">Access to Success Challenge</span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Global Profit Sharing</span>
+                                        <span class="pinfo">Global Profit Sharing</span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
-                                        <span>Unique Affiliate Store</span>
+                                        <span class="pinfo">Unique Affiliate Store</span>
                                     </li>
                                 @endif
                             </ul>
@@ -356,24 +369,40 @@
             }
             getBalance();
 
-            $("button").removeAttr("disabled");
 
             function courseSetStorage() {
                 course_title = $('#ctit').html();
                 course_description = $('#cdesc').html();
+                transaction_type = "Course Purchase";
                 course_price = $('#c-price').val();
                 course_info = {
                     course_title,
                     course_description,
-                    course_price
+                    course_price,
+                    transaction_type,
                 };
                 sessionStorage.setItem("courseinfo", JSON.stringify(course_info));
             }
 
-            // function packageSetStorage(){
+            function packageSetStorage() {
+                actprice = $("#a-price").val();
+                var pinfo = Array.prototype.slice.call(document.getElementsByClassName('pinfo')).map(x => x
+                    .innerHTML);
+                pack = $("#prodtype").html();
+                transtype = pack.split(':')[1].trim();
+                ptype = $("#ptit").html().trim();
+                pdesc = $("#pdesc").html().trim();
 
-            // }
+                transinfo = {
+                    price: actprice,
+                    package_info: pinfo,
+                    tansaction_type: transtype,
+                    product_type: ptype,
+                    product_desc: pdesc,
+                }
 
+                sessionStorage.setItem("packageinfo", JSON.stringify(transinfo));
+            }
 
             $("#wallpay").click(function(e) {
                 var button = $("button.pay-btn");
@@ -391,6 +420,22 @@
                 }
             });
 
+            function addToSession() {
+                $.ajax({
+                    url: url + 'addtosession',
+                    method: "POST",
+                }).done(res => {
+                    salat("You Have Successfully Activated a Package and Upgraded Your Plan");
+                    packageSetStorage();
+                    setTimeout(() => {
+                        window.location.href = "/checkout_success/activation"
+                    }, 1000);
+                }).fail(res => {
+                    console.log(res);
+                    concatError(res.responseJSON);
+                })
+            }
+
             function fetchCourseInfo(slug) {
                 $.ajax({
                     type: "get",
@@ -399,14 +444,13 @@
                     console.log(res);
                     $('#cid').val(res.data.id);
                     $('#ctit').html(res.data.title);
-                    $('#cdesc').append(res.data.description);
+                    $('#cdesc').html(res.data.subtitle);
                     $('#c-price').val(`${res.data.price}`);
-                    $('#prodprice').html(`Price: &#8358; ${res.data.price}`);
-                    // $("#prodtype").html(`Product Type: ${res.data.course_info.type}`)
+                    $('#prodprice').html(`Price: &#8358; ${money(res.data.price)}`);
+                    $("button").removeAttr("disabled");
                 }).fail(function(res) {
                     console.log(res);
                     concatError(res.responseJSON);
-
                 });
             }
 
@@ -418,7 +462,7 @@
                         url: api_url + `admin/balance/${live_id}`,
                     }).done(res => {
                         $("input#hidbal").val(res.balance);
-                        $("#bal").html(`NGN ${res.balance}`);
+                        $("#bal").html(`NGN ${money(res.balance)}`);
                     }).fail(res => {
                         console.log(res);
                         concatError(res.responseJSON);
@@ -427,7 +471,6 @@
                     $("#bal").html(`Login for balance`);
                 }
             };
-
 
             function courseWalletPurchase(course_id) {
                 $.ajax({
@@ -444,8 +487,8 @@
                     btn(livepay, 'Wallet Payment', 'after');
                     courseSetStorage();
                     setTimeout(() => {
-                        window.location.href = "/checkout_success"
-                    }, 3000);
+                        window.location.href = "/checkout_success/course"
+                    }, 1000);
                 }).fail(res => {
                     console.log(res);
                     btn(livepay, 'Wallet Payment', 'after');
@@ -466,8 +509,17 @@
                     },
                 }).done(res => {
                     console.log(res);
+                    if (ins == 1) {
+                        btn(livepay, 'Wallet Payment', 'after');
+                        addToSession();
+                        return;
+                    }
                     salat(res.message);
                     btn(livepay, 'Wallet Payment', 'after');
+                    packageSetStorage();
+                    setTimeout(() => {
+                        window.location.href = "/checkout_success/activation"
+                    }, 1000);
                 }).fail(res => {
                     console.log(res);
                     btn(livepay, 'Wallet Payment', 'after');
@@ -509,7 +561,6 @@
                     },
                 });
             }
-
 
             function cardCoursePurchase(price) {
                 FlutterwaveCheckout({
@@ -557,10 +608,10 @@
                     },
                 }).done(res => {
                     salat(res.message);
-                    setStorage();
+                    courseSetStorage();
                     setTimeout(() => {
-                        window.location.href = "/checkout_success";
-                    }, 2000);
+                        window.location.href = "/checkout_success/course";
+                    }, 1000);
                 }).fail(res => {
                     console.log(res);
                     concatError(res);
@@ -577,14 +628,20 @@
                         transaction_id: tx_id,
                     },
                 }).done(res => {
-                    console.log(res);
+                    if (ins == 1) {
+                        addToSession();
+                        return;
+                    }
                     salat(res.message);
+                    packageSetStorage();
+                    setTimeout(() => {
+                        window.location.href = "/checkout_success/activation"
+                    }, 1000);
                 }).fail(res => {
                     console.log(res);
                     concatError(res.responseJSON);
                 })
             }
-
 
             $(document).on('click', '#livepay', function(e) {
                 e.preventDefault();
@@ -595,7 +652,6 @@
                     $("#signup_modal").modal("show");
                     return;
                 }
-
                 if (trans_type.trim() == "course_purchase") {
                     price = parseInt($("#c-price").val());
                     course_id = $("#cid").val();
@@ -603,25 +659,17 @@
                         salat("Insufficient funds", 1);
                         return;
                     }
-                    if (window.confirm("Confirm Wallet Payment")) {
-                        courseWalletPurchase(course_id);
-                    }
-                    return;
+                    courseWalletPurchase(course_id);
                 } else if (trans_type.trim() == "ins_activation") {
                     price = parseInt($("#a-price").val());
                     plan = $("#inspackid").val();
-                    if (window.confirm("Confirm Wallet Payment")) {
-                        walletActivation(plan, 1);
-                    }
+                    walletActivation(plan, 1);
                     return;
                 } else if (trans_type.trim() == "aff_activation") {
                     plan = $("#affpackid").val();
-                    if (window.confirm("Confirm Wallet Payment")) {
-                        walletActivation(plan, 0);
-                    }
+                    walletActivation(plan, 0);
                 }
             });
-
 
             $(document).on('click', '#flutterpay', function(e) {
                 e.preventDefault();
@@ -636,23 +684,21 @@
                 email = info.data.email;
                 phone = info.data.phone;
                 name = `${info.data.firstname} ${info.data.lastname}`;
-
-                if (window.confirm('Confirm Card Payment')) {
-                    if (trans_type.trim() == "course_purchase") {
-                        price = $("#c-price").val();
-                        cardCoursePurchase(price);
-                    } else if (trans_type.trim() == "ins_activation") {
-                        price = $("#a-price").val();
-                        plan_id = $("#inspackid").val();
-                        cardActivation(price, plan_id, 1, "Instructor");
-                    } else if (trans_type.trim() == "aff_activation") {
-                        price = $("#af-price").val();
-                        plan_id = $("#affpackid").val();
-                        cardActivation(price, plan_id, 0, "Affiliate");
-                    }
+                if (trans_type.trim() == "course_purchase") {
+                    price = $("#c-price").val();
+                    cardCoursePurchase(price);
+                } else if (trans_type.trim() == "ins_activation") {
+                    price = $("#a-price").val();
+                    plan_id = $("#inspackid").val();
+                    cardActivation(price, plan_id, 1, "Instructor");
+                } else if (trans_type.trim() == "aff_activation") {
+                    price = $("#a-price").val();
+                    plan_id = $("#affpackid").val();
+                    cardActivation(price, plan_id, 0, "Affiliate");
                 }
-
             });
+
         })
     </script>
+
 @endsection

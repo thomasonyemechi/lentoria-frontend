@@ -145,7 +145,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-lg">Browse Courses</span>
-                    <h2 class="mb-1 display-4 fw-bold ctype">Course Type</h2>
+                    <h2 class="mb-1 display-4 fw-bold ctype"><span class="text-muted">loading...</span></h2>
                 </div>
             </div>
             <div class="row">
@@ -157,7 +157,7 @@
                     <!-- Tab content -->
                     <div class="tab-content pills-tabContent">
                         <div class="d-flex justify-content-center opacity-50 loader">
-                            <div class="spinner-grow text-black-100" style="width: 5rem; height: 5rem;" role="status">
+                            <div class="spinner-border text-bold fs-3 text-black-100" style="width: 5rem; height: 5rem;" role="status">
                                 <span class="visually-hidden">Loading...</span>
                             </div>
                         </div>
@@ -183,7 +183,7 @@
                     right job. Our master classes are designed to get you to master new skills with well planned
                     practical sessions and simplified class activities tailored towards completing certain class
                     projects</h2>
-                <a href="" class="btn btn-outline-white text-white mt-4">Learn more</a>
+                <a href="javascript:void(0)" class="btn btn-outline-white text-white mt-4" data-bs-toggle="modal" data-bs-target="#signup_modal">Learn more</a>
             </div>
 
         </div>
@@ -211,7 +211,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-lg">Browse Courses</span>
-                    <h2 class="mb-1 display-4 fw-bold ctype">Course Type</h2>
+                    <h2 class="mb-1 display-4 fw-bold ctype"><span class="text-muted">loading...</span></h2>
                 </div>
             </div>
             <div class="row">
@@ -223,7 +223,7 @@
                     <!-- Tab content -->
                     <div class="tab-content pills-tabContent">
                         <div class="d-flex justify-content-center opacity-50 loader">
-                            <div class="spinner-grow text-black-100" style="width: 5rem; height: 5rem;" role="status">
+                            <div class="spinner-border fs-3 text-bold text-black-100" style="width: 5rem; height: 5rem;" role="status">
                                 <span class="visually-hidden">Loading...</span>
                             </div>
                         </div>
@@ -248,7 +248,8 @@
                 <h2 class="lead text-white">You can become your own boss and earn decent income promoting excellent
                     online courses, business acceleration programmes and educational resources. Our affiliate
                     programme simplifies every thing and keep you in control of your cashflow game</h2>
-                <a href="" class="btn btn-outline-white text-white mt-4">Join Our Affiliate Programme</a>
+                <a href="{{ route('affiliate') }}" class="btn btn-outline-white text-white mt-4">Join Our Affiliate
+                    Programme</a>
             </div>
             <div class="col-lg-6 m-0 p-0">
 
@@ -264,7 +265,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-lg">Browse Courses</span>
-                    <h2 class="mb-1 display-4 fw-bold ctype">Course Type</h2>
+                    <h2 class="mb-1 display-4 fw-bold ctype"><span class="text-muted">loading...</span></h2>
                 </div>
             </div>
             <div class="row">
@@ -276,7 +277,7 @@
                     <!-- Tab content -->
                     <div class="tab-content pills-tabContent">
                         <div class="d-flex justify-content-center opacity-50 loader">
-                            <div class="spinner-grow text-black-100" style="width: 5rem; height: 5rem;" role="status">
+                            <div class="spinner-border fs-3 text-bold text-black-100" style="width: 5rem; height: 5rem;" role="status">
                                 <span class="visually-hidden">Loading...</span>
                             </div>
                         </div>
@@ -297,7 +298,7 @@
                 <h2 class="lead text-white">By simply sharing knowledge and experience, you can turn what you know
                     into a thriving business generating consistent cashflow even when you are away. Lentoria will
                     make you a pro within days. Nothing can be more satisfying</h2>
-                <button id="gsbtn" class="btn btn-outline-white text-white mt-4">Become an Instructor</button>
+                <button class="btn btn-outline-white text-white mt-4 gsbtn">Become an Instructor</button>
             </div>
 
         </div>
@@ -344,7 +345,7 @@
                         </div>
                         <!-- btn -->
                         <div class="col-md-12 mt-3 justify-content-center">
-                            <a href="" class="btn btn-primary"> Start Teaching Today</a>
+                            <a href="" class="btn btn-primary gsbtn"> Start Teaching Today</a>
                         </div>
                     </div>
                 </div>
@@ -375,15 +376,12 @@
         $(function() {
 
             session = sessionStorage.getItem('courseinfo')
-
-            // getMyCategories();
-            // getRandomCourses();
             getCategories();
             getCoursesByType();
 
-            $("#gsbtn").click(function(e) {
+            $(".gsbtn").click(function(e) {
                 e.preventDefault();
-                bt = $("#gsbtn")
+                bt = $(".gsbtn")
                 info = @js(session('info'));
                 if (!info) {
                     window.location.href = "/become-instructor";
@@ -391,22 +389,6 @@
                 }
                 if (info && info.instructor == 0) {
                     window.location.href = "/become-instructor"
-                    // $.ajax({
-                    //     url: api_url + 'admin/become_instructor',
-                    //     method: 'POST',
-                    //     beforeSend: () => {
-                    //         btn(bt, '', 'before');
-                    //     }
-                    // }).done(res => {
-                    //     salat(res.message);
-                    //     btn(bt, 'Get Started', 'after')
-                    //     window.location.href = '/instructor/add_course';
-                    // }).fail(res => {
-                    //     console.log(res);
-                    //     concatError(res.responseJSON);
-                    //     btn(bt, 'Get Started', 'after')
-                    //     window.location.href = '/activate_account';
-                    // });
                 } else {
                     window.location.href = "instructor/dashboard"
                 }
@@ -417,6 +399,7 @@
                     type: "get",
                     url: api_url + "fetchcourse_by_type",
                 }).done(res => {
+                    console.log(res);
                     fillCateory($('.firstSlider_body'), res.data[0]);
                     $(".firstSlider_body").parent().prev().find($(".ctype")).html(res.data[0].type);
                     fillCateory($('.secondSlider_body'), res.data[1]);
@@ -455,8 +438,8 @@
                                 class="rounded-top-md card-img-top course_image"></a>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <h5 class="mb-2 text-truncate-line-2 "><a href="course/${cor.id}/${cor.slug}"
-                                    class="text-inherit">${cor.title}</a></h5>
+                            <h4 class="mb-2 text-truncate-line-2"><a href="course/${cor.id}/${cor.slug}"
+                                    class="text-inherit">${cor.title}</a></h4>
                             <!-- List -->
                             <ul class="mb-3 list-inline">
                                 <li class="list-inline-item">
@@ -469,15 +452,10 @@
                                 </li>
                             </ul>
                             <div class="lh-1">
-                                <span>
-                                    <i class="mdi mdi-star text-warning me-n1"></i>
-                                    <i class="mdi mdi-star text-warning me-n1"></i>
-                                    <i class="mdi mdi-star text-warning me-n1"></i>
-                                    <i class="mdi mdi-star text-warning me-n1"></i>
-                                    <i class="mdi mdi-star text-warning"></i>
+                                <span class="text-bold font-weight-bolder fs-3 text-black">
+                                    &#8358;${money(percentage(cor.price,50))}
                                 </span>
-                                <span class="text-warning">0.0</span>
-                                <span class="fs-6 text-muted">(0)</span>
+                                <span class="text-bold text-decoration-line-through fs-4 text-black">&#8358;${money(cor.price)}</span>
                             </div>
                         </div>
                         <!-- Card Footer -->
@@ -487,7 +465,9 @@
                                     <img src="../../assets/images/avatar/avatar-1.jpg"
                                         class="rounded-circle avatar-xs" alt="">
                                 </div>
-
+                                <div class="col ms-2">
+                                    <span>${cor.user.firstname} ${cor.user.lastname}</span>
+                                </div>
                                 <div class="col-auto">
                                     <a href="#" class="text-muted bookmark">
                                         <i class="fe fe-bookmark  "></i>
@@ -527,9 +507,9 @@
                         if ($(`.no_${type}${cor.category_id}_Slider`).length) {
                             tns({
                                 container: `.no_${type}${cor.category_id}_Slider`,
-                                loop: true,
+                                loop: false,
                                 startIndex: 0,
-                                items: 2,
+                                items: 1,
                                 nav: false,
                                 autoplay: true,
                                 autoplayTimeout: 3500,
@@ -545,10 +525,12 @@
                                 // nextButton: `#slider_${cor.category_id}_next`,
                                 responsive: {
                                     768: {
-                                        items: 2
+                                        items: 2,
+                                        edgePadding: 0,
                                     },
                                     990: {
-                                        items: 4
+                                        items: 4,
+                                        edgePadding: 8,
                                     }
                                 }
                             })

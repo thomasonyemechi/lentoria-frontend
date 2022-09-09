@@ -111,7 +111,7 @@
             $('body').on('click', '.updateLearners', function(e) {
                 e.preventDefault();
                 form = $('#updateLearners'); ///wywl == what you will learn
-                bt = $(form).find('button');
+                bt = $(".updateLearners");
 
                 id = $(form).find('input[name="course_id"]').val()
 
@@ -153,9 +153,6 @@
                         new_pur.push(pu.value)
                     }
                 })
-
-
-                bt = $(form).find('button');
 
                 $.ajax({
                     method: 'post',

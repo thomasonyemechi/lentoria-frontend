@@ -15,7 +15,11 @@
                 <div class="col-lg-9 col-md-8 col-12">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <h3 class="mb-0">Course Landing Page</h3>
+                            <div class="d-flex justify-content-between">
+                                <h3 class="mb-0">Course Landing Page</h3>
+                                <button class="btn btn-success btn-xs" data-bs-toggle="modal"
+                                    data-bs-target="#editShortLinkModal">Customise Shortlink</button>
+                            </div>
                         </div>
                         <div class="card-body">
 
@@ -117,6 +121,43 @@
         </div>
     </div>
 
+    <!--Modal -->
+    <div class="modal fade" id="editShortLinkModal" tabindex="-1" role="dialog"
+        aria-labelledby="editShortLinkModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="editShortLinkModalLabel">
+                        Edit Short Link
+                    </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="row text-start g-3" id="editLinkForm">
+                        <div class="col-md-12">
+                            <label for="twitter" class="form-label">Short Link</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="shortlink-addon">https://www.lentoria.com/</span>
+                                <input type="text" class="form-control" name="shortlink" placeholder="Shortlink"
+                                    id="shortlink" aria-describedby="shortlink-addon">
+                            </div>
+                            <span class="text-sm d-none" id="valmess"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-primary" type="submit">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         $(document).ready(function() {
 
@@ -139,7 +180,7 @@
             }
 
 
-            $("#courseTitle").on("keyup",function(e) {
+            $("#courseTitle").on("keyup", function(e) {
                 e.preventDefault();
                 length = $(this).val().length
                 maxlength = 60;
@@ -209,7 +250,97 @@
                     btn($('#updateCourse'), 'Submit For Review', 'after');
                 })
 
+            });
+
+
+            $("#editLinkForm").submit(function(e) {
+                e.preventDefault();
+                link = $('#shortlink').val();
+                id = $('#course_id').val();
+                bt = $(this).find($("button[type='submit']"));
+                newlink = link.replace(/ /g, '');
+                $.ajax({
+                    url: api_url + 'admin/update_link',
+                    method: "POST",
+                    data: {
+                        link: newlink,
+                        course_id: id,
+                    },
+                    beforeSend: () => {
+                        btn(bt, '', 'before');
+                    }
+                }).done(res=>{
+                    btn(bt, 'Submit', 'after');
+                    console.log(res);
+                }).fail(res=>{
+                    concatError(res.responseJSON);
+                    console.log(res);
+                    btn(bt, 'Submit', 'after');
+                })
             })
+
+            function validateShortlink(link) {
+                $.ajax({
+                    url: api_url + 'admin/vaildate_link',
+                    method: "POST",
+                    data: {
+                        link: link,
+                    },
+                    beforeSend: () => {
+                        $("#editLinkForm").find($("button[type='submit']")).attr('disabled', true);
+                    }
+                }).done(res => {
+                    console.log(res);
+                    if (res.status == true) {
+                        $("#valmess").removeClass("d-none");
+                        if ($("#valmess").hasClass("text-danger")) {
+                            $("#valmess").removeClass("text-danger");
+                        }
+                        $("#valmess").addClass("text-success");
+                        $("#valmess").html(res.message);
+                        $("#editLinkForm").find($("button[type='submit']")).attr('disabled', false);
+                    } else if (res.status == false) {
+                        $("#valmess").removeClass("d-none");
+                        if ($("#valmess").hasClass("text-success")) {
+                            $("#valmess").removeClass("text-success");
+                        }
+                        $("#valmess").addClass("text-danger");
+                        $("#valmess").html(res.message);
+                        $("#editLinkForm").find($("button[type='submit']")).attr('disabled', false);
+                    }
+                    messageTimeout = setTimeout(() => {
+                        $("#valmess").addClass("d-none");
+                    }, 3000);
+
+                    if ($("#valmess").hasClass("d-none")) {
+                        clearTimeout(messageTimeout);
+                    }
+                }).fail(res => {
+                    console.log(res);
+                    $("#editLinkForm").find($("button[type='submit']")).attr('disabled', false);
+                })
+            }
+
+            //setup before functions
+            var typingTimer; //timer identifier
+            var doneTypingInterval = 500;
+            var input = $('#shortlink');
+
+            //on keyup, start the countdown
+            input.on('keyup', function() {
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(doneTyping, doneTypingInterval);
+            });
+
+            //on keydown, clear the countdown
+            input.on('keydown', function() {
+                clearTimeout(typingTimer);
+            });
+            //"finished typing," do something
+            function doneTyping() {
+                link = input.val();
+                validateShortlink(link), 1000;
+            }
         })
     </script>
 @endsection

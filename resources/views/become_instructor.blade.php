@@ -338,8 +338,7 @@
                                     <div class="item">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <img src="assets/images/coding.jpg" class="d-block w-100"
-                                                    alt="...">
+                                                <img src="assets/images/coding.jpg" class="d-block w-100" alt="...">
                                             </div>
                                             <div class="col-lg-6">
                                                 <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks
@@ -402,7 +401,7 @@
         </div>
     </div>
     <!-- Content -->
-    <div class="mt-n8 pb-10">
+    <div class="mt-n8 pb-10" id="payplan">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-12">
@@ -424,7 +423,8 @@
 
                             </div>
                             <div class="d-grid">
-                                <a href="{{ url('checkout/instructor_activation/3/hfge63') }}" class="btn btn-primary">Activate Now</a>
+                                <a href="{{ url('checkout/instructor_activation/3/'.Str::random(8)) }}"
+                                    class="btn btn-primary">Activate Now</a>
                             </div>
                         </div>
                         <hr class="m-0">
@@ -466,7 +466,8 @@
                             </div>
                             <div class="d-grid">
 
-                                <a href="{{ url('checkout/instructor_activation/4/hf8u484') }}" class="btn btn-primary ">Activate Now</a>
+                                <a href="{{ url('checkout/instructor_activation/4/'.Str::random(8)) }}"
+                                    class="btn btn-primary ">Activate Now</a>
                             </div>
                         </div>
                         <hr class="m-0">
@@ -506,7 +507,8 @@
                                     data-price-monthly="99" data-price-yearly="199">115,000</div>
                             </div>
                             <div class="d-grid">
-                                <a href="{{ url('checkout/instructor_activation/5/jdi93930i') }}" class="btn btn-primary">Activate Now</a>
+                                <a href="{{ url('checkout/instructor_activation/5/'.Str::random(8)) }}"
+                                    class="btn btn-primary">Activate Now</a>
                             </div>
                         </div>
                         <hr class="m-0">
@@ -562,30 +564,9 @@
             $(".gsbtn").click(function(e) {
                 e.preventDefault();
                 bt = $(".gsbtn")
-                info = @js(session('info'));
-                if (!info) {
-                    $("#signup_modal").modal('show');
-                    return;
-                }
-                if (info && info.instructor == 0) {
-
-                    // $.ajax({
-                    //     url: api_url + 'admin/become_instructor',
-                    //     method: 'POST',
-                    //     beforeSend: () => {
-                    //         btn(bt, '', 'before');
-                    //     }
-                    // }).done(res => {
-                    //     salat(res.message);
-                    //     btn(bt, 'Get Started', 'after')
-                    //     window.location.href = '/instructor/add_course';
-                    // }).fail(res => {
-                    //     console.log(res);
-                    //     concatError(res.responseJSON);
-                    //     btn(bt, 'Get Started', 'after')
-                    //     window.location.href = '/activate_account';
-                    // });
-                }
+                $('html, body').animate({
+                    scrollTop: $('#payplan').offset().top
+                }, 'slow');
             })
         })
     </script>

@@ -15,12 +15,12 @@
                             Become an affiliate to learn how to earn constant cashflow by simply promoting quality online
                             courses. We will show you how to automate the entire process.
                         </p>
-                        <a href="" class="btn btn-outline-white text-white mt-4">Get Started</a>
+                        <a href="javascipt:void(0)" class="btn btn-outline-white text-white mt-4 gsbtn">Get Started</a>
 
                     </div>
                 </div>
                 <div class=" col-xl-6 col-lg-6 col-md-12 text-lg-end text-center p-5">
-                    <img src="teach.jpg" alt="" class="img-fluid" />
+                    <img src="{{ asset('assets/images/teach.png') }}" alt="" class="img-fluid" />
                 </div>
             </div>
         </div>
@@ -110,7 +110,8 @@
                     <p class="lead"><big>No one is born an expert affiliate. It is a skill anyone can learn and begin to
                             demonstrate expertise within few days with dedication and commitment and start generating
                             massive cashflow</big> </p>
-                    <p> <a href="" class="btn btn-outline-primary mt-4">Become an Affiliate Now</a></p>
+                    <p> <a href="javascript:void(0)" class="btn btn-outline-primary mt-4 gsbtn">Become an Affiliate Now</a>
+                    </p>
                 </div>
             </div>
 
@@ -171,7 +172,8 @@
                     </div>
                 </div>
                 <div class="col-md-12 col-12 text-center">
-                    <a href="" class="btn btn-outline-white mt-5 text-white">Become an Affiliate Now</a>
+                    <a href="javascript:void(0)" class="btn btn-outline-white mt-5 text-white gsbtn">Become an Affiliate
+                        Now</a>
                 </div>
             </div>
         </div>
@@ -383,7 +385,7 @@
         </div>
     </div>
     <!-- Content -->
-    <div class="mt-n8 pb-10">
+    <div class="mt-n8 pb-10" id="plancon">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-12">
@@ -526,6 +528,636 @@
     <!-- Instructor -->
     <hr class="my-0">
 
+    <div class="pb-16 pt-10"
+        style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%), rgba(221, 218, 255, 0.3) ; background-size: cover; background-position: top center">
+        <!-- Container -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-12">
+                    <div class="col-lg-12 col-md-12 col-12 mb-8 ms-5">
+                        <!-- Heading -->
+                        <h2 class="display-4 fw-bold">Questionnaire</h2>
+                    </div>
+                    <!-- Row -->
+                    <div class="container">
+                        <div id="questionnaire" class="bs-stepper">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-12">
+                                    <!-- Stepper Button -->
+                                    <div class="bs-stepper-header shadow-sm" role="tablist">
+                                        <div class="step" data-target="#test-l-1">
+                                            <button type="button" class="step-trigger" role="tab"
+                                                id="qnairetrigger1" aria-controls="test-l-1">
+                                                <span class="bs-stepper-circle">1</span>
+                                                {{-- <span class="bs-stepper-label">Course Type</span> --}}
+                                            </button>
+                                        </div>
+                                        <div class="bs-stepper-line"></div>
+                                        <div class="step" data-target="#test-l-2">
+                                            <button type="button" class="step-trigger" role="tab"
+                                                id="qnairetrigger2" aria-controls="test-l-2">
+                                                <span class="bs-stepper-circle">2</span>
+                                                {{-- <span class="bs-stepper-label">Course Category</span> --}}
+                                            </button>
+                                        </div>
+                                        <div class="bs-stepper-line"></div>
+                                        <div class="step" data-target="#test-l-3">
+                                            <button type="button" class="step-trigger" role="tab"
+                                                id="qnairetrigger3" aria-controls="test-l-3">
+                                                <span class="bs-stepper-circle">3 </span>
+                                                {{-- <span class="bs-stepper-label">Course Title</span> --}}
+                                            </button>
+                                        </div>
+                                        <div class="bs-stepper-line"></div>
+                                        <div class="step" data-target="#test-l-4">
+                                            <button type="button" class="step-trigger" role="tab"
+                                                id="qnairetrigger4" aria-controls="test-l-4">
+                                                <span class="bs-stepper-circle">4 </span>
+                                                {{-- <span class="bs-stepper-label">Course Title</span> --}}
+                                            </button>
+                                        </div>
+                                        <div class="bs-stepper-line"></div>
+                                        <div class="step" data-target="#test-l-5">
+                                            <button type="button" class="step-trigger" role="tab"
+                                                id="qnairetrigger5" aria-controls="test-l-5">
+                                                <span class="bs-stepper-circle">5 </span>
+                                                {{-- <span class="bs-stepper-label">Course Title</span> --}}
+                                            </button>
+                                        </div>
+                                        <div class="bs-stepper-line"></div>
+                                        <div class="step" data-target="#test-l-6">
+                                            <button type="button" class="step-trigger" role="tab"
+                                                id="qnairetrigger6" aria-controls="test-l-6">
+                                                <span class="bs-stepper-circle">6 </span>
+                                                {{-- <span class="bs-stepper-label">Course Title</span> --}}
+                                            </button>
+                                        </div>
+                                        <div class="bs-stepper-line"></div>
+                                        <div class="step" data-target="#test-l-7">
+                                            <button type="button" class="step-trigger" role="tab"
+                                                id="qnairetrigger7" aria-controls="test-l-7">
+                                                <span class="bs-stepper-circle">7 </span>
+                                                {{-- <span class="bs-stepper-label">Course Title</span> --}}
+                                            </button>
+                                        </div>
+                                        <div class="bs-stepper-line"></div>
+                                        <div class="step" data-target="#test-l-8">
+                                            <button type="button" class="step-trigger" role="tab"
+                                                id="qnairetrigger8" aria-controls="test-l-8">
+                                                <span class="bs-stepper-circle">8 </span>
+                                                {{-- <span class="bs-stepper-label">Course Title</span> --}}
+                                            </button>
+                                        </div>
+                                        <div class="bs-stepper-line"></div>
+                                        <div class="step" data-target="#test-l-9">
+                                            <button type="button" class="step-trigger" role="tab"
+                                                id="qnairetrigger9" aria-controls="test-l-9">
+                                                <span class="bs-stepper-circle">9 </span>
+                                                {{-- <span class="bs-stepper-label">Course Title</span> --}}
+                                            </button>
+                                        </div>
+                                        <div class="bs-stepper-line"></div>
+                                        <div class="step" data-target="#test-l-10">
+                                            <button type="button" class="step-trigger" role="tab"
+                                                id="qnairetrigger10" aria-controls="test-l-10">
+                                                <span class="bs-stepper-circle">10 </span>
+                                                {{-- <span class="bs-stepper-label">Course Title</span> --}}
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="bs-stepper-content mt-5">
+                                        <form onSubmit="return false">
+                                            <div id="test-l-1" role="tabpanel" class="bs-stepper-pane fade"
+                                                aria-labelledby="qnairetrigger1">
+                                                <div class="card mb-3  border-0">
+                                                    <div class="card-header border-bottom px-4 py-3">
+                                                        <h3 class="mb-0">Question</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="vstack gap-2">
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques1"
+                                                                    id="1option1">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="1option1">We have cybersecurity insurance
+                                                                    coverage</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques1"
+                                                                    id="1option2">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="1option2">Our dedicated staff will protect
+                                                                    us</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques1"
+                                                                    id="1option3">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="1option3">We give regular training for best
+                                                                    practices</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques1"
+                                                                    id="option4">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="option4">Third-party vendor protection</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Button -->
+                                                <div class="d-flex justify-content-between">
+                                                    {{-- <button class="btn btn-secondary" onclick="qnaire.previous()">
+                                                        Previous
+                                                    </button> --}}
+                                                    <button class="btn btn-primary" onclick="qnaire.next()">
+                                                        Next
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="test-l-2" role="tabpanel" class="bs-stepper-pane fade"
+                                                aria-labelledby="qnairetrigger2">
+                                                <div class="card mb-3  border-0">
+                                                    <div class="card-header border-bottom px-4 py-3">
+                                                        <h3 class="mb-0">Question</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="vstack gap-2">
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques2"
+                                                                    id="2option1">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="2option1">We have cybersecurity insurance
+                                                                    coverage</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques2"
+                                                                    id="2option2">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="2option2">Our dedicated staff will protect
+                                                                    us</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques2"
+                                                                    id="2option3">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="2option3">We give regular training for best
+                                                                    practices</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques2"
+                                                                    id="2option4">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="2option4">Third-party vendor protection</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Button -->
+                                                <div class="d-flex justify-content-between">
+                                                    <button class="btn btn-secondary" onclick="qnaire.previous()">
+                                                        Previous
+                                                    </button>
+                                                    <button class="btn btn-primary" onclick="qnaire.next()">
+                                                        Next
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="test-l-3" role="tabpanel" class="bs-stepper-pane fade"
+                                                aria-labelledby="qnairetrigger3">
+                                                <div class="card mb-3  border-0">
+                                                    <div class="card-header border-bottom px-4 py-3">
+                                                        <h3 class="mb-0">Question</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="vstack gap-2">
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques3"
+                                                                    id="3option1">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="3option1">We have cybersecurity insurance
+                                                                    coverage</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques3"
+                                                                    id="3option2">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="3option2">Our dedicated staff will protect
+                                                                    us</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques3"
+                                                                    id="3option3">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="3option3">We give regular training for best
+                                                                    practices</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques3"
+                                                                    id="3option4">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="3option4">Third-party vendor protection</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Button -->
+                                                <div class="d-flex justify-content-between">
+                                                    <button class="btn btn-secondary" onclick="qnaire.previous()">
+                                                        Previous
+                                                    </button>
+                                                    <button class="btn btn-primary" onclick="qnaire.next()">
+                                                        Next
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="test-l-4" role="tabpanel" class="bs-stepper-pane fade"
+                                                aria-labelledby="qnairetrigger4">
+                                                <div class="card mb-3  border-0">
+                                                    <div class="card-header border-bottom px-4 py-3">
+                                                        <h3 class="mb-0">Question</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="vstack gap-2">
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques4"
+                                                                    id="4option1">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="4option1">We have cybersecurity insurance
+                                                                    coverage</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques4"
+                                                                    id="4option2">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="4option2">Our dedicated staff will protect
+                                                                    us</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques4"
+                                                                    id="4option3">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="4option3">We give regular training for best
+                                                                    practices</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques4"
+                                                                    id="4option4">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="4option4">Third-party vendor protection</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Button -->
+                                                <div class="d-flex justify-content-between">
+                                                    <button class="btn btn-secondary" onclick="qnaire.previous()">
+                                                        Previous
+                                                    </button>
+                                                    <button class="btn btn-primary" onclick="qnaire.next()">
+                                                        Next
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="test-l-5" role="tabpanel" class="bs-stepper-pane fade"
+                                                aria-labelledby="qnairetrigger5">
+                                                <div class="card mb-3  border-0">
+                                                    <div class="card-header border-bottom px-4 py-3">
+                                                        <h3 class="mb-0">Question</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="vstack gap-2">
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques5"
+                                                                    id="5option1">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="5option1">We have cybersecurity insurance
+                                                                    coverage</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques5"
+                                                                    id="5option2">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="5option2">Our dedicated staff will protect
+                                                                    us</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques5"
+                                                                    id="5option3">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="5option3">We give regular training for best
+                                                                    practices</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques5"
+                                                                    id="5option4">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="5option4">Third-party vendor protection</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Button -->
+                                                <div class="d-flex justify-content-between">
+                                                    <button class="btn btn-secondary" onclick="qnaire.previous()">
+                                                        Previous
+                                                    </button>
+                                                    <button class="btn btn-primary" onclick="qnaire.next()">
+                                                        Next
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="test-l-6" role="tabpanel" class="bs-stepper-pane fade"
+                                                aria-labelledby="qnairetrigger6">
+                                                <div class="card mb-3  border-0">
+                                                    <div class="card-header border-bottom px-4 py-3">
+                                                        <h3 class="mb-0">Question</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="vstack gap-2">
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques6"
+                                                                    id="6option1">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="6option1">We have cybersecurity insurance
+                                                                    coverage</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques6"
+                                                                    id="6option2">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="6option2">Our dedicated staff will protect
+                                                                    us</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques6"
+                                                                    id="6option3">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="6option3">We give regular training for best
+                                                                    practices</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques6"
+                                                                    id="6option4">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="6option4">Third-party vendor protection</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Button -->
+                                                <div class="d-flex justify-content-between">
+                                                    <button class="btn btn-secondary" onclick="qnaire.previous()">
+                                                        Previous
+                                                    </button>
+                                                    <button class="btn btn-primary" onclick="qnaire.next()">
+                                                        Next
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="test-l-7" role="tabpanel" class="bs-stepper-pane fade"
+                                                aria-labelledby="qnairetrigger7">
+                                                <div class="card mb-3  border-0">
+                                                    <div class="card-header border-bottom px-4 py-3">
+                                                        <h3 class="mb-0">Question</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="vstack gap-2">
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques7"
+                                                                    id="7option1">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="7option1">We have cybersecurity insurance
+                                                                    coverage</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques7"
+                                                                    id="7option2">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="7option2">Our dedicated staff will protect
+                                                                    us</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques7"
+                                                                    id="7option3">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="7option3">We give regular training for best
+                                                                    practices</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques7"
+                                                                    id="7option4">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="option4">Third-party vendor protection</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Button -->
+                                                <div class="d-flex justify-content-between">
+                                                    <button class="btn btn-secondary" onclick="qnaire.previous()">
+                                                        Previous
+                                                    </button>
+                                                    <button class="btn btn-primary" onclick="qnaire.next()">
+                                                        Next
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="test-l-8" role="tabpanel" class="bs-stepper-pane fade"
+                                                aria-labelledby="qnairetrigger8">
+                                                <div class="card mb-3  border-0">
+                                                    <div class="card-header border-bottom px-4 py-3">
+                                                        <h3 class="mb-0">Question</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="vstack gap-2">
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques8"
+                                                                    id="8option1">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="8option1">We have cybersecurity insurance
+                                                                    coverage</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques8"
+                                                                    id="8option2">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="8option2">Our dedicated staff will protect
+                                                                    us</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques8"
+                                                                    id="8option3">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="8option3">We give regular training for best
+                                                                    practices</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques8"
+                                                                    id="8option4">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="8option4">Third-party vendor protection</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Button -->
+                                                <div class="d-flex justify-content-between">
+                                                    <button class="btn btn-secondary" onclick="qnaire.previous()">
+                                                        Previous
+                                                    </button>
+                                                    <button class="btn btn-primary" onclick="qnaire.next()">
+                                                        Next
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="test-l-9" role="tabpanel" class="bs-stepper-pane fade"
+                                                aria-labelledby="qnairetrigger9">
+                                                <div class="card mb-3  border-0">
+                                                    <div class="card-header border-bottom px-4 py-3">
+                                                        <h3 class="mb-0">Question</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="vstack gap-2">
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques9"
+                                                                    id="9option1">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="9option1">We have cybersecurity insurance
+                                                                    coverage</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques9"
+                                                                    id="9option2">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="9option2">Our dedicated staff will protect
+                                                                    us</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques9"
+                                                                    id="9option3">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="9option3">We give regular training for best
+                                                                    practices</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques9"
+                                                                    id="9option4">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="9option4">Third-party vendor protection</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Button -->
+                                                <div class="d-flex justify-content-between">
+                                                    <button class="btn btn-secondary" onclick="qnaire.previous()">
+                                                        Previous
+                                                    </button>
+                                                    <button class="btn btn-primary" onclick="qnaire.next()">
+                                                        Next
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="test-l-10" role="tabpanel" class="bs-stepper-pane fade"
+                                                aria-labelledby="qnairetrigger10">
+                                                <div class="card mb-3  border-0">
+                                                    <div class="card-header border-bottom px-4 py-3">
+                                                        <h3 class="mb-0">Question</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="vstack gap-2">
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques10"
+                                                                    id="10option1">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="10option1">We have cybersecurity insurance
+                                                                    coverage</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques10"
+                                                                    id="10option2">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="10option2">Our dedicated staff will protect
+                                                                    us</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques10"
+                                                                    id="10option3">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="10option3">We give regular training for best
+                                                                    practices</label>
+                                                            </div>
+                                                            <!-- Feed ques item -->
+                                                            <div>
+                                                                <input type="radio" class="btn-check" name="ques10"
+                                                                    id="10option4">
+                                                                <label class="btn btn-outline-primary w-100"
+                                                                    for="10option4">Third-party vendor protection</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Button -->
+                                                <div class="d-flex justify-content-between">
+                                                    <button class="btn btn-secondary" onclick="qnaire.previous()">
+                                                        Previous
+                                                    </button>
+                                                    <button class="btn btn-primary">
+                                                        Submit
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Become an Instructor -->
 
     <!-- call to action -->
@@ -538,10 +1170,29 @@
                     <p class="lead text-white px-lg-12 mb-6">Effective learning starts with assessment. Learning a new
                         skill is hard work—Lentoria makes it easier.</p>
                     <div class="d-grid d-md-block">
-                        <a href="#" class="btn btn-success text-white mt-4">Start Learning</a>
+                        <a href="javascript:void(0)" class="btn btn-success text-white mt-4" data-bs-toggle="modal"
+                            data-bs-target="#signup_modal">Start Learning</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        $("#questionnaire").length && document.addEventListener("DOMContentLoaded", (function() {
+            qnaire = new Stepper(document.querySelector("#questionnaire"), {
+                linear: !1,
+                animation: !0
+            })
+        }));
+        $(function() {
+            $(".gsbtn").click(function(e) {
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $('#plancon').offset().top
+                }, 'slow');
+            })
+        })
+    </script>
+
 @endsection

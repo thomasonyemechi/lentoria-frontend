@@ -12,7 +12,6 @@
                     <div>
                         <h3 class="text-white display-4 fw-semi-bold" id="c-title">Course Title</h3>
                         <p class="text-white mb-6 lead" id="c-subtitle">
-
                             Course Subtitle
                         </p>
                         <input type="hidden" id="cid">
@@ -319,8 +318,8 @@
                     <!-- Card -->
                     <div class="card mb-3 mb-4">
                         <div class="p-1">
-                            <div class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover"
-                                style="background-image: url(/assets/images/course/course-javascript.jpg);">
+                            <div
+                                class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover info-div">
                                 <a class="popup-youtube icon-shape rounded-circle btn-play icon-xl text-decoration-none"
                                     href="https://www.youtube.com/watch?v=JRzWRZahOVU">
                                     <i class="fe fe-play"></i>
@@ -331,13 +330,19 @@
                         <div class="card-body">
                             <!-- Price single page -->
                             <div class="mb-3">
-                                <span class="text-dark fw-bold h2" id="c-price"></span>
-                                {{-- <del class="fs-4 text-muted">$750</del> --}}
+                                <span class="text-dark fw-bold h2" id="c-price"><span
+                                        class="text-muted text-sm">loading...</span></span>
+                                <del class="fs-4 text-muted" id="slash"></del>
                             </div>
                             <div class="d-grid">
-                                <a href="/checkout/course/{{ $slug }}" class="btn btn-primary mb-2" id="pay">Start Free
-                                    Month</a>
-                                <a href="pricing.html" class="btn btn-outline-primary">Get Full Access</a>
+                                <a href="javascript:void(0)" class="btn btn-outline-primary mb-2" id="pay">
+                                    <div class="spinner-border text-primary text-center text-sm mb-2 mt-2"
+                                        role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </a>
+                                {{-- <a href="pricing.html" class="btn btn-outline-primary">Get Full Access</a> --}}
+                                <input type="hidden" id="pri" />
                             </div>
                         </div>
                     </div>
@@ -427,8 +432,7 @@
                                     class="card-img-top rounded-top-md" /></a>
                             <!-- Card body -->
                             <div class="card-body">
-                                <h4 class="mb-2 text-truncate-line-2"><a href=""
-                                        class="text-inherit">How to
+                                <h4 class="mb-2 text-truncate-line-2"><a href="" class="text-inherit">How to
                                         easily create a website with React</a></h4>
                                 <ul class="mb-3 list-inline">
                                     <li class="list-inline-item"><i class="far fa-clock me-1"></i>3h 56m</li>
@@ -692,7 +696,7 @@
                         // $("#pay").attr("href","course_single")
                     }).fail(res => {
                         console.log(res);
-                        btn(livepay, 'Wallet Payment', 'after');
+                        btn(bt, 'Buy now', 'after');
                         concatError(res.responseJSON);
                     })
                 }
@@ -714,14 +718,80 @@
                 }
             }
 
-            // $('#pay').click(function(e) {
-            //     e.preventDefault();
-            //     if (!@js(session('info'))) {
-            //         $("#signup_modal").modal('show');
-            //     } else {
-            //         $("#paymentModal").modal('show');
-            //     }
-            // })
+
+            $(document).on('click', '.pay-btn', function(e) {
+                console.log(e);
+                if (!@js(session('info'))) {
+                    $("#signup_modal").modal('show');
+                    return;
+                }
+                bt = $(this);
+                course_id = @js($id);
+                $.ajax({
+                    url: api_url + `admin/wallet_purchase`,
+                    method: 'POST',
+                    data: {
+                        course_id: course_id,
+                    },
+                    beforeSend: () => {
+                        btn(bt, '', 'before');
+                    },
+                }).done(res => {
+                    salat(res.message);
+                    $("#pay").html("Go to Classroom");
+                }).fail(res => {
+                    console.log(res);
+                    btn(bt, 'Go to Classroom', 'after');
+                    concatError(res.responseJSON);
+                })
+            })
+
+
+            function hasCourse(cid, price, slug) {
+                if (@js(session('info'))) {
+                    info = @js(session('info'));
+                    user_id = info.data.id;
+                    $.ajax({
+                        url: api_url + "has_course",
+                        method: "POST",
+                        data: {
+                            user_id: user_id,
+                            course_id: cid,
+                        },
+                        beforeSend: () => {
+                            $("#pay").attr("disabled", true);
+                        }
+                    }).done(res => {
+                        console.log(res);
+                        $("#pay").attr("disabled", false);
+                        if (res.status == false) {
+                            $("#pay").attr("href", "javascript:void(0)");
+                            $("#pay").html("Go to Classroom");
+                        } else if (res.status == true) {
+                            if (price == 0) {
+                                $("#pay").attr("href", "javascript:void(0)");
+                                $("#pay").addClass('pay-btn');
+                                $("#pay").html("Buy Now")
+                            } else {
+                                $("#pay").attr("href", `/checkout/course/${slug}`);
+                                $("#pay").html("Buy Now")
+                            }
+                        }
+                    }).fail(res => {
+                        console.log(res);
+                        $("#pay").attr("disabled", false);
+                    })
+                } else {
+                    if (price == 0) {
+                        $("#pay").attr("href", "javascript:void(0)");
+                        $("#pay").html("Buy Now")
+                        $("#pay").addClass('pay-btn');
+                    } else {
+                        $("#pay").attr("href", `/checkout/course/${slug}`);
+                        $("#pay").html("Buy Now")
+                    }
+                }
+            }
 
             $(document).on('click', '#flutterpay', function(e) {
                 e.preventDefault();
@@ -795,9 +865,6 @@
             }
 
 
-
-
-
             $("#ratingModal").find($("span.bk-btn")).click(function(e) {
                 e.preventDefault();
                 $("#ratingModal").find($("div.hidden_txt")).addClass("d-none");
@@ -805,7 +872,6 @@
                 $("#ratingModal").find($("div.old-close")).removeClass("d-none");
 
             })
-
 
             $('.rating').click(() => {
                 $('#ratingModal').modal('show');
@@ -816,20 +882,27 @@
                     type: "get",
                     url: api_url + `course_info/{{ $id }}`,
                 }).done(function(res) {
+                    console.log(res)
                     // $('#cid').val(res.data.id);
                     $('#c-title').html(res.data.course_info.title);
                     $('#cde').append(res.data.course_info.description);
                     $('#c-subtitle').html(res.data.course_info.subtitle);
                     $('#cbar').html(levelBar(res.data.course_info.level));
                     $('#c-level').html(checkLevel(res.data.course_info.level));
-                    $('#c-price').html(`&#8358 ${res.data.course_info.price}`);
+                    $('#c-price').html(`&#8358;${money(percentage(res.data.course_info.price,50))}`);
+                    $("#pri").val(res.data.course_info.price);
+                    hasCourse(res.data.course_info.id, res.data.course_info.price, @js($slug));
+                    $("#slash").html(`&#8358 ${money(res.data.course_info.price)}`);
+                    $(".info-div").css("background-image",
+                        `url(${imageUrl(res.data.course_info.image)}),url(/assets/images/course/course-javascript.jpg)`
+                    );
+                    $(".info-div").find($("a")).attr("href", `${imageUrl(res.data.course_info.video)}`)
                     $('#ins-name').html(
                         `${res.data.basic_info.firstname} ${res.data.basic_info.lastname}`);
                     $('#ins-exps').html(`${res.data.instructor.headline ?? 'Instructor\'s Expertise'}`);
                     $('#ins-bio').html(`${res.data.instructor.biography ?? 'Instructor\'s Biography'}`);
                     $('#ins-link').attr('href',
                         `/instructor/${res.data.course_info.user_id}/profile`);
-
                     other_info = res.data.other_info
                     course_audience = parse(other_info.course_audience);
                     course_requirement = parse(other_info.course_requirement);
@@ -838,6 +911,8 @@
 
                     $('#overview').find($("h3.he")).removeClass('d-none');
                     $('#overview').find($("#loader")).remove();
+                    $("#loader5").remove();
+                    $("#job_div").append(res.data.other_info.opportunities);
 
                     if (wywl) {
                         wywl.map(data => {
@@ -850,7 +925,6 @@
                         });
                     }
 
-
                     if (course_requirement) {
                         course_requirement.map(data => {
                             $('#req_list').find($('div.row')).append(`
@@ -862,7 +936,6 @@
                         });
                     }
 
-
                     if (course_audience) {
                         course_audience.map(data => {
                             $('#learn_list').find($('div.row')).append(`
@@ -873,7 +946,6 @@
                         `);
                         });
                     }
-
 
                     if (purpose) {
                         purpose.map(data => {
@@ -890,7 +962,6 @@
                     location.href = '/';
                 });
             }
-
 
             function getLectures(sec_id) {
                 course = $(document).find($(`div#course${sec_id}`))
@@ -933,7 +1004,6 @@
                     console.log(res);
                     concatError(res.responseJSON);
                 })
-
             }
 
             function getSections(id) {
@@ -987,15 +1057,12 @@
                         </div>
                         `)
                     })
-
                 }).fail(res => {
                     console.log(res);
                     concatError(res);
                     $("#loader3").remove();
                 })
             }
-
-
 
         })
     </script>

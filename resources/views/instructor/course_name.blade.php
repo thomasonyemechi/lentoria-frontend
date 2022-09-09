@@ -52,6 +52,7 @@
                 method: 'get',
                 url: api_url + `admin/course/{{ $slug }}`
             }).done(function(res) {
+                console.log(res);
                 $('input[name="course_info_29"]').val(JSON.stringify(res.data))
                 $('.course-title').html(res.data.title)
                 sessionStorage.setItem("courseimage", res.data.image);
@@ -64,6 +65,7 @@
                     $('#courseTitle').html(res.data.title);
                     $('#courseSubtitle').val(dat.subtitle);
                     $('#course_id').val(dat.id);
+                    $("#shortlink").val(dat.link);
                     description.setData(dat.description ?? '');
                     $(`#selcourse_type option[value="${dat.course_type}"]`).prop("selected", true);
                     $(`#course_level option[value="${dat.level}"]`).prop("selected", true);
@@ -74,18 +76,13 @@
                 $('.course_price').val(res.data.price)
                 $('input[name="course_update_id"]').val(res.data.id)
                 $(`select[name="currency"] option[value=${res.data.currency}] `).prop('selected', true)
-
-
                 $('#updateLearners').find('input[name="course_id"]').val(res.data.id)
-
-
                 ////messaging
                 try {
                     welmess.setData(dat.welcome_message ?? '');
                     cermess.setData(dat.certification_message ?? '');
                     $('#mycourse_id').val(dat.id);
                 } catch (err) {};
-
                 ///section
                 $('#course_id').val(dat.id)
             }).fail(function(res) {
