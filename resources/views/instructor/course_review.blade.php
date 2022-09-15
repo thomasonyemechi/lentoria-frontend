@@ -12,15 +12,16 @@
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div>
                                     <h3 class="mb-0 text-truncate-line-2 d-inline-flex" id="st">Section Title </h3><i
-                                        class="fe fe-chevron-right mt-1 d-inline-flex"></i><span class="d-inline-flex"
-                                        id="lt">Lecture
+                                            class="fe fe-chevron-right mt-1 d-inline-flex"></i><span
+                                            class="d-inline-flex"
+                                            id="lt">Lecture
                                         Title</span>
                                 </div>
                                 <div>
                                     <!-- Dropdown -->
                                     <span class="dropdown">
                                         <a href="#" class="ms-2 text-muted" id="dropdownInfo"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                           data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="fe fe-help-circle"></i>
                                         </a>
                                         <span class="dropdown-menu dropdown-menu-lg p-3 dropdown-menu-end"
