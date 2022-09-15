@@ -125,13 +125,13 @@
             }
         });
 
-        $('.opensignup').on('click', function() {
+        $('.opensignup').on('click', function () {
             $('#login_modal').modal('hide')
             $('#signup_modal').modal('show')
         })
 
 
-        $('.openlogin').on('click', function() {
+        $('.openlogin').on('click', function () {
             $('#signup_modal').modal('hide')
             $('#login_modal').modal('show')
 

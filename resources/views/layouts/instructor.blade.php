@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('page_title')</title>
-    <link rel="icon" href="{{ asset('assets/images/logo2.png') }}" />
+    <link rel="icon" href="{{ asset('assets/images/logo2.png') }}"/>
     <link href="{{ asset('assets/fonts/feather/feather.css') }}" rel="stylesheet"/>
     <link href="https://vjs.zencdn.net/7.20.2/video-js.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- Fantasy -->
     <link href="https://unpkg.com/@videojs/themes@1/dist/fantasy/index.css" rel="stylesheet">
-    <link href="{{ asset('assets/libs/bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/libs/dragula/dist/dragula.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/libs/bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/libs/dragula/dist/dragula.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/libs/%40mdi/font/css/materialdesignicons.min.css') }}" rel="stylesheet"/>
     {{-- <link href="{{ asset('assets/libs/prismjs/themes/prism.css') }}" rel="stylesheet" /> --}}
     <link href="{{ asset('assets/libs/auxiliary-rater/lib/style.css') }}" rel="stylesheet"/>

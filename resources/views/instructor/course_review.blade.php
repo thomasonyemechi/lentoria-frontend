@@ -24,22 +24,22 @@
                                             <i class="fe fe-help-circle"></i>
                                         </a>
                                         <span class="dropdown-menu dropdown-menu-lg p-3 dropdown-menu-end"
-                                            aria-labelledby="dropdownInfo">
+                                              aria-labelledby="dropdownInfo">
                                             Video for the selected course
                                         </span>
                                     </span>
                                     <!-- Dropdown -->
                                     <span class="dropdown">
                                         <a class="text-muted text-decoration-none" href="#" role="button"
-                                            id="shareDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                                           id="shareDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="fe fe-more-vertical"></i>
                                         </a>
                                         <span class="dropdown-menu dropdown-menu-end" aria-labelledby="shareDropdown1">
                                             <span class="dropdown-header">Share</span>
                                             <a class="dropdown-item" href="#"><i
-                                                    class="fab fa-facebook dropdown-item-icon"></i>Facebook</a>
+                                                        class="fab fa-facebook dropdown-item-icon"></i>Facebook</a>
                                             <a class="dropdown-item" href="#"><i
-                                                    class="fab fa-twitter dropdown-item-icon"></i>Twitter</a>
+                                                        class="fab fa-twitter dropdown-item-icon"></i>Twitter</a>
                                             <a class="dropdown-item" href="#"><i
                                                         class="fab fa-linkedin dropdown-item-icon"></i>Linked In</a>
                                             <a class="dropdown-item" href="#"><i
