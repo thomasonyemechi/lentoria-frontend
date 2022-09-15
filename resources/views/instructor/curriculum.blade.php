@@ -654,6 +654,7 @@
                     response = data.response,
                     reader = data.reader;
                 $("#addImageModal").modal("hide");
+                salat(response.message);
                 $("#image_upload").fileinput('clear');
             });
             ;
