@@ -28,7 +28,7 @@
                     <div class="card border-0 mb-3 mb-lg-0">
                         <!-- Card body -->
                         <div class="p-5 text-center">
-                            <img src="{{ asset('assets/images/logo2.png') }}" alt="" class="mb-5" />
+                            <img src="{{ asset('assets/images/logo2.png') }}" alt="" class="mb-5"/>
                             <div class="mb-5">
                                 <h2 class="fw-bold">Basic Package</h2>
                                 <p class="mb-0">
@@ -67,7 +67,7 @@
             <div class="row">
                 <!-- Col -->
                 <div class="col-md-6 col-lg-4 col-12 mb-3">
-                    <h4>Will i be charged now for a FREE trial?</h4>
+                    <h4>Will I be charged now for a FREE trial?</h4>
                     <p>
                         Vestibulum pulvinar est at erat laoreet fringilla. Nullam
                         imperdiet, augue non vestibulum triuam quam, at maximus ex mauris
@@ -125,7 +125,8 @@
                             <div class="d-lg-flex justify-content-between align-items-center">
                                 <h4 class="mb-0">Have other questions?</h4>
                                 <span>Send us a mail via:
-                                    <a href="mailto:support@lentoria.com" target="_blank">support@lentoria.com</a></span>
+                                    <a href="mailto:support@lentoria.com"
+                                       target="_blank">support@lentoria.com</a></span>
                             </div>
                         </div>
                     </div>
@@ -136,7 +137,7 @@
 
     <script src="https://checkout.flutterwave.com/v3.js"></script>
     <script>
-        $(function() {
+        $(function () {
 
             info = @js(Session::get('info'));
             user_id = info.data.id;
@@ -145,8 +146,7 @@
             name = `${info.data.firstname} ${info.data.lastname}`;
 
 
-
-            $("#bain").click(function(e) {
+            $("#bain").click(function (e) {
                 e.preventDefault();
                 makePayment();
             })
@@ -158,7 +158,7 @@
                     amount: 2500,
                     currency: "NGN",
                     payment_options: "card,ussd",
-                    callback: function(payment) {
+                    callback: function (payment) {
                         console.log(payment);
                         if (payment.status == "successful") {
                             tx_id = payment.tx_ref;
@@ -166,7 +166,7 @@
                             verifyTransactionOnBackend(tx_id, amount);
                         }
                     },
-                    onclose: function(incomplete) {
+                    onclose: function (incomplete) {
                         if (incomplete || window.verified === false) {
                             salat('Transaction cancelled', 1);
                         }

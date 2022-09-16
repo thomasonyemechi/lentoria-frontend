@@ -153,10 +153,11 @@
                     x.innerHTML = c;
                 });
 
-                $("button").click(function(e) {
+                $("button").click(function (e) {
                     sessionStorage.removeItem("packageinfo");
                     window.location.href = "/"
-                })
+                });
+
             }
 
         })

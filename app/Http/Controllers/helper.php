@@ -1,5 +1,7 @@
 <?php
 
+use Laravolt\Avatar\Facade as Avatar;
+
 function access_token()
 {
     return session()->get('info')['access_token'] ?? '';
@@ -18,7 +20,7 @@ function userDetail($detail)
     } else if ($detail == 2) {
         return $user->email;
     }
-    
+
 }
 
 
@@ -36,7 +38,7 @@ function names($type)
 function instructorInfo()
 {
     $user = user();
-    $info = ['name' => $user->firstname . ' ' . $user->lastname, 'photo' => 'assets/images/avatar/avatar-1.jpg', 'email' => $user->email, 'id' => $user->id];
+    $info = ['name' => $user->firstname . ' ' . $user->lastname, 'photo' => Avatar::create(userDetail(1))->toBase64(), 'email' => $user->email, 'id' => $user->id];
 
     return '<div class="row align-items-center">
     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
@@ -48,8 +50,8 @@ function instructorInfo()
             <input type="hidden" id="user_id" value="' . $info['id'] . '"/>
             <div class="d-flex align-items-center">
                 <div class="me-2 position-relative d-flex justify-content-end align-items-end mt-n5">
-                    <img src="../../' . $info['photo'] . '"
-                        class="avatar-xl rounded-circle border border-4 border-white position-relative"
+                    <img src="' . $info['photo'] . '"
+                        class="avatar-xxl rounded-circle border border-4 border-white position-relative"
                         alt="" />
                 </div>
                 <div class="lh-1">

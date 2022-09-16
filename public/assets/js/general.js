@@ -63,7 +63,7 @@ function btn(selector, btn_text, moment) {
 function dropPaginatedPages(links) {
     link_txt = '';
     links.forEach(link => {
-        link_txt += ` <li class = "page-item goToList ${(link.active == true) ? 'active' : ''}"data - data = '${JSON.stringify(link)}' >
+        link_txt += ` <li class = "page-item goToList ${(link.active == true) ? 'active' : ''}"data - data = "${JSON.stringify(link)}" >
         <a href = "?page=${link.label}"class = "page-link" > ${link.label} </a></li > `;
     });
 
@@ -80,7 +80,7 @@ function formatDate(date) {
         day = '' + d.getDate(),
         year = d.getFullYear();
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
     return `${day} ${monthNames[month - 1]}, ${year}`;
 }
@@ -153,7 +153,7 @@ function randomString(length) {
 let imageUrl = (image) => image_url + image;
 
 function convertStoMs(seconds) {
-    if (seconds != 0) {
+    if (seconds !== 0) {
         let minutes = ~~(seconds / 60);
         let extraSeconds = seconds % 60;
         return `${minutes}m${Math.trunc(extraSeconds)}s`
