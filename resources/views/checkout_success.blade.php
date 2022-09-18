@@ -31,7 +31,7 @@
                     <!-- Card -->
                     <div class="card  mb-3 mb-lg-0">
                         <div class="card-body text-center">
-                            <h1 class="mb-0" style="font-size:80px"> <i class="fa fa-check-circle text-success"></i></h1>
+                            <h1 class="mb-0" style="font-size:80px"><i class="fa fa-check-circle text-success"></i></h1>
 
                             <h1> PAYMENT SUCCESSFUL!</h1>
                             <button class="btn btn-primary">Dashboard</button>
@@ -127,7 +127,8 @@
     </div>
 
     <script>
-        $(function() {
+
+        $(function () {
             if (window.location.pathname == "/checkout_success/course") {
                 course_info = JSON.parse(sessionStorage.getItem("courseinfo"));
                 console.log(course_info);
@@ -136,7 +137,7 @@
                 $("#prodtype").html(`Transaction Type: ${course_info.transaction_type}`);
                 $("#cdesc").html(`${course_info.course_description}`);
 
-                $("button").click(function(e) {
+                $("button").click(function (e) {
                     sessionStorage.removeItem("courseinfo");
                     window.location.href = "/"
                 })

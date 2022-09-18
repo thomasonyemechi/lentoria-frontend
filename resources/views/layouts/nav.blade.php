@@ -3,9 +3,9 @@
         text-overflow: ellipsis;
         overflow: hidden;
         display: -webkit-box !important;
-        -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
         white-space: normal;
+        -webkit-line-clamp: 5;
     }
 
     @media (min-width: 1200px) {
@@ -67,7 +67,8 @@
                         <li class="dropdown ms-2">
                             <a class="rounded-circle" href="#" role="button" data-bs-toggle="dropdown">
                                 <div class="avatar avatar-md avatar-indicators avatar-online">
-                                    <img alt="avatar" src="{{ Avatar::create(userDetail(1))->toBase64() }}"
+                                    <img alt="avatar"
+                                         src="{{ userAvatar() }}"
                                          class="rounded-circle"/>
                                 </div>
                             </a>
@@ -75,7 +76,7 @@
                                 <div class="dropdown-item">
                                     <div class="d-flex">
                                         <div class="avatar avatar-md avatar-indicators avatar-online">
-                                            <img alt="avatar" src="{{ Avatar::create(userDetail(1))->toBase64() }}"
+                                            <img alt="avatar" src="{{ userAvatar() }}"
                                                  class="rounded-circle"/>
                                         </div>
                                         <div class="ms-3 lh-1">
@@ -200,7 +201,7 @@
                                 <a class="rounded-circle" href="#" data-bs-toggle="dropdown"
                                    data-bs-display="static" aria-expanded="false">
                                     <div class="avatar avatar-md avatar-indicators avatar-online">
-                                        <img alt="avatar" src="{{ Avatar::create(userDetail(1))->toBase64() }}"
+                                        <img alt="avatar" src="{{ userAvatar() }}"
                                              class="rounded-circle"/>
                                     </div>
                                 </a>
@@ -208,7 +209,7 @@
                                     <div class="dropdown-item">
                                         <div class="d-flex">
                                             <div class="avatar avatar-md avatar-indicators avatar-online">
-                                                <img alt="avatar" src="{{ Avatar::create(userDetail(1))->toBase64() }}"
+                                                <img alt="avatar" src="{{ userAvatar() }}"
                                                      class="rounded-circle"/>
                                             </div>
                                             <div class="ms-3 lh-1">
@@ -281,6 +282,7 @@
     $(function () {
         getCats();
 
+
         function getCats() {
             $.ajax({
                 url: api_url + 'category'
@@ -310,12 +312,5 @@
             });
 
         }
-
-        // $(document).on('click','.spe' ,function(e) {
-        //     e.preventDefault();
-        //     e.stopPropagation();
-        //     $(this).parent().parent().addClass('show');
-        //     $(this).parent().toggleClass('open');
-        // });
     });
 </script>

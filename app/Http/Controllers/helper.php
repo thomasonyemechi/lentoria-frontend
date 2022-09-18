@@ -34,11 +34,16 @@ function names($type)
     }
 }
 
+function userAvatar()
+{
+    return Avatar::create(userDetail(1))->toBase64();
+}
+
 
 function instructorInfo()
 {
     $user = user();
-    $info = ['name' => $user->firstname . ' ' . $user->lastname, 'photo' => Avatar::create(userDetail(1))->toBase64(), 'email' => $user->email, 'id' => $user->id];
+    $info = ['name' => $user->firstname . ' ' . $user->lastname, 'photo' => userAvatar(), 'email' => $user->email, 'id' => $user->id];
 
     return '<div class="row align-items-center">
     <div class="col-xl-12 col-lg-12 col-md-12 col-12">

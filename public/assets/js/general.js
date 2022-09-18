@@ -75,7 +75,7 @@ function dropPaginatedPages(links) {
 }
 
 function formatDate(date) {
-    var d = new Date(date),
+    let d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
@@ -86,7 +86,7 @@ function formatDate(date) {
 }
 
 const money = (num) => {
-    var numb = new Intl.NumberFormat();
+    let numb = new Intl.NumberFormat();
     return numb.format(num);
 };
 
@@ -145,8 +145,8 @@ function serialNo() {
 
 function randomString(length) {
     chars = '0123456789';
-    var result = '';
-    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    let result = '';
+    for (let i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
     return result;
 }
 
@@ -181,3 +181,12 @@ function percentage(num, percentage) {
 function allAreEmpty(array) {
     return array.every(val => val === "");
 }
+
+$.fn.multiply = function (numCopies) {
+    var newElements = this.clone();
+    for (var i = 1; i < numCopies; i++) {
+        newElements = newElements.add(this.clone());
+    }
+    return newElements;
+};
+// This code snippet builds the elements as a jQuery set, instead of adding to the DOM multiple times which can be slow.
