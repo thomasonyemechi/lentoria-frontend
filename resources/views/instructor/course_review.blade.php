@@ -12,48 +12,49 @@
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div>
                                     <h3 class="mb-0 text-truncate-line-2 d-inline-flex" id="st">Section Title </h3><i
-                                        class="fe fe-chevron-right mt-1 d-inline-flex"></i><span class="d-inline-flex"
-                                        id="lt">Lecture
+                                            class="fe fe-chevron-right mt-1 d-inline-flex"></i><span
+                                            class="d-inline-flex"
+                                            id="lt">Lecture
                                         Title</span>
                                 </div>
                                 <div>
                                     <!-- Dropdown -->
                                     <span class="dropdown">
                                         <a href="#" class="ms-2 text-muted" id="dropdownInfo"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                           data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="fe fe-help-circle"></i>
                                         </a>
                                         <span class="dropdown-menu dropdown-menu-lg p-3 dropdown-menu-end"
-                                            aria-labelledby="dropdownInfo">
+                                              aria-labelledby="dropdownInfo">
                                             Video for the selected course
                                         </span>
                                     </span>
                                     <!-- Dropdown -->
                                     <span class="dropdown">
                                         <a class="text-muted text-decoration-none" href="#" role="button"
-                                            id="shareDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                                           id="shareDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="fe fe-more-vertical"></i>
                                         </a>
                                         <span class="dropdown-menu dropdown-menu-end" aria-labelledby="shareDropdown1">
                                             <span class="dropdown-header">Share</span>
                                             <a class="dropdown-item" href="#"><i
-                                                    class="fab fa-facebook dropdown-item-icon"></i>Facebook</a>
+                                                        class="fab fa-facebook dropdown-item-icon"></i>Facebook</a>
                                             <a class="dropdown-item" href="#"><i
-                                                    class="fab fa-twitter dropdown-item-icon"></i>Twitter</a>
+                                                        class="fab fa-twitter dropdown-item-icon"></i>Twitter</a>
                                             <a class="dropdown-item" href="#"><i
-                                                    class="fab fa-linkedin dropdown-item-icon"></i>Linked In</a>
+                                                        class="fab fa-linkedin dropdown-item-icon"></i>Linked In</a>
                                             <a class="dropdown-item" href="#"><i
-                                                    class="fas fa-copy dropdown-item-icon"></i>Copy Link</a>
+                                                        class="fas fa-copy dropdown-item-icon"></i>Copy Link</a>
                                         </span>
                                     </span>
                                 </div>
                             </div>
                             <!-- Video -->
-                            <div class="embed-responsive position-relative w-100 d-block overflow-hidden p-0 d-block"
-                                id="vid_container" style="height: 600px;">
+                            <div class="embed-responsive position-relative t w-100 d-block overflow-auto no-scroll p-0 d-block"
+                                 id="vid_container" style="height: 600px;">
                                 <video-js
-                                    class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100 vjs-theme-fantasy"
-                                    id="vid">
+                                        class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100 vjs-theme-fantasy"
+                                        id="vid">
                                 </video-js>
                             </div>
                             <div class="d-flex justify-content-center my-22 d-none" id="vid_preloader">
@@ -70,27 +71,29 @@
     <!-- Card -->
     <div class="card course-sidebar" id="courseAccordion">
         <!-- List group -->
-        <ul class="list-group list-group-flush" id="course_list">
-            <li class="list-group-item">
-                <h4 class="mb-0">Table of Content</h4>
-            </li>
-            <!-- List group item -->
-            <div class="d-flex justify-content-center opacity-50 align-self-lg-center mt-lg-22" id="loader">
-                <div class="spinner-grow text-black-100" style="width: 5rem; height: 5rem;" role="status">
-                    <span class="visually-hidden">Loading...</span>
+        <div>
+            <ul class="list-group list-group-flush no-scroll" id="course_list" style="overflow: hidden">
+                <li class="list-group-item">
+                    <h4 class="mb-0">Table of Content</h4>
+                </li>
+                <!-- List group item -->
+                <div class="d-flex justify-content-center opacity-50 align-self-lg-center mt-lg-22" id="loader">
+                    <div class="spinner-grow text-black-100" style="width: 5rem; height: 5rem;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
                 </div>
-            </div>
-        </ul>
+            </ul>
+        </div>
     </div>
 
     <script>
-        $(function() {
-            $("#vid").bind("contextmenu", function() {
+        $(function () {
+            $("#vid").bind("contextmenu", function () {
                 return false;
-            })
-            console.log(sessionStorage.getItem("courseimage"))
+            });
+            console.log(sessionStorage.getItem("courseimage"));
             const player = videojs('vid', {
-                "controls": true,
+                controls: true,
                 autoplay: false,
                 preload: "auto",
                 responsive: true,
@@ -101,29 +104,29 @@
                 notSupportedMessage: "An Error Occured While Fetching Video or No Video Available For This Course",
                 // playbackRates: [1, 1.5, 2],
                 userActions: {
-                    hotkeys: function(event) {
+                    hotkeys: function (event) {
                         // `space` key = pause
                         if (event.which === 32) {
                             if (this.paused()) {
                                 this.play();
                             } else {
-                                this.pause()
+                                this.pause();
                             }
                         }
                     }
                 }
             });
-            player.on('error', function(e) {
+            player.on('error', function (e) {
                 console.log(e);
                 e.stopImmediatePropagation();
                 var error = player.error();
                 // player.createModal('Error Occured!');
                 error.message = "An Error Occured";
             });
-            player.on('pause', function(e) {
+            player.on('pause', function () {
                 whereYouAt = player.currentTime();
                 console.log(whereYouAt);
-            })
+            });
             const slug = @js($slug);
             getSections(slug);
 
@@ -149,8 +152,8 @@
                                 <span>${convertStoMs(lecs.duration)}</span>
                             </div>
                         </a>
-                            `
-                            })
+                            `;
+                            });
                         } else {
                             lectures += `
                         <a class="mb-2 d-flex justify-content-between align-items-center text-decoration-none text-black" style="cursor: pointer;">
@@ -160,7 +163,7 @@
                                 <span>No Lectures Available For This Section</span>
                             </div>
                         </a>
-                            `
+                            `;
                         }
 
                         $("#course_list").append(`
@@ -185,50 +188,50 @@
                     </div>
                 </div>
             </li>
-                        `)
-                    })
+                        `);
+                    });
                     if (res.data.length > 0) {
                         first = document.querySelector('.cr_con');
                         $(first).attr('aria-expanded', true);
                         next = first.nextElementSibling;
                         next.classList.add('show');
                     }
-                    $("#course_list").slimScroll({
-                        // width: '500px',
-                        height: '500px',
-                        size: '10px',
-                        color: 'grey',
-                        // alwaysVisible: true,
-                        // distance: '20px',
-                        railVisible: true,
-                        railColor: '#222',
-                        railOpacity: 0.3,
-                        wheelStep: 10,
-                        allowPageScroll: false,
-                        disableFadeOut: true
-                    });
+                    // $("#course_list").slimScroll({
+                    //     // width: '500px',
+                    //     height: '500px',
+                    //     size: '10px',
+                    //     color: 'grey',
+                    //     // alwaysVisible: true,
+                    //     // distance: '20px',
+                    //     railVisible: true,
+                    //     railColor: '#222',
+                    //     railOpacity: 0.3,
+                    //     wheelStep: 10,
+                    //     allowPageScroll: false,
+                    //     disableFadeOut: true
+                    // });
                 }).fail(res => {
                     console.log(res);
                     concatError(res.responseJSON);
-                })
-            };
+                });
+            }
 
 
-            $(document).on('click', '.vidwatch', function(e) {
+            $(document).on('click', '.vidwatch', function (e) {
                 var video_link = $(this).data('vid');
                 grandparent = $(this).parent().parent().prev();
                 $("#st").html(grandparent.find($("div.sectit")).text());
                 lecture_title = $(this).find($("span.lectit")).html();
                 $("#lt").html(lecture_title);
                 e.preventDefault();
-                player.ready(function() {
+                player.ready(function () {
                     player.src(
                         video_url + video_link
                     );
                 });
-            })
+            });
 
 
-        })
+        });
     </script>
 @endsection

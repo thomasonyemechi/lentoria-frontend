@@ -23428,7 +23428,7 @@ fieldset:disabled .btn {
 }
 
 .course-container {
-    position: fixed;
+    position: absolute;
     width: 100%;
     min-height: 100vh
 }
@@ -27861,7 +27861,8 @@ pre[class*=language-] {
 }
 
 .bs-stepper.vertical {
-    display: flex
+    display: flex;
+
 }
 
 .bs-stepper.vertical .bs-stepper-header {
