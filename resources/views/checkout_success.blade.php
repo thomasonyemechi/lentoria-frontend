@@ -127,7 +127,19 @@
     </div>
 
     <script>
-
+        document.onvisibilitychange = (e) => {
+            if (document.visibilityState == "hidden") {
+                if (window.location.pathname == "/checkout_success/course") {
+                    if (sessionStorage.getItem("courseinfo") != "" || sessionStorage.getItem("courseinfo") != null) {
+                        sessionStorage.removeItem("courseinfo");
+                    }
+                } else if (window.location.pathname == "/checkout_success/activation") {
+                    if (sessionStorage.getItem("packageinfo") != "" || sessionStorage.getItem("packageinfo") != null) {
+                        sessionStorage.removeItem("packageInfo");
+                    }
+                }
+            }
+        }
         $(function () {
             if (window.location.pathname == "/checkout_success/course") {
                 course_info = JSON.parse(sessionStorage.getItem("courseinfo"));

@@ -126,6 +126,18 @@ function levelBar(level) {
     }
 }
 
+function courseStatus(status) {
+    let badge = "";
+    if (status == 0) {
+        badge += `<span class="badge bg-danger">Not Submitted</span>`
+    } else if (status == 5) {
+        badge += `<span class="badge bg-info">Pending</span>`
+    } else if (status == 1) {
+        badge += `<span class="badge bg-success">Published</span>`
+    }
+    return badge;
+}
+
 function stripLower(str) {
     return str.toLowerCase().replace(/ /g, '');
 }

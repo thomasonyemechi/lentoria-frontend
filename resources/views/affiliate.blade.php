@@ -206,7 +206,7 @@
                     <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-xl">Take the bold step to
                         expanding your opportunities</span>
                     <h2 class="mb-2 display-4 fw-bold ">Simple Steps with Great Financial Returns</h2>
-                    <p class="lead">You can kick start your journey towards becoming an expert affiliate with just
+                    <p class="lead">You can kick-start your journey towards becoming an expert affiliate with just
                         simple
                         bold steps in the right direction. You will practically learn how to sell anything online by
                         creating reliable online sales systems.</p>
@@ -257,7 +257,7 @@
                     <h1>1</h1>
                     <div class="border-top pt-4 mt-0 mb-5">
                         <h3 class="mb-2">Get Equipped and Learn the Tricks </h3>
-                        <p class=""><big>Being a good instrutor start from being able to get prepared and be ready to
+                        <p class=""><big>Being a good instructor start from being able to get prepared and be ready to
                                 tackle any challenges that are ahead of you during the course.</big></p>
                     </div>
                 </div>
