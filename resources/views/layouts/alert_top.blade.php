@@ -24,8 +24,8 @@
 <script>
     $.ajaxSetup({
         headers: {
-            'Authorization': `Bearer {{ access_token() }}`,
-            // 'Access-Control-Allow-Origin': '*',
+            'Authorization': `Bearer {{access_token()}}`,
+            'Access-Control-Allow-Origin': '*'
         }
     });
 </script>
