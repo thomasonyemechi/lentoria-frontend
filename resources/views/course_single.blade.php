@@ -430,9 +430,9 @@
                     <div class="col-lg-3 col-md-6 col-12">
                         <!-- Card -->
                         <div class="card mb-4 card-hover">
-                            <a href="course-single.html" class="card-img-top"><img
-                                    src="{{ asset('assets/images/course/course-react.jpg') }}" alt=""
-                                    class="card-img-top rounded-top-md" /></a>
+                            <a href="javascript:void(0)" class="card-img-top"><img
+                                        src="{{ asset('assets/images/course/course-react.jpg') }}" alt=""
+                                        class="card-img-top rounded-top-md"/></a>
                             <!-- Card body -->
                             <div class="card-body">
                                 <h4 class="mb-2 text-truncate-line-2"><a href="" class="text-inherit">How to
@@ -441,7 +441,7 @@
                                     <li class="list-inline-item"><i class="far fa-clock me-1"></i>3h 56m</li>
                                     <li class="list-inline-item">
                                         <svg class="me-1 mt-n1" width="16" height="16" viewBox="0 0 16 16"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <rect x="3" y="8" width="2" height="6"
                                                 rx="1" fill="#754FFE" />
                                             <rect x="7" y="5" width="2" height="9"
@@ -739,7 +739,7 @@
                     if (wywl) {
                         wywl.map(data => {
                             $('#wywl_list').find($("div.row")).append(`
-                        <li class="d-flex mb-2 col-6">
+                        <li class="d-flex mb-2 col-lg-6 col-md-6 col-sm-12">
                             <i class="far fa-check-circle text-success me-2 mt-2"></i>
                                 <span>${data}</span>
                         </li>
@@ -750,7 +750,7 @@
                     if (course_requirement) {
                         course_requirement.map(data => {
                             $('#req_list').find($('div.row')).append(`
-                        <li class="d-flex mb-2 col-6">
+                        <li class="d-flex mb-2 col-lg-6 col-md-6 col-sm-12">
                             <i class="far fa-check-circle text-success me-2 mt-2"></i>
                                 <span>${data}</span>
                         </li>
@@ -761,7 +761,7 @@
                     if (course_audience) {
                         course_audience.map(data => {
                             $('#learn_list').find($('div.row')).append(`
-                        <li class="d-flex mb-2 col-6">
+                        <li class="d-flex mb-2 col-lg-6 col-md-6 col-sm-12">
                             <i class="far fa-check-circle text-success me-2 mt-2"></i>
                                 <span>${data}</span>
                         </li>
@@ -772,7 +772,7 @@
                     if (purpose) {
                         purpose.map(data => {
                             $('#purpose_list').find($('div.row')).append(`
-                    <li class="d-flex mb-2 col-6">
+                    <li class="d-flex mb-2 col-lg-6 col-md-6 col-sm-12">
                         <i class="far fa-check-circle text-success me-2 mt-2"></i>
                             <span>${data}</span>
                     </li>

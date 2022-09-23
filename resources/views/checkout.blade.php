@@ -561,6 +561,7 @@
                     customizations: {
                         title: "Package Activation",
                         description: `Activation of ${type} Package`,
+                        logo: "https://test.lentoria.com/assets/images/logo2.png"
                     },
                 });
             }
@@ -596,6 +597,7 @@
                     customizations: {
                         title: "Course Purchase",
                         description: "Payment for buying a course",
+                        logo: "https://test.lentoria.com/assets/images/logo2.png",
                     },
                 });
             }
