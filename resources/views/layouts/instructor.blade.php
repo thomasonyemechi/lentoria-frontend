@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('assets/cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css') }}">
     <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/prism.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/prismjs/prism.css') }}">
     <link href="{{ asset('assets/libs/bootstrap_file_input/css/fileinput.min.css') }}" media="all" rel="stylesheet"
           type="text/css"/>
     <link href="{{ asset('assets/libs/bootstrap_file_input/explorer/theme.min.css') }}" media="all" rel="stylesheet"
@@ -111,7 +111,7 @@
 <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/libs/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js') }}"></script>
-<script src="https://vjs.zencdn.net/7.20.2/video.min.js"></script>
+<script src="{{asset('assets/libs/videojs/video.min.js')}}"></script>
 <script src="{{ asset('assets/libs/odometer/odometer.min.js') }}"></script>
 <script src="{{ asset('assets/libs/inputmask/dist/jquery.inputmask.min.js') }}"></script>
 <script src="{{ asset('assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js') }}"></script>
@@ -122,16 +122,13 @@
 <script src="{{ asset('assets/libs/bootstrap_file_input/bs5/theme.min.js') }}"></script>
 <script src="{{ asset('assets/libs/bs-stepper/dist/js/bs-stepper.min.js') }}"></script>
 <script src="{{ asset('assets/libs/jQuery.print/jQuery.print.js') }}"></script>
-{{-- <script src="{{ asset('assets/libs/prismjs/prism.js') }}"></script> --}}
 <script src="{{ asset('assets/libs/auxiliary-rater/index.js') }}"></script>
-<script src="{{ asset('assets/libs/prismjs/components/prism-scss.min.js') }}"></script>
 <script src="{{ asset('assets/libs/tiny-slider/dist/min/tiny-slider.js') }}"></script>
 <script src="{{ asset('assets/libs/%40popperjs/core/dist/umd/popper.min.js') }}"></script>
 <script src="{{ asset('assets/libs/tippy.js/dist/tippy-bundle.umd.min.js') }}"></script>
 <script src="{{ asset('assets/cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js') }}"></script>
 <script src="{{ asset('assets/js/theme.min.js') }}"></script>
-<script src="{{ asset('assets/js/prism.js') }}"></script>
-{{-- <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script> --}}
+<script src="{{ asset('assets/libs/prismjs/prism.js') }}"></script>
 </body>
 
 </html>

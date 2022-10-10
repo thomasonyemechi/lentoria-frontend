@@ -18,7 +18,8 @@
                             <div class="d-flex justify-content-between">
                                 <h3 class="mb-0">Course Landing Page</h3>
                                 <button class="btn btn-success btn-xs" data-bs-toggle="modal"
-                                    data-bs-target="#editShortLinkModal">Customise Shortlink</button>
+                                        data-bs-target="#editShortLinkModal">Customise Short-link
+                                </button>
                             </div>
                         </div>
                         <div class="card-body">

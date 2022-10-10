@@ -847,8 +847,8 @@
                     ansd = que.answer;
                     answers.push(ansd);
                 });
-                if (allAreEmpty(answers)) {
-                    salat("Answer at least 1 question before submitting", 1);
+                if (answers.includes("")) {
+                    salat("Answer all questions before submitting", 1);
                     return;
                 }
                 $.ajax({

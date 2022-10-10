@@ -752,7 +752,7 @@
                                     <input type="hidden" name="lec_desc" class="lec_desc" value="${lec.description}" />
                                     <input type="hidden" name="lec_id" class="lec_id" value="${lec.id}" />
                                     <input type="hidden" name="sec_id" class="sec_id" value="${lec.section_id}" />
-                                    ${mainContentField(type, lec.main_content ?? '', lec.text)}
+                                    ${mainContentField(type, lec.main_content ?? '', lec.text ?? '')}
                                 </a>
                                 </h5>
                                 <div><a href="javascript:void(0)" class="me-1 text-inherit edit_lec" data-bs-toggle="tooltip" data-placement="top"
@@ -991,7 +991,7 @@
                                     <input type="hidden" name="lec_desc" class="lec_desc" value="${description}" />
                                     <input type="hidden" name="lec_id" class="lec_id" value="${res.id}" />
                                     <input type="hidden" name="sec_id" class="sec_id" value="${section_id}" />
-                                    ${mainContentField(type, "")}
+                                    ${mainContentField(type, "", "")}
                                 </a>
                                 </h5>
                                 <div><a href="javascript:void(0)" class="me-1 text-inherit edit_lec" data-bs-toggle="tooltip" data-placement="top"
