@@ -88,9 +88,7 @@
 
     <script>
         $(function () {
-            $("#vid").bind("contextmenu", function () {
-                return false;
-            });
+            $("#vid").bind("contextmenu", function () { return false; });
             console.log(sessionStorage.getItem("courseimage"));
             const player = videojs('vid', {
                 controls: true,
@@ -101,7 +99,7 @@
                 fill: true,
                 // fluid: true,
                 metadata: true,
-                notSupportedMessage: "An Error Occured While Fetching Video or No Video Available For This Course",
+                notSupportedMessage: "An Error Occurred While Fetching Video or No Video Available For This Course",
                 // playbackRates: [1, 1.5, 2],
                 userActions: {
                     hotkeys: function (event) {
@@ -120,8 +118,8 @@
                 console.log(e);
                 e.stopImmediatePropagation();
                 var error = player.error();
-                // player.createModal('Error Occured!');
-                error.message = "An Error Occured";
+                // player.createModal('Error Occurred!');
+                error.message = "An Error Occurred";
             });
             player.on('pause', function () {
                 whereYouAt = player.currentTime();

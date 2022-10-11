@@ -62,6 +62,43 @@
                 </li>
             </ul>
 
+                <span class="navbar-header">Submit for review</span>
+                <ul class="list-unstyled ms-n2 mb-4">
+                    <li class="nav-item d-flex justify-content-lg-center justify-content-sm-start">
+                        <button class="review-btn btn btn-xs btn-success me-lg-4 w-100">Submit</button>
+                    </li>
+                </ul>
+
         </div>
     </div>
 </nav>
+
+<script>
+    $(function () {
+        $(".review-btn").click(function (e) {
+            e.preventDefault();
+            let but = $(this);
+            let slug = @js($slug);
+            $.ajax({
+                url: api_url + `admin/publish_course`,
+                method: "post",
+                data: {
+                    slug: slug,
+                },
+                beforeSend: () => {
+                    btn(but, '', 'before');
+                }
+            }).done(res => {
+                console.log(res);
+                salat(res.message);
+                btn(but, 'Submit', 'after');
+            }).fail(res => {
+                console.log(res);
+                err = res.responseJSON
+                delete err.message;
+                concatError2(err);
+                btn(but, 'Submit', 'after');
+            })
+        })
+    })
+</script>

@@ -2,7 +2,7 @@
 @section('page_title', 'Lentoria | Welcome')
 
 @section('page_content')
-    <div class="bg-primary-a" style="background-color: #036">
+    <div class="bg-primary-a" style="background-color: #036;">
         <div class="container">
             <div class="row align-items-center g-0">
                 <div class="col-xl-5 col-lg-6 col-md-12">
@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="bg-white py-4 shadow-sm">
         <div class="container">
             <div class="row align-items-center g-0">
@@ -97,13 +97,10 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12 text-center">
-                    <!-- features -->
                     <div class="mb-4">
-                        <!-- icon -->
                         <div class="display-2 text-primary">
                             <i class="fe fe-user"></i>
                         </div>
-                        <!-- para -->
                         <div class="mt-4">
                             <h3>Connect with Professionals</h3>
                             <p class="fs-4">Network with experts in your field for bigger career opportunities</p>
@@ -111,13 +108,10 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12 text-center">
-                    <!-- features -->
                     <div class="mb-4">
-                        <!-- icon -->
                         <div class="display-2 text-primary">
                             <i class="fe fe-award"></i>
                         </div>
-                        <!-- para -->
                         <div class="mt-4">
                             <h3>Earn a Certificate</h3>
                             <p class="fs-4">Become a well-certified professional to earn better jobs</p>
@@ -125,13 +119,10 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12 text-center">
-                    <!-- features -->
                     <div class="mb-4">
-                        <!-- icon -->
                         <div class="display-2 text-primary">
                             <i class="fe fe-users"></i>
                         </div>
-                        <!-- para -->
                         <div class="mt-4">
                             <h3>Upskill your organization</h3>
                             <p class="fs-4">Get promoted and be more relevant in your organization</p>
@@ -141,8 +132,8 @@
             </div>
         </div>
     </div>
-    
-    <div class="pt-lg-3 pt-lg-3 pt-8 pb-6" style="margin-top: -10px">
+
+    <div class="pt-lg-3 pt-lg-3 pt-8 pb-6" style="margin-top: -10px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -154,11 +145,9 @@
             </div>
             <div class="row">
                 <div class="col-md-12 firstSlider_body">
-                    <!-- Nav tab -->
                     <ul class="nav nav-lb-tab mb-6 pills-tab" role="tablist">
-                    
+
                     </ul>
-                    <!-- Tab content -->
                     <div class="tab-content pills-tabContent">
                         <div class="d-flex justify-content-center opacity-50 loader">
                             <div class="spinner-border text-bold fs-3 text-black-100" style="width: 5rem; height: 5rem;"
@@ -166,21 +155,21 @@
                                 <span class="visually-hidden">Loading...</span>
                             </div>
                         </div>
-                    
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Features -->
     <div class="pt-lg-12 pb-lg-3 pt-8 pb-6">
-        
+
         <div class="row bg-secondary">
             <div class="col-lg-6 m-0 p-0">
-                
+
                 <img src="{{asset('assets/images/coding.jpg')}}" width="100%" alt="image"/>
-            
+
             </div>
             <div class="col-lg-6 text-center m-0 p-8">
                 <h1 class="text-white display-4">Skillup with Speed</h1>
@@ -192,9 +181,9 @@
                 <a href="javascript:void(0)" class="btn btn-outline-white text-white mt-4" data-bs-toggle="modal"
                    data-bs-target="#signup_modal">Learn more</a>
             </div>
-        
+
         </div>
-        
+
         <div class="row bg-primary">
             <div class="col-lg-6 text-center m-0 p-8">
                 <h1 class="text-white display-4">Learn with Comfort</h1>
@@ -207,14 +196,14 @@
                 <a href="" class="btn btn-outline-white text-white mt-4">Explore courses</a>
             </div>
             <div class="col-lg-6 m-0 p-0">
-                
+
                 <img src="{{asset('assets/images/learn.jpg')}}" width="100%" alt="image"/>
-            
+
             </div>
         </div>
-    
+
     </div>
-    
+
     <div class="pt-lg-3 pt-lg-3 pt-8 pb-6" style="margin-top: -10px">
         <div class="container">
             <div class="row">
@@ -227,11 +216,9 @@
             </div>
             <div class="row">
                 <div class="col-md-12 secondSlider_body">
-                    <!-- Nav tab -->
                     <ul class="nav nav-lb-tab mb-6 pills-tab" role="tablist">
-                    
+
                     </ul>
-                    <!-- Tab content -->
                     <div class="tab-content pills-tabContent">
                         <div class="d-flex justify-content-center opacity-50 loader">
                             <div class="spinner-border fs-3 text-bold text-black-100" style="width: 5rem; height: 5rem;"
@@ -239,20 +226,19 @@
                                 <span class="visually-hidden">Loading...</span>
                             </div>
                         </div>
-                    
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="pt-lg-4 pb-lg-3 pt-4 pb-6">
         <div class="container" id="cat_pills">
             <h2>Top Categories</h2>
         </div>
     </div>
-    
-    <!-- Features -->
+
     <div class="pt-lg-12 pb-lg-3 pt-8 pb-6">
         <div class="row bg-primary">
             <div class="col-lg-6 text-center m-0 p-8">
@@ -264,15 +250,14 @@
                     Programme</a>
             </div>
             <div class="col-lg-6 m-0 p-0">
-                
+
                 <img src="{{asset('assets/images/learn.jpg')}}" width="100%" alt="image"/>
-            
+
             </div>
         </div>
     </div>
-    
-    <div class="pt-lg-3 pt-lg-3 pt-8 pb-6" style="margin-top: -10px">
-        <!-- Online courses-->
+
+    <div class="pt-lg-3 pt-lg-3 pt-8 pb-6" style="margin-top: -10px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -284,11 +269,9 @@
             </div>
             <div class="row">
                 <div class="col-md-12 thirdSlider_body">
-                    <!-- Nav tab -->
                     <ul class="nav nav-lb-tab mb-6 pills-tab" role="tablist">
-                    
+
                     </ul>
-                    <!-- Tab content -->
                     <div class="tab-content pills-tabContent">
                         <div class="d-flex justify-content-center opacity-50 loader">
                             <div class="spinner-border fs-3 text-bold text-black-100" style="width: 5rem; height: 5rem;"
@@ -301,12 +284,11 @@
             </div>
         </div>
     </div>
-    
-    <!-- Features -->
+
     <div class="pt-lg-12 pb-lg-3 pt-8 pb-6 mb-0">
         <div class="row bg-primary mb-0">
             <div class="col-lg-6 m-0 p-0 mb-0">
-                <img src="assets/images/learn.jpg" width="100%">
+                <img src="{{asset('assets/images/learn.jpg')}}" width="100%">
             </div>
             <div class="col-lg-6 text-center m-0 p-6">
                 <h1 class="text-white display-4">Earn Money Sharing What You Know</h1>
@@ -316,61 +298,54 @@
                     Nothing can be more satisfying</h2>
                 <button class="btn btn-outline-white text-white mt-4 gsbtn">Become an Instructor</button>
             </div>
-        
+
         </div>
     </div>
-    
-    <!-- Become an Instructor -->
-    <div class="py-lg-8 bg-light-gradient-top" style="margin-top:-17px">
+
+    <div class="py-lg-8 bg-light-gradient-top" style="margin-top:-17px;">
         <div class="container mt-0">
             <div class="row mt-0 mb-4 justify-content-center">
                 <div class="col-lg-11 col-md-12">
                     <div class="row align-items-center">
-                        
+
                         <div class="col-lg-4 col-md-5 col-12 mb-6">
                             <h2 class="display-4 fw-bold">Create a Thriving Online Business</h2>
                         </div>
                         <div class="offset-lg-1 col-lg-6 col-md-7 col-12 mb-6">
-                            <!-- para -->
                             <p class="lead">Join coaches and instructors from around the world who use Lentoria to
                                 share their knowledge and wealth of experience to millions of students. We provide
                                 the tools to make it easy.</p>
                         </div>
                     </div>
-                    <!-- row -->
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-12 mb-3">
-                            <!-- text -->
                             <h3 class="fw-semi-bold mb-2">Generate Cash-flow</h3>
                             <p class="fs-4">Earn money every time a student purchases your course and get paid
                                 directly to your bank account
                         </div>
                         <div class="col-lg-4 col-md-4 col-12 mb-3">
-                            <!-- text -->
                             <h3 class="fw-semi-bold mb-2">Empower students</h3>
                             <p class="fs-4">Share what you know and use your wealth of experience to help others
                                 become professionals in their fields.
                             </p>
                         </div>
                         <div class="col-lg-4 col-md-4 col-12 mb-3">
-                            <!-- text -->
                             <h3 class="fw-semi-bold mb-2">Join our community</h3>
                             <p class="fs-4">Take advantage of our active community of instructors to help you
                                 through your course creation process.
                             </p>
                         </div>
-                        <!-- btn -->
                         <div class="col-md-12 mt-3 justify-content-center">
                             <a href="" class="btn btn-primary gsbtn"> Start Teaching Today</a>
                         </div>
                     </div>
                 </div>
             </div>
-        
+
         </div>
-    
+
     </div>
-    
+
     <div class="bg-primary-a"
          style="background-color: #036 !important; background: url(assets/images/background/course-graphics.svg)no-repeat; background-size: cover; background-position: top center;  margin: left -100px right -100px; padding-bottom: 60px; padding-top: 60px;">
         <div class="container">
@@ -388,11 +363,20 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         $(function () {
             getCategories();
             getCoursesByType();
+
+            let filestatus = sessionStorage.getItem('subcatfilestatus');
+            if (!filestatus) {
+                createSubCategoryFile();
+            }
+
+            function createSubCategoryFile() {
+                $.get('/jsonfile').done(res => sessionStorage.setItem('subcatfilestatus', 'true'))
+            }
 
             $(".gsbtn").click(function (e) {
                 e.preventDefault();
@@ -533,9 +517,6 @@
                                 lazyload: true,
                                 gutter: 12,
                                 controlsContainer: `#slider_${type}${cor.category_id}_Controls`,
-                                // controls:true,
-                                // prevButton: `#slider_${cor.category_id}_prev`,
-                                // nextButton: `#slider_${cor.category_id}_next`,
                                 responsive: {
                                     768: {
                                         items: 2,

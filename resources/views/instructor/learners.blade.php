@@ -44,7 +44,8 @@
                                     <input class="form-control what_you_will_learn mb-2" type="text"
                                            placeholder="Example: Complete a case study to manage a project from conception to completion"
                                            maxlength="160"/>
-                                    <a href="javascript:;" class="mt-3 add_input" data-class="what_you_will_learn">
+                                    <a href="javascript:void(0)" class="mt-3 add_input"
+                                       data-class="what_you_will_learn">
                                         <b> <i class="fe fe-plus"></i> Add More To your Response</b>
                                     </a>
                                 </div>
@@ -62,7 +63,7 @@
                                     <input class="form-control requirements mb-2" type="text"
                                            placeholder="Example: No programming experience needed. You will learn everything you need to know"
                                            maxlength="160"/>
-                                    <a href="javascript:;" class="mt-3 add_input" data-class="requirements">
+                                    <a href="javascript:void(0)" class="mt-3 add_input" data-class="requirements">
                                         <b> <i class="fe fe-plus"></i> Add More To your Response</b>
                                     </a>
                                 </div>
@@ -76,7 +77,7 @@
                                     <input class="form-control learners mb-2" type="text"
                                            placeholder="Example: Beginner Python developers curious about data science"
                                            maxlength="160"/>
-                                    <a href="javascript:;" class="mt-3 add_input" data-class="learners">
+                                    <a href="javascript:void(0)" class="mt-3 add_input" data-class="learners">
                                         <b> <i class="fe fe-plus"></i> Add More To your Response</b>
                                     </a>
                                 </div>
@@ -87,7 +88,7 @@
                                     <p></p>
                                     <input class="form-control purpose mb-2" type="text"
                                            placeholder="Purpose Of taking this course?" maxlength="160"/>
-                                    <a href="javascript:;" class="mt-3 add_input" data-class="purpose">
+                                    <a href="javascript:void(0)" class="mt-3 add_input" data-class="purpose">
                                         <b> <i class="fe fe-plus"></i> Add More To your Response</b>
                                     </a>
                                 </div>
@@ -115,7 +116,7 @@
 
             $(document).on('click', '.updateLearners', function (e) {
                 e.preventDefault();
-                form = $('#updateLearners'); ///wywl == what you will learn
+                form = $('#updateLearners'); //wywl == what you will learn
                 bt = $(".updateLearners");
 
                 id = $(form).find('input[name="course_id"]').val()
@@ -170,13 +171,11 @@
                         purpose: new_pur,
                         opportunities: jo,
                     },
-                    beforeSend: () => {
-                        btn(bt, '', 'before')
-                    }
-                }).done(function (res) {
+                    beforeSend: () => btn(bt, '', 'before')
+                }).done(res => {
                     btn(bt, 'Save Answers', 'after')
                     salat(res.message);
-                }).fail(function (res) {
+                }).fail(res => {
                     console.log(res);
                     concatError(res.responseJSON);
                     btn(bt, 'Save Answers', 'after')
@@ -206,10 +205,10 @@
                     let pur = parse(data.purpose);
                     let aud = parse(data.course_audience);
                     let wywl = parse(data.what_you_will_learn);
-                    let wywls = Array.prototype.slice.call(document.querySelectorAll(".what_you_will_learn"));
-                    let audience = Array.prototype.slice.call(document.querySelectorAll(".learners"));
-                    let purpose = Array.prototype.slice.call(document.querySelectorAll(".purpose"));
-                    let requirements = Array.prototype.slice.call(document.querySelectorAll(".requirements"));
+                    let wywls = Array.from(document.querySelectorAll(".what_you_will_learn"));
+                    let audience = Array.from(document.querySelectorAll(".learners"));
+                    let purpose = Array.from(document.querySelectorAll(".purpose"));
+                    let requirements = Array.from(document.querySelectorAll(".requirements"));
                     opportunities.setData(opp ?? "");
                     if (wywl) {
                         fillForm(wywls, wywl, ".what_you_will_learn");
@@ -231,7 +230,7 @@
 
             function fillForm(el_arr, data_arr, selector) {
                 if (el_arr.length == data_arr.length) {
-                    Array.prototype.slice.call(document.querySelectorAll(selector)).forEach((x, i) => {
+                    Array.from(document.querySelectorAll(selector)).forEach((x, i) => {
                         dat = data_arr[i];
                         x.value = dat;
                     });
@@ -241,10 +240,7 @@
                     console.log(diff);
                     let obj = $(`${selector}:last`);
                     obj.multiply(diff).insertAfter(obj);
-                    // for (let i = 0; i < diff; i++) {
-                    //     obj.clone().insertAfter(obj);
-                    // }
-                    Array.prototype.slice.call(document.querySelectorAll(selector)).forEach((x, i) => {
+                    Array.from(document.querySelectorAll(selector)).forEach((x, i) => {
                         dat = data_arr[i];
                         x.value = dat;
                     });

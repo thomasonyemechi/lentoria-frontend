@@ -1,6 +1,6 @@
 @if (Session::has('success'))
     <script type="text/javascript">
-        setTimeout(function () {
+        setTimeout(() => {
             $("#refresh").fadeOut(1000);
         }, 3000);
     </script>
@@ -12,7 +12,7 @@
 
 @if (session::has('error'))
     <script type="text/javascript">
-        setTimeout(function () {
+        setTimeout(() => {
             $("#refresh").fadeOut(1000);
         }, 3000);
     </script>
@@ -27,7 +27,6 @@
     $.ajaxSetup({
         headers: {
             'Authorization': `Bearer {{access_token()}}`,
-            'Access-Control-Allow-Origin': '*'
         }
     });
 </script>

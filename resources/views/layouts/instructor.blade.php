@@ -10,12 +10,10 @@
     <link href="{{ asset('assets/fonts/feather/feather.css') }}" rel="stylesheet"/>
     <link href="{{asset('assets/libs/videojs/videojs.css')}}" rel="stylesheet"/>
     <link rel="stylesheet" href="{{asset('assets/libs/animate.min.css')}}"/>
-    <!-- Fantasy -->
     <link href="{{asset('assets/libs/videojs/fantasy.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/libs/bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/libs/dragula/dist/dragula.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/libs/%40mdi/font/css/materialdesignicons.min.css') }}" rel="stylesheet"/>
-    {{-- <link href="{{ asset('assets/libs/prismjs/themes/prism.css') }}" rel="stylesheet" /> --}}
     <link href="{{ asset('assets/libs/auxiliary-rater/lib/style.css') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/libs/magnific-popup/dist/magnific-popup.css') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">

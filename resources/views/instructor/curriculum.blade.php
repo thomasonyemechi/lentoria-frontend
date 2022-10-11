@@ -371,8 +371,10 @@
             </div>
         </div>
     </div>
+    <!--suppress BadExpressionStatementJS -->
     <script>
         $(document).ready(function () {
+
             interval = setInterval(() => {
                 cid = $("#course_id").val();
                 type = $("#ctype").val();
@@ -409,8 +411,8 @@
             document.getElementById('file_upload').onchange = setFileInfo;
 
             function setFileInfo() {
-                var file = this.files;
-                var video = document.createElement('video');
+                let file = this.files;
+                let video = document.createElement('video');
                 video.preload = 'metadata';
 
                 video.onloadedmetadata = function () {
@@ -597,9 +599,8 @@
                 updateTextContent(lecture_id, content, bt);
             })
 
-
             $("#file_upload").fileinput({
-                uploadUrl: "https://cors-anywhere.herokuapp.com/corsdemo/https://vi.beelsacademy.com/api/video",
+                uploadUrl: "https://vi.beelsacademy.com/api/video",
                 allowedFileExtensions: ['mp4', 'ogg'],
                 // allowedFileTypes: ['video'],
                 removeFromPreviewOnError: true,
@@ -611,7 +612,7 @@
                     showZoom: false,
                     showUpload: false,
                 },
-                mergeAjaxCallbacks: true,
+                mergeAjaxCallbacks: false,
                 uploadExtraData: function (previewId, index) {
                     return {
                         title: $("#lecu_title").val(),
@@ -620,6 +621,11 @@
                     };
                 },
             }).on('fileuploaded', function (event, data) {
+                {{--$.ajaxSetup({--}}
+                {{--    headers: {--}}
+                {{--        'Authorization': `Bearer {{access_token()}}`,--}}
+                {{--    }--}}
+                {{--});--}}
                 var form = data.form,
                     files = data.files,
                     extra = data.extra,

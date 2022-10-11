@@ -28,7 +28,7 @@
         <div class="modal-content">
             <div class="modal-body shadow">
                 <form id="loginForm">
-                    
+
                     <div class="mb-4 m-0 d-flex justify-content-between">
                         <div>
                             <h1 class="mb-1 fw-bold">Sign in</h1>
@@ -38,7 +38,7 @@
                             <i class="fe fe-x-circle"></i>
                         </button>
                     </div>
-                    
+
                     <div class="mb-3">
                         <label for="email" class="form-label">Email Address</label>
                         <input type="email" id="loginEmail" class="form-control" name="email"
@@ -50,7 +50,7 @@
                                required type="password">
                     </div>
                     <div class="d-lg-flex justify-content-end align-items-center mb-4">
-                        
+
                         <div>
                             <a href="javascript:void(0)">Forgot your password?</a>
                         </div>
@@ -72,7 +72,7 @@
         <div class="modal-content">
             <div class="modal-body shadow">
                 <form id="signUpForm">
-                    
+
                     <div class="mb-4 d-flex justify-content-between">
                         <div>
                             <h1 class="mb-1 fw-bold">Create Account</h1>
@@ -117,7 +117,7 @@
                 <div class="mt-3"><span class="fs-5">By Clicking Sign Up, you agree to our <a
                                 href="{{ route('terms') }}" target="_blank" class="fw-bold text-primary">Terms and Conditions</a></span>
                 </div>
-            
+
             </div>
         </div>
     </div>
@@ -162,7 +162,7 @@
                     }
                 }).done(function (res) {
                     salat(message);
-                    window.location.reload(true);
+                    window.location.reload();
                 });
             }).fail(function (res) {
                 concatError(res.responseJSON);
@@ -207,7 +207,7 @@
                     }
                 }).done(function (res) {
                     salat(message);
-                    location.reload(true);
+                    location.reload();
                     $("#login_modal").modal('hide');
                 });
             }).fail(function (res) {
@@ -228,7 +228,7 @@
             bt = $(form).find('button[type="submit"]');
 
             if (!email || !password || !fname || !lname || !phone) {
-                salat('All fileds are required', 1);
+                salat('All fields are required', 1);
                 return;
             }
             if (!email) {

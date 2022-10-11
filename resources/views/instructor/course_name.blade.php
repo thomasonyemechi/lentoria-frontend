@@ -11,7 +11,6 @@
 <script>
     $(function () {
 
-
         function getCategory(cat_id) {
             selCategory = $('#selcategory')
             selCategory.html(`<option value="" disabled selected>Select a category</option>`)
@@ -19,11 +18,9 @@
                 method: 'GET',
                 url: api_url + 'admin/category',
             }).done((res) => {
-                res.data.map(dat => {
-                    selCategory.append(`<option value="${dat.id}">${dat.name}</option>`);
-                })
+                res.data.map(dat => selCategory.append(`<option value="${dat.id}">${dat.name}</option>`))
                 $(`#selcategory option[value="${cat_id}"]`).prop("selected", true)
-            }).fail((res) => {
+            }).fail(res => {
                 concatError(res.responseJSON);
                 console.log(res)
             });
@@ -36,7 +33,7 @@
                 method: 'get',
                 url: api_url + 'admin/topics/' + cat,
             }).done((res) => {
-                selectsub = $('#selsubcat');
+                let selectsub = $('#selsubcat');
                 selectsub.html('<option selected disabled>Select Course SubCategory</option>')
                 res.data.map(dat => {
                     selectsub.append(`<option value="${dat.id}">${dat.name}</option>`);
@@ -52,16 +49,14 @@
             $.ajax({
                 method: 'get',
                 url: api_url + `admin/course/{{ $slug }}`
-            }).done(function (res) {
+            }).done(res => {
                 console.log(res);
                 $('input[name="course_info_29"]').val(JSON.stringify(res.data));
                 $('.course-title').html(res.data.title);
                 $("#ctype").val(res.data.course_type);
-                sessionStorage.setItem("courseimage", res.data.image);
                 dat = res.data
                 try {
                     $('#courseTitle').val(dat.title);
-                    sessionStorage.setItem("courseimage", dat.image);
                     length = (dat.title).length;
                     $('#count').html(60 - length);
                     $('#courseTitle').html(res.data.title);
@@ -84,14 +79,14 @@
                     welmess.setData(dat.welcome_message ?? '');
                     cermess.setData(dat.certification_message ?? '');
                     $('#mycourse_id').val(dat.id);
-                } catch (err) {};
+                } catch (err) {}
+                ;
                 ///section
                 $('#course_id').val(dat.id)
-            }).fail(function(res) {
+            }).fail(res => {
                 location.href = "/instructor/dashboard"
             })
         }
-
 
 
         fetchLearners();

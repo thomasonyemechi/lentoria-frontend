@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\JsonFileController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\VimeoController;
 use Illuminate\Support\Facades\Route;
@@ -17,13 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/session_login_infomation', [Controller::class, 'sessionLoginInfomation']);
-Route::get('/', function () {
+Route::get('/', function() {
     return view('index');
 });
 
 Route::post('/addtosession', [Controller::class, 'updateInstructorSession']);
 
 Route::get('/c/{link}', [Controller::class, 'fetchCourseInfoByLink']);
+
+Route::get('/jsonfile', [JsonFileController::class, 'index']);
 
 
 Route::view('/course/{id}/{slug}', 'course_single');

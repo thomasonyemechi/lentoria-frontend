@@ -32,7 +32,7 @@ class VimeoController extends Controller
         $lec_id = $request->lecture_id;
         $video = $request->file('video');
         $check = Http::asForm()->withHeaders([
-        'Authorization' => 'Bearer ' . access_token()
+            'Authorization' => 'Bearer ' . access_token(),
         ])->post('https://api.lentoria.com/api/admin/get_video_link', [
         'lecture_id' => $lec_id,
         ]);

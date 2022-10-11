@@ -15,7 +15,7 @@
             border-top: #bda27e solid 12px;
             border-left: #b19876 solid 12px;
             border-bottom: #c9ad86 solid 12px;
-            box-shadow: 0px 0px 6px 5px rgba(58, 18, 13, 0), 0px 0px 0px 2px #c2a782, 0px 0px 0px 4px #a58e6f, 3px 4px 8px 5px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 6px 5px rgba(58, 18, 13, 0), 0 0 0 2px #c2a782, 0 0 0 4px #a58e6f, 3px 4px 8px 5px rgba(0, 0, 0, 0.5);
             background-image: radial-gradient(circle at left 30%, rgba(34, 34, 34, 0.3), rgba(34, 34, 34, 0.3) 80px,
             rgba(34, 34, 34, 0.5) 100px, rgba(51, 51, 51, 0.5) 160px, rgba(51, 51, 51, 0.5)),
             linear-gradient(215deg, transparent, transparent 100px, #222 260px, #222 320px, transparent),
@@ -51,7 +51,7 @@
             border-top: #bda27e solid 12px;
             border-left: #b19876 solid 12px;
             border-bottom: #c9ad86 solid 12px;
-            box-shadow: 0 0 6px 5px rgba(58, 18, 13, 0), 0 0 0 2px #c2a782, 0px 0px 0px 4px #a58e6f, 3px 4px 8px 5px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 6px 5px rgba(58, 18, 13, 0), 0 0 0 2px #c2a782, 0 0 0 4px #a58e6f, 3px 4px 8px 5px rgba(0, 0, 0, 0.5);
         }
 
         .message-input {
@@ -319,7 +319,7 @@
                 <div class="col-12">
                     <!-- Tab content -->
                     <div class="tab-content content" id="course-tabContent">
-                        <div class="tab-pane fade show active overflow-visible">
+                        <div class="tab-pane fade show active overflow-visible" id="btns_container">
                             <div class="row justify-content-between mb-4">
                                 <div class="col-sm-12 col-lg-5 col-md-5">
                                     <h1 class="mb-0 text-capitalize tit">Instructor Class
@@ -385,10 +385,7 @@
                                             <div class="ibox-content">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <div class="chat-discussion scroller">
-                                                            <div class="load-wrapper">
-                                                                <div class="activity"></div>
-                                                            </div>
+                                                        <div class="chat-discussion scroller" id="chat_discussion">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -428,11 +425,11 @@
                                     consectetur adipisicing elit. Aliquid cum, deleniti distinctio doloremque ea
                                     eligendi error exercitationem facere fuga illum ipsam ipsum nulla quidem quod sit,
                                     veritatis vitae voluptate voluptatibus. Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit. Ab eum illum nam tempora vel velit veritatis voluptatibus! Animi
-                                    dolor dolores impedit modi nobis porro recusandae tempore temporibus vel, velit,
-                                    voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem
-                                    eaque eum facere maxime necessitatibus neque nisi qui ratione voluptates. Aliquam
-                                    aliquid architecto, atque doloribus laboriosam magni molestiae quis velit.
+                                    adipisicing elit. Ab eum illum nam tempora vel valid veritas voluptuous! Anime
+                                    dolor dolores impeded mod nobs poor redundancy temporal temporise vel, valid,
+                                    voluptuous. Lorem ipsum dolor sit amet, consecrate radicalising elite. Alias au tem
+                                    equal eum face maxime necessitates deque nisei qui ration voluptuous. Aliquot
+                                    liquid architect, antique dolorous laborious magna molest quits valid.
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center my-22 d-none" id="vid_preloader">
@@ -454,11 +451,11 @@
                 <h4 class="mb-0">Table of Content</h4>
             </li>
             <!-- List group item -->
-            <div class="d-flex justify-content-center align-self-lg-center mt-lg-22" id="loader">
+            <li class="d-flex justify-content-center align-self-lg-center mt-lg-22" id="loader">
                 <div class="spinner-border text-black-100" style="width: 5rem; height: 5rem;" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
-            </div>
+            </li>
 
         </ul>
     </div>
@@ -467,6 +464,8 @@
     <script>
         $(function () {
 
+            const user_detail = `{{userDetail(1)}}`;
+            const user_avatar = `{{userAvatar()}}`;
             $("#vid").bind("contextmenu", () => {return false;});
 
             const player = videojs('vid', {
@@ -579,33 +578,36 @@
 
             $(document).on('click', '.load-con', function (e) {
                 e.preventDefault();
-                let img_link = $(this).data('img');
-                let video_link = $(this).data('vid');
-                let lecture_id = $(this).data('lec_id');
-                let lec_tit = $(this).find($(".lectit")).html();
+                let img_link = $(this).data('img'), video_link = $(this).data('vid'),
+                    lecture_id = $(this).data('lec_id'), lec_tit = $(this).find($(".lectit")).html(),
+                    img_btn = $(".img-btn"), vid_btn = $(".vid-btn"), code_btn = $(".code-btn"),
+                    text_btn = $(".text-btn"), comm_btn = $(".comm-btn"), class_container = $("#class_container");
                 $(".tit").html(lec_tit);
                 $(".btns").find($("span")).removeClass('d-none');
-                $(".img-btn").data('link', img_link);
-                $(".img-btn").data('lec_id', lecture_id);
-                $(".vid-btn").data('link', video_link);
-                $(".vid-btn").data('lec_id', lecture_id);
-                $(".code-btn").data('link', lecture_id);
-                $(".code-btn").data('lec_id', lecture_id);
-                $(".text-btn").data('link', lecture_id);
-                $(".text-btn").data('lec_id', lecture_id);
-                $(".comm-btn").data('lec_id', lecture_id);
-                $(".comm-btn").data('link', lecture_id);
-                $("#class_container").html('');
+                img_btn.data('link', img_link);
+                img_btn.data('lec_id', lecture_id);
+                vid_btn.data('link', video_link);
+                vid_btn.data('lec_id', lecture_id);
+                code_btn.data('link', lecture_id);
+                code_btn.data('lec_id', lecture_id);
+                text_btn.data('link', lecture_id);
+                text_btn.data('lec_id', lecture_id);
+                comm_btn.data('lec_id', lecture_id);
+                comm_btn.data('link', lecture_id);
+                class_container.html('');
                 $("#text_container").html('');
                 hideBoards();
-                $("#class_container").removeClass('re');
-                $("#class_container").removeClass('d-none');
+                class_container.removeClass('re');
+                class_container.removeClass('d-none');
                 Array.prototype.slice.call(document.getElementsByClassName('classroom')).forEach(el => {
                     if (el.classList.contains('d-none')) {
                         el.classList.remove('d-none');
                     }
                 });
                 $("#push_btn").addClass('d-none');
+                $("html, body").animate({
+                    scrollTop: $("#btns_container").offset().top
+                }, 500);
             });
 
 
@@ -638,11 +640,12 @@
                 e.preventDefault();
                 let img_link = $(this).data('link');
                 let img = `<img src="${imageUrl(img_link)}" onerror="this.src='../../assets/images/image.jpeg'" class="w-100 h-100" />`;
+                let class_container = $("#class_container");
                 hideBoards();
-                $("#class_container").removeClass("d-none");
+                class_container.removeClass("d-none");
                 player.ready(() => player.pause());
-                $("#class_container").html(img);
-                $("#class_container").addClass('re');
+                class_container.html(img);
+                class_container.addClass('re');
                 checkIsSelected();
                 $(this).addClass("is-selected");
                 showPushBtn();
@@ -651,9 +654,9 @@
             $(document).on('click', '.vid-btn', function (e) {
                 e.preventDefault();
                 let vid_link = $(this).data('link');
-                if (!player.src()) {
-                    player.ready(() => player.src(imageUrl(`a43ai55gQHVbymNG54pGK6GMRUgk2c0Yf7OSL8V8.mp4`)));
-                }
+                // if (!player.src()) {
+                player.ready(() => player.src(videoUrl(vid_link)));
+                // }
                 hideBoards();
                 $("#video_container").removeClass("d-none")
                 checkIsSelected();
@@ -663,18 +666,57 @@
             $(document).on('click', '.code-btn', function (e) {
                 e.preventDefault();
                 let code_link = $(this).data('link');
+                let class_container = $("#class_container")
                 console.log(code_link);
-                $("#class_container").html('');
-                $("#class_container").addClass('re');
+                class_container.html('');
+                class_container.addClass('re');
                 hideBoards();
                 player.ready(() => player.pause());
-                $("#class_container").removeClass('d-none');
+                class_container.removeClass('d-none');
                 checkIsSelected();
                 $(this).addClass("is-selected");
                 showPushBtn();
 
                 let code = localStorage.getItem(`lecture_${code_link}_code`);
-                if (code) {
+                if (!code) {
+                    $.ajax({
+                        url: api_url + `admin/get_lecture_code/${code_link}`,
+                        beforeSend: () => {
+                            $("#class_container").html(`
+            <div class="d-flex justify-content-center opacity-50 align-self-center mt-lg-22 mt-md-16 mt-13" id="loader2">
+                <div class="spinner-border text-white" style="width: 5rem; height: 5rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>`);
+                        }
+                    }).done(res => {
+                        let data = res.data;
+                        data = JSON.parse(data);
+                        console.log(data);
+                        if (data !== null) {
+                            let lang = data.language;
+                            let code = data.code;
+                            let coded = `<pre>
+                                    <code id="codii" class="language-${lang}">
+                                        ${code}
+                                    </code>
+                                </pre>`
+                            let codes = {
+                                language: lang,
+                                code: code,
+                            };
+                            localStorage.setItem(`lecture_${code_link}_code`, JSON.stringify(codes));
+                            $("#class_container").html(coded);
+                            return Prism.highlightElement(document.getElementById('codii'));
+                        } else {
+                            return $("#class_container").html(`<h3 class="text-white" style="font-family: 'Permanent Marker', cursive;">No Code Available Yet</h3>`);
+                        }
+                    }).fail(res => {
+                        console.log(res);
+                        concatError(res.responseJSON);
+                    });
+
+                } else {
                     code = JSON.parse(code);
                     let coded = `<pre>
                                     <code id="codii" class="language-${code.language}">
@@ -684,58 +726,23 @@
                     $("#class_container").html(coded);
 
                     return Prism.highlightElement(document.getElementById('codii'));
-
                 }
-                $.ajax({
-                    url: api_url + `admin/get_lecture_code/${code_link}`,
-                    beforeSend: () => {
-                        $("#class_container").html(`
-            <div class="d-flex justify-content-center opacity-50 align-self-center mt-lg-22 mt-md-16 mt-13" id="loader2">
-                <div class="spinner-border text-white" style="width: 5rem; height: 5rem;" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>`);
-                    }
-                }).done(res => {
-                    let data = res.data;
-                    data = JSON.parse(data);
-                    if (data) {
-                        let lang = data.language;
-                        let code = data.code;
-                        let coded = `<pre>
-                                    <code id="codii" class="language-${lang}">
-                                        ${code}
-                                    </code>
-                                </pre>`
-                        $("#class_container").html(coded);
-                        Prism.highlightElement(document.getElementById('codii'))
-                        let codes = {
-                            language: lang,
-                            code: code,
-                        };
-                        localStorage.setItem(`lecture_${code_link}_code`, JSON.stringify(codes));
-                    }
-                    $("#class_container").html(`<h3 class="text-white" style="font-family: 'Permanent Marker', cursive;">No Code Available Yet</h3>`);
-
-                }).fail(res => {
-                    console.log(res);
-                    concatError(res.responseJSON);
-                });
             });
 
             $(".text-btn").click(function (e) {
                 e.preventDefault();
                 let text_link = $(this).data('link');
-                $("#text_container").html('');
+                let text_container = $("#text_container");
+                text_container.html('');
                 hideBoards();
-                $("#text_container").removeClass('d-none');
+                text_container.removeClass('d-none');
                 player.ready(() => player.pause());
                 checkIsSelected();
                 $(this).addClass("is-selected");
                 showPushBtn();
                 let txt = localStorage.getItem(`lecture_${text_link}_text`);
                 if (txt) {
-                    return $("#text_container").html(txt);
+                    return text_container.html(txt);
                 }
                 $.ajax({
                     url: api_url + `admin/get_lecture_text/${text_link}`,
@@ -751,10 +758,11 @@
                     console.log(res);
                     let data = res.data;
                     if (data) {
-                        $("#text_container").html(data);
                         localStorage.setItem(`lecture_${text_link}_text`, data);
+                        return $("#text_container").html(data);
+                    } else {
+                        return $("#text_container").html(`<h3 class="text-black-50" style="font-family: 'Permanent Marker', cursive;">No Text Available Yet</h3>`);
                     }
-                    $("#text_container").html(`<h3 class="text-black-50" style="font-family: 'Permanent Marker', cursive;">No Text Available Yet</h3>`);
                 }).fail(res => {
                     console.log(res);
                     concatError(res.responseJSON);
@@ -773,19 +781,25 @@
             });
 
             function getComments(lecture_id) {
+                let chat_discuss = $("div.chat-discussion");
                 $.ajax({
                     url: api_url + `admin/get_class_comments/${lecture_id}`,
+                    beforeSend: () => {
+                        chat_discuss.html(`
+                            <div class="load-wrapper">
+                               <div class="activity"></div>
+                            </div>`)
+                    }
                 }).done(res => {
                     console.log(res);
-                    let chat_discuss = $("div.chat-discussion");
-                    if (res.data.length == 0) {return chat_discuss.html("");}
+                    if (res.data.length == 0) {return chat_discuss.html(" ");}
                     let chats = "";
                     res.data.forEach(chat => {
                         chats += `<div class="chat-message left">
-                            <img class="message-avatar" src="{{userAvatar()}}"
+                            <img class="message-avatar" src="${user_avatar}"
                                  alt="profile-img">
                             <div class="message">
-                                <a class="message-author" href="javascript:void(0)">{{userDetail(1)}}</a>
+                                <a class="message-author" href="javascript:void(0)">${user_detail}</a>
                                 <span class="message-date">${formatDate(chat.created_at)}</span>
                                 <span class="message-content">${chat.comment}</span>
                             </div>
@@ -798,6 +812,7 @@
                 }).fail(res => {
                     console.log(res);
                     concatError(res.responseJSON);
+                    return chat_discuss.html(" ");
                 })
             }
 
@@ -858,17 +873,17 @@
                     console.log(res);
                     let chat_discuss = $("div.chat-discussion");
                     if (res.message) {
-                        chat_discuss.html("");
                         chat_discuss.append(`
                        <div class="chat-message left">
-                            <img class="message-avatar" src="{{userAvatar()}}"
+                            <img class="message-avatar" src="${user_avatar}"
                                  alt="profile-img">
                             <div class="message">
-                                <a class="message-author" href="javascript:void(0)">{{userDetail(1)}}</a>
+                                <a class="message-author" href="javascript:void(0)">${user_detail}</a>
                                 <span class="message-date">${formatted_date}</span>
                                 <span class="message-content">${chat_area.val()}</span>
                             </div>
                        </div>`);
+                        smoothScrollBottom("chat_discussion");
                         chat_area.val("");
                         $(this).removeAttr('disabled');
                     }
@@ -916,6 +931,20 @@
 
                 formatted_date = formatted_date.replace(",", "").replace(",", " -");
                 return formatted_date;
+            }
+
+            const smoothScrollBottom = (id) => {
+                const element = $(`#${id}`);
+                element.animate({
+                    scrollTop: element[0].scrollHeight
+                }, 500);
+            }
+
+            const smoothScrollTop = (id) => {
+                const element = $(`#${id}`);
+                element.animate({
+                    scrollTop: 0
+                }, 500);
             }
         });
     </script>

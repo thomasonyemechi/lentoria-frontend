@@ -60,6 +60,8 @@
 
     <script>
         $(function () {
+
+            console.log(setSessionWithExpiry(1209600000));//2 weeks
             fetchCourses();
 
             function fetchCourses() {

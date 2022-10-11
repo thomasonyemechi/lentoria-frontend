@@ -13,7 +13,7 @@ function salat(msg, t = 0) {
     color = (t == 1) ? 'danger' : 'success';
     icon = (t == 1) ? 'ban' : 'checked';
     ret = `
-        <div class="alert bg-${color}" style="position:fixed; top:55px; right:15px; z-index:9999999999999999">
+        <div class="alert bg-${color}" style="position:fixed; top:55px; right:15px; z-index:9999999999999999;">
             <i class="icon fe fe-${color}  text-white"> ${msg}  </i>
         </div>
     `;
@@ -25,6 +25,24 @@ function salat(msg, t = 0) {
         alat.fadeOut();
     }, 3000);
 }
+
+function salat2(msg, t = 0) {
+    color = (t == 1) ? 'danger' : 'success';
+    icon = (t == 1) ? 'ban' : 'checked';
+    ret = `
+        <div class="alert bg-${color}" style="position:fixed; top:55px; right:15px; z-index:9999999999999999">
+            <i class="icon fe fe-${color}  text-white"> ${msg}  </i>
+        </div>
+    `;
+    alat = $('.littleAlert');
+    alat.fadeIn();
+    alat.html(ret);
+
+    setTimeout(function () {
+        alat.fadeOut();
+    }, 20000);
+}
+
 
 function concatError(error) {
     error_text = '';
@@ -44,6 +62,26 @@ function concatError(error) {
     salat(error_text, 1);
     return error_text;
 }
+
+function concatError2(error) {
+    error_text = '';
+    if (!error) {
+        error_text = 'Error processing request, Pls try again';
+    } else if (error.message) {
+        error_text = error.message;
+    } else if (error.errors) {
+        errs = error.errors;
+        errs.forEach(err => {
+            error_text += err + '<br>'
+        });
+    } else {
+        error_text = 'Error, Processing Request';
+    }
+
+    salat2(error_text, 1);
+    return error_text;
+}
+
 
 function btn(selector, btn_text, moment) {
     if (typeof (selector) == 'object') {
@@ -164,6 +202,8 @@ function randomString(length) {
 
 let imageUrl = (image) => image_url + image;
 
+let videoUrl = (video) => video_url + video;
+
 function convertStoMs(seconds) {
     if (seconds !== 0) {
         let minutes = ~~(seconds / 60);
@@ -201,4 +241,26 @@ $.fn.multiply = function (numCopies) {
     }
     return newElements;
 };
-// This code snippet builds the elements as a jQuery set, instead of adding to the DOM multiple times which can be slow.
+
+function setSessionWithExpiry(TTL) {
+    const now = new Date();
+    return now.getTime() + TTL;
+}
+
+function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+    // if the item doesn't exist, return null
+    if (!itemStr) {
+        return null
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+    // compare the expiry time of the item with the current time
+    if (now.getTime() > item.expiry) {
+        // If the item is expired, delete the item from storage
+        // and return null
+        localStorage.removeItem(key)
+        return null
+    }
+    return item.value
+}
