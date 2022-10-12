@@ -73,7 +73,7 @@
             <div class="modal-body shadow">
                 <form id="signUpForm">
 
-                    <div class="mb-4 d-flex justify-content-between">
+                <div class="mb-4 d-flex justify-content-between">
                         <div>
                             <h1 class="mb-1 fw-bold">Create Account</h1>
                             <span>Already have an account? <a href="javascript:" class="ms-1 openlogin">Sign

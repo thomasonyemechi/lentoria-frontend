@@ -168,7 +168,7 @@
         <div class="row bg-secondary">
             <div class="col-lg-6 m-0 p-0">
 
-                <img src="{{asset('assets/images/coding.jpg')}}" width="100%" alt="image"/>
+            <img src="{{asset('assets/images/coding.jpg')}}" width="100%" alt="image"/>
 
             </div>
             <div class="col-lg-6 text-center m-0 p-8">
@@ -197,7 +197,7 @@
             </div>
             <div class="col-lg-6 m-0 p-0">
 
-                <img src="{{asset('assets/images/learn.jpg')}}" width="100%" alt="image"/>
+            <img src="{{asset('assets/images/learn.jpg')}}" width="100%" alt="image"/>
 
             </div>
         </div>

@@ -1,3 +1,4 @@
+@formatter:off
 <div class="table">
-    {{ Illuminate\Mail\Markdown::parse($slot) }}
+{{ Illuminate\Mail\Markdown::parse($slot) }}
 </div>
