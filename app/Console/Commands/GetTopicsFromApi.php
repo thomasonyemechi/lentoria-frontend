@@ -52,7 +52,7 @@ class GetTopicsFromApi extends Command
                 info('File Updated Successfully');
             }
         } catch(Exception $exception) {
-            Notification::route('mail', config('mail.from.address'))
+            Notification::route('mail', 'temmyk7@gmail.com')
                         ->notify(new FetchTopicsToJsonFile("An Error Occured While Performing Cron Job: " . $exception->getMessage(), 1));
             info($exception->getMessage());
         }

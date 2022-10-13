@@ -1,4 +1,4 @@
-@formatter:off
+{{--@formatter:off--}}
 @component('mail::message')
 {{-- Greeting --}}
 @if (! empty($greeting))

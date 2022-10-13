@@ -1,4 +1,4 @@
-@formatter:off
+{{--@formatter:off--}}
 @component('mail::layout')
 {{-- Header --}}
 @slot('header')

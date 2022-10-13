@@ -199,7 +199,7 @@
                     return $('#count').html(maxlength - length);
                 })
 
-                $('#selcategory').on("click", function (e) {
+                $('#selcategory').on("change", function (e) {
                     e.preventDefault();
                     let cat = $(this).val();
                     if (cat) {
