@@ -582,7 +582,6 @@
                                                 <button type="button" class="step-trigger" role="tab"
                                                         id="qnairetrigger1" aria-controls="test-l-1">
                                                     <span class="bs-stepper-circle">1</span>
-                                                    {{-- <span class="bs-stepper-label">Course Type</span> --}}
                                                 </button>
                                             </div>
                                             <div class="bs-stepper-line"></div>
@@ -590,7 +589,6 @@
                                                 <button type="button" class="step-trigger" role="tab"
                                                         id="qnairetrigger2" aria-controls="test-l-2">
                                                     <span class="bs-stepper-circle">2</span>
-                                                    {{-- <span class="bs-stepper-label">Course Category</span> --}}
                                                 </button>
                                             </div>
                                             <div class="bs-stepper-line"></div>
@@ -598,7 +596,6 @@
                                                 <button type="button" class="step-trigger" role="tab"
                                                         id="qnairetrigger3" aria-controls="test-l-3">
                                                     <span class="bs-stepper-circle">3 </span>
-                                                    {{-- <span class="bs-stepper-label">Course Title</span> --}}
                                                 </button>
                                             </div>
                                             <div class="bs-stepper-line"></div>
@@ -606,7 +603,6 @@
                                                 <button type="button" class="step-trigger" role="tab"
                                                         id="qnairetrigger4" aria-controls="test-l-4">
                                                     <span class="bs-stepper-circle">4 </span>
-                                                    {{-- <span class="bs-stepper-label">Course Title</span> --}}
                                                 </button>
                                             </div>
                                             <div class="bs-stepper-line"></div>
@@ -614,7 +610,6 @@
                                                 <button type="button" class="step-trigger" role="tab"
                                                         id="qnairetrigger5" aria-controls="test-l-5">
                                                     <span class="bs-stepper-circle">5 </span>
-                                                    {{-- <span class="bs-stepper-label">Course Title</span> --}}
                                                 </button>
                                             </div>
                                             <div class="bs-stepper-line"></div>
@@ -622,7 +617,6 @@
                                                 <button type="button" class="step-trigger" role="tab"
                                                         id="qnairetrigger6" aria-controls="test-l-6">
                                                     <span class="bs-stepper-circle">6 </span>
-                                                    {{-- <span class="bs-stepper-label">Course Title</span> --}}
                                                 </button>
                                             </div>
                                             <div class="bs-stepper-line"></div>
@@ -630,7 +624,6 @@
                                                 <button type="button" class="step-trigger" role="tab"
                                                         id="qnairetrigger7" aria-controls="test-l-7">
                                                     <span class="bs-stepper-circle">7 </span>
-                                                    {{-- <span class="bs-stepper-label">Course Title</span> --}}
                                                 </button>
                                             </div>
                                             <div class="bs-stepper-line"></div>
@@ -638,7 +631,6 @@
                                                 <button type="button" class="step-trigger" role="tab"
                                                         id="qnairetrigger8" aria-controls="test-l-8">
                                                     <span class="bs-stepper-circle">8 </span>
-                                                    {{-- <span class="bs-stepper-label">Course Title</span> --}}
                                                 </button>
                                             </div>
                                             <div class="bs-stepper-line"></div>
@@ -646,7 +638,6 @@
                                                 <button type="button" class="step-trigger" role="tab"
                                                         id="qnairetrigger9" aria-controls="test-l-9">
                                                     <span class="bs-stepper-circle">9 </span>
-                                                    {{-- <span class="bs-stepper-label">Course Title</span> --}}
                                                 </button>
                                             </div>
                                             <div class="bs-stepper-line"></div>
@@ -654,7 +645,6 @@
                                                 <button type="button" class="step-trigger" role="tab"
                                                         id="qnairetrigger10" aria-controls="test-l-10">
                                                     <span class="bs-stepper-circle">10 </span>
-                                                    {{-- <span class="bs-stepper-label">Course Title</span> --}}
                                                 </button>
                                             </div>
                                         </div>
@@ -817,15 +807,15 @@
         </div>
     </div>
     <script>
-        $("#questionnaire").length && document.addEventListener("DOMContentLoaded", (function () {
+        $("#questionnaire").length && document.addEventListener("DOMContentLoaded", (function() {
             qnaire = new Stepper(document.querySelector("#questionnaire"), {
                 linear: 1,
                 animation: !0
             })
         }));
-        $(function () {
+        $(function() {
             getQuestions();
-            $(".gsbtn").click(function (e) {
+            $(".gsbtn").click(function(e) {
                 e.preventDefault();
                 bt = $(".gsbtn")
                 $('html, body').animate({
@@ -833,15 +823,15 @@
                 }, 'slow');
             })
 
-            $(".fibtn").click(function (e) {
+            $(".fibtn").click(function(e) {
                 e.preventDefault();
-                if (!@js(session('info'))) {
+                if(!@js(session('info'))) {
                     $("#login_modal").modal('show');
                 } else {
                     qnaire.next();
                 }
             })
-            $("#lastbtn").click(function (e) {
+            $("#lastbtn").click(function(e) {
                 e.preventDefault();
                 but = $(this);
                 questions = pushToArray();
@@ -850,7 +840,7 @@
                     ansd = que.answer;
                     answers.push(ansd);
                 });
-                if (answers.includes("")) {
+                if(answers.includes("")) {
                     salat("Answer all questions before submitting", 1);
                     return;
                 }
@@ -885,16 +875,26 @@
                     }
                 }).done(res => {
                     $(".loader").remove();
-                    $("#test-l-1").prepend(questionaire(res.data[0].question, res.data[0].a, res.data[0].b, res.data[0].c, res.data[0].d, res.data[0].id));
-                    $("#test-l-2").prepend(questionaire(res.data[1].question, res.data[1].a, res.data[1].b, res.data[1].c, res.data[1].d, res.data[1].id));
-                    $("#test-l-3").prepend(questionaire(res.data[2].question, res.data[2].a, res.data[2].b, res.data[2].c, res.data[2].d, res.data[2].id));
-                    $("#test-l-4").prepend(questionaire(res.data[3].question, res.data[3].a, res.data[3].b, res.data[3].c, res.data[3].d, res.data[3].id));
-                    $("#test-l-5").prepend(questionaire(res.data[4].question, res.data[4].a, res.data[4].b, res.data[4].c, res.data[4].d, res.data[4].id));
-                    $("#test-l-6").prepend(questionaire(res.data[5].question, res.data[5].a, res.data[5].b, res.data[5].c, res.data[5].d, res.data[5].id));
-                    $("#test-l-7").prepend(questionaire(res.data[6].question, res.data[6].a, res.data[6].b, res.data[6].c, res.data[6].d, res.data[6].id));
-                    $("#test-l-8").prepend(questionaire(res.data[7].question, res.data[7].a, res.data[7].b, res.data[7].c, res.data[7].d, res.data[7].id));
-                    $("#test-l-9").prepend(questionaire(res.data[8].question, res.data[8].a, res.data[8].b, res.data[8].c, res.data[8].d, res.data[8].id));
-                    $("#test-l-10").prepend(questionaire(res.data[9].question, res.data[9].a, res.data[9].b, res.data[9].c, res.data[9].d, res.data[9].id));
+                    $("#test-l-1")
+                        .prepend(questionaire(res.data[0].question, res.data[0].a, res.data[0].b, res.data[0].c, res.data[0].d, res.data[0].id));
+                    $("#test-l-2")
+                        .prepend(questionaire(res.data[1].question, res.data[1].a, res.data[1].b, res.data[1].c, res.data[1].d, res.data[1].id));
+                    $("#test-l-3")
+                        .prepend(questionaire(res.data[2].question, res.data[2].a, res.data[2].b, res.data[2].c, res.data[2].d, res.data[2].id));
+                    $("#test-l-4")
+                        .prepend(questionaire(res.data[3].question, res.data[3].a, res.data[3].b, res.data[3].c, res.data[3].d, res.data[3].id));
+                    $("#test-l-5")
+                        .prepend(questionaire(res.data[4].question, res.data[4].a, res.data[4].b, res.data[4].c, res.data[4].d, res.data[4].id));
+                    $("#test-l-6")
+                        .prepend(questionaire(res.data[5].question, res.data[5].a, res.data[5].b, res.data[5].c, res.data[5].d, res.data[5].id));
+                    $("#test-l-7")
+                        .prepend(questionaire(res.data[6].question, res.data[6].a, res.data[6].b, res.data[6].c, res.data[6].d, res.data[6].id));
+                    $("#test-l-8")
+                        .prepend(questionaire(res.data[7].question, res.data[7].a, res.data[7].b, res.data[7].c, res.data[7].d, res.data[7].id));
+                    $("#test-l-9")
+                        .prepend(questionaire(res.data[8].question, res.data[8].a, res.data[8].b, res.data[8].c, res.data[8].d, res.data[8].id));
+                    $("#test-l-10")
+                        .prepend(questionaire(res.data[9].question, res.data[9].a, res.data[9].b, res.data[9].c, res.data[9].d, res.data[9].id));
                     $(".fibtn").parent().removeClass('d-none');
                 }).fail(res => {
                     console.log(res);
@@ -951,7 +951,7 @@
                 optionB = $(que).find($('.opt-b')).html();
                 optionC = $(que).find($('.opt-c')).html();
                 optionD = $(que).find($('.opt-d')).html();
-                if (opt.length > 0) {
+                if(opt.length > 0) {
                     opt = opt.attr('class').split(' ')[1];
                 } else {
                     opt = '';
