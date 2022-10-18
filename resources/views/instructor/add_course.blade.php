@@ -200,7 +200,7 @@
     </div>
 
     <script>
-        $(function () {
+        $(function() {
             let subcategories;
             const jsonfile = `{{asset('subcategories.json')}}`;
             getLoadSubCategories();
@@ -210,7 +210,7 @@
             }
 
 
-            $("#courseTitle").on("input", function (e) {
+            $("#courseTitle").on("input", function(e) {
                 e.preventDefault();
                 let length = $(this).val().length
                 let maxlength = 60;
@@ -218,7 +218,7 @@
             })
 
 
-            $('.seltype').on('click', function (e) {
+            $('.seltype').on('click', function(e) {
                 e.preventDefault();
                 let type = $(this).data('type');
                 $('#course_type').val(type);
@@ -239,20 +239,20 @@
             }
 
             loadCategory()
-            $('#selectcat').on("click", function (e) {
+            $('#selectcat').on("click", function(e) {
                 e.preventDefault();
                 let cat = $(this).val();
-                if (cat) {
+                if(cat) {
                     let subcats = subcategories.data[cat];
                     let selectsub = $('#selsubcat');
                     selectsub.html('<option selected disabled>Select Course Topic</option>');
-                    if (subcats) {
+                    if(subcats) {
                         subcats.forEach(sub => selectsub.append(`<option value="${sub.id}">${sub.name}</option>`))
                     }
                 }
             });
 
-            $('#addCourse').on('click', function (e) {
+            $('#addCourse').on('click', function(e) {
                 e.preventDefault();
                 course_type = $('#course_type').val();
                 category_id = $('#selectcat :selected').val();
@@ -260,7 +260,7 @@
                 title = $('#courseTitle').val();
                 subtitle = $('#courseSubtitle').val();
                 bt = $('#addCourse');
-                if (!course_type || !category_id || !subtitle || !title || !topic_id) {
+                if(!course_type || !category_id || !subtitle || !title || !topic_id) {
                     salat('All Fields Required', 1);
                     return
                 }
@@ -280,7 +280,7 @@
                     }
                 }).done(res => {
                     console.log(res);
-                    location.href = `/instructor/course/${res.slug}`
+                    location.href = `/instructor/course/${res.slug}?type=${course_type}`
                     btn(bt, 'Submit', 'after');
                 }).fail(res => {
                     concatError(res.responseJSON);

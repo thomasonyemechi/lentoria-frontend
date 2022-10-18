@@ -9,8 +9,7 @@
 <input type="hidden" name="course_info_29" id="course_info_29">
 <input type="hidden" id="ctype"/>
 <script>
-    $(function () {
-
+    $(function() {
         function getCategory(cat_id) {
             selCategory = $('#selcategory')
             selCategory.html(`<option value="" disabled selected>Select a category</option>`)
@@ -55,6 +54,7 @@
                 $('.course-title').html(res.data.title);
                 $("#ctype").val(res.data.course_type);
                 dat = res.data
+                if(dat.published == 0) {$('.publish-div').removeClass('d-none')}
                 try {
                     $('#courseTitle').val(dat.title);
                     length = (dat.title).length;
@@ -68,7 +68,7 @@
                     $(`#course_level option[value="${dat.level}"]`).prop("selected", true);
                     getCategory(dat.category_id);
                     setTopic2(dat.category_id, dat.topic_id);
-                } catch (err) {}
+                } catch(err) {}
                 ////////pricing
                 $('.course_price').val(res.data.price)
                 $('input[name="course_update_id"]').val(res.data.id)
@@ -79,7 +79,7 @@
                     welmess.setData(dat.welcome_message ?? '');
                     cermess.setData(dat.certification_message ?? '');
                     $('#mycourse_id').val(dat.id);
-                } catch (err) {}
+                } catch(err) {}
                 ;
                 ///section
                 $('#course_id').val(dat.id)

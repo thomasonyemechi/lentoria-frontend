@@ -373,13 +373,13 @@
     </div>
     <!--suppress BadExpressionStatementJS -->
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             interval = setInterval(() => {
                 cid = $("#course_id").val();
                 type = $("#ctype").val();
 
-                if (cid != "" && type != "") {
+                if(cid != "" && type != "") {
                     clearInterval(interval);
                     getAllSections(cid, type)
                 }
@@ -387,10 +387,10 @@
 
             function contentType(type) {
                 but = "";
-                if (type == 1) {
+                if(type == 1) {
                     but +=
                         `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal">Add Video Content +</a> `
-                } else if (type == 2) {
+                } else if(type == 2) {
                     but +=
                         `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal">Add Video Content +</a>&nbsp;&nbsp;`
                     but +=
@@ -399,7 +399,7 @@
                         `<a href="javascript:void(0)" class="btn btn-secondary btn-sm imgmodal" data-bs-target="#addImageModal" data-bs-toggle="modal">Add Image Content +</a>&nbsp;&nbsp;`
                     but +=
                         `<a href="javascript:void(0)" class="btn btn-secondary btn-sm codemodal" data-bs-target="#addCodeModal" data-bs-toggle="modal">Add Code +</a> `
-                } else if (type == 3) {
+                } else if(type == 3) {
                     but +=
                         `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addTextModal" class="btn btn-secondary btn-sm textmodal">Add Text Content +</a>`
                 }
@@ -415,10 +415,10 @@
                 let video = document.createElement('video');
                 video.preload = 'metadata';
 
-                video.onloadedmetadata = function () {
+                video.onloadedmetadata = function() {
                     window.URL.revokeObjectURL(video.src);
                     var duration = video.duration;
-                    if (duration > 654) {
+                    if(duration > 654) {
                         salat("This file is more than 10 minutes long", 1);
                         $("#file_upload").fileinput('clear');
                     } else {
@@ -523,7 +523,7 @@
                 })
             }
 
-            $("#addCodeForm").submit(function (e) {
+            $("#addCodeForm").submit(function(e) {
                 e.preventDefault();
                 but = $(this).find($('button[type="submit"]'));
                 lecture_id = $(this).find($('input[name="lecture_id"]')).val();
@@ -533,7 +533,7 @@
             });
 
 
-            $(document).on('click', '.textmodal', function (e) {
+            $(document).on('click', '.textmodal', function(e) {
                 e.preventDefault();
                 grandparent2 = $(this).parent().parent().parent();
                 lect_id = grandparent2.find($("input.lec_id")).val();
@@ -542,7 +542,7 @@
                 textcontent.setData(main_con);
             })
 
-            $(document).on('click', '.textmodal2', function (e) {
+            $(document).on('click', '.textmodal2', function(e) {
                 e.preventDefault();
                 grandparent2 = $(this).parent().parent().parent();
                 lect_id = grandparent2.find($("input.lec_id")).val();
@@ -551,14 +551,14 @@
                 textcontent2.setData(main_con);
             })
 
-            $(document).on('click', '.imgmodal', function (e) {
+            $(document).on('click', '.imgmodal', function(e) {
                 e.preventDefault();
                 grandparent2 = $(this).parent().parent().parent();
                 lect_id = grandparent2.find($("input.lec_id")).val();
                 $("#image_info").find($('input[name="lecture_id"]')).val(lect_id);
             })
 
-            $(document).on('click', '.codemodal', function (e) {
+            $(document).on('click', '.codemodal', function(e) {
                 e.preventDefault();
                 grandparent3 = $(this).parent().parent().parent();
                 lect_id = grandparent3.find($("input.lec_id")).val();
@@ -567,32 +567,32 @@
 
             function mainContentField(type, content, text) {
                 field = ""
-                if (type == 3) {
+                if(type == 3) {
                     field += `<div class="mc" hidden>${content}</div>`
-                } else if (type == 2) {
+                } else if(type == 2) {
                     field += `<div class="tc" hidden>${text}</div>`
                 }
                 return field;
             }
 
-            $("#addTextForm").submit(function (e) {
+            $("#addTextForm").submit(function(e) {
                 e.preventDefault();
                 lecture_id = $(this).find($('input[name="lecture_id"]')).val();
                 content = textcontent.getData();
                 bt = $(this).find($("button[type='submit']"));
-                if (!content) {
+                if(!content) {
                     salat("Text field is required", 1);
                     return;
                 }
                 updateMainContent2(lecture_id, content, bt);
             })
 
-            $("#addTextForm2").submit(function (e) {
+            $("#addTextForm2").submit(function(e) {
                 e.preventDefault();
                 lecture_id = $(this).find($('input[name="lecture_id"]')).val();
                 content = textcontent2.getData();
                 bt = $(this).find($("button[type='submit']"));
-                if (!content) {
+                if(!content) {
                     salat("Text field is required", 1);
                     return;
                 }
@@ -601,7 +601,10 @@
 
             $("#file_upload").fileinput({
                 uploadUrl: "https://vi.beelsacademy.com/api/video",
-                allowedFileExtensions: ['mp4', 'ogg'],
+                allowedFileExtensions: [
+                    'mp4',
+                    'ogg'
+                ],
                 // allowedFileTypes: ['video'],
                 removeFromPreviewOnError: true,
                 dropZoneEnabled: false,
@@ -613,24 +616,19 @@
                     showUpload: false,
                 },
                 mergeAjaxCallbacks: false,
-                uploadExtraData: function (previewId, index) {
+                uploadExtraData: function(previewId, index) {
                     return {
                         title: $("#lecu_title").val(),
                         lecture_id: $("#lecu_id").val(),
                         duration: $("input#video_length").val(),
                     };
                 },
-            }).on('fileuploaded', function (event, data) {
-                {{--$.ajaxSetup({--}}
-                {{--    headers: {--}}
-                {{--        'Authorization': `Bearer {{access_token()}}`,--}}
-                {{--    }--}}
-                {{--});--}}
-                var form = data.form,
-                    files = data.files,
-                    extra = data.extra,
+            }).on('fileuploaded', function(event, data) {
+                var form     = data.form,
+                    files    = data.files,
+                    extra    = data.extra,
                     response = data.response,
-                    reader = data.reader;
+                    reader   = data.reader;
                 updateMainContent(response.url);
                 $("#addVideoModal").modal("hide");
                 $("#file_upload").fileinput('clear');
@@ -647,28 +645,28 @@
 
                 uploadAsync: true,
                 mergeAjaxCallbacks: true,
-                uploadExtraData: function (previewId, index) {
+                uploadExtraData: function(previewId, index) {
                     lecture_id = $("#image_info").find($('input[name="lecture_id"]')).val()
                     return {
                         lecture_id: lecture_id,
                     };
                 },
-            }).on('fileuploaded', function (event, data) {
-                var form = data.form,
-                    files = data.files,
-                    extra = data.extra,
+            }).on('fileuploaded', function(event, data) {
+                var form     = data.form,
+                    files    = data.files,
+                    extra    = data.extra,
                     response = data.response,
-                    reader = data.reader;
+                    reader   = data.reader;
                 $("#addImageModal").modal("hide");
                 salat(response.message);
                 $("#image_upload").fileinput('clear');
             });
             ;
 
-            $('#addsec1').click(function (e) {
+            $('#addsec1').click(function(e) {
                 e.preventDefault();
                 card = $(document).find($('#addseccard2'))
-                if (!card.hasClass('d-none')) {
+                if(!card.hasClass('d-none')) {
                     card.addClass('d-none');
                     card.find($('form'))[0].reset();
                 }
@@ -677,10 +675,10 @@
                 })
 
             });
-            $('#addsec2').click(function (e) {
+            $('#addsec2').click(function(e) {
                 e.preventDefault();
                 card = $(document).find($('#addseccard'))
-                if (!card.hasClass('d-none')) {
+                if(!card.hasClass('d-none')) {
                     card.addClass('d-none');
                     card.find($('form'))[0].reset();
                 }
@@ -706,15 +704,14 @@
                     },
                 }).done(res => {
                     console.log(res);
-                    if (res.data.length == 0) {
+                    if(res.data.length == 0) {
                         cardbody.html(`<div class="bg-light-secondary rounded p-2 mb-4 dummy">
                         <div class="d-inline-block me-3"><p class="text-capitalize fw-bold text-dark fs-4">Section 1:</p></div>
                             <div class="d-inline-block me-3">
                             <span class="d-inline-block me-3"><h4 class="text-capitalize">Introduction</h4></span>
                             <span class="d-inline-block"><a href="javascript:void(0)" class="me-1 text-inherit alt_section" data-bs-toggle="tooltip" data-placement="top"
                                 title="Edit"><i class="fe fe-edit fs-6"></i></a>
-                                <a href="javascript:void(0)" class="me-1 text-inherit sec_del" data-bs-toggle="tooltip" data-placement="top"
-                                title="Delete"><i class="fe fe-trash-2 fs-6"></i></a></span></div>
+                                </span></div>
                                     <!-- List group -->
                                     <div class="list-group list-group-flush border-top-0" id="courseList">
                                         <div id="courseOne">
@@ -729,9 +726,6 @@
                                                     <div><a href="#" class="me-1 text-inherit"
                                                             data-bs-toggle="tooltip" data-placement="top" title="Edit"><i
                                                                 class="fe fe-edit fs-6 alt_section"></i></a>
-                                                        <a href="#" class="me-1 text-inherit" data-bs-toggle="tooltip"
-                                                            data-placement="top" title="Delete"><i
-                                                                class="fe fe-trash-2 fs-6"></i></a>
                                                     </div>
                                                 </div>
 
@@ -763,8 +757,6 @@
                                 </h5>
                                 <div><a href="javascript:void(0)" class="me-1 text-inherit edit_lec" data-bs-toggle="tooltip" data-placement="top"
                                     title="Edit"><i class="fe fe-edit fs-6"></i></a>
-                                <a href="#" class="me-1 text-inherit" data-bs-toggle="tooltip" data-placement="top"
-                                    title="Delete"><i class="fe fe-trash-2 fs-6"></i></a>
                                 <a href="#" class="text-inherit" data-bs-toggle="collapse"
                                     data-bs-target="#collapselist${lec.id}" aria-expanded="false"
                                     aria-controls="collapselist${lec.id}">
@@ -788,9 +780,7 @@
                             <input type="hidden" name="gain" value="${sec.course_gain}" />
                             <span class="d-inline-block me-3"><h4 class="text-capitalize sec_title">${sec.title}</h4></span>
                             <span class="d-inline-block"><a href="javascript:void(0)" class="me-1 text-inherit" data-bs-toggle="tooltip" data-placement="top"
-                                title="Edit"><i class="sec_edit fe fe-edit fs-6"></i></a>
-                                <a href="javascript:void(0)" class="me-1 text-inherit sec_del" data-bs-toggle="tooltip" data-placement="top"
-                                title="Delete"><i class="fe fe-trash-2 fs-6"></i></a></span></div>
+                                title="Edit"><i class="sec_edit fe fe-edit fs-6"></i></a></span></div>
                                 <div class="list-group list-group-flush border-top-0" id="lecList${sec.id}">
                                     <div id="lecture${sec.id}">
                                         ${lectures}
@@ -807,10 +797,10 @@
                 })
             }
 
-            $(document).on('click', '.alt_section', function (e) {
+            $(document).on('click', '.alt_section', function(e) {
                 e.preventDefault();
                 card = $(document).find($('#addseccard2'))
-                if (!card.hasClass('d-none')) {
+                if(!card.hasClass('d-none')) {
                     card.addClass('d-none');
                     card.find($('form'))[0].reset();
                 }
@@ -819,13 +809,13 @@
 
 
             form = $("div.addseccard").find($('form'));
-            form.submit(function (e) {
+            form.submit(function(e) {
                 e.preventDefault();
                 title = $(this).find('input[name="title"]').val();
                 gain = $(this).find('input[name="purpose"]').val();
                 course_id = $('#course_id').val();
                 bt = $('form').find('button[type="submit"]');
-                if (!title || !gain) {
+                if(!title || !gain) {
                     salat('All Fields Required', 1);
                     return;
                 }
@@ -847,7 +837,7 @@
                     console.log(res);
                     salat(res.message);
                     btn(bt, 'Add Section', 'after');
-                    if (dummy) {
+                    if(dummy) {
                         dummy.remove();
                     }
                     cardbody.append(`<div class="bg-light-secondary rounded p-2 mb-4 section">
@@ -869,7 +859,7 @@
                                 data-bs-target="#addLectureModal">Add Lecture +</button></div>
 
                         </div>`)
-                    $('form').each(function () {
+                    $('form').each(function() {
                         this.reset()
                     });
                     $('.addseccard').addClass('d-none');
@@ -882,7 +872,7 @@
 
             });
             $('.closecard').each((i, obj) => {
-                $(obj).find($('a')).on('click', function (e) {
+                $(obj).find($('a')).on('click', function(e) {
                     e.preventDefault();
                     $(this).closest($('.addseccard')).addClass('d-none');
                     $(this).closest($('.addseccard')).find('form')[0].reset()
@@ -890,10 +880,10 @@
             });
 
 
-            $(document).on('click', '.section', function (e) {
+            $(document).on('click', '.section', function(e) {
                 e.preventDefault();
 
-                if ($(event.target).hasClass('sec_edit')) {
+                if($(event.target).hasClass('sec_edit')) {
                     section = $(this);
                     title = section.find($('.sec_title')).html();
                     gain = section.find($('input[name="gain"]')).val();
@@ -911,7 +901,7 @@
 
 
             form = $('#editSectionModal').find($('form'));
-            form.submit(function (e) {
+            form.submit(function(e) {
                 e.preventDefault();
                 title = $(this).find($('input[name="title"]')).val();
                 id = $(this).find($('input[name="section_id"]')).val();
@@ -919,7 +909,7 @@
                 course_id = $('#course_id').val();
                 bt = $(this).find($('button[type="submit"]'));
 
-                if (!title || !gain) {
+                if(!title || !gain) {
                     salat('All Fields Required', 1);
                     return;
                 }
@@ -950,9 +940,9 @@
             })
 
 
-            $(document).on('click', '.section', function (e) {
+            $(document).on('click', '.section', function(e) {
                 e.preventDefault();
-                if ($(event.target).hasClass('addlec')) {
+                if($(event.target).hasClass('addlec')) {
                     section = $(this);
                     section_id = section.find($('input[name="section_id"]')).val();
                     form = $('#addLectureModal').find($('form'))
@@ -960,7 +950,7 @@
                 }
 
             });
-            $('#addLectureModal').find($('form')).submit(function (e) {
+            $('#addLectureModal').find($('form')).submit(function(e) {
                 e.preventDefault();
                 title = $(this).find($('input[name="title"]')).val();
                 section_id = $(this).find($('input[name="section_id"]')).val();
@@ -968,7 +958,7 @@
                 bt = $(this).find($('button[type="submit"]'));
                 type = $("#ctype").val();
 
-                if (!title || !description) {
+                if(!title || !description) {
                     salat('All Fields Required', 1);
                     return;
                 }
@@ -1002,8 +992,6 @@
                                 </h5>
                                 <div><a href="javascript:void(0)" class="me-1 text-inherit edit_lec" data-bs-toggle="tooltip" data-placement="top"
                                     title="Edit"><i class="fe fe-edit fs-6"></i></a>
-                                <a href="#" class="me-1 text-inherit" data-bs-toggle="tooltip" data-placement="top"
-                                    title="Delete"><i class="fe fe-trash-2 fs-6"></i></a>
                                 <a href="#" class="text-inherit" data-bs-toggle="collapse"
                                     data-bs-target="#collapselist${res.id}" aria-expanded="false"
                                     aria-controls="collapselist${res.id}">
@@ -1022,7 +1010,7 @@
                     form[0].reset();
                     try {
                         c_desc.setData('')
-                    } catch (error) {
+                    } catch(error) {
                         console.error(error);
                     }
                 }).fail(res => {
@@ -1033,7 +1021,7 @@
                 })
             })
 
-            $(document).on('click', '.edit_lec', function (e) {
+            $(document).on('click', '.edit_lec', function(e) {
                 e.preventDefault();
                 parent = $(this).closest($("div.lec_details"));
 
@@ -1051,7 +1039,7 @@
 
             })
 
-            $("#editLectureForm").submit(function (e) {
+            $("#editLectureForm").submit(function(e) {
                 e.preventDefault();
                 form = $(this);
                 title = form.find($('input[name="title"]')).val();
@@ -1089,7 +1077,7 @@
 
             });
 
-            $(document).on('click', '.vidmodal', function (e) {
+            $(document).on('click', '.vidmodal', function(e) {
                 e.preventDefault();
                 grandparent = $(this).parent().parent().parent();
                 title = grandparent.find($("span.lec_tit")).html();

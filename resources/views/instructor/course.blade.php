@@ -114,7 +114,7 @@
                                     <input type="file" class="form-control" name="promo_video" id="promo_video"/>
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button class="btn btn-success btn-block review-btn" id="updateCourse">Submit For
+                                    <button class="btn btn-success btn-block" id="updateCourse">Submit For
                                         Review
                                     </button>
 
