@@ -66,7 +66,7 @@
                 <span class="navbar-header">Submit for review</span>
                 <ul class="list-unstyled ms-n2 mb-4">
                     <li class="nav-item d-flex justify-content-lg-center justify-content-sm-start">
-                        <button class="review-btn btn btn-xs btn-success me-lg-4 w-100">Submit</button>
+                        <button class="pub-btn review-btn btn btn-xs btn-success me-lg-4 w-100">Submit</button>
                     </li>
                 </ul>
             </div>
@@ -77,7 +77,7 @@
 
 <script>
     $(function() {
-        $(".review-btn").click(function(e) {
+        $(".pub-btn").click(function(e) {
             e.preventDefault();
             let but = $(this);
             let slug = @js($slug);

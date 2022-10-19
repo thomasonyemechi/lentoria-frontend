@@ -15,21 +15,24 @@ function user()
 function userDetail($detail)
 {
     $user = user();
-    if ($detail == 1) {
+    if($detail == 1) {
         return $user->firstname . ' ' . $user->lastname;
-    } else if ($detail == 2) {
-        return $user->email;
     }
 
+    if($detail == 2) {
+        return $user->email;
+    }
 }
 
 
 function names($type)
 {
     $user = user();
-    if ($type == 1) {
+    if($type == 1) {
         return $user->firstname;
-    } elseif ($type == 2) {
+    }
+
+    if($type == 2) {
         return $user->lastname;
     }
 }
@@ -40,10 +43,15 @@ function userAvatar()
 }
 
 
-function instructorInfo()
+function instructorInfo(): string
 {
     $user = user();
-    $info = ['name' => $user->firstname . ' ' . $user->lastname, 'photo' => userAvatar(), 'email' => $user->email, 'id' => $user->id];
+    $info = [
+        'name' => $user->firstname . ' ' . $user->lastname,
+        'photo' => userAvatar(),
+        'email' => $user->email,
+        'id' => $user->id,
+    ];
 
     return '<div class="row align-items-center">
     <div class="col-xl-12 col-lg-12 col-md-12 col-12">

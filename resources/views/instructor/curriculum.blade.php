@@ -74,7 +74,7 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <button class="btn btn-primary btn-sm" type="submit">
-                                Save Section
+                                Edit Section
                             </button>
                             <button class="btn btn-outline-white btn-sm" data-bs-dismiss="modal" aria-label="Close">
                                 Close
@@ -113,7 +113,7 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <button class="btn btn-primary btn-sm" type="submit">
-                                Save Lecture
+                                Save
                             </button>
                             <button class="btn btn-outline-white btn-sm" data-bs-dismiss="modal" aria-label="Close">
                                 Close
@@ -154,7 +154,7 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <button class="btn btn-primary btn-sm" type="submit">
-                                Save
+                                Submit
                             </button>
                             <button class="btn btn-outline-white btn-sm" data-bs-dismiss="modal" aria-label="Close">
                                 Close
@@ -375,7 +375,7 @@
     <script>
         $(document).ready(function() {
 
-            interval = setInterval(() => {
+            let interval = setInterval(() => {
                 cid = $("#course_id").val();
                 type = $("#ctype").val();
 
@@ -433,6 +433,11 @@
             function updateMainContent(url) {
                 lecture_id = $("#lecu_id").val();
                 duration = $("input#video_length").val();
+                let published = sessionStorage.getItem('published');
+                if(published && published != 0) {
+                    salat('This course has been submitted for review and cannot be edited', 1);
+                    return;
+                }
                 $.ajax({
                     url: api_url + "admin/update_lecture_video",
                     method: "POST",
@@ -449,6 +454,11 @@
             }
 
             function updateMainContent2(lecture_id, content, bt) {
+                let published = sessionStorage.getItem('published');
+                if(published && published != 0) {
+                    salat('This course has been submitted for review and cannot be edited', 1);
+                    return;
+                }
                 $.ajax({
                     url: api_url + "admin/update_lecture_text",
                     method: "POST",
@@ -474,6 +484,11 @@
             }
 
             function updateTextContent(lecture_id, content, bt) {
+                let published = sessionStorage.getItem('published');
+                if(published && published != 0) {
+                    salat('This course has been submitted for review and cannot be edited', 1);
+                    return;
+                }
                 $.ajax({
                     url: api_url + "admin/update_lecture_article",
                     method: "POST",
@@ -499,6 +514,11 @@
             }
 
             function updateCodeContent(lecture_id, code, lang, bt) {
+                let published = sessionStorage.getItem('published');
+                if(published && published != 0) {
+                    salat('This course has been submitted for review and cannot be edited', 1);
+                    return;
+                }
                 $.ajax({
                     url: api_url + "admin/update_lecture_code",
                     method: "POST",
@@ -599,6 +619,18 @@
                 updateTextContent(lecture_id, content, bt);
             })
 
+            $("#file_upload").on('filepreupload', function(event, data, previewId, index, jqXHR) {
+                let published = sessionStorage.getItem('published');
+                if(published && published != 0) {
+                    return {
+                        message: 'course submitted for review no more uploads allowed',
+                        data: {
+                            key1: 'published error',
+                            detail1: 'The course is under review already no more uploads allowed'
+                        }
+                    };
+                }
+            });
             $("#file_upload").fileinput({
                 uploadUrl: "https://vi.beelsacademy.com/api/video",
                 allowedFileExtensions: [
@@ -633,6 +665,18 @@
                 $("#addVideoModal").modal("hide");
                 $("#file_upload").fileinput('clear');
             });
+            $("#image_upload").on('filepreupload', function(event, data, previewId, index, jqXHR) {
+                let published = sessionStorage.getItem('published');
+                if(published && published != 0) {
+                    return {
+                        message: 'course submitted for review no more uploads allowed',
+                        data: {
+                            key1: 'published error',
+                            detail1: 'The course is under review already no more uploads allowed'
+                        }
+                    };
+                }
+            });
 
             $("#image_upload").fileinput({
                 uploadUrl: api_url + 'admin/update_lecture_image',
@@ -652,11 +696,11 @@
                     };
                 },
             }).on('fileuploaded', function(event, data) {
-                var form     = data.form,
-                    files    = data.files,
-                    extra    = data.extra,
+                var form = data.form,
+                    files = data.files,
+                    extra = data.extra,
                     response = data.response,
-                    reader   = data.reader;
+                    reader = data.reader;
                 $("#addImageModal").modal("hide");
                 salat(response.message);
                 $("#image_upload").fileinput('clear');
@@ -670,10 +714,7 @@
                     card.addClass('d-none');
                     card.find($('form'))[0].reset();
                 }
-                $('#addseccard').fadeOut('slow', () => {
-                    $('#addseccard').removeClass('d-none');
-                })
-
+                $('#addseccard').removeClass('d-none');
             });
             $('#addsec2').click(function(e) {
                 e.preventDefault();
@@ -847,9 +888,7 @@
                             <input type="hidden" name="gain" value="${gain}" />
                             <span class="d-inline-block me-3"><h4 class="text-capitalize sec_title">${title}</h4></span>
                             <span class="d-inline-block"><a href="javascript:void(0)" class="me-1 text-inherit" data-bs-toggle="tooltip" data-placement="top"
-                                title="Edit"><i class="sec_edit fe fe-edit fs-6"></i></a>
-                                <a href="javascript:void(0)" class="me-1 text-inherit sec_del" data-bs-toggle="tooltip" data-placement="top"
-                                title="Delete"><i class="fe fe-trash-2 fs-6"></i></a></span></div>
+                                title="Edit"><i class="sec_edit fe fe-edit fs-6"></i></a></span></div>
                                 <div class="list-group list-group-flush border-top-0" id="lecList${res.id}">
                                     <div id="lecture${res.id}">
 

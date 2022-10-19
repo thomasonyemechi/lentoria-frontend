@@ -112,6 +112,7 @@
 <script src="{{asset('assets/libs/videojs/video.min.js')}}"></script>
 <script src="{{ asset('assets/libs/odometer/odometer.min.js') }}"></script>
 <script src="{{ asset('assets/libs/inputmask/dist/jquery.inputmask.min.js') }}"></script>
+<script src="{{asset('assets/libs/typed.js/lib/typed.min.js')}}"></script>
 <script src="{{ asset('assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js') }}"></script>
 <script src="{{ asset('assets/libs/dragula/dist/dragula.min.js') }}"></script>
 <script src="{{ asset('assets/libs/bootstrap_file_input/js/plugins/buffer.min.js') }}"></script>

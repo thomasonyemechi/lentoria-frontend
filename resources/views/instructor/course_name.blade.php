@@ -55,6 +55,8 @@
                 $("#ctype").val(res.data.course_type);
                 dat = res.data
                 if(dat.published == 0) {$('.publish-div').removeClass('d-none')}
+                let published = dat.published;
+                sessionStorage.setItem('published', published);
                 try {
                     $('#courseTitle').val(dat.title);
                     length = (dat.title).length;
@@ -80,7 +82,7 @@
                     cermess.setData(dat.certification_message ?? '');
                     $('#mycourse_id').val(dat.id);
                 } catch(err) {}
-                ;
+
                 ///section
                 $('#course_id').val(dat.id)
             }).fail(res => {

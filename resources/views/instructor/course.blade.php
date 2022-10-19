@@ -164,7 +164,7 @@
         </div>
 
         <script>
-            $(document).ready(function () {
+            $(document).ready(function() {
 
                 let subcategories;
                 const jsonfile = `{{asset('subcategories.json')}}`;
@@ -173,47 +173,28 @@
                 function getLoadSubCategories() {
                     $.getJSON(jsonfile, res => subcategories = res);
                 }
-
-                // function setTopic() {
-                //     cat = category_id;
-                //     $.ajax({
-                //         method: 'get',
-                //         url: api_url + 'admin/topics/' + cat,
-                //     }).done((res) => {
-                //         selectsub = $('#selsubcat');
-                //         selectsub.html('<option selected disabled>Select Course Sub Category</option>')
-                //         res.data.map(dat => {
-                //             selectsub.append(`<option value="${dat.id}">${dat.name}</option>`);
-                //         })
-                //     }).fail((res) => {
-                //         concatError(res.responseJSON);
-                //         console.log(res)
-                //     });
-                // }
-
-
-                $("#courseTitle").on("input", function (e) {
+                $("#courseTitle").on("input", function(e) {
                     e.preventDefault();
                     let length = $(this).val().length
                     let maxlength = 60;
                     return $('#count').html(maxlength - length);
                 })
 
-                $('#selcategory').on("change", function (e) {
+                $('#selcategory').on("change", function(e) {
                     e.preventDefault();
                     let cat = $(this).val();
-                    if (cat) {
+                    if(cat) {
                         let subcats = subcategories.data[cat];
                         let selectsub = $('#selsubcat');
                         selectsub.html('<option selected disabled>Select Course Topic</option>');
-                        if (subcats) {
+                        if(subcats) {
                             subcats.forEach(sub => selectsub.append(`<option value="${sub.id}">${sub.name}</option>`))
                         }
                     }
                 });
 
 
-                $('#updateCourseForm').on('submit', function (e) {
+                $('#updateCourseForm').on('submit', function(e) {
                     e.preventDefault();
                     id = $('#course_id').val();
                     title = $('#courseTitle').val();
@@ -227,15 +208,20 @@
                     purpose = $('#purpose').val();
                     image = $('#course_image').get(0).files.length;
                     video = $('#promo_video').get(0).files.length;
-                    if (!title || !subtitle || !description || !language || !level || !category_id || !topic_id) {
+                    let published = sessionStorage.getItem('published');
+                    if(published && published != 0) {
+                        salat('This course has been submitted for review and cannot be edited', 1);
+                        return;
+                    }
+                    if(!title || !subtitle || !description || !language || !level || !category_id || !topic_id) {
                         salat('All Text Fields Required', 1);
                         return
                     }
                     let form_data = new FormData();
-                    if (image != 0) {
+                    if(image != 0) {
                         form_data.append('image', document.getElementById('course_image').files[0]);
                     }
-                    if (video != 0) {
+                    if(video != 0) {
                         form_data.append('video', document.getElementById('promo_video').files[0]);
                     }
 
@@ -271,7 +257,7 @@
                 });
 
 
-                $("#editLinkForm").submit(function (e) {
+                $("#editLinkForm").submit(function(e) {
                     e.preventDefault();
                     link = $('#shortlink').val();
                     id = $('#course_id').val();
@@ -309,17 +295,17 @@
                         }
                     }).done(res => {
                         let valmess = $("#valmess");
-                        if (res.status == true) {
+                        if(res.status == true) {
                             valmess.removeClass("d-none");
-                            if (valmess.hasClass("text-danger")) {
+                            if(valmess.hasClass("text-danger")) {
                                 valmess.removeClass("text-danger");
                             }
                             valmess.addClass("text-success");
                             valmess.html(res.message);
                             $("#editLinkForm").find($("button[type='submit']")).attr('disabled', false);
-                        } else if (res.status == false) {
+                        } else if(res.status == false) {
                             valmess.removeClass("d-none");
-                            if (valmess.hasClass("text-success")) {
+                            if(valmess.hasClass("text-success")) {
                                 valmess.removeClass("text-success");
                             }
                             valmess.addClass("text-danger");
@@ -330,7 +316,7 @@
                             valmess.addClass("d-none");
                         }, 3000);
 
-                        if (valmess.hasClass("d-none")) {
+                        if(valmess.hasClass("d-none")) {
                             clearTimeout(messageTimeout);
                         }
                     }).fail(res => {
@@ -345,7 +331,7 @@
                 let input = $('#shortlink');
 
                 //on keyup, start the countdown
-                input.on('keyup', function () {
+                input.on('keyup', function() {
                     clearTimeout(typingTimer);
                     typingTimer = setTimeout(doneTyping, doneTypingInterval);
                 });
