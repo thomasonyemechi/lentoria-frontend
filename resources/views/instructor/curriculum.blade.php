@@ -790,7 +790,7 @@
                                 <a href="#" class="text-inherit">
                                     <i class="fe fe-menu me-1 text-muted align-middle"></i>
                                     <span class="align-middle text-capitalize lec_tit">${lec.title}</span>
-                                    <input type="hidden" name="lec_desc" class="lec_desc" value="${lec.description}" />
+                                    <div hidden name="lec_desc" class="lec_desc">${lec.description}</div>
                                     <input type="hidden" name="lec_id" class="lec_id" value="${lec.id}" />
                                     <input type="hidden" name="sec_id" class="sec_id" value="${lec.section_id}" />
                                     ${mainContentField(type, lec.main_content ?? '', lec.text ?? '')}
@@ -1023,7 +1023,7 @@
                                 <a href="#" class="text-inherit">
                                     <i class="fe fe-menu me-1 text-muted align-middle"></i>
                                     <span class="align-middle text-capitalize lec_tit">${title}</span>
-                                    <input type="hidden" name="lec_desc" class="lec_desc" value="${description}" />
+                                    <div hidden name="lec_desc" class="lec_desc">${description}</div>
                                     <input type="hidden" name="lec_id" class="lec_id" value="${res.id}" />
                                     <input type="hidden" name="sec_id" class="sec_id" value="${section_id}" />
                                     ${mainContentField(type, "", "")}
@@ -1066,7 +1066,7 @@
 
                 title = parent.find($("span.lec_tit")).html();
                 id = parent.find($("input[name='lec_id']")).val();
-                description = parent.find($("input[name='lec_desc']")).val();
+                description = parent.find($("div[name='lec_desc']")).html();
                 sec_id = parent.find($("input[name='sec_id']")).val();
 
                 form = $("#editLectureModal").find($('form'));
@@ -1105,7 +1105,7 @@
                     salat(res.message);
                     parent.find($("span.lec_tit")).html(title);
                     parent.find($("input[name='lec_id']")).val(id);
-                    parent.find($("input[name='lec_desc']")).val(description);
+                    parent.find($("div[name='lec_desc']")).html(description);
                     parent.find($("input[name='sec_id']")).val(section_id);
                     $("#editLectureModal").modal('hide');
                 }).fail(res => {

@@ -329,21 +329,54 @@
                                     <span class="bt p-sm-0 d-none">
                                         <a href="javascript:void(0)"
                                            class="text-primary btn-sm classroom vid-btn"
-                                           data-link="" data-lec_id="" data-type="video"><i
+                                           data-link=""
+                                           data-lec_id=""
+                                           data-type="video"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="bottom"
+                                           title="video"><i
                                                     class="mdi mdi-video" style="font-size: 26px;"></i></a>
-                                        <a href="javascript:void(0)" class="text-primary btn-sm classroom img-btn"
-                                           data-link="" data-lec_id="" data-type="image"><i
+                                        <a href="javascript:void(0)"
+                                           class="text-primary btn-sm classroom img-btn"
+                                           data-link=""
+                                           data-lec_id=""
+                                           data-type="image"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="bottom"
+                                           title="image"><i
                                                     class="mdi mdi-image" style="font-size: 26px;"></i></a>
-                                        <a href="javascript:void(0)" class="text-primary btn-sm classroom text-btn"
-                                           data-link="" data-lec_id="" data-type="text"><i
+                                        <a href="javascript:void(0)"
+                                           class="text-primary btn-sm classroom text-btn"
+                                           data-link=""
+                                           data-lec_id=""
+                                           data-type="text"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="bottom"
+                                           title="text"><i
                                                     class="mdi mdi-file-document" style="font-size: 26px;"></i></a>
-                                        <a href="javascript:void(0)" class="text-primary btn-sm classroom code-btn"
-                                           data-link="" data-lec_id="" data-type="code"><i
+                                        <a href="javascript:void(0)"
+                                           class="text-primary btn-sm classroom code-btn"
+                                           data-link=""
+                                           data-lec_id=""
+                                           data-type="code"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="bottom"
+                                           title="code"><i
                                                     class="mdi mdi-xml" style="font-size: 26px;"></i></a>
-                                        <a href="javascript:void(0)" class="text-primary btn-sm classroom comm-btn"
-                                           data-link="" data-lec_id="" data-type="comment"><i
+                                        <a href="javascript:void(0)"
+                                           class="text-primary btn-sm classroom comm-btn"
+                                           data-link=""
+                                           data-lec_id=""
+                                           data-type="comment"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="bottom"
+                                           title="comment"><i
                                                     class="mdi mdi-comment-account" style="font-size: 26px;"></i></a>
-                                        <a href="javascript:void(0)" class="text-success btn-sm d-none push-btn"
+                                        <a href="javascript:void(0)"
+                                           class="text-success btn-sm d-none push-btn"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="bottom"
+                                           title="send"
                                            id="push_btn"><i class="mdi mdi-send push-icon"
                                                             style="font-size: 26px;"></i></a></span>
                                 </div>
@@ -413,23 +446,7 @@
                                 </div>
                             </div>
                             <div class="pb-10 mt-4 d-block">
-                                <p>Lorem ipsum dolor sit amet, consecrate radicalising elite. Blandish eis incident
-                                    image ire labor molest perspicacity sed saint. Accusal delegates color,
-                                    eos fugal nam defecation quasi quo. Blandish, temporise voluptuary?
-                                    Lorem ipsum dolor sit amet, consecrate radicalising elite. Liquid amet consecrate
-                                    consequent gulp dedent, color arum eos et facility hic ipsa image molests
-                                    necessitates nemo nobs query temporary tenet valid. Lorem ipsum dolor sit amet,
-                                    consecrate radicalising elite. Accusation aspersions blandish common gulp eos
-                                    ipsa itaque, molestiae nam non odit officious paginator possums provident quo
-                                    recusandae reprehenderit sint vel voluptates! Lorem ipsum dolor sit amet,
-                                    consectetur adipisicing elit. Aliquid cum, deleniti distinctio doloremque ea
-                                    eligendi error exercitationem facere fuga illum ipsam ipsum nulla quidem quod sit,
-                                    veritatis vitae voluptate voluptatibus. Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit. Ab eum illum nam tempora vel valid veritas voluptuous! Anime
-                                    dolor dolores impeded mod nobs poor redundancy temporal temporise vel, valid,
-                                    voluptuous. Lorem ipsum dolor sit amet, consecrate radicalising elite. Alias au tem
-                                    equal eum face maxime necessitates deque nisei qui ration voluptuous. Aliquot
-                                    liquid architect, antique dolorous laborious magna molest quits valid.
+                                <p class="c-desc">
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center my-22 d-none" id="vid_preloader">
@@ -510,7 +527,7 @@
                         if(sections.lectures.length > 0) {
                             sections.lectures.map(lecs => {
                                 lectures += `
-                            <a class="mb-2 d-flex justify-content-between align-items-center load-con text-decoration-none" data-vid="${lecs.main_content}" data-img="${lecs.image}" data-lec_id="${lecs.id}" style="cursor: pointer;">
+                            <a class="mb-2 d-flex justify-content-between align-items-center load-con text-decoration-none" data-vid="${lecs.main_content}" data-desc="${lecs.description}" data-img="${lecs.image}" data-lec_id="${lecs.id}" style="cursor: pointer;">
                             <div class="text-truncate">
                                 <span class="icon-shape bg-light text-primary icon-sm  rounded-circle me-2"><i
                                         class="fe fe-airplay fs-4"></i></span>
@@ -578,10 +595,18 @@
 
             $(document).on('click', '.load-con', function(e) {
                 e.preventDefault();
-                let img_link                                                              = $(this).data('img'), video_link                            = $(this).data('vid'),
-                    lecture_id                                                            = $(this).data('lec_id'), lec_tit = $(this).find($(".lectit")).html(),
-                    img_btn                                                               = $(".img-btn"), vid_btn                                      = $(".vid-btn"), code_btn = $(".code-btn"),
-                    text_btn = $(".text-btn"), comm_btn = $(".comm-btn"), class_container = $("#class_container");
+                let img_link = $(this).data('img')
+                let video_link = $(this).data('vid')
+                let lecture_id = $(this).data('lec_id')
+                let desc = $(this).data('desc')
+                let lec_tit = $(this).find($(".lectit")).html()
+                let img_btn = $(".img-btn")
+                let vid_btn = $(".vid-btn")
+                let code_btn = $(".code-btn")
+                let text_btn = $(".text-btn")
+                let comm_btn = $(".comm-btn")
+                let class_container = $("#class_container");
+                $(".c-desc").html(desc);
                 $(".tit").html(lec_tit);
                 $(".btns").find($("span")).removeClass('d-none');
                 img_btn.data('link', img_link);

@@ -11,7 +11,8 @@
             <div class="d-xl-none d-lg-none d-md-none add-course mt-3">
                 <ul class="list-unstyled ms-n2 mb-4">
                     <li class="nav-item d-flex justify-content-lg-center justify-content-sm-start">
-                        <button class="btn btn-xs btn-primary me-lg-4 w-100">Add Course</button>
+                        <a href="/instructor/add_course" class="btn btn-xs btn-primary me-lg-4 w-100">Create New
+                            Course</a>
                     </li>
                 </ul>
             </div>

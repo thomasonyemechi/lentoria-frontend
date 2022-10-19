@@ -47,7 +47,10 @@
         function fetchLearners() {
             $.ajax({
                 method: 'get',
-                url: api_url + `admin/course/{{ $slug }}`
+                url: api_url + `admin/course/{{ $slug }}`,
+                beforeSend() {
+                    $("button").attr('disabled', true);
+                }
             }).done(res => {
                 console.log(res);
                 $('input[name="course_info_29"]').val(JSON.stringify(res.data));
@@ -82,11 +85,12 @@
                     cermess.setData(dat.certification_message ?? '');
                     $('#mycourse_id').val(dat.id);
                 } catch(err) {}
-
+                $("button").removeAttr('disabled')
                 ///section
                 $('#course_id').val(dat.id)
             }).fail(res => {
                 location.href = "/instructor/dashboard"
+                $("button").removeAttr('disabled')
             })
         }
 

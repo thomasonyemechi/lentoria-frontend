@@ -35,9 +35,7 @@
         </div>
         <div class="slido">
             <div class="col-xl-3 col-lg-6 col-md-12 col-12">
-                <!-- Card -->
                 <div class="card mb-4 ">
-                    <!-- Card body -->
                     <div class="p-1">
                         <div class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover"
                              style="background-image: url({{asset('assets/images/course/course-javascript.jpg')}});">
@@ -47,7 +45,6 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Card body -->
                     <div class="card-body">
                         <div class="d-grid">
                             <a href="#" class="btn btn-outline-primary">Continue Learning</a>
@@ -58,7 +55,6 @@
             <div class="col-xl-3 col-lg-3 col-md-12 col-12">
                 <!-- Card -->
                 <div class="card mb-4 ">
-                    <!-- Card body -->
                     <div class="p-1">
                         <div class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover"
                              style="background-image: url({{asset('assets/images/course/course-react.jpg')}});">
@@ -68,7 +64,6 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Card body -->
                     <div class="card-body">
                         <div class="d-grid">
                             <a href="#" class="btn btn-outline-primary">Continue Learning</a>
@@ -77,9 +72,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12 col-12">
-                <!-- Card -->
                 <div class="card mb-4 ">
-                    <!-- Card body -->
                     <div>
                         <div class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover"
                              style="background-image: url({{asset('assets/images/course/course-angular.jpg')}});">
@@ -89,7 +82,6 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Card body -->
                     <div class="card-body">
                         <div class="d-grid">
                             <a href="#" class="btn btn-outline-primary">Continue Learning</a>
@@ -98,9 +90,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12 col-12">
-                <!-- Card -->
                 <div class="card mb-4 ">
-                    <!-- Card body -->
                     <div>
                         <div class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover"
                              style="background-image: url({{asset('assets/images/course/course-javascript.jpg')}});">
@@ -110,7 +100,6 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Card body -->
                     <div class="card-body">
                         <div class="d-grid">
                             <a href="#" class="btn btn-outline-primary">Continue Learning</a>
@@ -119,9 +108,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12 col-12">
-                <!-- Card -->
                 <div class="card mb-4 ">
-                    <!-- Card body -->
                     <div>
                         <div class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover"
                              style="background-image: url({{asset('assets/images/course/course-javascript.jpg')}});">
@@ -131,7 +118,6 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Card body -->
                     <div class="card-body">
                         <div class="d-grid">
                             <a href="#" class="btn btn-outline-primary">Continue Learning</a>
@@ -140,9 +126,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12 col-12">
-                <!-- Card -->
                 <div class="card mb-4 ">
-                    <!-- Card body -->
                     <div>
                         <div class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover"
                              style="background-image: url({{asset('assets/images/course/course-react.jpg')}});">
@@ -152,7 +136,6 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Card body -->
                     <div class="card-body">
                         <div class="d-grid">
                             <a href="#" class="btn btn-outline-primary">Continue Learning</a>
@@ -161,9 +144,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12 col-12">
-                <!-- Card -->
                 <div class="card mb-4">
-                    <!-- Card body -->
                     <div>
                         <div class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover"
                              style="background-image: url({{asset('assets/images/course/course-angular.jpg')}});">
@@ -173,7 +154,6 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Card body -->
                     <div class="card-body">
                         <div class="d-grid">
                             <a href="#" class="btn btn-outline-primary">Continue Learning</a>
@@ -182,9 +162,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12 col-12">
-                <!-- Card -->
                 <div class="card mb-4">
-                    <!-- Card body -->
                     <div>
                         <div class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover"
                              style="background-image: url({{asset('assets/images/course/course-javascript.jpg')}});">
@@ -194,7 +172,6 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Card body -->
                     <div class="card-body">
                         <div class="d-grid">
                             <a href="#" class="btn btn-outline-primary">Continue Learning</a>
@@ -245,7 +222,8 @@
                                                           width="2"
                                                           height="12"
                                                           rx="1"
-                                                          fill="#DBD8E9"></rect>
+                                                          fill="#DBD8E9">
+                                                    </rect>
                                                 </svg>
                                                 Beginner
                                             </li>
@@ -266,7 +244,7 @@
                                     <div class="card-footer">
                                         <div class="row align-items-center g-0">
                                             <div class="col-auto">
-                                                <img src="assets/images/avatar/avatar-6.jpg"
+                                                <img src="{{asset('assets/images/avatar/avatar-6.jpg')}}"
                                                      class="rounded-circle avatar-xs"
                                                      alt="">
                                             </div>
@@ -285,9 +263,10 @@
                             <div class="col-lg-3 col-md-6 col-12">
                                 <!-- Card -->
                                 <div class="card  mb-4 card-hover">
-                                    <a href="#" class="card-img-top"><img src="assets/images/course/course-graphql.jpg"
-                                                                          alt=""
-                                                                          class="card-img-top rounded-top-md"></a>
+                                    <a href="#"
+                                       class="card-img-top"><img src="{{asset('assets/images/course/course-graphql.jpg')}}"
+                                                                 alt=""
+                                                                 class="card-img-top rounded-top-md"></a>
                                     <!-- Card body -->
                                     <div class="card-body">
                                         <h3 class="h4 mb-2 text-truncate-line-2 "><a href="#" class="text-inherit">GraphQL:
@@ -304,7 +283,8 @@
                                                           width="2"
                                                           height="12"
                                                           rx="1"
-                                                          fill="#754FFE"></rect>
+                                                          fill="#754FFE">
+                                                    </rect>
                                                 </svg>
                                                 Advance
                                             </li>
@@ -325,7 +305,7 @@
                                     <div class="card-footer">
                                         <div class="row align-items-center g-0">
                                             <div class="col-auto">
-                                                <img src="assets/images/avatar/avatar-7.jpg"
+                                                <img src="{{asset('assets/images/avatar/avatar-7.jpg')}}"
                                                      class="rounded-circle avatar-xs"
                                                      alt="">
                                             </div>
@@ -344,9 +324,10 @@
                             <div class="col-lg-3 col-md-6 col-12">
                                 <!-- Card -->
                                 <div class="card  mb-4 card-hover">
-                                    <a href="#" class="card-img-top"><img src="assets/images/course/course-angular.jpg"
-                                                                          alt=""
-                                                                          class="card-img-top rounded-top-md"></a>
+                                    <a href="#"
+                                       class="card-img-top"><img src="{{asset('assets/images/course/course-angular.jpg')}}"
+                                                                 alt=""
+                                                                 class="card-img-top rounded-top-md"></a>
                                     <!-- Card body -->
                                     <div class="card-body">
                                         <h3 class="h4 mb-2 text-truncate-line-2 "><a href="#" class="text-inherit">Angular
@@ -365,7 +346,8 @@
                                                           width="2"
                                                           height="12"
                                                           rx="1"
-                                                          fill="#DBD8E9"></rect>
+                                                          fill="#DBD8E9">
+                                                    </rect>
                                                 </svg>
                                                 Beginner
                                             </li>
@@ -386,7 +368,7 @@
                                     <div class="card-footer">
                                         <div class="row align-items-center g-0">
                                             <div class="col-auto">
-                                                <img src="assets/images/avatar/avatar-8.jpg"
+                                                <img src="{{asset('assets/images/avatar/avatar-8.jpg')}}"
                                                      class="rounded-circle avatar-xs"
                                                      alt="">
                                             </div>
@@ -405,7 +387,7 @@
                             <div class="col-lg-3 col-md-6 col-12">
                                 <!-- Card -->
                                 <div class="card mb-4 card-hover">
-                                    <a href="#" class="card-img-top"><img src="assets/images/course/course-python.jpg"
+                                    <a href="#" class="card-img-top"><img src="{{asset('assets/images/course/course-python.jpg')}}"
                                                                           alt=""
                                                                           class="card-img-top rounded-top-md"></a>
                                     <!-- Card body -->
@@ -446,7 +428,7 @@
                                     <div class="card-footer">
                                         <div class="row align-items-center g-0">
                                             <div class="col-auto">
-                                                <img src="assets/images/avatar/avatar-9.jpg"
+                                                <img src="{{asset('assets/images/avatar/avatar-9.jpg')}}"
                                                      class="rounded-circle avatar-xs"
                                                      alt="">
                                             </div>
@@ -490,7 +472,7 @@
                         <div class="col-lg-3 col-md-6 col-12">
                             <!-- Card -->
                             <div class="card  mb-4 card-hover">
-                                <a href="#" class="card-img-top"><img src="assets/images/course/course-react.jpg"
+                                <a href="#" class="card-img-top"><img src="{{asset('assets/images/course/course-react.jpg')}}"
                                                                       alt=""
                                                                       class="card-img-top rounded-top-md"></a>
                                 <!-- Card body -->
@@ -526,7 +508,7 @@
                                 <div class="card-footer">
                                     <div class="row align-items-center g-0">
                                         <div class="col-auto">
-                                            <img src="assets/images/avatar/avatar-6.jpg"
+                                            <img src="{{asset('assets/images/avatar/avatar-6.jpg')}}"
                                                  class="rounded-circle avatar-xs"
                                                  alt="">
                                         </div>
@@ -963,59 +945,6 @@
                     }
                 }
             });
-            tns({
-                container: `.slido2`,
-                loop: false,
-                startIndex: 0,
-                items: 1,
-                nav: false,
-                autoplay: true,
-                autoplayTimeout: 3500,
-                swipeAngle: false,
-                speed: 2000,
-                autoplayButtonOutput: false,
-                mouseDrag: false,
-                lazyload: true,
-                gutter: 12,
-                // controlsContainer: `#slido_controls`,
-                responsive: {
-                    768: {
-                        items: 2,
-                        edgePadding: 0,
-                    },
-                    990: {
-                        items: 4,
-                        edgePadding: 0,
-                    }
-                }
-            });
-            tns({
-                container: `.slido3`,
-                loop: false,
-                startIndex: 0,
-                items: 1,
-                nav: false,
-                autoplay: true,
-                autoplayTimeout: 3500,
-                swipeAngle: false,
-                speed: 2000,
-                autoplayButtonOutput: false,
-                mouseDrag: false,
-                lazyload: true,
-                gutter: 12,
-                // controlsContainer: `#slido_controls`,
-                responsive: {
-                    768: {
-                        items: 2,
-                        edgePadding: 0,
-                    },
-                    990: {
-                        items: 4,
-                        edgePadding: 0,
-                    }
-                }
-            });
-
         })
 
     </script>

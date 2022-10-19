@@ -27,6 +27,7 @@ Route::post('/addtosession', [Controller::class, 'updateInstructorSession']);
 Route::get('/c/{link}', [Controller::class, 'fetchCourseInfoByLink']);
 
 Route::get('/jsonfile', [JsonFileController::class, 'updateFile']);
+Route::get('/indexpagefile', [JsonFileController::class, 'indexPageJsonFile']);
 
 
 Route::view('/course/{id}/{slug}', 'course_single');

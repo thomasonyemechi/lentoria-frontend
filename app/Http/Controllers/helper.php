@@ -42,6 +42,11 @@ function userAvatar()
     return Avatar::create(userDetail(1))->toBase64();
 }
 
+function createAvatar($firstname, $lastname)
+{
+    return Avatar::create($firstname . " " . $lastname)->toBase64();
+}
+
 
 function instructorInfo(): string
 {
@@ -68,7 +73,7 @@ function instructorInfo(): string
                         alt="" />
                 </div>
                 <div class="lh-1">
-                    <h2 class="mb-0">' . $info['name'] . '</h2>
+                    <h4 class="mb-0">' . $info['name'] . '</h4>
                     <p class="mb-0 d-block">' . $info['email'] . '</p>
                 </div>
             </div>
