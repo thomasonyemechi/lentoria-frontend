@@ -73,7 +73,7 @@
             <div class="modal-body shadow">
                 <form id="signUpForm">
 
-                <div class="mb-4 d-flex justify-content-between">
+                    <div class="mb-4 d-flex justify-content-between">
                         <div>
                             <h1 class="mb-1 fw-bold">Create Account</h1>
                             <span>Already have an account? <a href="javascript:" class="ms-1 openlogin">Sign
@@ -124,20 +124,20 @@
 </div>
 
 <script>
-    $(function () {
+    $(function() {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
-        $('.opensignup').on('click', function () {
+        $('.opensignup').on('click', function() {
             $('#login_modal').modal('hide');
             $('#signup_modal').modal('show');
         });
 
 
-        $('.openlogin').on('click', function () {
+        $('.openlogin').on('click', function() {
             $('#signup_modal').modal('hide');
             $('#login_modal').modal('show');
 
@@ -151,7 +151,7 @@
                     email: email,
                     password: password
                 },
-            }).done(function (res) {
+            }).done(function(res) {
                 console.log(res);
                 message = res.message;
                 $.ajax({
@@ -160,29 +160,29 @@
                     data: {
                         data: res
                     }
-                }).done(function (res) {
+                }).done(function(res) {
                     salat(message);
                     window.location.reload();
                 });
-            }).fail(function (res) {
+            }).fail(function(res) {
                 concatError(res.responseJSON);
             });
         }
 
 
-        $('#loginForm').on('submit', function (e) {
+        $('#loginForm').on('submit', function(e) {
             e.preventDefault();
             form = $(this);
             email = $(form).find('input[name="email"]').val();
             password = $(form).find('input[name="password"]').val();
             bt = $(form).find('button[type="submit"]');
 
-            if (!email || !password) {
+            if(!email || !password) {
                 salat('All fields are required', 1);
                 return;
             }
 
-            if (!email) {
+            if(!email) {
                 salat('Pls enter a valid email address', 1);
                 return;
             }
@@ -196,7 +196,7 @@
                 beforeSend: () => {
                     btn(bt, 'Sign In', 'before');
                 }
-            }).done(function (res) {
+            }).done(function(res) {
                 console.log(res);
                 message = res.message;
                 $.ajax({
@@ -205,19 +205,19 @@
                     data: {
                         data: res
                     }
-                }).done(function (res) {
+                }).done(function(res) {
                     salat(message);
                     location.reload();
                     $("#login_modal").modal('hide');
                 });
-            }).fail(function (res) {
+            }).fail(function(res) {
                 concatError(res.responseJSON);
                 btn(bt, 'Sign In', 'after');
             });
         });
 
 
-        $('#signUpForm').on('submit', function (e) {
+        $('#signUpForm').on('submit', function(e) {
             e.preventDefault();
             form = $(this);
             email = $(form).find('input[name="email"]').val();
@@ -227,11 +227,11 @@
             password = $(form).find('input[name="password"]').val();
             bt = $(form).find('button[type="submit"]');
 
-            if (!email || !password || !fname || !lname || !phone) {
+            if(!email || !password || !fname || !lname || !phone) {
                 salat('All fields are required', 1);
                 return;
             }
-            if (!email) {
+            if(!email) {
                 salat('Pls enter a valid email address', 1);
                 return;
             }
@@ -248,12 +248,12 @@
                 beforeSend: () => {
                     btn(bt, '', 'before');
                 }
-            }).done(function (res) {
+            }).done(function(res) {
                 console.log(res);
                 salat(res.message);
                 btn(bt, 'Sign Up', 'after');
                 loginAuto(email, password);
-            }).fail(function (res) {
+            }).fail(function(res) {
                 console.log(res);
                 concatError(res.responseJSON);
                 btn(bt, 'Sign Up', 'after');

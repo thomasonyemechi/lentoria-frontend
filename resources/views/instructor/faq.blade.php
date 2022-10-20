@@ -24,13 +24,21 @@
                                 <input type="hidden" id="course_id">
                                 <div class="mb-3">
                                     <label for="courseTitle" class="form-label"><b>Question</b></label>
-                                    <textarea name="question" id="que" class="form-control border-2" rows="3" style="resize: none;"></textarea>
+                                    <textarea name="question"
+                                              id="que"
+                                              class="form-control border-2"
+                                              rows="3"
+                                              style="resize: none;"></textarea>
                                     <small class="ms-0">Write a question</small>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label"><b>Answer</b></label>
-                                    <textarea name="answer" id="ans" rows="5" class="form-control border-2" style="resize: none;"></textarea>
+                                    <textarea name="answer"
+                                              id="ans"
+                                              rows="5"
+                                              class="form-control border-2"
+                                              style="resize: none;"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
                                     <button class="btn btn-success btn-block" type="submit">Add FAQ</button>
@@ -65,12 +73,12 @@
                         <div class="table-responsive border-0 overflow-y-hidden">
                             <table class="table mb-0 text-nowrap" id="faq_table">
                                 <thead class="table-light">
-                                    <tr>
-                                        <th scope="col" class="border-0">#</th>
-                                        <th scope="col" class="border-0">Question</th>
-                                        <th scope="col" class="border-0">Answer</th>
-                                        <th scope="col" class="border-0"></th>
-                                    </tr>
+                                <tr>
+                                    <th scope="col" class="border-0">#</th>
+                                    <th scope="col" class="border-0">Question</th>
+                                    <th scope="col" class="border-0">Answer</th>
+                                    <th scope="col" class="border-0"></th>
+                                </tr>
                                 </thead>
                                 <tbody>
 
@@ -85,7 +93,7 @@
 
     <!--Modal -->
     <div class="modal fade" id="editQuestionModal" tabindex="-1" role="dialog" aria-labelledby="editQuestionModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -101,13 +109,19 @@
                         <input type="hidden" name="question_id">
                         <div class="mb-3">
                             <label for="courseTitle" class="form-label"><b>Question</b></label>
-                            <textarea name="question" class="form-control border-2" rows="3" style="resize: none;"></textarea>
+                            <textarea name="question"
+                                      class="form-control border-2"
+                                      rows="3"
+                                      style="resize: none;"></textarea>
                             <small class="ms-0">Write a question</small>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label"><b>Answer</b></label>
-                            <textarea name="answer" rows="5" class="form-control border-2" style="resize: none;"></textarea>
+                            <textarea name="answer"
+                                      rows="5"
+                                      class="form-control border-2"
+                                      style="resize: none;"></textarea>
                         </div>
                         <div class="d-flex justify-content-between">
                             <button class="btn btn-primary btn-sm" type="submit">
@@ -128,12 +142,11 @@
         $(function() {
             interval = setInterval(() => {
                 cid = $("#course_id").val()
-                if (cid != "") {
+                if(cid != "") {
                     clearInterval(interval);
                     getQuestions(cid);
                 }
             }, 200);
-
 
 
             function getQuestions(cid) {
@@ -188,6 +201,11 @@
             }
 
             function deleteQuestion(id) {
+                let published = sessionStorage.getItem('published');
+                if(published && published != 0) {
+                     salat('This course has been submitted for review and cannot be edited', 1);
+                    return;
+                }
                 $.ajax({
                     url: api_url + 'admin/delete_faq',
                     method: 'post',
@@ -205,7 +223,11 @@
 
             $(document).on('click', '.edit-que', function(e) {
                 e.preventDefault();
-
+                let published = sessionStorage.getItem('published');
+                if(published && published != 0) {
+                    salat('This course has been submitted for review and cannot be edited', 1);
+                    return;
+                }
                 tr = $(this).closest($("tr.que-tr"))
                 id = tr.data("que_id");
                 console.log(tr);
@@ -221,9 +243,13 @@
             });
 
 
-
             $("#editQuestionForm").submit(function(e) {
                 e.preventDefault();
+                let published = sessionStorage.getItem('published');
+                if(published && published != 0) {
+                    salat('This course has been submitted for review and cannot be edited', 1);
+                    return;
+                }
                 form = $(this);
                 bt = $(form).find($('button[type="submit"]'));
                 question = form.find($('textarea[name="question"]')).val();
@@ -262,7 +288,7 @@
                 tr = $(this).closest($("tr.que-tr"))
                 id = tr.data("que_id");
 
-                if (confirm("Are you sure you want to delete this question ?")) {
+                if(confirm("Are you sure you want to delete this question ?")) {
                     deleteQuestion(id);
                 }
 
@@ -271,6 +297,11 @@
 
             $("#faqForm").submit(function(e) {
                 e.preventDefault();
+                let published = sessionStorage.getItem('published');
+                if(published && published != 0) {
+                    salat('This course has been submitted for review and cannot be edited', 1);
+                    return;
+                }
                 form = $(this);
                 course_id = $(form).find($("input#course_id")).val();
                 bt = $(form).find($('button[type="submit"]'));
@@ -292,26 +323,27 @@
                     console.log(res);
                     btn(bt, 'Add FAQ', 'after');
                     salat(res.message);
+                    form[0].reset();
                     body.append(`
-                                    <tr data-que_id="${res.id}" id="que${res.id}" class="que-tr">
-                                        <td>${serialNo()}</td>
-                                        <td class="border-top-0">${que}</td>
-                                        <td class="border-top-0">${ans}</td>
-                                        <td class="text-muted border-top-0">
-                                            <span class="dropdown dropstart">
-                                                <a class="text-muted text-decoration-none" href="#" role="button"
-                                                    id="questionDropdown${res.id}" data-bs-toggle="dropdown"
-                                                    data-bs-offset="-20,20" aria-expanded="false">
-                                                    <i class="fe fe-more-vertical"></i>
-                                                </a>
-                                                <span class="dropdown-menu" aria-labelledby="questionDropdown${res.id}">
-                                                    <span class="dropdown-header">Settings</span>
-                                                    <a class="dropdown-item edit-que" href="#"><i class="fe fe-edit dropdown-item-icon"></i>Edit</a>
-                                                    <a class="dropdown-item del-que" href="#"><i class="fe fe-trash dropdown-item-icon"></i>Remove</a>
-                                                </span>
-                                            </span>
-                                        </td>
-                                    </tr>
+                        <tr data-que_id="${res.id}" id="que${res.id}" class="que-tr">
+                            <td>${serialNo()}</td>
+                            <td class="border-top-0">${que}</td>
+                            <td class="border-top-0">${ans}</td>
+                            <td class="text-muted border-top-0">
+                                <span class="dropdown dropstart">
+                                    <a class="text-muted text-decoration-none" href="#" role="button"
+                                        id="questionDropdown${res.id}" data-bs-toggle="dropdown"
+                                        data-bs-offset="-20,20" aria-expanded="false">
+                                        <i class="fe fe-more-vertical"></i>
+                                    </a>
+                                    <span class="dropdown-menu" aria-labelledby="questionDropdown${res.id}">
+                                        <span class="dropdown-header">Settings</span>
+                                        <a class="dropdown-item edit-que" href="#"><i class="fe fe-edit dropdown-item-icon"></i>Edit</a>
+                                        <a class="dropdown-item del-que" href="#"><i class="fe fe-trash dropdown-item-icon"></i>Remove</a>
+                                    </span>
+                                </span>
+                            </td>
+                        </tr>
                     `)
                     $("html, body").animate({
                         scrollTop: $("#faq_table").offset().top

@@ -262,10 +262,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-lg">Browse Courses</span>
-                    <h2 class="mb-1 display-4 fw-bold ctype">
-                        <p class="d-inline text-sm animate__animated animate__flash animate__slow animate__infinite">
-                            ...</p>
-                    </h2>
+                    <h2 class="mb-1 display-4 fw-bold ctype"><p
+                                class="d-inline text-sm animate__animated animate__flash animate__slow animate__infinite">
+                            ...</p></h2>
                 </div>
             </div>
             <div class="row">
@@ -366,19 +365,20 @@
     </div>
 
     <script>
-        $(function() {
+        $(function () {
+            let jsonfile = `{{asset('json_files/course_by_type.json')}}`;
             getCategories();
             getCoursesByType();
 
-            $(".gsbtn").click(function(e) {
+            $(".gsbtn").click(function (e) {
                 e.preventDefault();
                 bt = $(".gsbtn");
                 info = @js(session('info'));
-                if(!info) {
+                if (!info) {
                     window.location.href = "/become-instructor";
                     return;
                 }
-                if(info && info.instructor == 0) {
+                if (info && info.instructor == 0) {
                     window.location.href = "/become-instructor";
                 } else {
                     window.location.href = "instructor/dashboard";
@@ -386,17 +386,14 @@
             });
 
             function getCoursesByType() {
-                $.ajax({
-                    type: "get",
-                    url: api_url + "fetchcourse_by_type",
-                }).done(res => {
+                $.getJSON(jsonfile).done(res => {
                     console.log(res);
                     fillCateory($('.firstSlider_body'), res.data[0]);
-                    $(".firstSlider_body").parent().prev().find($(".ctype")).html(res.data[0].type);
+                    $(".firstSlider_body").parent().prev().find($(".ctype")).html(res?.data[0]?.type);
                     fillCateory($('.secondSlider_body'), res.data[1]);
-                    $(".secondSlider_body").parent().prev().find($(".ctype")).html(res.data[1].type);
+                    $(".secondSlider_body").parent().prev().find($(".ctype")).html(res?.data[1]?.type);
                     fillCateory($('.thirdSlider_body'), res.data[2]);
-                    $(".thirdSlider_body").parent().prev().find($(".ctype")).html(res.data[2].type);
+                    $(".thirdSlider_body").parent().prev().find($(".ctype")).html(res?.data[2]?.type);
                     $(".loader").remove();
                 }).fail(res => {
                     console.log(res);
@@ -404,12 +401,12 @@
             }
 
             function fillCateory(main_body, data) {
-                type = data.id.toString();
+                type = data?.id.toString();
                 tab_list = $(main_body).find('.pills-tab');
                 course_body = $(main_body).find('.firstSlider');
                 pills = $(main_body).find('.pills-tabContent');
                 i = 0;
-                data.categories.map((cat, index) => {
+                data?.categories.map((cat, index) => {
                     tab_list.append(`
                     <li class="nav-item" role="presentation">
                         <a class="nav-link ${(i == 0) ? 'active' : ''}"  id="pills-${type}${stripLower(cat.name)}-tab" data-bs-toggle="pill" href="#pills-${type}${stripLower(cat.name)}" data-id="${type}${cat.id}"
@@ -493,7 +490,7 @@
                     `);
 
                     cat.courses.forEach(cor => {
-                        if($(`.no_${type}${cor.category_id}_Slider`).length) {
+                        if ($(`.no_${type}${cor.category_id}_Slider`).length) {
                             tns({
                                 container: `.no_${type}${cor.category_id}_Slider`,
                                 loop: false,

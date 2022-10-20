@@ -9,8 +9,7 @@
 <input type="hidden" name="course_info_29" id="course_info_29">
 <input type="hidden" id="ctype"/>
 <script>
-    $(function () {
-
+    $(function() {
         function getCategory(cat_id) {
             selCategory = $('#selcategory')
             selCategory.html(`<option value="" disabled selected>Select a category</option>`)
@@ -48,13 +47,19 @@
         function fetchLearners() {
             $.ajax({
                 method: 'get',
-                url: api_url + `admin/course/{{ $slug }}`
+                url: api_url + `admin/course/{{ $slug }}`,
+                beforeSend() {
+                    $("button").attr('disabled', true);
+                }
             }).done(res => {
                 console.log(res);
                 $('input[name="course_info_29"]').val(JSON.stringify(res.data));
                 $('.course-title').html(res.data.title);
                 $("#ctype").val(res.data.course_type);
                 dat = res.data
+                if(dat.published == 0) {$('.publish-div').removeClass('d-none')}
+                let published = dat.published;
+                sessionStorage.setItem('published', published);
                 try {
                     $('#courseTitle').val(dat.title);
                     length = (dat.title).length;
@@ -68,7 +73,7 @@
                     $(`#course_level option[value="${dat.level}"]`).prop("selected", true);
                     getCategory(dat.category_id);
                     setTopic2(dat.category_id, dat.topic_id);
-                } catch (err) {}
+                } catch(err) {}
                 ////////pricing
                 $('.course_price').val(res.data.price)
                 $('input[name="course_update_id"]').val(res.data.id)
@@ -79,12 +84,13 @@
                     welmess.setData(dat.welcome_message ?? '');
                     cermess.setData(dat.certification_message ?? '');
                     $('#mycourse_id').val(dat.id);
-                } catch (err) {}
-                ;
+                } catch(err) {}
+                $("button").removeAttr('disabled')
                 ///section
                 $('#course_id').val(dat.id)
             }).fail(res => {
                 location.href = "/instructor/dashboard"
+                $("button").removeAttr('disabled')
             })
         }
 

@@ -37,7 +37,7 @@
                                     <x-textarea id="cermess" name="cermess" />
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button type="submit" class="btn btn-success btn-block review-btn" id="addMessage">Add
+                                    <button type="submit" class="btn btn-success btn-block" id="addMessage">Add
                                         Message</button>
                                 </div>
                             </form>
@@ -55,6 +55,11 @@
 
             $('#addMessageForm').submit(function(e) {
                 e.preventDefault();
+                let published = sessionStorage.getItem('published');
+                if(published && published != 0) {
+                    salat('This course has been submitted for review and cannot be edited', 1);
+                    return;
+                }
                 course_id = $('#mycourse_id').val();
                 welcome_message = $('#welmess').val();
                 certification_message = $('#cermess').val();

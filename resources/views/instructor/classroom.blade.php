@@ -5,7 +5,7 @@
     <script>
         let urlSearchParams = new URLSearchParams(window.location.search);
         let para = urlSearchParams.get('type');
-        if (!para || para != 2) {
+        if(!para || para != 2) {
             history.back();
         }
     </script>
@@ -329,21 +329,54 @@
                                     <span class="bt p-sm-0 d-none">
                                         <a href="javascript:void(0)"
                                            class="text-primary btn-sm classroom vid-btn"
-                                           data-link="" data-lec_id="" data-type="video"><i
+                                           data-link=""
+                                           data-lec_id=""
+                                           data-type="video"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="bottom"
+                                           title="video"><i
                                                     class="mdi mdi-video" style="font-size: 26px;"></i></a>
-                                        <a href="javascript:void(0)" class="text-primary btn-sm classroom img-btn"
-                                           data-link="" data-lec_id="" data-type="image"><i
+                                        <a href="javascript:void(0)"
+                                           class="text-primary btn-sm classroom img-btn"
+                                           data-link=""
+                                           data-lec_id=""
+                                           data-type="image"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="bottom"
+                                           title="image"><i
                                                     class="mdi mdi-image" style="font-size: 26px;"></i></a>
-                                        <a href="javascript:void(0)" class="text-primary btn-sm classroom text-btn"
-                                           data-link="" data-lec_id="" data-type="text"><i
+                                        <a href="javascript:void(0)"
+                                           class="text-primary btn-sm classroom text-btn"
+                                           data-link=""
+                                           data-lec_id=""
+                                           data-type="text"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="bottom"
+                                           title="text"><i
                                                     class="mdi mdi-file-document" style="font-size: 26px;"></i></a>
-                                        <a href="javascript:void(0)" class="text-primary btn-sm classroom code-btn"
-                                           data-link="" data-lec_id="" data-type="code"><i
+                                        <a href="javascript:void(0)"
+                                           class="text-primary btn-sm classroom code-btn"
+                                           data-link=""
+                                           data-lec_id=""
+                                           data-type="code"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="bottom"
+                                           title="code"><i
                                                     class="mdi mdi-xml" style="font-size: 26px;"></i></a>
-                                        <a href="javascript:void(0)" class="text-primary btn-sm classroom comm-btn"
-                                           data-link="" data-lec_id="" data-type="comment"><i
+                                        <a href="javascript:void(0)"
+                                           class="text-primary btn-sm classroom comm-btn"
+                                           data-link=""
+                                           data-lec_id=""
+                                           data-type="comment"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="bottom"
+                                           title="comment"><i
                                                     class="mdi mdi-comment-account" style="font-size: 26px;"></i></a>
-                                        <a href="javascript:void(0)" class="text-success btn-sm d-none push-btn"
+                                        <a href="javascript:void(0)"
+                                           class="text-success btn-sm d-none push-btn"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="bottom"
+                                           title="send"
                                            id="push_btn"><i class="mdi mdi-send push-icon"
                                                             style="font-size: 26px;"></i></a></span>
                                 </div>
@@ -413,23 +446,7 @@
                                 </div>
                             </div>
                             <div class="pb-10 mt-4 d-block">
-                                <p>Lorem ipsum dolor sit amet, consecrate radicalising elite. Blandish eis incident
-                                    image ire labor molest perspicacity sed saint. Accusal delegates color,
-                                    eos fugal nam defecation quasi quo. Blandish, temporise voluptuary?
-                                    Lorem ipsum dolor sit amet, consecrate radicalising elite. Liquid amet consecrate
-                                    consequent gulp dedent, color arum eos et facility hic ipsa image molests
-                                    necessitates nemo nobs query temporary tenet valid. Lorem ipsum dolor sit amet,
-                                    consecrate radicalising elite. Accusation aspersions blandish common gulp eos
-                                    ipsa itaque, molestiae nam non odit officious paginator possums provident quo
-                                    recusandae reprehenderit sint vel voluptates! Lorem ipsum dolor sit amet,
-                                    consectetur adipisicing elit. Aliquid cum, deleniti distinctio doloremque ea
-                                    eligendi error exercitationem facere fuga illum ipsam ipsum nulla quidem quod sit,
-                                    veritatis vitae voluptate voluptatibus. Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit. Ab eum illum nam tempora vel valid veritas voluptuous! Anime
-                                    dolor dolores impeded mod nobs poor redundancy temporal temporise vel, valid,
-                                    voluptuous. Lorem ipsum dolor sit amet, consecrate radicalising elite. Alias au tem
-                                    equal eum face maxime necessitates deque nisei qui ration voluptuous. Aliquot
-                                    liquid architect, antique dolorous laborious magna molest quits valid.
+                                <p class="c-desc">
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center my-22 d-none" id="vid_preloader">
@@ -462,7 +479,7 @@
 
 
     <script>
-        $(function () {
+        $(function() {
 
             const user_detail = `{{userDetail(1)}}`;
             const user_avatar = `{{userAvatar()}}`;
@@ -480,10 +497,10 @@
                 notSupportedMessage: "An Error Occurred While Fetching Video or No Video Available For This Course",
                 // playbackRates: [1, 1.5, 2],
                 userActions: {
-                    hotkeys: function (event) {
+                    hotkeys: function(event) {
                         // `space` key = pause
-                        if (event.which === 32) {
-                            if (this.paused()) {
+                        if(event.which === 32) {
+                            if(this.paused()) {
                                 this.play();
                             } else {
                                 this.pause();
@@ -492,7 +509,7 @@
                     }
                 }
             });
-            player.on('pause', function (e) {
+            player.on('pause', function(e) {
                 whereYouAt = player.currentTime();
             });
             const slug = @js($slug);
@@ -507,10 +524,10 @@
                     $("#loader").remove();
                     res.data.map(sections => {
                         lectures = "";
-                        if (sections.lectures.length > 0) {
+                        if(sections.lectures.length > 0) {
                             sections.lectures.map(lecs => {
                                 lectures += `
-                            <a class="mb-2 d-flex justify-content-between align-items-center load-con text-decoration-none" data-vid="${lecs.main_content}" data-img="${lecs.image}" data-lec_id="${lecs.id}" style="cursor: pointer;">
+                            <a class="mb-2 d-flex justify-content-between align-items-center load-con text-decoration-none" data-vid="${lecs.main_content}" data-desc="${lecs.description}" data-img="${lecs.image}" data-lec_id="${lecs.id}" style="cursor: pointer;">
                             <div class="text-truncate">
                                 <span class="icon-shape bg-light text-primary icon-sm  rounded-circle me-2"><i
                                         class="fe fe-airplay fs-4"></i></span>
@@ -551,7 +568,7 @@
             </li>
                         `);
                     });
-                    if (res.data.length > 0) {
+                    if(res.data.length > 0) {
                         first = document.querySelector('.cr_con');
                         $(first).attr('aria-expanded', 'true');
                         next = first.nextElementSibling;
@@ -576,12 +593,20 @@
                 });
             }
 
-            $(document).on('click', '.load-con', function (e) {
+            $(document).on('click', '.load-con', function(e) {
                 e.preventDefault();
-                let img_link = $(this).data('img'), video_link = $(this).data('vid'),
-                    lecture_id = $(this).data('lec_id'), lec_tit = $(this).find($(".lectit")).html(),
-                    img_btn = $(".img-btn"), vid_btn = $(".vid-btn"), code_btn = $(".code-btn"),
-                    text_btn = $(".text-btn"), comm_btn = $(".comm-btn"), class_container = $("#class_container");
+                let img_link = $(this).data('img')
+                let video_link = $(this).data('vid')
+                let lecture_id = $(this).data('lec_id')
+                let desc = $(this).data('desc')
+                let lec_tit = $(this).find($(".lectit")).html()
+                let img_btn = $(".img-btn")
+                let vid_btn = $(".vid-btn")
+                let code_btn = $(".code-btn")
+                let text_btn = $(".text-btn")
+                let comm_btn = $(".comm-btn")
+                let class_container = $("#class_container");
+                $(".c-desc").html(desc);
                 $(".tit").html(lec_tit);
                 $(".btns").find($("span")).removeClass('d-none');
                 img_btn.data('link', img_link);
@@ -600,7 +625,7 @@
                 class_container.removeClass('re');
                 class_container.removeClass('d-none');
                 Array.prototype.slice.call(document.getElementsByClassName('classroom')).forEach(el => {
-                    if (el.classList.contains('d-none')) {
+                    if(el.classList.contains('d-none')) {
                         el.classList.remove('d-none');
                     }
                 });
@@ -614,7 +639,7 @@
             function checkIsSelected() {
                 let buttons = document.querySelectorAll(".classroom");
                 Array.prototype.slice.call(buttons).forEach((el) => {
-                    if (el.classList.contains('is-selected')) {
+                    if(el.classList.contains('is-selected')) {
                         return el.classList.remove('is-selected');
                     }
                 });
@@ -623,7 +648,7 @@
             function hideBoards() {
                 let boards = document.querySelectorAll(".board");
                 Array.prototype.slice.call(boards).forEach((el) => {
-                    if (!el.classList.contains('d-none')) {
+                    if(!el.classList.contains('d-none')) {
                         return el.classList.add('d-none');
                     }
                 })
@@ -631,12 +656,12 @@
 
             function showPushBtn() {
                 let push_btn = $("#push_btn")
-                if (push_btn.hasClass("d-none")) {
+                if(push_btn.hasClass("d-none")) {
                     return push_btn.removeClass("d-none");
                 }
             }
 
-            $(document).on('click', ".img-btn", function (e) {
+            $(document).on('click', ".img-btn", function(e) {
                 e.preventDefault();
                 let img_link = $(this).data('link');
                 let img = `<img src="${imageUrl(img_link)}" onerror="this.src='../../assets/images/image.jpeg'" class="w-100 h-100" />`;
@@ -651,7 +676,7 @@
                 showPushBtn();
             });
 
-            $(document).on('click', '.vid-btn', function (e) {
+            $(document).on('click', '.vid-btn', function(e) {
                 e.preventDefault();
                 let vid_link = $(this).data('link');
                 // if (!player.src()) {
@@ -663,7 +688,7 @@
                 $(this).addClass("is-selected");
                 showPushBtn();
             });
-            $(document).on('click', '.code-btn', function (e) {
+            $(document).on('click', '.code-btn', function(e) {
                 e.preventDefault();
                 let code_link = $(this).data('link');
                 let class_container = $("#class_container")
@@ -678,7 +703,7 @@
                 showPushBtn();
 
                 let code = localStorage.getItem(`lecture_${code_link}_code`);
-                if (!code) {
+                if(!code) {
                     $.ajax({
                         url: api_url + `admin/get_lecture_code/${code_link}`,
                         beforeSend: () => {
@@ -693,7 +718,7 @@
                         let data = res.data;
                         data = JSON.parse(data);
                         console.log(data);
-                        if (data !== null) {
+                        if(data !== null) {
                             let lang = data.language;
                             let code = data.code;
                             let coded = `<pre>
@@ -709,7 +734,8 @@
                             $("#class_container").html(coded);
                             return Prism.highlightElement(document.getElementById('codii'));
                         } else {
-                            return $("#class_container").html(`<h3 class="text-white" style="font-family: 'Permanent Marker', cursive;">No Code Available Yet</h3>`);
+                            return $("#class_container")
+                                .html(`<h3 class="text-white" style="font-family: 'Permanent Marker', cursive;">No Code Available Yet</h3>`);
                         }
                     }).fail(res => {
                         console.log(res);
@@ -729,7 +755,7 @@
                 }
             });
 
-            $(".text-btn").click(function (e) {
+            $(".text-btn").click(function(e) {
                 e.preventDefault();
                 let text_link = $(this).data('link');
                 let text_container = $("#text_container");
@@ -741,7 +767,7 @@
                 $(this).addClass("is-selected");
                 showPushBtn();
                 let txt = localStorage.getItem(`lecture_${text_link}_text`);
-                if (txt) {
+                if(txt) {
                     return text_container.html(txt);
                 }
                 $.ajax({
@@ -757,11 +783,12 @@
                 }).done(res => {
                     console.log(res);
                     let data = res.data;
-                    if (data) {
+                    if(data) {
                         localStorage.setItem(`lecture_${text_link}_text`, data);
                         return $("#text_container").html(data);
                     } else {
-                        return $("#text_container").html(`<h3 class="text-black-50" style="font-family: 'Permanent Marker', cursive;">No Text Available Yet</h3>`);
+                        return $("#text_container")
+                            .html(`<h3 class="text-black-50" style="font-family: 'Permanent Marker', cursive;">No Text Available Yet</h3>`);
                     }
                 }).fail(res => {
                     console.log(res);
@@ -771,7 +798,7 @@
 
             });
 
-            $(".comm-btn").click(function (e) {
+            $(".comm-btn").click(function(e) {
                 e.preventDefault();
                 hideBoards();
                 let lec_id = $(this).data('lec_id');
@@ -792,7 +819,7 @@
                     }
                 }).done(res => {
                     console.log(res);
-                    if (res.data.length == 0) {return chat_discuss.html(" ");}
+                    if(res.data.length == 0) {return chat_discuss.html(" ");}
                     let chats = "";
                     res.data.forEach(chat => {
                         chats += `<div class="chat-message left">
@@ -816,10 +843,10 @@
                 })
             }
 
-            $(".push-btn").click(function (e) {
+            $(".push-btn").click(function(e) {
                 e.preventDefault();
                 let target = e.target;
-                if (!target.classList.contains('push-icon')) {return false;}
+                if(!target.classList.contains('push-icon')) {return false;}
                 let selected = $(".is-selected").eq(0);
                 let content = selected.data('link');
                 let lecture_id = selected.data('lec_id');
@@ -827,23 +854,23 @@
 
                 let text_html = $("#text_container").html();
                 let code_html = $("#class_container").html();
-                if (type == "image" && content == null || content == "") {
+                if(type == "image" && content == null || content == "") {
                     return salat("No image available for this lecture", 1);
-                } else if (type == "video" && content == null || content == "") {
+                } else if(type == "video" && content == null || content == "") {
                     return salat("No video available for this lecture", 1);
-                } else if (type == "code" && code_html == `<h3 class="text-white" style="font-family: 'Permanent Marker', cursive;">No Code Available Yet</h3>`) {
+                } else if(type == "code" && code_html == `<h3 class="text-white" style="font-family: 'Permanent Marker', cursive;">No Code Available Yet</h3>`) {
                     return salat("No codes available for this lecture", 1);
-                } else if (type == "text" && text_html == `<h3 class="text-black-50" style="font-family: 'Permanent Marker', cursive;">No Text Available Yet</h3>`) {
+                } else if(type == "text" && text_html == `<h3 class="text-black-50" style="font-family: 'Permanent Marker', cursive;">No Text Available Yet</h3>`) {
                     return salat("No text available for this lecture yet", 1);
                 }
 
                 pushContent(type, lecture_id);
             })
 
-            $("#send-button").click(function (e) {
+            $("#send-button").click(function(e) {
                 e.preventDefault();
                 let chat_area = $("textarea[name='message']");
-                if (chat_area.val() == "") {return false;}
+                if(chat_area.val() == "") {return false;}
                 let lecture_id = $(".comm-btn").data('lec_id');
                 let chats = chat_area.val();
                 const date = new Date();
@@ -872,7 +899,7 @@
                 }).done(res => {
                     console.log(res);
                     let chat_discuss = $("div.chat-discussion");
-                    if (res.message) {
+                    if(res.message) {
                         chat_discuss.append(`
                        <div class="chat-message left">
                             <img class="message-avatar" src="${user_avatar}"
@@ -904,7 +931,8 @@
                         content: type,
                     },
                     beforeSend: () => {
-                        $("#push_btn").html(`<div class="spinner-border spinner-border-sm text-success" style="width: 1.5625rem; height: 1.5625rem;" role="status"><span class="visually-hidden">Loading...</span></div>`)
+                        $("#push_btn")
+                            .html(`<div class="spinner-border spinner-border-sm text-success" style="width: 1.5625rem; height: 1.5625rem;" role="status"><span class="visually-hidden">Loading...</span></div>`)
                     }
                 }).done(res => {
                     console.log(res);

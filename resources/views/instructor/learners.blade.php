@@ -111,22 +111,28 @@
     </div>
 
     <script>
-        $(function () {
+        $(function() {
             fetchLearners(@js($slug));
 
-            $(document).on('click', '.updateLearners', function (e) {
+            $(document).on('click', '.updateLearners', function(e) {
                 e.preventDefault();
                 form = $('#updateLearners'); //wywl == what you will learn
                 bt = $(".updateLearners");
 
-                id = $(form).find('input[name="course_id"]').val()
+                id = $(form).find('input[name="course_id"]').val();
+
+                let published = sessionStorage.getItem('published');
+                if(published && published != 0) {
+                    salat('This course has been submitted for review and cannot be edited', 1);
+                    return;
+                }
 
                 wywls = $(form).find('.what_you_will_learn');
                 jo = opportunities.getData();
                 new_wywl = [];
                 wywls.map(len => {
                     len = wywls[len];
-                    if (len.value) {
+                    if(len.value) {
                         new_wywl.push(len.value)
                     }
                 })
@@ -136,7 +142,7 @@
                 new_req = []
                 requirements.map(req => {
                     req = requirements[req];
-                    if (req.value) {
+                    if(req.value) {
                         new_req.push(req.value)
                     }
                 })
@@ -146,7 +152,7 @@
                 new_len = []
                 learners.map(le => {
                     le = learners[le];
-                    if (le.value) {
+                    if(le.value) {
                         new_len.push(le.value)
                     }
                 })
@@ -155,7 +161,7 @@
                 new_pur = []
                 purpose.map(pu => {
                     pu = purpose[pu];
-                    if (pu.value) {
+                    if(pu.value) {
                         new_pur.push(pu.value)
                     }
                 })
@@ -183,11 +189,11 @@
 
             })
 
-            $('body').on('click', '.add_input', function () {
+            $('body').on('click', '.add_input', function() {
                 cla = $(this).data('class');
                 obj = $(`.${cla}`)
                 last = obj[obj.length - 1];
-                if (last.value == '' || last.value == null) {
+                if(last.value == '' || last.value == null) {
                     return;
                 }
                 $(`<input class="form-control ${cla} mb-2" type="text" placeholder="Add more to your response" maxlength="160" />`)
@@ -205,21 +211,22 @@
                     let pur = parse(data.purpose);
                     let aud = parse(data.course_audience);
                     let wywl = parse(data.what_you_will_learn);
+                    console.log(wywl);
                     let wywls = Array.from(document.querySelectorAll(".what_you_will_learn"));
                     let audience = Array.from(document.querySelectorAll(".learners"));
                     let purpose = Array.from(document.querySelectorAll(".purpose"));
                     let requirements = Array.from(document.querySelectorAll(".requirements"));
                     opportunities.setData(opp ?? "");
-                    if (wywl) {
+                    if(wywl) {
                         fillForm(wywls, wywl, ".what_you_will_learn");
                     }
-                    if (aud) {
+                    if(aud) {
                         fillForm(audience, aud, ".learners");
                     }
-                    if (pur) {
+                    if(pur) {
                         fillForm(purpose, pur, ".purpose");
                     }
-                    if (req) {
+                    if(req) {
                         fillForm(requirements, req, ".requirements");
                     }
                 }).fail(res => {
@@ -229,15 +236,13 @@
             }
 
             function fillForm(el_arr, data_arr, selector) {
-                if (el_arr.length == data_arr.length) {
+                if(el_arr.length == data_arr.length) {
                     Array.from(document.querySelectorAll(selector)).forEach((x, i) => {
                         dat = data_arr[i];
                         x.value = dat;
                     });
-                } else if (el_arr.length < data_arr.length) {
-                    console.log(el_arr, data_arr);
+                } else if(el_arr.length < data_arr.length) {
                     let diff = data_arr.length - el_arr.length;
-                    console.log(diff);
                     let obj = $(`${selector}:last`);
                     obj.multiply(diff).insertAfter(obj);
                     Array.from(document.querySelectorAll(selector)).forEach((x, i) => {

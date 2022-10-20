@@ -569,6 +569,7 @@
                     <div class="col-lg-12 col-md-12 col-12 mb-lg-3 mb-sm-0 ms-7">
                         <!-- Heading -->
                         <h2 class="display-4 fw-bold">Questionnaire</h2>
+                        <p>All Questions Are Required</p>
                     </div>
                     <!-- Row -->
                     <div class="container">

@@ -22,7 +22,8 @@
                                 <div class="mb-3">
                                     <label for="courseTitle" class="form-label"><b>Course Price Tier</b></label>
                                     <p>
-                                        If you intend to offer your course for free, the total length of video content must
+                                        If you intend to offer your course for free, the total length of video content
+                                        must
                                         be less than 2 hours.
                                     </p>
                                     <div class="d-flex ">
@@ -31,7 +32,7 @@
                                             <option value="USD">USD</option>
                                         </select>
                                         <input type="number" step='0.1' class="form-control course_price ms-3"
-                                            style="width:200px" />
+                                               style="width:200px"/>
                                         <input type="hidden" name="course_update_id"/>
                                         <button type="submit" class=" ms-3 btn btn-success">Save</button>
                                     </div>
@@ -57,14 +58,14 @@
                 data = '';
 
                 i = 0;
-                while (!data || data) {
+                while(!data || data) {
                     new_data = pickInfo();
-                    if (new_data) {
+                    if(new_data) {
                         data = new_data;
                         return;
                     }
 
-                    if (i == 1000) {
+                    if(i == 1000) {
                         console.log('we reached');
                         return;
                     }
@@ -80,6 +81,11 @@
         $(function() {
             $('#updatePrice').on('submit', function(e) {
                 e.preventDefault();
+                let published = sessionStorage.getItem('published');
+                if(published && published != 0) {
+                    salat('This course has been submitted for review and cannot be edited', 1);
+                    return;
+                }
                 form = $(this);
                 price = $(form).find('input[type="number"]').val();
                 id = $(form).find('input[name="course_update_id"]').val();

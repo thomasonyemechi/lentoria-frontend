@@ -279,7 +279,7 @@
 @endif
 
 <script>
-    $(function () {
+    $(function() {
         getCats();
 
 

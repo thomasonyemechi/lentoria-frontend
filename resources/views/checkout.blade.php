@@ -425,7 +425,7 @@
 
             function addToSession() {
                 $.ajax({
-                    url: url + 'addtosession',
+                    url:'/addtosession',
                     method: "POST",
                 }).done(res => {
                     salat("You Have Successfully Activated a Package and Upgraded Your Plan");
