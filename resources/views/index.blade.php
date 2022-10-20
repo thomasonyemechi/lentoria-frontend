@@ -366,6 +366,7 @@
 
     <script>
         $(function () {
+            let jsonfile = `{{asset('json_files/course_by_type.json')}}`;
             getCategories();
             getCoursesByType();
 
@@ -385,10 +386,7 @@
             });
 
             function getCoursesByType() {
-                $.ajax({
-                    type: "get",
-                    url: api_url + "fetchcourse_by_type",
-                }).done(res => {
+                $.getJSON(jsonfile).done(res => {
                     console.log(res);
                     fillCateory($('.firstSlider_body'), res.data[0]);
                     $(".firstSlider_body").parent().prev().find($(".ctype")).html(res?.data[0]?.type);

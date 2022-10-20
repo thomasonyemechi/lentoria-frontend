@@ -17,20 +17,26 @@ class JsonFileController extends Controller
     public function updateFile()
     {
         $api_url = config('app.api_url');
-        $file = public_path('subcategories.json');
+        $file = public_path('json_files/subcategories.json');
 
         try {
             $contents = Http::post($api_url . '/topics_by_categories');
-            if(!File::exists($file)) {
-                File::put($file, $contents);
+            if($contents->successful()) {
+                if(!File::exists($file)) {
+                    File::put($file, $contents);
+                    Notification::route('mail', 'temmyk7@gmail.com')
+                                ->notify(new FetchTopicsToJsonFile('Subcategories Json File Created and Contents Added Successfully'));
+                    info('File Created and Contents Added Successfully');
+                } else {
+                    File::replace($file, $contents);
+                    Notification::route('mail', 'temmyk7@gmail.com')
+                                ->notify(new FetchTopicsToJsonFile('Subcategories Json File Updated Successfully'));
+                    info('File Updated Successfully');
+                }
+            }else {
                 Notification::route('mail', 'temmyk7@gmail.com')
-                            ->notify(new FetchTopicsToJsonFile('Subcategories Json File Created and Contents Added Successfully'));
-                info('File Created and Contents Added Successfully');
-            } else {
-                File::replace($file, $contents);
-                Notification::route('mail', 'temmyk7@gmail.com')
-                            ->notify(new FetchTopicsToJsonFile('Subcategories Json File Updated Successfully'));
-                info('File Updated Successfully');
+                            ->notify(new FetchTopicsToJsonFile('The api server as an error'));
+                info('Cron Job Failed');
             }
         } catch(Exception $exception) {
             Notification::route('mail', 'temmyk7@gmail.com')
@@ -42,20 +48,27 @@ class JsonFileController extends Controller
     public function indexPageJsonFile()
     {
         $api_url = config('app.api_url');
-        $file = public_path('course_by_type.json');
+        $file = public_path('json_files/course_by_type.json');
 
         try {
-            $contents = Http::post($api_url . '/fetchcourse_by_type');
-            if(!File::exists($file)) {
-                File::put($file, $contents);
-                Notification::route('mail', 'temmyk7@gmail.com')
-                            ->notify(new FetchTopicsToJsonFile('Index Page Json File Created and Contents Added Successfully'));
-                info('File Created and Contents Added Successfully');
+            $contents = Http::get($api_url . '/fetchcourse_by_type');
+
+            if($contents->successful()) {
+                if(!File::exists($file)) {
+                    File::put($file, $contents);
+                    Notification::route('mail', 'temmyk7@gmail.com')
+                                ->notify(new FetchTopicsToJsonFile('Index Page Json File Created and Contents Added Successfully'));
+                    info('File Created and Contents Added Successfully');
+                } else {
+                    File::replace($file, $contents);
+                    Notification::route('mail', 'temmyk7@gmail.com')
+                                ->notify(new FetchTopicsToJsonFile('Index Page Json File Updated Successfully'));
+                    info('File Updated Successfully');
+                }
             } else {
-                File::replace($file, $contents);
                 Notification::route('mail', 'temmyk7@gmail.com')
-                            ->notify(new FetchTopicsToJsonFile('Index Page Json File Updated Successfully'));
-                info('File Updated Successfully');
+                            ->notify(new FetchTopicsToJsonFile('The api server as an error'));
+                info('Cron Job Failed');
             }
         } catch(Exception $exception) {
             Notification::route('mail', 'temmyk7@gmail.com')

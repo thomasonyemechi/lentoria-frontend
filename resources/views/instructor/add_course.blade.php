@@ -202,7 +202,7 @@
     <script>
         $(function() {
             let subcategories;
-            const jsonfile = `{{asset('subcategories.json')}}`;
+            const jsonfile = `{{asset('json_files/subcategories.json')}}`;
             getLoadSubCategories();
 
             function getLoadSubCategories() {
