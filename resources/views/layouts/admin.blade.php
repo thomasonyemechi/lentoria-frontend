@@ -275,7 +275,42 @@
 
 
     <script src="{{ asset('assets/js/theme.min.js') }}"></script>
-    <script></script>
+    <script>
+
+
+        function show_toastr(title, message, type) {
+            var o, i;
+            var icon = '';
+            var cls = '';
+
+            if (type == 'success') {
+                icon = 'fas fa-check-circle';
+                cls = 'success';
+            } else {
+                icon = 'fas fa-times-circle';
+                cls = 'danger';
+            }
+
+            $.notify({ icon: icon, title: " " + title, message: message, url: "" }, {
+                element: "body",
+                type: cls,
+                allow_dismiss: !0,
+                placement: { from: 'top', align: 'right' },
+                offset: { x: 15, y: 15 },
+                spacing: 10,
+                z_index: 1080,
+                delay: 2500,
+                timer: 2000,
+                url_target: "_blank",
+                mouse_over: !1,
+                animate: { enter: o, exit: i },
+                template: '<div class="alert alert-{0} alert-icon alert-group alert-notify" data-notify="container" role="alert"><div class="alert-group-prepend alert-content"><span class="alert-group-icon"><i data-notify="icon"></i></span></div><div class="alert-content"><strong data-notify="title">{1}</strong><div data-notify="message">{2}</div></div><button type="button" class="close" data-notify="dismiss" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
+            });
+        }
+
+
+        show_toastr('Ttitle of error', 'several things hass been stacekd for later', 'error');
+    </script>
 </body>
 
 </html>
