@@ -94,7 +94,7 @@
                 console.log(res);
                 salat(res.message);
                 btn(but, 'Submit', 'after');
-                but.remove();
+                $('.publish-div').remove();
             }).fail(res => {
                 console.log(res);
                 err = res.responseJSON
