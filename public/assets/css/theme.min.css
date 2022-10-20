@@ -27841,11 +27841,11 @@ pre[class*=language-] {
     background-color: #ecebf1
 }
 
-.bs-stepper-circle {
-    display: inline-flex;
-    align-content: center;
-    justify-content: center;
-    width: 40px;
+    .bs-stepper-circle {
+        display: inline-flex;
+        align-content: center;
+        justify-content: center;
+        width: 40px;
     height: 40px;
     margin: .25rem;
     line-height: 2.4;

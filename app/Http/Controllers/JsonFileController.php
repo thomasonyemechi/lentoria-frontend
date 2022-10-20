@@ -33,7 +33,7 @@ class JsonFileController extends Controller
                                 ->notify(new FetchTopicsToJsonFile('Subcategories Json File Updated Successfully'));
                     info('File Updated Successfully');
                 }
-            }else {
+            } else {
                 Notification::route('mail', 'temmyk7@gmail.com')
                             ->notify(new FetchTopicsToJsonFile('The api server as an error'));
                 info('Cron Job Failed');
@@ -73,6 +73,70 @@ class JsonFileController extends Controller
         } catch(Exception $exception) {
             Notification::route('mail', 'temmyk7@gmail.com')
                         ->notify(new FetchTopicsToJsonFile("An Error Occured While Performing Cron Job For The Index Page File: " . $exception->getMessage(), 1));
+            info($exception->getMessage());
+        }
+    }
+
+    public function categoriesNdSubscategoriesJsonFile()
+    {
+        $api_url = config('app.api_url');
+        $path = public_path('json_files/categories_and_subcategories.json');
+
+        try {
+            $contents = Http::get($api_url . '/category');
+            if($contents->successful()) {
+                if(!File::exists($path)) {
+
+                    File::put($path, $contents);
+                    Notification::route('mail', config('mail.admin_mail'))
+                                ->notify(new FetchTopicsToJsonFile('Categories and Subcategories Json File Created and Contents Added Successfully'));
+                    info("Categories and Subcategories Json File Created and Updated Successfully");
+
+                } else {
+                    File::replace($path, $contents);
+                    Notification::route('mail', config('mail.admin_mail'))
+                                ->notify(new FetchTopicsToJsonFile('Categories and Subcategories Json File Updated Successfully'));
+                    info("Categories and Subcategories Json File Updated Successfully");
+                }
+            } else {
+                Notification::route('mail', config('mail.admin_mail'))
+                            ->notify(new FetchTopicsToJsonFile('The api server as an error'));
+                info($contents);
+            }
+        } catch(Exception $exception) {
+            Notification::route('mail', config('mail.admin_mail'))
+                        ->notify(new FetchTopicsToJsonFile("An Error Occured While Performing Cron Job For The Categories and Subcategories File: " . $exception->getMessage(), 1));
+            info($exception->getMessage());
+        }
+    }
+
+    public function categoriesJsonFile()
+    {
+        $api_url = config('app.api_url');
+        $path = public_path('json_files/categories.json');
+
+        try {
+            $contents = Http::get($api_url . '/category');
+            if($contents->successful()) {
+                if(!File::exists($path)) {
+                    File::put($path, $contents);
+                    info("Categories Json File Created and Updated Successfully");
+                    Notification::route('mail', config('mail.admin_mail'))
+                                ->notify(new FetchTopicsToJsonFile('Categories and Subcategories Json File Created and Contents Added Successfully'));
+                } else {
+                    File::replace($path, $contents);
+                    info("Categories Json File Updated Successfully");
+                    Notification::route('mail', config('mail.admin_mail'))
+                                ->notify(new FetchTopicsToJsonFile('Categories Json File Updated Successfully'));
+                }
+            } else {
+                info($contents);
+                Notification::route('mail', config('mail.admin_mail'))
+                            ->notify(new FetchTopicsToJsonFile('An error occurred with the api server'));
+            }
+        } catch(Exception $exception) {
+            Notification::route('mail', config('mail.admin_mail'))
+                        ->notify(new FetchTopicsToJsonFile("An Error Occured While Performing Cron Job For The Categories and Subcategories File: " . $exception->getMessage(), 1));
             info($exception->getMessage());
         }
     }

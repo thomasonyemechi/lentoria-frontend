@@ -71,6 +71,7 @@
                     description.setData(dat.description ?? '');
                     $(`#selcourse_type option[value="${dat.course_type}"]`).prop("selected", true);
                     $(`#course_level option[value="${dat.level}"]`).prop("selected", true);
+                    $(".custom-file-container__image-preview").css("background-image", `url(${imageUrl(dat.image)}),url(../../assets/images/image.jpeg)`)
                     getCategory(dat.category_id);
                     setTopic2(dat.category_id, dat.topic_id);
                 } catch(err) {}

@@ -28,6 +28,8 @@ Route::get('/c/{link}', [Controller::class, 'fetchCourseInfoByLink']);
 
 Route::get('/jsonfile', [JsonFileController::class, 'updateFile']);
 Route::get('/indexpagefile', [JsonFileController::class, 'indexPageJsonFile']);
+Route::get('/cats_and_subcats_file', [JsonFileController::class, 'categoriesNdSubscategoriesJsonFile']);
+Route::get('/cats_file', [JsonFileController::class, 'categoriesJsonFile']);
 
 
 Route::view('/course/{id}/{slug}', 'course_single');

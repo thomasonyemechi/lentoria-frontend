@@ -193,7 +193,7 @@
                                 <a class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary"
                                    href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false">
-                                    <i class="fe fe-heart"> </i>
+                                    <i class="fe fe-bell"></i>
                                 </a>
                             </li>
 
@@ -280,13 +280,10 @@
 
 <script>
     $(function() {
-        getCats();
-
-
+        let jsonfile = `{{asset('json_files/categories_and_subcategories.json')}}`
+        getCats()
         function getCats() {
-            $.ajax({
-                url: api_url + 'category'
-            }).done(res => {
+            $.getJSON(jsonfile).done(res => {
                 res.data.map(cats => {
                     sub_topic = '';
 
