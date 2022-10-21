@@ -7,16 +7,11 @@
     </button>
     <div class="collapse navbar-collapse" id="sidenav">
         <div class="navbar-nav flex-column">
-            @if(app('request')->input('type')==2)
-                <span class="navbar-header">Classroom</span>
-                <ul class="list-unstyled ms-n2 mb-4">
-                    <li class="nav-item @if (request()->routeIs('instructor.classroom')) active @endif">
-                        <a class="nav-link"
-                           href="/instructor/classroom/{{ $slug }}?type={{app('request')->input('type')}}"><i
-                                    class="mdi mdi-google-classroom nav-icon"></i>Classroom</a>
-                    </li>
-                </ul>
-            @endif
+            <span class="navbar-header">Course Basic Info</span>
+            <li class="nav-item @if (request()->routeIs('instructor.course')) active @endif">
+                <a class="nav-link" href="/instructor/course/{{ $slug }}?type={{app('request')->input('type')}}"><i
+                            class="fe fe-home nav-icon"></i>Course Information</a>
+            </li>
             <span class="navbar-header">Plan Your Course</span>
             <ul class="list-unstyled ms-n2 mb-4">
                 <li class="nav-item @if (request()->routeIs('instructor.learners')) active @endif">
@@ -40,10 +35,7 @@
                        href="/instructor/course_review/{{ $slug }}?type={{app('request')->input('type')}}"><i
                                 class="fe fe-video nav-icon"></i>Course Review</a>
                 </li>
-                <li class="nav-item @if (request()->routeIs('instructor.course')) active @endif">
-                    <a class="nav-link" href="/instructor/course/{{ $slug }}?type={{app('request')->input('type')}}"><i
-                                class="fe fe-home nav-icon"></i>Course landing page</a>
-                </li>
+
                 <li class="nav-item @if (request()->routeIs('instructor.pricing')) active @endif">
                     <a class="nav-link" href="/instructor/pricing/{{ $slug }}?type={{app('request')->input('type')}}"><i
                                 class="fe fe-dollar-sign nav-icon"></i>Pricing</a>
@@ -61,12 +53,22 @@
                                 class="bi bi-question nav-icon"></i>FAQ</a>
                 </li>
             </ul>
+            @if(app('request')->input('type')==1)
+                <span class="navbar-header">Classroom</span>
+                <ul class="list-unstyled ms-n2 mb-4">
+                    <li class="nav-item @if (request()->routeIs('instructor.classroom')) active @endif">
+                        <a class="nav-link" target="_blank"
+                           href="/instructor/classroom/{{ $slug }}?type={{app('request')->input('type')}}"><i
+                                    class="mdi mdi-google-classroom nav-icon"></i>Classroom</a>
+                    </li>
+                </ul>
+            @endif
 
             <div class="d-none publish-div">
                 <span class="navbar-header">Submit for review</span>
                 <ul class="list-unstyled ms-n2 mb-4">
                     <li class="nav-item d-flex justify-content-lg-center justify-content-sm-start">
-                        <button class="pub-btn review-btn btn btn-xs btn-success me-lg-4 w-100">Submit</button>
+                        <button class="pub-btn review-btn btn btn-xs btn-primary me-lg-4 w-100">Submit</button>
                     </li>
                 </ul>
             </div>

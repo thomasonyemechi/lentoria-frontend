@@ -29,12 +29,12 @@
                                     <div class="d-flex ">
                                         <select class="form-control" name="currency" style="width: 100px">
                                             <option value="NGN" selected>NGN</option>
-                                            <option value="USD">USD</option>
+{{--                                            <option value="USD">USD</option>--}}
                                         </select>
                                         <input type="number" step='0.1' class="form-control course_price ms-3"
                                                style="width:200px"/>
                                         <input type="hidden" name="course_update_id"/>
-                                        <button type="submit" class=" ms-3 btn btn-success">Save</button>
+                                        <button type="submit" class=" ms-3 btn btn-primary">Save</button>
                                     </div>
                                 </div>
                             </form>

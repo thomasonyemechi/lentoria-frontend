@@ -371,7 +371,6 @@
             </div>
         </div>
     </div>
-    <!--suppress BadExpressionStatementJS -->
     <script>
         $(document).ready(function() {
 
@@ -387,10 +386,10 @@
 
             function contentType(type) {
                 but = "";
-                if(type == 1) {
+                if(type == 2) {
                     but +=
                         `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal">Add Video Content +</a> `
-                } else if(type == 2) {
+                } else if(type == 1) {
                     but +=
                         `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal">Add Video Content +</a>&nbsp;&nbsp;`
                     but +=
@@ -419,8 +418,8 @@
                     window.URL.revokeObjectURL(video.src);
                     var duration = video.duration;
                     if(duration > 654) {
-                        salat("This file is more than 10 minutes long", 1);
-                        $("#file_upload").fileinput('clear');
+                        $("#file_upload").fileinput('clear')
+                        salat("The video is longer is longer than 10mins and cannot be uploaded", 1);
                     } else {
                         $("input#video_length").val(duration);
                     }
@@ -696,11 +695,11 @@
                     };
                 },
             }).on('fileuploaded', function(event, data) {
-                var form = data.form,
-                    files = data.files,
-                    extra = data.extra,
+                var form     = data.form,
+                    files    = data.files,
+                    extra    = data.extra,
                     response = data.response,
-                    reader = data.reader;
+                    reader   = data.reader;
                 $("#addImageModal").modal("hide");
                 salat(response.message);
                 $("#image_upload").fileinput('clear');

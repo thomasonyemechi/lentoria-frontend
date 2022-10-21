@@ -16,8 +16,8 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <div class="d-flex justify-content-between">
-                                <h3 class="mb-0">Course Landing Page</h3>
-                                <button class="btn btn-success btn-xs" data-bs-toggle="modal"
+                                <h3 class="mb-0">Course Basic Information</h3>
+                                <button class="btn btn-primary btn-xs" data-bs-toggle="modal"
                                         data-bs-target="#editShortLinkModal">customise short-link
                                 </button>
                             </div>
@@ -114,10 +114,7 @@
                                     <input type="file" class="form-control" name="promo_video" id="promo_video"/>
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button class="btn btn-success btn-block" id="updateCourse">Submit For
-                                        Review
-                                    </button>
-
+                                    <button class="btn btn-primary btn-block" id="updateCourse">Save</button>
                                 </div>
                             </form>
                         </div>
