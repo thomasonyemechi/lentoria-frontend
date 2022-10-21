@@ -271,8 +271,9 @@
     <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/libs/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('assets/libs/inputmask/dist/jquery.inputmask.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/dragula/dist/dragula.min.js') }}"></script>
+    <script src="{{ asset('assets/js/notify.js') }}"></script>
 
+    <script src="{{ asset('assets/libs/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 
     <script src="{{ asset('assets/js/theme.min.js') }}"></script>
     <script>
