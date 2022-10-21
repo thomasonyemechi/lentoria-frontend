@@ -23,7 +23,7 @@ function salat(msg, t = 0) {
 
     setTimeout(function() {
         alat.fadeOut();
-    }, 3000);
+    }, 5000);
 }
 
 function salat2(msg, t = 0) {

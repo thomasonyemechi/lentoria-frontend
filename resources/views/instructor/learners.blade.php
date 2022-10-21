@@ -100,7 +100,7 @@
 
                                 <input type="hidden" name="course_id">
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button type="submit" class="updateLearners btn btn-success">Save Answers</button>
+                                    <button type="submit" class="updateLearners btn btn-primary">Save</button>
                                 </div>
                             </form>
                         </div>

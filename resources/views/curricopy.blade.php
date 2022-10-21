@@ -371,6 +371,7 @@
             </div>
         </div>
     </div>
+    <!--suppress BadExpressionStatementJS -->
     <script>
         $(document).ready(function() {
 
@@ -386,10 +387,10 @@
 
             function contentType(type) {
                 but = "";
-                if(type == 2) {
+                if(type == 1) {
                     but +=
                         `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal">Add Video Content +</a> `
-                } else if(type == 1) {
+                } else if(type == 2) {
                     but +=
                         `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal">Add Video Content +</a>&nbsp;&nbsp;`
                     but +=
@@ -418,8 +419,8 @@
                     window.URL.revokeObjectURL(video.src);
                     var duration = video.duration;
                     if(duration > 654) {
-                        $("#file_upload").fileinput('clear')
-                        salat("The video is longer is longer than 10mins and cannot be uploaded", 1);
+                        salat("This file is more than 10 minutes long", 1);
+                        $("#file_upload").fileinput('clear');
                     } else {
                         $("input#video_length").val(duration);
                     }
@@ -695,11 +696,11 @@
                     };
                 },
             }).on('fileuploaded', function(event, data) {
-                var form     = data.form,
-                    files    = data.files,
-                    extra    = data.extra,
+                var form = data.form,
+                    files = data.files,
+                    extra = data.extra,
                     response = data.response,
-                    reader   = data.reader;
+                    reader = data.reader;
                 $("#addImageModal").modal("hide");
                 salat(response.message);
                 $("#image_upload").fileinput('clear');
@@ -789,7 +790,7 @@
                                 <a href="#" class="text-inherit">
                                     <i class="fe fe-menu me-1 text-muted align-middle"></i>
                                     <span class="align-middle text-capitalize lec_tit">${lec.title}</span>
-                                    <div hidden name="lec_desc" class="lec_desc">${lec.description}</div>
+                                    <input type="hidden" name="lec_desc" class="lec_desc" value="${lec.description}" />
                                     <input type="hidden" name="lec_id" class="lec_id" value="${lec.id}" />
                                     <input type="hidden" name="sec_id" class="sec_id" value="${lec.section_id}" />
                                     ${mainContentField(type, lec.main_content ?? '', lec.text ?? '')}
@@ -1022,7 +1023,7 @@
                                 <a href="#" class="text-inherit">
                                     <i class="fe fe-menu me-1 text-muted align-middle"></i>
                                     <span class="align-middle text-capitalize lec_tit">${title}</span>
-                                    <div hidden name="lec_desc" class="lec_desc">${description}</div>
+                                    <input type="hidden" name="lec_desc" class="lec_desc" value="${description}" />
                                     <input type="hidden" name="lec_id" class="lec_id" value="${res.id}" />
                                     <input type="hidden" name="sec_id" class="sec_id" value="${section_id}" />
                                     ${mainContentField(type, "", "")}
@@ -1065,7 +1066,7 @@
 
                 title = parent.find($("span.lec_tit")).html();
                 id = parent.find($("input[name='lec_id']")).val();
-                description = parent.find($("div[name='lec_desc']")).html();
+                description = parent.find($("input[name='lec_desc']")).val();
                 sec_id = parent.find($("input[name='sec_id']")).val();
 
                 form = $("#editLectureModal").find($('form'));
@@ -1104,7 +1105,7 @@
                     salat(res.message);
                     parent.find($("span.lec_tit")).html(title);
                     parent.find($("input[name='lec_id']")).val(id);
-                    parent.find($("div[name='lec_desc']")).html(description);
+                    parent.find($("input[name='lec_desc']")).val(description);
                     parent.find($("input[name='sec_id']")).val(section_id);
                     $("#editLectureModal").modal('hide');
                 }).fail(res => {

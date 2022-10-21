@@ -34,9 +34,9 @@
         watchdog{{$id}}.on('error', handleError);
 
         function handleError(error) {
-            console.error('Oops, something went wrong!');
-            console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
-            console.warn('Build id: fe94q0kie7jx-onhledi53v79');
+            // console.error('Oops, something went wrong!');
+            // console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+            // console.warn('Build id: fe94q0kie7jx-onhledi53v79');
             console.error(error);
         }
 
@@ -122,8 +122,8 @@
 
         function handleError(error) {
             console.error('Oops, something went wrong!');
-            console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
-            console.warn('Build id: fe94q0kie7jx-onhledi53v79');
+            // console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+            // console.warn('Build id: fe94q0kie7jx-onhledi53v79');
             console.error(error);
         }
 
@@ -161,8 +161,8 @@
 
         function handleError(error) {
             console.error('Oops, something went wrong!');
-            console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
-            console.warn('Build id: fe94q0kie7jx-onhledi53v79');
+            // console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+            // console.warn('Build id: fe94q0kie7jx-onhledi53v79');
             console.error(error);
         }
 
@@ -318,8 +318,8 @@
 
         function handleError(error) {
             console.error('Oops, something went wrong!');
-            console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
-            console.warn('Build id: fe94q0kie7jx-onhledi53v79');
+            // console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+            // console.warn('Build id: fe94q0kie7jx-onhledi53v79');
             console.error(error);
         }
 

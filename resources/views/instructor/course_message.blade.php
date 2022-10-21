@@ -19,26 +19,29 @@
                         </div>
                         <div class="card-body">
                             <div class="mb-2">
-                                Write messages to your students (optional) that will be sent automatically when they join or
+                                Write messages to your students (optional) that will be sent automatically when they
+                                join or
                                 complete your course
-                                to encourage students to engage with course content. If you do not wish to send a welcome or
+                                to encourage students to engage with course content. If you do not wish to send a
+                                welcome or
                                 congratulations
                                 message, leave the text box blank.
                             </div>
-                            <input type="hidden" id="mycourse_id" />
+                            <input type="hidden" id="mycourse_id"/>
                             <form id="addMessageForm">
 
                                 <div class="mb-3">
                                     <label class="form-label"><b>Welcome Message</b></label>
-                                    <x-textarea id="welmess" name="welmess" />
+                                    <x-textarea id="welmess" name="welmess"/>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label"><b>Congratulations Message</b></label>
-                                    <x-textarea id="cermess" name="cermess" />
+                                    <x-textarea id="cermess" name="cermess"/>
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button type="submit" class="btn btn-success btn-block" id="addMessage">Add
-                                        Message</button>
+                                    <button type="submit" class="btn btn-primary btn-block" id="addMessage">Add
+                                        Message
+                                    </button>
                                 </div>
                             </form>
                         </div>

@@ -46,6 +46,20 @@ Route::view('checkout_success/course', 'checkout_success')->name('checkout_succe
 Route::view('checkout_success/activation', 'checkout_success')->name('checkout_success.activation');
 Route::view('terms', 'terms')->name('terms');
 Route::view('student/', 'student.index')->name('student.index');
+Route::view('privacy', 'privacy')->name('privacy');
+Route::prefix('affiliate')->as('affiliate.')->group(function() {
+    Route::view('active-users', 'affiliate.activeusers')->name('active-users');
+    Route::view('compensation', 'affiliate.compensation')->name('compensation');
+    Route::view('dashboard', 'affiliate.dashboard')->name('dashboard');
+    Route::view('how', 'affiliate.how')->name('how');
+    Route::view('leadership', 'affiliate.leadership')->name('leadership');
+    Route::view('linkshared', 'affiliate.linkshared')->name('linkshared');
+    Route::view('marketing', 'affiliate.marketing')->name('marketing');
+    Route::view('membership', 'affiliate.membership')->name('membership');
+    Route::view('statistics', 'affiliate.statistics')->name('statistics');
+    Route::view('terms', 'affiliate.terms')->name('terms');
+    Route::view('inactive-users', 'affiliate.inactiveusers')->name('inactive-users');
+});
 
 
 Route::group(['prefix' => 'instructor', 'as' => 'instructor.', 'middleware' => ['auth2', 'instructor']],

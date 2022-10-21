@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-12 col-md-6">
                     <nav class="nav nav-footer justify-content-center justify-content-md-end">
-                        <a class="nav-link active ps-0" href="javascript:void(0)">Privacy</a>
+                        <a class="nav-link active ps-0" href="{{route('privacy')}}">Privacy</a>
                         <a class="nav-link" href="{{ route('terms') }}">Terms </a>
                         <a class="nav-link" href="javascript:void(0)">Feedback</a>
                         <a class="nav-link" href="javascript:void(0)">Support</a>
