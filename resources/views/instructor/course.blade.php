@@ -149,6 +149,7 @@
                                            id="shortlink" aria-describedby="shortlink-addon">
                                 </div>
                                 <span class="text-sm d-none" id="valmess"></span>
+                                <span class="text-sm d-none text-primary" id="vermess"></span>
                             </div>
 
                             <div class="d-flex justify-content-end">
@@ -167,12 +168,13 @@
             $(document).ready(function() {
 
                 let subcategories;
-                const jsonfile = `{{asset('subcategories.json')}}`;
+                const jsonfile = `{{asset('json_files/subcategories.json')}}`;
                 getLoadSubCategories();
 
                 function getLoadSubCategories() {
                     $.getJSON(jsonfile, res => subcategories = res);
                 }
+
                 $("#courseTitle").on("input", function(e) {
                     e.preventDefault();
                     let length = $(this).val().length
@@ -284,6 +286,8 @@
                 })
 
                 function validateShortlink(link) {
+                    let valmess = $("#valmess");
+                    let vermess = $("#vermess");
                     $.ajax({
                         url: api_url + 'admin/vaildate_link',
                         method: "POST",
@@ -292,9 +296,12 @@
                         },
                         beforeSend: () => {
                             $("#editLinkForm").find($("button[type='submit']")).attr('disabled', 'true');
+                            valmess.addClass("d-none");
+                            vermess.removeClass("d-none");
+                            vermess.html('Verifying link...');
                         }
                     }).done(res => {
-                        let valmess = $("#valmess");
+                        vermess.addClass("d-none");
                         if(res.status == true) {
                             valmess.removeClass("d-none");
                             if(valmess.hasClass("text-danger")) {

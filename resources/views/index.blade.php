@@ -365,20 +365,21 @@
     </div>
 
     <script>
-        $(function () {
+        $(function() {
             let jsonfile = `{{asset('json_files/course_by_type.json')}}`;
+            let categoryJsonFile = `{{asset('json_files/categories.json')}}`;
             getCategories();
             getCoursesByType();
 
-            $(".gsbtn").click(function (e) {
+            $(".gsbtn").click(function(e) {
                 e.preventDefault();
                 bt = $(".gsbtn");
                 info = @js(session('info'));
-                if (!info) {
+                if(!info) {
                     window.location.href = "/become-instructor";
                     return;
                 }
-                if (info && info.instructor == 0) {
+                if(info && info.instructor == 0) {
                     window.location.href = "/become-instructor";
                 } else {
                     window.location.href = "instructor/dashboard";
@@ -490,7 +491,7 @@
                     `);
 
                     cat.courses.forEach(cor => {
-                        if ($(`.no_${type}${cor.category_id}_Slider`).length) {
+                        if($(`.no_${type}${cor.category_id}_Slider`).length) {
                             tns({
                                 container: `.no_${type}${cor.category_id}_Slider`,
                                 loop: false,
@@ -525,9 +526,7 @@
             }
 
             function getCategories() {
-                $.ajax({
-                    url: api_url + 'category',
-                }).done(res => {
+                $.getJSON(categoryJsonFile).done(res => {
                     res.data.map(cat => {
                         $("#cat_pills").append(`
                         <a href="javascript:void(0)" class="btn btn-outline-primary rounded-pill m-1">${cat.name}</a>
