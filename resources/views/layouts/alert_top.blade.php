@@ -22,9 +22,6 @@
 @endif
 
 
-
-
-
 <script>
     $.ajaxSetup({
         headers: {
