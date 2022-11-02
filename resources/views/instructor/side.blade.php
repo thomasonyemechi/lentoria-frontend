@@ -12,7 +12,6 @@
                 <a class="nav-link" href="/instructor/course/{{ $slug }}?type={{app('request')->input('type')}}"><i
                             class="fe fe-home nav-icon"></i>Course Information</a>
             </li>
-            <span class="navbar-header">Plan Your Course</span>
             <ul class="list-unstyled ms-n2 mb-4">
                 <li class="nav-item @if (request()->routeIs('instructor.learners')) active @endif">
                     <a class="nav-link" href="/instructor/goals/{{ $slug }}?type={{app('request')->input('type')}}"><i

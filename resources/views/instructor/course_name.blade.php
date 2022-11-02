@@ -1,7 +1,7 @@
 <div class="row align-items-center">
     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
         <div class="d-flex align-items-center justify-content-between bg-white px-4 pt-2 pb-4 rounded shadow-sm">
-            <h3 class="mb-0 mt-3 course-title ">Your Course Title</h3>
+            <h3 class="mb-0 mt-3 course-title ">{{explode('_',$slug)[1]}}</h3>
             <a href="/instructor/courses" class="mt-3">Back To Courses</a>
         </div>
     </div>

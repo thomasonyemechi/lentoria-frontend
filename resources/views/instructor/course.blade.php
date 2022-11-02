@@ -51,7 +51,7 @@
                                 <div class="row">
                                     <label class="form-label"><b>Basic Info</b></label>
                                     <div class="mb-3 col-4">
-                                        <select class="form-control" name="language" id="course_language"
+                                        <select class="form-control form-selectbs4" name="language" id="course_language"
                                                 data-width="100%">
                                             <option value="english">English</option>
                                         </select>
@@ -71,7 +71,6 @@
                                             <option value="">Select Course Type</option>
                                             <option value="1">Virtual Live Training</option>
                                             <option value="2">Recorded Course</option>
-                                            {{-- <option value="3">Premium Training</option> --}}
                                         </select>
                                     </div>
                                 </div>

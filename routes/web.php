@@ -24,13 +24,16 @@ Route::get('/', function() {
 
 Route::post('/addtosession', [Controller::class, 'updateInstructorSession']);
 
-Route::get('/c/{link}', [Controller::class, 'fetchCourseInfoByLink']);
+Route::get('/c/{link}/{ref?}', [Controller::class, 'fetchCourseInfoByLink']);
 
 Route::get('/jsonfile', [JsonFileController::class, 'updateFile']);
 Route::get('/indexpagefile', [JsonFileController::class, 'indexPageJsonFile']);
 Route::get('/cats_and_subcats_file', [JsonFileController::class, 'categoriesNdSubscategoriesJsonFile']);
 Route::get('/cats_file', [JsonFileController::class, 'categoriesJsonFile']);
 
+Route::get('/demo', function() {
+    return view('instructor.demo');
+});
 
 Route::view('/course/{id}/{slug}', 'course_single');
 Route::view('/instructor/{id}/profile', 'instructor_profile')->name('instructor_profile');

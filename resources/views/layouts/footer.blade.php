@@ -197,8 +197,9 @@
                     btn(bt, 'Sign In', 'before');
                 }
             }).done(function(res) {
-                console.log(res);
                 message = res.message;
+                instructor = res.data.instructor;
+
                 $.ajax({
                     method: 'post',
                     url: '/session_login_infomation',
@@ -207,7 +208,12 @@
                     }
                 }).done(function(res) {
                     salat(message);
-                    location.reload();
+                    console.log(instructor);
+                    if(instructor) {
+                        location.href = '/instructor/dashboard'
+                    }
+
+                    // location.reload();
                     $("#login_modal").modal('hide');
                 });
             }).fail(function(res) {
