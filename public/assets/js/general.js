@@ -9,8 +9,6 @@ function validateEmail(email) {
     );
 }
 
-
-
 function salat(msg, t = 0) {
     color = (t == 1) ? 'danger' : 'success';
     icon = (t == 1) ? 'ban' : 'checked';
