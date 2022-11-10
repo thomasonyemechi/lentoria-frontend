@@ -38,13 +38,19 @@
                             <ul class="nav flex-column">
                                 <li class="nav-item ">
                                     <a class="nav-link  active " href="{{route('affiliate.how')}}">
-                                        How to get started
+                                    <i class="fe fe-star nav-icon"></i>How to get started
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item ">
+                                    <a class="nav-link  active " href="{{route('affiliate.how')}}">
+                                    <i class="fe fe-star nav-icon"></i>Affiliate Success Challenge
                                     </a>
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item ">
                                     <a class="nav-link " href="{{route('affiliate.marketing')}}">
-                                        Digital Marketing Training
+                                    <i class="fe fe-star nav-icon"></i>Digital Marketing Training
 
                                     </a>
                                 </li>
@@ -72,48 +78,53 @@
                             <ul class="nav flex-column">
                                 <li class="nav-item active ">
                                     <a class="nav-link  active " href="{{route('affiliate.active-users')}}">
-                                        Active Referrals
+                                    <i class="fe fe-star nav-icon"></i>Active Referrals
                                     </a>
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item ">
                                     <a class="nav-link " href="{{route('affiliate.inactive-users')}}">
-                                        Inactive Referrals
+                                    <i class="fe fe-star nav-icon"></i>Inactive Referrals
                                     </a>
                                 </li>
                                 <li class="nav-item ">
+                                    <a class="nav-link " href="{{route('affiliate.leadership-team')}}">
+                                    <i class="fe fe-star nav-icon"></i>Leadership Team
+                                    </a>
+                                </li>
+                                <!-- <li class="nav-item ">
                                     <a class="nav-link " href="{{route('affiliate.membership')}}">
-                                        Categorization by membership Package
+                                    <i class="fe fe-star nav-icon"></i>Categorization by membership Package
                                     </a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link " href="{{route('affiliate.leadership')}}">
-                                        Categorization by Leadership
+                                    <i class="fe fe-star nav-icon"></i>Categorization by Leadership
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('affiliate.compensation')}}"><i
-                                    class="fe fe-shopping-bag nav-icon"></i>Compensation plan</a>
+                        <a class="nav-link" href="{{route('affiliate.compensation')}}">
+                            <i class="fe fe-shopping-bag nav-icon"></i>Compensation plan</a>
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{route('affiliate.linkshared')}}"><i class="fe fe-book nav-icon"></i>Links
-                            Analysis And Courses</a>
+                     <a class="nav-link"
+                           href="{{route('affiliate.linkshared')}}"><i class="fe fe-book nav-icon"></i>Campaign
+                            Analysis</a>
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item">
                         <a class="nav-link" href="affiliate_resource.php"><i
                                     class="fe fe-star nav-icon"></i>Affiliate Resource Centre</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="affiliate_revenue.php"><i
                                     class="fe fe-lock nav-icon"></i>Revenue Sharing</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="affiliate_shareholder"><i
                                     class="fe fe-refresh-cw nav-icon"></i>Livepetal Shareholder</a>

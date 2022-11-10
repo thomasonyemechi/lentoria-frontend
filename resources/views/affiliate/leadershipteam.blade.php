@@ -1,5 +1,5 @@
 @extends('layouts.instructor')
-@section('page_title','Affiliate | InactiveUsers')
+@section('page_title','Affiliate | ActiveUsers')
 @section('page_content')
     <div class="pt-5 pb-5">
         <div class="container">
@@ -16,7 +16,8 @@
                             <div class="card">
                                 <!-- card header  -->
                                 <div class="card-header">
-                                    <h1 class="mb-1 fw-bold">Inactive Referrals</h1>
+                                    <h1 class="mb-1 fw-bold">Leadership Team</h1>
+                                    <span>You need only Six (6) referrals in your current leadership position to get promoted to the next leadership position</span>
                                 </div>
                                 <!-- table  -->
                                 <div class="table-responsive">
@@ -27,7 +28,8 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone-No</th>
-                                            <th>Action</th>
+                                            <th>Membership</th>
+                                            <th>Title</th>
                                         </tr>
                                         </thead>
                                         <!--  <tbody>
@@ -80,5 +82,4 @@
     </div>
 
     <hr class="my-0">
-
 @endsection

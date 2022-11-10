@@ -9,6 +9,11 @@
             -moz-transform: scale(1.1);
             -o-transform: scale(1.1)
         }
+
+        
+        .btn-outline-white {
+            color:white;
+        }
     </style>
     <!-- Hero Content -->
     <div class="bg-primary-a" style="background-color: #036">
@@ -22,7 +27,7 @@
                             Become an Instructor in Lentoria and transform your experience and knowledge into a thriving
                             business that generates consistent cash flow even while you are away.
                         </p>
-                        <a href="" class="btn btn-outline-white text-white mt-4 gsbtn">Get Started</a>
+                        <a href="" class="btn btn-outline-white mt-4 gsbtn">Get Started</a>
 
                     </div>
                 </div>
@@ -41,7 +46,7 @@
                     <!-- caption -->
                     <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-xl">Build a brand and Scale with
                         Lentoria</span>
-                    <h2 class="mb-2 display-4 fw-bold ">Lentoria Professional Knowledge Facilitator Program</h2>
+                    <h2 class="mb-2 display-4 fw-bold ">Professional Knowledge Facilitator Program</h2>
                     <p class="lead">This Program simplifies the whole process of becoming a professional online
                         instructor. It will take you from a complete novice to expert level</p>
                 </div>
@@ -185,7 +190,7 @@
                 </div>
                 <div class="col-md-12 col-12 text-center">
 
-                    <a href="" class="btn btn-outline-white mt-5 text-white gsbtn">Become an Instructor Now</a>
+                    <a href="" class="btn btn-outline-white mt-5 gsbtn">Become an Instructor Now</a>
 
                 </div>
             </div>
@@ -300,7 +305,7 @@
     </div>
 
     <div class="pb-16 pt-10"
-         style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%), rgba(221, 218, 255, 0.3) ; background-size: cover; background-position: top center">
+         style="display:none; background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%), rgba(221, 218, 255, 0.3) ; background-size: cover; background-position: top center">
         <!-- Container -->
         <div class="container">
             <div class="row">
@@ -446,7 +451,7 @@
                         </div>
                         <hr class="m-0">
                         <div class="p-5">
-                            <h4 class="fw-bold mb-4">Everything in Starter, including:</h4>
+                            <h4 class="fw-bold mb-4">Affiliate Membership, plus:</h4>
                             <!-- List -->
                             <ul class="list-unstyled mb-0">
                                 <li class="mb-1">
@@ -455,11 +460,11 @@
                                 </li>
                                 <li class="mb-1">
                                     <span class="text-success me-2"><i class="far fa-check-circle"></i></span>
-                                    <span class="fw-bold text-dark">Instructor Paid Training Package</span>
+                                    <span class="fw-bold text-dark">Instructor Training Package</span>
                                 </li>
                                 <li class="mb-1">
                                     <span class="text-success me-2"><i class="far fa-check-circle"></i></span>
-                                    <span class="fw-bold text-dark">1 Paid Course</span>
+                                    <span class="fw-bold text-dark">Publish 1 Paid Course</span>
                                 </li>
                             </ul>
                         </div>
@@ -474,7 +479,7 @@
                                 <h2 class="fw-bold">PREMIUM</h2>
                                 <p class="mb-0 ">Access to instructor success challenge,<span
                                             class="text-dark fw-medium">
-                                        a Unique store, and to 3 paid courses.</span>
+                                        a Unique store, and up to 3 paid courses.</span>
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center mb-4">
@@ -503,7 +508,7 @@
                                 </li>
                                 <li class="mb-1">
                                     <span class="text-success me-2"><i class="far fa-check-circle"></i></span>
-                                    <span class="fw-bold text-dark">3 Paid Courses</span>
+                                    <span class="fw-bold text-dark">Publish 3 Paid Courses</span>
                                 </li>
                             </ul>
                         </div>
@@ -547,7 +552,7 @@
                                 </li>
                                 <li class="mb-1">
                                     <span class="text-success me-2"><i class="far fa-check-circle"></i></span>
-                                    <span class="fw-bold text-dark">Unlimited Paid Courses</span>
+                                    <span class="fw-bold text-dark">Publish Unlimited Paid Courses</span>
                                 </li>
                             </ul>
                         </div>
@@ -801,7 +806,7 @@
                         new skill is hard work—Lentoria makes it easier.</p>
                     <div class="d-grid d-md-block">
                         <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signup_modal"
-                           class="btn btn-success text-white mt-4">Start Learning</a>
+                           class="btn btn-outline-white mt-4">Start Learning</a>
                     </div>
                 </div>
             </div>

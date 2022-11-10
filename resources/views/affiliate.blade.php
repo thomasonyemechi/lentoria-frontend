@@ -293,7 +293,7 @@
     </div>
 
     <div class="pb-16 pt-10"
-         style=" background-size: cover; background: rgba(221, 218, 255, 0.3) linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%) top center;">
+         style="display:none; background-size: cover; background: rgba(221, 218, 255, 0.3) linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%) top center;">
         <!-- Container -->
         <div class="container">
             <div class="row">

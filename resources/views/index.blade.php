@@ -2,6 +2,11 @@
 @section('page_title', 'Lentoria | Welcome')
 
 @section('page_content')
+<style>
+        .btn-outline-white {
+            color:white;
+        }
+    </style>
     <div class="bg-primary-a" style="background-color: #036;">
         <div class="container">
             <div class="row align-items-center g-0">
@@ -314,7 +319,7 @@
                         <div class="offset-lg-1 col-lg-6 col-md-7 col-12 mb-6">
                             <p class="lead">Join coaches and instructors from around the world who use Lentoria to
                                 share their knowledge and wealth of experience to millions of students. We provide
-                                the tools to make it easy.</p>
+                                the tools to make it easy for you to make money.</p>
                         </div>
                     </div>
                     <div class="row">
@@ -347,7 +352,7 @@
     </div>
 
     <div class="bg-primary-a"
-         style="background-color: #036 !important; background: url(assets/images/background/course-graphics.svg)no-repeat; background-size: cover; background-position: top center;  margin: left -100px right -100px; padding-bottom: 60px; padding-top: 60px;">
+         style="background-color: #036 !important; margin: left -100px right -100px; padding-bottom: 60px; padding-top: 60px;">
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-md-9 col-12">
@@ -355,7 +360,7 @@
                     <p class="lead text-white px-lg-12 mb-6">Effective learning starts with assessment. Learning a new
                         skill is hard work—Lentoria makes it easier.</p>
                     <div class="d-grid d-md-block">
-                        <button class="btn btn-success mb-2 mb-md-0" data-bs-target="#signup_modal"
+                        <button class="btn btn-outline-white mb-2 mb-md-0" data-bs-target="#signup_modal"
                                 data-bs-toggle="modal">Start Learning
                         </button>
                     </div>

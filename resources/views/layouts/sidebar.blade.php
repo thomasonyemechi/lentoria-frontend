@@ -25,12 +25,15 @@
                     <a class="nav-link" href="{{ route('instructor.courses') }}"><i class="fe fe-book nav-icon"></i>My
                         Courses</a>
                 </li>
-
+                
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fe fe-pie-chart nav-icon"></i>Earnings</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fe fe-user nav-icon"></i>Students</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fe fe-pie-chart nav-icon"></i>Success Challenge</a>
                 </li>
             </ul>
             <span class="navbar-header">Account Settings</span>

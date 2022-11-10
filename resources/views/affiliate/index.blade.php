@@ -1,6 +1,6 @@
-@extends('layouts.instructor')
+@extends('layouts.affiliate')
 @section('page_title')
-    Instructors Dashboard
+    Affiliate Dashboard
 @endsection
 
 @section('page_content')
@@ -41,13 +41,13 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-12">
                             <div class="card mb-4">
-                                <div class="p-3">
-                                    <span class="fs-6 text-uppercase fw-semi-bold">Course Sales Revenue</span>
-                                    <h3 class="mt-2 fw-bold mb-1 d-flex align-items-center">
+                                <div class="p-4">
+                                    <span class="fs-6 text-uppercase fw-semi-bold">Balance</span>
+                                    <h2 class="mt-4 fw-bold mb-1 d-flex align-items-center h1 lh-1">
                                         &#8358 <span class="bal">0</span>
-                                    </h3>
+                                    </h2>
                                     <span class="d-flex justify-content-between align-items-center">
-                                        <span>{{date('F')}} Sales </span>
+                                        <span>Earning this month</span>
                                         <span class="badge bg-success ms-2">$0</span>
                                     </span>
                                 </div>
@@ -56,13 +56,13 @@
 
                         <div class="col-lg-4 col-md-12 col-12">
                             <div class="card mb-4">
-                                <div class="p-3">
-                                    <span class="fs-6 text-uppercase fw-semi-bold">Total Sales Unit</span>
-                                    <h3 class="mt-2 fw-bold mb-1 d-flex align-items-center">
+                                <div class="p-4">
+                                    <span class="fs-6 text-uppercase fw-semi-bold">Sales</span>
+                                    <h2 class="mt-4 fw-bold mb-1 d-flex align-items-center h1 lh-1">
                                         0
-                                    </h3>
+                                    </h2>
                                     <span class="d-flex justify-content-between align-items-center">
-                                        <span>{{date('F')}} Sales</span>
+                                        <span>New this month</span>
                                         <span class="badge bg-info ms-2">0+</span>
                                     </span>
                                 </div>
@@ -70,11 +70,11 @@
                         </div>
                         <div class="col-lg-4 col-md-12 col-12">
                             <div class="card mb-4">
-                                <div class="p-3">
+                                <div class="p-4">
                                     <span class="fs-6 text-uppercase fw-semi-bold">Courses Rating</span>
-                                    <h3 class="mt-2 fw-bold mb-1 d-flex align-items-center">
+                                    <h2 class="mt-4 fw-bold mb-1 d-flex align-items-center h1 lh-1">
                                         0.0
-                                    </h3>
+                                    </h2>
                                     <span class="d-flex justify-content-between align-items-center">
                                         <span>Rating this month</span>
                                         <span class="badge bg-warning ms-2">0+</span>
@@ -89,7 +89,7 @@
                             <span>Answer these questions to help Lentoria personalize your user experience </span>
                         </div>
                         <div id="questionnaire" class="bs-stepper mb-3">
-                          
+                            <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <!-- Stepper Button -->
@@ -301,7 +301,7 @@
                             </div>
                         </div>
 
-             
+                    </div>
                 </div>
             </div>
         </div>

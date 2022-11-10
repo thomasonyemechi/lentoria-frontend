@@ -62,6 +62,7 @@ Route::prefix('affiliate')->as('affiliate.')->group(function() {
     Route::view('statistics', 'affiliate.statistics')->name('statistics');
     Route::view('terms', 'affiliate.terms')->name('terms');
     Route::view('inactive-users', 'affiliate.inactiveusers')->name('inactive-users');
+    Route::view('leadership-team', 'affiliate.leadershipteam')->name('leadership-team');
 });
 
 
