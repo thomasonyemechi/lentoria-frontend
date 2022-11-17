@@ -1,14 +1,13 @@
-api_url = 'http://127.0.0.1:8000/api/';
-api_root = 'http://127.0.0.1:8000/';
-image_url = 'http://127.0.0.1:8000/assets/uploads/';
-video_url = "https://vi.beelsacademy.com/watchvideo/";
+api_url = 'http://api.lentoria.com/api/';
+api_root = 'http://api.lentoria.com/';
+image_url = 'http://api.lentoria.com/assets/uploads/';
+video_url = "https://lentoria.site/watchvideo/";
 
 function validateEmail(email) {
     return email.match(
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 }
-
 function salat(msg, t = 0) {
     color = (t == 1) ? 'danger' : 'success';
     icon = (t == 1) ? 'ban' : 'checked';
