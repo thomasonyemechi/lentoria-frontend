@@ -53,51 +53,27 @@
                                 </div>
                                 <!-- table  -->
                                 <div class="table-responsive">
-                                    <table class="table text-nowrap mb-0">
+                                    <table class="table text-nowrap mb-0 in_active_referrals">
                                         <thead>
-                                        <tr>
-                                            <th>SN</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone-No</th>
-                                            <th>Action</th>
-                                        </tr>
+                                            <tr>
+                                                <th>SN</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone-No</th>
+                                                <th>Action</th>
+                                            </tr>
                                         </thead>
-                                        <!--  <tbody>
-                                           <tr>
-                                             <td>Team Manager</td>
-                                             <td>10%</td>
-                                             <td>-</td>
-                                             <td>-</td>
-                                             <td>-</td>
-                                             <td>-</td>
-                                           </tr>
-                                           <tr>
-                                             <td>Team Leader</td>
-                                             <td>10%</td>
-                                             <td>-</td>
-                                             <td>-</td>
-                                             <td>-</td>
-                                             <td>-</td>
-                                           </tr>
-                                           <tr>
-                                             <td>District Manager</td>
-                                             <td>10%</td>
-                                             <td>-</td>
-                                             <td>-</td>
-                                             <td>-</td>
-                                             <td>-</td>
-                                           </tr>
-                                           <tr>
-                                             <td>Senior Manager</td>
-                                             <td>10%</td>
-                                             <td>-</td>
-                                             <td>-</td>
-                                             <td>-</td>
-                                             <td>-</td>
-                                           </tr>
+                                        <tbody>
 
-                                         </tbody> -->
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="text-center">
+                                                        <span class="spinner-border spinner-border-sm"
+                                                            aria-hidden="true"></span> <span>Loading Data ... </span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
 
@@ -114,4 +90,45 @@
 
     <hr class="my-0">
 
+
+    <script>
+        $(function() {
+            function getInactiveUsers() {
+                $.ajax({
+                    method: 'get',
+                    url: api_url + `affiliate/inactive_referrals/<?= user()->live_id ?>`
+                }).done(function(res) {
+                    table = $('.in_active_referrals')
+                    table = $(table).find('tbody')
+                    table.html('');
+                    // if (res.length == 0) {
+                    //     table.html(`
+                    //         <tr>
+                    //             <td colspan="5">
+                    //                 <div class="text-center">
+                    //                     <span>No data found </span>
+                    //                 </div>
+                    //             </td>
+                    //         </tr>
+                    //     `);
+                    //     return
+                    // }
+                    res.map((user, index) => {
+                        table.append(`
+                            <tr>
+                                <td>${index+1}</td>
+                                <td>${user.firstname + ' '+ user.lastname}</td>
+                                <td>${user.email}</td>
+                                <td>${user.phone}</td>
+                                <td>-</td>
+                            </tr>
+                        `)
+                    })
+                }).fail(function(res) {
+                    console.log(res);
+                })
+            }
+            getInactiveUsers();
+        })
+    </script>
 @endsection
