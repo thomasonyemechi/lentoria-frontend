@@ -93,7 +93,6 @@
                     method: "GET",
                     url: api_url + `affiliate/active_referrals/<?= user()->live_id ?>`,
                 }).done(function(res) {
-                    console.log(res);
                     table = $('.active_referrals');
                     table = $(table).find('tbody');
                     table.html('');
