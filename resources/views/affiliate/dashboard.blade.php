@@ -224,7 +224,7 @@
             function getAllTranscations() {
                 $.ajax({
                     method: "GET",
-                    url: api_url + `affiliate/recent_transaction/20046`,
+                    url: api_url + `affiliate/recent_transaction/<?= user()->live_id ?>`,
                 }).done(function(res) {
                     console.log(res);
                     let table = $('#transactions_table');
