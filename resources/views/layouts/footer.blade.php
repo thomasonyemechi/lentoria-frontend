@@ -213,7 +213,7 @@
                         location.href = '/instructor/dashboard'
                     }
 
-                    // location.reload();
+                    location.reload();
                     $("#login_modal").modal('hide');
                 });
             }).fail(function(res) {
