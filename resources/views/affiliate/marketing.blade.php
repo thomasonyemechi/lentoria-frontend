@@ -38,7 +38,7 @@
             <!-- Page Content -->
             <div class="row mt-0 mt-md-4">
                 @include('affiliate.nav')
-                <div class="col-lg-9 col-md-8 col-12">
+                <div class="col-lg-8 col-md-7 col-12">
                     <div class="row">
                         <div class="card mb-4">
                             <!-- Card header -->
