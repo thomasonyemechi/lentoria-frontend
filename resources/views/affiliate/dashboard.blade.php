@@ -37,53 +37,50 @@
             <!-- Page Content -->
             <div class="row mt-0 mt-md-4">
                 @include('affiliate.nav')
-                <div class="col-lg-9 col-md-8 col-12">
+                <div class="col-lg-8 col-md-7 col-12">
                     <div class="row">
-                        <div class="col-lg-3 col-md-12 col-12">
+                        <div class="col-lg-3 col-md-12 col-12  d-flex align-items-stretch">
                             <!-- Card -->
-                            <div class="card mb-4">
+                            <div class="card mb-4 cardd">
                                 <div class="p-4">
                                     <span class="fs-6 text-uppercase fw-semi-bold">Account Balance</span>
-                                    <h2 class="mt-4 fw-bold mb-1 d-flex align-items-center">
+                                    <h3 class="mt-2 fw-bold mb-1 align-items-center">
                                         N 467.34
-                                    </h2>
+                                    </h3>
                                 </div>
-
-
                             </div>
                         </div>
-
-                        <div class="col-lg-3 col-md-12 col-12">
+                        <div class="col-lg-3 col-md-12 col-12  d-flex align-items-stretch">
                             <!-- Card -->
-                            <div class="card mb-4">
+                            <div class="card mb-4 cardd">
                                 <div class="p-4">
                                     <span class="fs-6 text-uppercase fw-semi-bold">RPV Bonus</span>
-                                    <h2 class="mt-4 fw-bold mb-1 d-flex align-items-center">
+                                    <h3 class="mt-2 fs-3 fw-bold mb-1 align-items-center">
                                         N 12,000
-                                    </h2>
+                                    </h3>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-12 col-12">
+                        <div class="col-lg-3 col-md-12 col-12  d-flex align-items-stretch">
                             <!-- Card -->
-                            <div class="card mb-4">
+                            <div class="card mb-4 cardd">
                                 <div class="p-4">
                                     <span class="fs-6 text-uppercase fw-semi-bold">SPV Bonus</span>
-                                    <h2 class="mt-4 fw-bold mb-1 d-flex align-items-center">
-                                        N 4.80
-                                    </h2>
+                                    <h3 class="mt-2 fw-bold mb-1 align-items-center">
+                                        N 46.80
+                                    </h3>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-12 col-12">
+                        <div class="col-lg-3 col-md-12 col-12 d-flex align-items-stretch">
                             <!-- Card -->
-                            <div class="card mb-4">
+                            <div class="card mb-4 cardd">
                                 <div class="p-4">
                                     <span class="fs-6 text-uppercase fw-semi-bold">Monthly earning</span>
-                                    <h2 class="mt-4 fw-bold mb-1 d-flex align-items-center">
+                                    <h3 class="mt-2 fw-bold mb-1 align-items-center">
                                         N 4,000.80
-                                    </h2>
+                                    </h3>
                                 </div>
                             </div>
                         </div>
