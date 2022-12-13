@@ -1,6 +1,11 @@
-api_url = 'http://api.lentoria.com/api/';
-api_root = 'http://api.lentoria.com/';
-image_url = 'http://api.lentoria.com/assets/uploads/';
+// api_url = 'http://api.lentoria.com/api/';
+// api_root = 'http://api.lentoria.com/';
+// image_url = 'http://api.lentoria.com/assets/uploads/';
+// video_url = "https://lentoria.site/watchvideo/";
+
+api_url = 'http://127.0.0.1:8000/api/';
+api_root = 'http://127.0.0.1:8000/';
+image_url = 'http://127.0.0.1:8000/assets/uploads/';
 video_url = "https://lentoria.site/watchvideo/";
 
 function validateEmail(email) {
@@ -273,4 +278,10 @@ function getWithExpiry(key) {
         return null
     }
     return item.value
+}
+
+
+function errorFetchingDataRefresh()
+{
+    return `An error occured while fetching your data <a href="">Refresh Page</a>`
 }
