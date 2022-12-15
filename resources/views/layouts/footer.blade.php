@@ -149,7 +149,8 @@
                 url: api_url + 'user_login',
                 data: {
                     email: email,
-                    password: password
+                    password: password,
+                    others: `<?= json_encode(getBrowser()) ?>`
                 },
             }).done(function(res) {
                 console.log(res);
@@ -191,7 +192,8 @@
                 url: api_url + 'user_login',
                 data: {
                     email: email,
-                    password: password
+                    password: password,
+                    others: `<?= json_encode(getBrowser()) ?>`
                 },
                 beforeSend: () => {
                     btn(bt, 'Sign In', 'before');

@@ -22,6 +22,9 @@ Route::get('/', function() {
     return view('index');
 });
 
+Route::get('/about2', function () { return getDeviceId(); });
+
+
 Route::post('/addtosession', [Controller::class, 'updateInstructorSession']);
 
 Route::get('/c/{link}/{ref?}', [Controller::class, 'fetchCourseInfoByLink']);

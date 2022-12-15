@@ -31,16 +31,17 @@ class Controller extends BaseController
     }
 
 
-    function fetchCourseInfoByLink($link, $ref='')
+    function fetchCourseInfoByLink($link, $ref = '')
     {
         $ck = Cookie::get('ref_id');
-        if(!$ck) { 
+        if (!$ck) {
             $ref = ($ref) ? $ref : 1;
             Cookie::queue('ref_id', $ref, 720);
         }
-        $res = Http::asForm()->get(env('BACKEND') . 'api/get_course_from_link/' . $link);
+        $ref = Cookie::get('ref_id');
+        $res = Http::asForm()->post(env('BACKEND') . 'api/get_course_from_link/'.$link.'/'.$ref, getBrowser() );
         $res = json_decode($res);
-        
+
         if ($res->data) {
             $data = $res->data;
             return redirect('/course/' . $data->id . '/' . $data->slug);
@@ -48,4 +49,5 @@ class Controller extends BaseController
             throw new NotFoundHttpException();
         }
     }
+
 }
