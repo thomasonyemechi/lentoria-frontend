@@ -1,5 +1,5 @@
 @extends('layouts.instructor')
-@section('page_title', "Course Review | $slug")
+@section('page_title', "Course Review || $slug")
 
 @section('page_content')
     <div class="mt-5 course-container">
@@ -12,10 +12,9 @@
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div>
                                     <h3 class="mb-0 text-truncate-line-2 d-inline-flex" id="st">Section Title </h3><i
-                                            class="fe fe-chevron-right mt-1 d-inline-flex"></i><span
-                                            class="d-inline-flex"
-                                            id="lt">Lecture
-                                        Title</span>
+                                        class="fe fe-chevron-right mt-1 d-inline-flex"></i><span
+                                        class="d-inline-flex"
+                                        id="lt">Lecture Title</span>
                                 </div>
                                 <div>
                                     <!-- Dropdown -->
@@ -38,23 +37,24 @@
                                         <span class="dropdown-menu dropdown-menu-end" aria-labelledby="shareDropdown1">
                                             <span class="dropdown-header">Share</span>
                                             <a class="dropdown-item" href="#"><i
-                                                        class="fab fa-facebook dropdown-item-icon"></i>Facebook</a>
+                                                    class="fab fa-facebook dropdown-item-icon"></i>Facebook</a>
                                             <a class="dropdown-item" href="#"><i
-                                                        class="fab fa-twitter dropdown-item-icon"></i>Twitter</a>
+                                                    class="fab fa-twitter dropdown-item-icon"></i>Twitter</a>
                                             <a class="dropdown-item" href="#"><i
-                                                        class="fab fa-linkedin dropdown-item-icon"></i>Linked In</a>
+                                                    class="fab fa-linkedin dropdown-item-icon"></i>Linked In</a>
                                             <a class="dropdown-item" href="#"><i
-                                                        class="fas fa-copy dropdown-item-icon"></i>Copy Link</a>
+                                                    class="fas fa-copy dropdown-item-icon"></i>Copy Link</a>
                                         </span>
                                     </span>
                                 </div>
                             </div>
                             <!-- Video -->
-                            <div class="embed-responsive position-relative t w-100 d-block overflow-auto no-scroll p-0 d-block"
-                                 id="vid_container" style="height: 600px;">
+                            <div
+                                class="embed-responsive position-relative t w-100 d-block overflow-auto no-scroll p-0 d-block"
+                                id="vid_container" style="height: 600px;">
                                 <video-js
-                                        class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100 vjs-theme-fantasy"
-                                        id="vid">
+                                    class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100 vjs-theme-fantasy"
+                                    id="vid">
                                 </video-js>
                             </div>
                             <div class="d-flex justify-content-center my-22 d-none" id="vid_preloader">
@@ -88,8 +88,9 @@
 
     <script>
         $(function () {
-            $("#vid").bind("contextmenu", function () { return false; });
-            console.log(sessionStorage.getItem("courseimage"));
+            $("#vid").bind("contextmenu", function () {
+                return false;
+            });
             const player = videojs('vid', {
                 controls: true,
                 autoplay: false,
@@ -97,10 +98,8 @@
                 responsive: true,
                 liveui: true,
                 fill: true,
-                // fluid: true,
                 metadata: true,
                 notSupportedMessage: "An Error Occurred While Fetching Video or No Video Available For This Course",
-                // playbackRates: [1, 1.5, 2],
                 userActions: {
                     hotkeys: function (event) {
                         // `space` key = pause

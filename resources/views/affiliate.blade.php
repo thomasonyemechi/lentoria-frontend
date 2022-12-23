@@ -12,7 +12,6 @@
         }
     </style>
     <!-- Hero Content -->
-    <!--suppress JSCheckFunctionSignatures -->
     <div class="bg-primary">
         <div class="container">
             <!-- Hero Section -->
@@ -72,9 +71,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12 text-center">
-                    <!-- features -->
                     <div class="mb-4">
-                        <!-- icon -->
                         <div class="display-2 text-primary">
                             <i class="fe fe-user"></i>
                         </div>
@@ -186,7 +183,7 @@
                             <h3 class="mb-2">Quality Mentorship: You are not left alone</h3>
                             <p class="mb-0"><big>The mentorship Lentoria provides will take you from a complete novice
                                     to
-                                    the postion of a strong mentor</big></p>
+                                    the position of a strong mentor</big></p>
                         </div>
                     </div>
                 </div>
@@ -329,13 +326,13 @@
                                                      alt="...">
                                             </div>
                                             <div class="col-lg-6">
-                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks
-                                                    has created an incredibly seamless experience for
-                                                    app design. My mind
-                                                    is blown. Vestibulum ante ipsum primis in faucibus
-                                                    orci luctus et ultrices pos
-                                                    uere cubilia curae fusce consequat ligula in dui
-                                                    congue interdum."</p>
+                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Mind
+                                                    afterlife desires when you love with death.
+                                                    Psychic densities feels most graces.
+                                                    The seeker forgets vision which is not ultimate.
+                                                    evil histories discovers most chaos.
+                                                    the karma experiences hypnosis which is not further.
+                                                    be bright."</p>
                                                 <p><b>Paulo Dichone</b><br>
                                                     Developer (Android Speciality)</p>
                                             </div>
@@ -348,14 +345,14 @@
                                                      alt="...">
                                             </div>
                                             <div class="col-lg-6">
-                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks
-                                                    has created an incredibly seamless experience for
-                                                    app design. My mind
-                                                    is blown. Vestibulum ante ipsum primis in faucibus
-                                                    orci luctus et ultrices pos
-                                                    uere cubilia curae fusce consequat ligula in dui
-                                                    congue interdum."</p>
-                                                <p><b>Paulo Dichone</b><br>
+                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Space
+                                                    balance and you will be handled essentially.
+                                                    Inner purposes views most careers.
+                                                    The sun facilitates purpose which is not inward.
+                                                    inner lights hears most tantras.
+                                                    an ultimate form of reincarnation is the vision.
+                                                    be important."</p>
+                                                <p><b>John Blue</b><br>
                                                     Developer (Android Speciality)</p>
                                             </div>
                                         </div>
@@ -367,14 +364,14 @@
                                                      alt="...">
                                             </div>
                                             <div class="col-lg-6">
-                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks
-                                                    has created an incredibly seamless experience for
-                                                    app design. My mind
-                                                    is blown. Vestibulum ante ipsum primis in faucibus
-                                                    orci luctus et ultrices pos
-                                                    uere cubilia curae fusce consequat ligula in dui
-                                                    congue interdum."</p>
-                                                <p><b>Paulo Dichone</b><br>
+                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Lama
+                                                    contact and you will be discovered confidently.
+                                                    The therapist feels.
+                                                    The creator acquires everything which is not crystal.
+                                                    soft afterlife's syntheses most politics.
+                                                    a superior form of history is the relativity.
+                                                    be ultimate."</p>
+                                                <p><b>Paul Reeves</b><br>
                                                     Developer (Android Speciality)</p>
                                             </div>
                                         </div>
@@ -422,7 +419,7 @@
                             <div class="mb-5">
                                 <h2 class="fw-bold">BASIC</h2>
                                 <p class="mb-0 ">To start your Affiliate journey today you will get <span
-                                            class="text-dark fw-medium">Access to All our Core Services </span>
+                                        class="text-dark fw-medium">Access to All our Core Services </span>
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center mb-4">
@@ -479,7 +476,7 @@
                             <div class="d-grid">
 
                                 <a href="{{ url('checkout/affiliate_activation/3/' . Str::random(8)) }}"
-                                   class="btn btn-primary ">Activate Now</a>
+                                   class="btn btn-primary">Activate Now</a>
                             </div>
                         </div>
                         <hr class="m-0">
@@ -533,19 +530,19 @@
                             <ul class="list-unstyled mb-0">
                                 <li class="mb-1">
                                     <span class="text-primary me-2"><i
-                                                class="far fa-check-circle text-success"></i></span>
+                                            class="far fa-check-circle text-success"></i></span>
                                     <span class="fw-bold text-dark">Access to Success Challenge </span>
 
                                 </li>
                                 <li class="mb-1">
                                     <span class="text-primary me-2"><i
-                                                class="far fa-check-circle text-success"></i></span>
+                                            class="far fa-check-circle text-success"></i></span>
                                     <span class="fw-bold text-dark">Global
                                         Profit Sharing </span>
                                 </li>
                                 <li class="mb-1">
                                     <span class="text-primary me-2"><i
-                                                class="far fa-check-circle text-success"></i></span>
+                                            class="far fa-check-circle text-success"></i></span>
                                     <span class="fw-bold text-dark">Unique Affiliate Store </span>
                                 </li>
                             </ul>
@@ -558,235 +555,235 @@
 
     <!-- Instructor -->
     <hr class="my-0">
-    <div class="pb-16 pt-10"
-         style=" background-size: cover;background: rgba(221, 218, 255, 0.3) linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%) top center;">
-        <!-- Container -->
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12 col-12">
+    {{--    <div class="pb-16 pt-10"--}}
+    {{--         style=" background-size: cover;background: rgba(221, 218, 255, 0.3) linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%) top center;">--}}
+    {{--        <!-- Container -->--}}
+    {{--        <div class="container">--}}
+    {{--            <div class="row">--}}
+    {{--                <div class="col-xl-12 col-12">--}}
 
-                    <div class="col-lg-12 col-md-12 col-12 mb-lg-3 mb-sm-0 ms-7">
-                        <!-- Heading -->
-                        <h2 class="display-4 fw-bold">Questionnaire</h2>
-                    </div>
-                    <!-- Row -->
-                    <div class="container mt-sm-0">
-                        <div id="questionnaire" class="bs-stepper">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-12">
-                                        <!-- Stepper Button -->
+    {{--                    <div class="col-lg-12 col-md-12 col-12 mb-lg-3 mb-sm-0 ms-7">--}}
+    {{--                        <!-- Heading -->--}}
+    {{--                        <h2 class="display-4 fw-bold">Questionnaire</h2>--}}
+    {{--                    </div>--}}
+    {{--                    <!-- Row -->--}}
+    {{--                    <div class="container mt-sm-0">--}}
+    {{--                        <div id="questionnaire" class="bs-stepper">--}}
+    {{--                            <div class="container">--}}
+    {{--                                <div class="row">--}}
+    {{--                                    <div class="col-lg-12 col-md-12 col-12">--}}
+    {{--                                        <!-- Stepper Button -->--}}
 
-                                        <div class="d-none d-lg-block">
-                                            <div class="bs-stepper-header shadow-sm" role="tablist">
-                                                <div class="step" data-target="#test-l-1">
-                                                    <button type="button" class="step-trigger" role="tab"
-                                                            id="qnairetrigger1" aria-controls="test-l-1">
-                                                        <span class="bs-stepper-circle">1</span>
-                                                        {{-- <span class="bs-stepper-label">Course Type</span> --}}
-                                                    </button>
-                                                </div>
-                                                <div class="bs-stepper-line"></div>
-                                                <div class="step" data-target="#test-l-2">
-                                                    <button type="button" class="step-trigger" role="tab"
-                                                            id="qnairetrigger2" aria-controls="test-l-2">
-                                                        <span class="bs-stepper-circle">2</span>
-                                                        {{-- <span class="bs-stepper-label">Course Category</span> --}}
-                                                    </button>
-                                                </div>
-                                                <div class="bs-stepper-line"></div>
-                                                <div class="step" data-target="#test-l-3">
-                                                    <button type="button" class="step-trigger" role="tab"
-                                                            id="qnairetrigger3" aria-controls="test-l-3">
-                                                        <span class="bs-stepper-circle">3 </span>
-                                                        {{-- <span class="bs-stepper-label">Course Title</span> --}}
-                                                    </button>
-                                                </div>
-                                                <div class="bs-stepper-line"></div>
-                                                <div class="step" data-target="#test-l-4">
-                                                    <button type="button" class="step-trigger" role="tab"
-                                                            id="qnairetrigger4" aria-controls="test-l-4">
-                                                        <span class="bs-stepper-circle">4 </span>
-                                                        {{-- <span class="bs-stepper-label">Course Title</span> --}}
-                                                    </button>
-                                                </div>
-                                                <div class="bs-stepper-line"></div>
-                                                <div class="step" data-target="#test-l-5">
-                                                    <button type="button" class="step-trigger" role="tab"
-                                                            id="qnairetrigger5" aria-controls="test-l-5">
-                                                        <span class="bs-stepper-circle">5 </span>
-                                                        {{-- <span class="bs-stepper-label">Course Title</span> --}}
-                                                    </button>
-                                                </div>
-                                                <div class="bs-stepper-line"></div>
-                                                <div class="step" data-target="#test-l-6">
-                                                    <button type="button" class="step-trigger" role="tab"
-                                                            id="qnairetrigger6" aria-controls="test-l-6">
-                                                        <span class="bs-stepper-circle">6 </span>
-                                                        {{-- <span class="bs-stepper-label">Course Title</span> --}}
-                                                    </button>
-                                                </div>
-                                                <div class="bs-stepper-line"></div>
-                                                <div class="step" data-target="#test-l-7">
-                                                    <button type="button" class="step-trigger" role="tab"
-                                                            id="qnairetrigger7" aria-controls="test-l-7">
-                                                        <span class="bs-stepper-circle">7 </span>
-                                                        {{-- <span class="bs-stepper-label">Course Title</span> --}}
-                                                    </button>
-                                                </div>
-                                                <div class="bs-stepper-line"></div>
-                                                <div class="step" data-target="#test-l-8">
-                                                    <button type="button" class="step-trigger" role="tab"
-                                                            id="qnairetrigger8" aria-controls="test-l-8">
-                                                        <span class="bs-stepper-circle">8 </span>
-                                                        {{-- <span class="bs-stepper-label">Course Title</span> --}}
-                                                    </button>
-                                                </div>
-                                                <div class="bs-stepper-line"></div>
-                                                <div class="step" data-target="#test-l-9">
-                                                    <button type="button" class="step-trigger" role="tab"
-                                                            id="qnairetrigger9" aria-controls="test-l-9">
-                                                        <span class="bs-stepper-circle">9 </span>
-                                                        {{-- <span class="bs-stepper-label">Course Title</span> --}}
-                                                    </button>
-                                                </div>
-                                                <div class="bs-stepper-line"></div>
-                                                <div class="step" data-target="#test-l-10">
-                                                    <button type="button" class="step-trigger" role="tab"
-                                                            id="qnairetrigger10" aria-controls="test-l-10">
-                                                        <span class="bs-stepper-circle">10 </span>
-                                                        {{-- <span class="bs-stepper-label">Course Title</span> --}}
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
+    {{--                                        <div class="d-none d-lg-block">--}}
+    {{--                                            <div class="bs-stepper-header shadow-sm" role="tablist">--}}
+    {{--                                                <div class="step" data-target="#test-l-1">--}}
+    {{--                                                    <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                            id="qnairetrigger1" aria-controls="test-l-1">--}}
+    {{--                                                        <span class="bs-stepper-circle">1</span>--}}
+    {{--                                                        --}}{{-- <span class="bs-stepper-label">Course Type</span> --}}
+    {{--                                                    </button>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div class="bs-stepper-line"></div>--}}
+    {{--                                                <div class="step" data-target="#test-l-2">--}}
+    {{--                                                    <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                            id="qnairetrigger2" aria-controls="test-l-2">--}}
+    {{--                                                        <span class="bs-stepper-circle">2</span>--}}
+    {{--                                                        --}}{{-- <span class="bs-stepper-label">Course Category</span> --}}
+    {{--                                                    </button>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div class="bs-stepper-line"></div>--}}
+    {{--                                                <div class="step" data-target="#test-l-3">--}}
+    {{--                                                    <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                            id="qnairetrigger3" aria-controls="test-l-3">--}}
+    {{--                                                        <span class="bs-stepper-circle">3 </span>--}}
+    {{--                                                        --}}{{-- <span class="bs-stepper-label">Course Title</span> --}}
+    {{--                                                    </button>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div class="bs-stepper-line"></div>--}}
+    {{--                                                <div class="step" data-target="#test-l-4">--}}
+    {{--                                                    <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                            id="qnairetrigger4" aria-controls="test-l-4">--}}
+    {{--                                                        <span class="bs-stepper-circle">4 </span>--}}
+    {{--                                                        --}}{{-- <span class="bs-stepper-label">Course Title</span> --}}
+    {{--                                                    </button>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div class="bs-stepper-line"></div>--}}
+    {{--                                                <div class="step" data-target="#test-l-5">--}}
+    {{--                                                    <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                            id="qnairetrigger5" aria-controls="test-l-5">--}}
+    {{--                                                        <span class="bs-stepper-circle">5 </span>--}}
+    {{--                                                        --}}{{-- <span class="bs-stepper-label">Course Title</span> --}}
+    {{--                                                    </button>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div class="bs-stepper-line"></div>--}}
+    {{--                                                <div class="step" data-target="#test-l-6">--}}
+    {{--                                                    <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                            id="qnairetrigger6" aria-controls="test-l-6">--}}
+    {{--                                                        <span class="bs-stepper-circle">6 </span>--}}
+    {{--                                                        --}}{{-- <span class="bs-stepper-label">Course Title</span> --}}
+    {{--                                                    </button>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div class="bs-stepper-line"></div>--}}
+    {{--                                                <div class="step" data-target="#test-l-7">--}}
+    {{--                                                    <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                            id="qnairetrigger7" aria-controls="test-l-7">--}}
+    {{--                                                        <span class="bs-stepper-circle">7 </span>--}}
+    {{--                                                        --}}{{-- <span class="bs-stepper-label">Course Title</span> --}}
+    {{--                                                    </button>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div class="bs-stepper-line"></div>--}}
+    {{--                                                <div class="step" data-target="#test-l-8">--}}
+    {{--                                                    <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                            id="qnairetrigger8" aria-controls="test-l-8">--}}
+    {{--                                                        <span class="bs-stepper-circle">8 </span>--}}
+    {{--                                                        --}}{{-- <span class="bs-stepper-label">Course Title</span> --}}
+    {{--                                                    </button>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div class="bs-stepper-line"></div>--}}
+    {{--                                                <div class="step" data-target="#test-l-9">--}}
+    {{--                                                    <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                            id="qnairetrigger9" aria-controls="test-l-9">--}}
+    {{--                                                        <span class="bs-stepper-circle">9 </span>--}}
+    {{--                                                        --}}{{-- <span class="bs-stepper-label">Course Title</span> --}}
+    {{--                                                    </button>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div class="bs-stepper-line"></div>--}}
+    {{--                                                <div class="step" data-target="#test-l-10">--}}
+    {{--                                                    <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                            id="qnairetrigger10" aria-controls="test-l-10">--}}
+    {{--                                                        <span class="bs-stepper-circle">10 </span>--}}
+    {{--                                                        --}}{{-- <span class="bs-stepper-label">Course Title</span> --}}
+    {{--                                                    </button>--}}
+    {{--                                                </div>--}}
+    {{--                                            </div>--}}
+    {{--                                        </div>--}}
 
-                                        <div class="d-flex justify-content-center opacity-50 loader my-10">
-                                            <div class="spinner-border text-bold fs-3 text-black-100"
-                                                 style="width: 5rem; height: 5rem;" role="status">
-                                                <span class="visually-hidden">Loading...</span>
-                                            </div>
-                                        </div>
-                                        <div class="bs-stepper-content mt-5">
-                                            <form onSubmit="return false" id="queform">
-                                                <div id="test-l-1" role="tabpanel" class="bs-stepper-pane fade"
-                                                     aria-labelledby="qnairetrigger1">
-                                                    <div class="d-flex justify-content-end">
-                                                        <button class="btn btn-primary fibtn">
-                                                            Next
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div id="test-l-2" role="tabpanel" class="bs-stepper-pane fade"
-                                                     aria-labelledby="qnairetrigger2">
-                                                    <div class="d-flex justify-content-between">
-                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">
-                                                            Previous
-                                                        </button>
-                                                        <button class="btn btn-primary" onclick="qnaire.next()">
-                                                            Next
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div id="test-l-3" role="tabpanel" class="bs-stepper-pane fade"
-                                                     aria-labelledby="qnairetrigger3">
-                                                    <div class="d-flex justify-content-between">
-                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">
-                                                            Previous
-                                                        </button>
-                                                        <button class="btn btn-primary" onclick="qnaire.next()">
-                                                            Next
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div id="test-l-4" role="tabpanel" class="bs-stepper-pane fade"
-                                                     aria-labelledby="qnairetrigger4">
-                                                    <div class="d-flex justify-content-between">
-                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">
-                                                            Previous
-                                                        </button>
-                                                        <button class="btn btn-primary" onclick="qnaire.next()">
-                                                            Next
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div id="test-l-5" role="tabpanel" class="bs-stepper-pane fade"
-                                                     aria-labelledby="qnairetrigger5">
-                                                    <div class="d-flex justify-content-between">
-                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">
-                                                            Previous
-                                                        </button>
-                                                        <button class="btn btn-primary" onclick="qnaire.next()">
-                                                            Next
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div id="test-l-6" role="tabpanel" class="bs-stepper-pane fade"
-                                                     aria-labelledby="qnairetrigger6">
-                                                    <div class="d-flex justify-content-between">
-                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">
-                                                            Previous
-                                                        </button>
-                                                        <button class="btn btn-primary" onclick="qnaire.next()">
-                                                            Next
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div id="test-l-7" role="tabpanel" class="bs-stepper-pane fade"
-                                                     aria-labelledby="qnairetrigger7">
-                                                    <div class="d-flex justify-content-between">
-                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">
-                                                            Previous
-                                                        </button>
-                                                        <button class="btn btn-primary" onclick="qnaire.next()">
-                                                            Next
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div id="test-l-8" role="tabpanel" class="bs-stepper-pane fade"
-                                                     aria-labelledby="qnairetrigger8">
-                                                    <div class="d-flex justify-content-between">
-                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">
-                                                            Previous
-                                                        </button>
-                                                        <button class="btn btn-primary" onclick="qnaire.next()">
-                                                            Next
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div id="test-l-9" role="tabpanel" class="bs-stepper-pane fade"
-                                                     aria-labelledby="qnairetrigger9">
-                                                    <div class="d-flex justify-content-between">
-                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">
-                                                            Previous
-                                                        </button>
-                                                        <button class="btn btn-primary" onclick="qnaire.next()">
-                                                            Next
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div id="test-l-10" role="tabpanel" class="bs-stepper-pane fade"
-                                                     aria-labelledby="qnairetrigger10">
-                                                    <div class="d-flex justify-content-between">
-                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">
-                                                            Previous
-                                                        </button>
-                                                        <button class="btn btn-primary" id="lastbtn">
-                                                            Submit
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--                                        <div class="d-flex justify-content-center opacity-50 loader my-10">--}}
+    {{--                                            <div class="spinner-border text-bold fs-3 text-black-100"--}}
+    {{--                                                 style="width: 5rem; height: 5rem;" role="status">--}}
+    {{--                                                <span class="visually-hidden">Loading...</span>--}}
+    {{--                                            </div>--}}
+    {{--                                        </div>--}}
+    {{--                                        <div class="bs-stepper-content mt-5">--}}
+    {{--                                            <form onSubmit="return false" id="queform">--}}
+    {{--                                                <div id="test-l-1" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger1">--}}
+    {{--                                                    <div class="d-flex justify-content-end">--}}
+    {{--                                                        <button class="btn btn-primary fibtn">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-2" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger2">--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-3" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger3">--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-4" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger4">--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-5" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger5">--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-6" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger6">--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-7" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger7">--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-8" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger8">--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-9" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger9">--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-10" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger10">--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" id="lastbtn">--}}
+    {{--                                                            Submit--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                            </form>--}}
+    {{--                                        </div>--}}
+    {{--                                    </div>--}}
+    {{--                                </div>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
 
     <!-- Become an Instructor -->
 
@@ -809,17 +806,16 @@
     </div>
 
     <script>
-        let qnaire;
-
-
-        $("#questionnaire").length && document.addEventListener("DOMContentLoaded", (function () {
-            qnaire = new Stepper(document.querySelector("#questionnaire"), {
-                linear: 1,
-                animation: !0
-            });
-        }));
+        // let qnaire;
+        //
+        //
+        // $("#questionnaire").length && document.addEventListener("DOMContentLoaded", (function () {
+        //     qnaire = new Stepper(document.querySelector("#questionnaire"), {
+        //         linear: 1,
+        //         animation: !0
+        //     });
+        // }));
         $(function () {
-            getQuestions();
             $(".gsbtn").click(function (e) {
                 e.preventDefault();
                 $('html, body').animate({
@@ -837,100 +833,100 @@
             });
 
 
-            $("#lastbtn").click(function (e) {
-                e.preventDefault();
-                but = $(this);
-                questions = pushToArray();
-                console.log(questions);
-                answers = [];
-                questions.forEach(que => {
-                    ansd = que.answer;
-                    answers.push(ansd);
-                });
-                if (answers.includes("")) {
-                    salat("Answer all questions before submitting", 1);
-                    return;
-                }
-                $.ajax({
-                    url: api_url + "admin/submit_questionnaire",
-                    method: "POST",
-                    data: {
-                        type: 1,
-                        questions: questions,
-                    },
-                    beforeSend: () => {
-                        btn(but, '', 'before');
-                    }
-                }).done(res => {
-                    btn(but, 'Submit', 'after');
-                    salat(res.message);
-                    $("#queform")[0].reset();
-                    qnaire.to(1);
-                }).fail(res => {
-                    console.log(res);
-                    concatError(res.responseJSON);
-                    btn(but, 'Submit', 'after');
-                })
-            })
-
-            function getQuestions() {
-                $.ajax({
-                    url: api_url + 'fetch_affiliate_questions',
-                    beforeSend: () => {
-                        $(".fibtn").parent().addClass('d-none');
-                    }
-                }).done(res => {
-                    $(".loader").remove();
-                    $("#test-l-1").prepend(questionnaire(res.data[0].question, res.data[0].a, res.data[0].b, res.data[0].c, res.data[0].d, res.data[0].id));
-                    $("#test-l-2").prepend(questionnaire(res.data[1].question, res.data[1].a, res.data[1].b, res.data[1].c, res.data[1].d, res.data[1].id));
-                    $("#test-l-3").prepend(questionnaire(res.data[2].question, res.data[2].a, res.data[2].b, res.data[2].c, res.data[2].d, res.data[2].id));
-                    $("#test-l-4").prepend(questionnaire(res.data[3].question, res.data[3].a, res.data[3].b, res.data[3].c, res.data[3].d, res.data[3].id));
-                    $("#test-l-5").prepend(questionnaire(res.data[4].question, res.data[4].a, res.data[4].b, res.data[4].c, res.data[4].d, res.data[4].id));
-                    $("#test-l-6").prepend(questionnaire(res.data[5].question, res.data[5].a, res.data[5].b, res.data[5].c, res.data[5].d, res.data[5].id));
-                    $("#test-l-7").prepend(questionnaire(res.data[6].question, res.data[6].a, res.data[6].b, res.data[6].c, res.data[6].d, res.data[6].id));
-                    $("#test-l-8").prepend(questionnaire(res.data[7].question, res.data[7].a, res.data[7].b, res.data[7].c, res.data[7].d, res.data[7].id));
-                    $("#test-l-9").prepend(questionnaire(res.data[8].question, res.data[8].a, res.data[8].b, res.data[8].c, res.data[8].d, res.data[8].id));
-                    $("#test-l-10").prepend(questionnaire(res.data[9].question, res.data[9].a, res.data[9].b, res.data[9].c, res.data[9].d, res.data[9].id));
-                    $(".fibtn").parent().removeClass('d-none');
-                }).fail(res => {
-                    console.log(res);
-                    concatError(res.responseJSON);
-                });
-            }
-
-            function questionnaire(que, a, b, c, d, id) {
-                let question = "";
-                question += `<div class="card mb-3 question border-0" data-id="${id}">
-        <div class="card-header border-bottom px-4 py-3">
-            <h3 class="mb-0">${que}</h3>
-        </div>
-        <div class="card-body">
-            <div class="vstack gap-2">
-                <!-- Feed ques item -->
-                <div>
-                    <input type="radio" class="btn-check a" name="ques${id}" id="${id}option1">
-                    <label class="btn btn-outline-primary w-100 opt-a" for="${id}option1">${a}</label>
-                </div>
-                <!-- Feed ques item -->
-                <div>
-                    <input type="radio" class="btn-check b" name="ques${id}" id="${id}option2">
-                    <label class="btn btn-outline-primary w-100 opt-b" for="${id}option2">${b}</label>
-                </div>
-                <!-- Feed ques item -->
-                <div>
-                    <input type="radio" class="btn-check c" name="ques${id}" id="${id}option3">
-                    <label class="btn btn-outline-primary w-100 opt-c" for="${id}option3">${c}</label>
-                </div>
-                <!-- Feed ques item -->
-                <div>
-                    <input type="radio" class="btn-check d" name="ques${id}" id="${id}option4">
-                    <label class="btn btn-outline-primary w-100 opt-d" for="${id}option4">${d}</label>
-                </div>
-            </div>
-        </div>
-    </div>`;
-                return question;
-            }
+            //         $("#lastbtn").click(function (e) {
+            //             e.preventDefault();
+            //             but = $(this);
+            //             questions = pushToArray();
+            //             console.log(questions);
+            //             answers = [];
+            //             questions.forEach(que => {
+            //                 ansd = que.answer;
+            //                 answers.push(ansd);
+            //             });
+            //             if (answers.includes("")) {
+            //                 salat("Answer all questions before submitting", 1);
+            //                 return;
+            //             }
+            //             $.ajax({
+            //                 url: api_url + "admin/submit_questionnaire",
+            //                 method: "POST",
+            //                 data: {
+            //                     type: 1,
+            //                     questions: questions,
+            //                 },
+            //                 beforeSend: () => {
+            //                     btn(but, '', 'before');
+            //                 }
+            //             }).done(res => {
+            //                 btn(but, 'Submit', 'after');
+            //                 salat(res.message);
+            //                 $("#queform")[0].reset();
+            //                 qnaire.to(1);
+            //             }).fail(res => {
+            //                 console.log(res);
+            //                 concatError(res.responseJSON);
+            //                 btn(but, 'Submit', 'after');
+            //             })
+            //         })
+            //
+            //         function getQuestions() {
+            //             $.ajax({
+            //                 url: api_url + 'fetch_affiliate_questions',
+            //                 beforeSend: () => {
+            //                     $(".fibtn").parent().addClass('d-none');
+            //                 }
+            //             }).done(res => {
+            //                 $(".loader").remove();
+            //                 $("#test-l-1").prepend(questionnaire(res.data[0].question, res.data[0].a, res.data[0].b, res.data[0].c, res.data[0].d, res.data[0].id));
+            //                 $("#test-l-2").prepend(questionnaire(res.data[1].question, res.data[1].a, res.data[1].b, res.data[1].c, res.data[1].d, res.data[1].id));
+            //                 $("#test-l-3").prepend(questionnaire(res.data[2].question, res.data[2].a, res.data[2].b, res.data[2].c, res.data[2].d, res.data[2].id));
+            //                 $("#test-l-4").prepend(questionnaire(res.data[3].question, res.data[3].a, res.data[3].b, res.data[3].c, res.data[3].d, res.data[3].id));
+            //                 $("#test-l-5").prepend(questionnaire(res.data[4].question, res.data[4].a, res.data[4].b, res.data[4].c, res.data[4].d, res.data[4].id));
+            //                 $("#test-l-6").prepend(questionnaire(res.data[5].question, res.data[5].a, res.data[5].b, res.data[5].c, res.data[5].d, res.data[5].id));
+            //                 $("#test-l-7").prepend(questionnaire(res.data[6].question, res.data[6].a, res.data[6].b, res.data[6].c, res.data[6].d, res.data[6].id));
+            //                 $("#test-l-8").prepend(questionnaire(res.data[7].question, res.data[7].a, res.data[7].b, res.data[7].c, res.data[7].d, res.data[7].id));
+            //                 $("#test-l-9").prepend(questionnaire(res.data[8].question, res.data[8].a, res.data[8].b, res.data[8].c, res.data[8].d, res.data[8].id));
+            //                 $("#test-l-10").prepend(questionnaire(res.data[9].question, res.data[9].a, res.data[9].b, res.data[9].c, res.data[9].d, res.data[9].id));
+            //                 $(".fibtn").parent().removeClass('d-none');
+            //             }).fail(res => {
+            //                 console.log(res);
+            //                 concatError(res.responseJSON);
+            //             });
+            //         }
+            //
+            //         function questionnaire(que, a, b, c, d, id) {
+            //             let question = "";
+            //             question += `<div class="card mb-3 question border-0" data-id="${id}">
+            //     <div class="card-header border-bottom px-4 py-3">
+            //         <h3 class="mb-0">${que}</h3>
+            //     </div>
+            //     <div class="card-body">
+            //         <div class="vstack gap-2">
+            //             <!-- Feed ques item -->
+            //             <div>
+            //                 <input type="radio" class="btn-check a" name="ques${id}" id="${id}option1">
+            //                 <label class="btn btn-outline-primary w-100 opt-a" for="${id}option1">${a}</label>
+            //             </div>
+            //             <!-- Feed ques item -->
+            //             <div>
+            //                 <input type="radio" class="btn-check b" name="ques${id}" id="${id}option2">
+            //                 <label class="btn btn-outline-primary w-100 opt-b" for="${id}option2">${b}</label>
+            //             </div>
+            //             <!-- Feed ques item -->
+            //             <div>
+            //                 <input type="radio" class="btn-check c" name="ques${id}" id="${id}option3">
+            //                 <label class="btn btn-outline-primary w-100 opt-c" for="${id}option3">${c}</label>
+            //             </div>
+            //             <!-- Feed ques item -->
+            //             <div>
+            //                 <input type="radio" class="btn-check d" name="ques${id}" id="${id}option4">
+            //                 <label class="btn btn-outline-primary w-100 opt-d" for="${id}option4">${d}</label>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </div>`;
+            //             return question;
+            //         }
 
             function pushToArray() {
                 que_card = $(".question");

@@ -1,7 +1,5 @@
 @extends('layouts.instructor')
-@section('page_title')
-    Course | {{ $slug }}
-@endsection
+@section('page_title',"Course || $slug")
 
 @section('page_content')
     <div class="pt-5 pb-5">

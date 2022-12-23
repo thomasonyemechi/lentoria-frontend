@@ -1,5 +1,5 @@
 @extends('layouts.instructor')
-@section('page_title', 'Become Instructor')
+@section('page_title', 'Lentoria || Become Instructor')
 
 @section('page_content')
     <style>

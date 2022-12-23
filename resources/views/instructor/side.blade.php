@@ -8,15 +8,16 @@
     <div class="collapse navbar-collapse" id="sidenav">
         <div class="navbar-nav flex-column">
             <span class="navbar-header">Course Basic Info</span>
+            <ul class="list-unstyled ms-n2 mb-4">
             <li class="nav-item @if (request()->routeIs('instructor.course')) active @endif">
                 <a class="nav-link" href="/instructor/course/{{ $slug }}?type={{app('request')->input('type')}}"><i
                             class="fe fe-home nav-icon"></i>Course Information</a>
             </li>
+            </ul>
             <ul class="list-unstyled ms-n2 mb-4">
                 <li class="nav-item @if (request()->routeIs('instructor.learners')) active @endif">
                     <a class="nav-link" href="/instructor/goals/{{ $slug }}?type={{app('request')->input('type')}}"><i
-                                class="fe fe-users nav-icon"></i>Intended
-                        learners</a>
+                                class="fe fe-users nav-icon"></i>Intended learners</a>
                 </li>
             </ul>
             <span class="navbar-header">Create your content</span>

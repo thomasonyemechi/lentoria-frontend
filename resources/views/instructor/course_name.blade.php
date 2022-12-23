@@ -1,7 +1,7 @@
 <div class="row align-items-center">
     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
         <div class="d-flex align-items-center justify-content-between bg-white px-4 pt-2 pb-4 rounded shadow-sm">
-            <h3 class="mb-0 mt-3 course-title ">{{explode('_',$slug)[1]}}</h3>
+            <h3 class="mb-0 mt-3 course-title">{{explode('_',$slug)[1]}}</h3>
             <a href="/instructor/courses" class="mt-3">Back To Courses</a>
         </div>
     </div>
@@ -9,7 +9,8 @@
 <input type="hidden" name="course_info_29" id="course_info_29">
 <input type="hidden" id="ctype"/>
 <script>
-    $(function() {
+    let course_type;
+    $(function () {
         function getCategory(cat_id) {
             selCategory = $('#selcategory')
             selCategory.html(`<option value="" disabled selected>Select a category</option>`)
@@ -57,7 +58,9 @@
                 $('.course-title').html(res.data.title);
                 $("#ctype").val(res.data.course_type);
                 dat = res.data
-                if(dat.published == 0) {$('.publish-div').removeClass('d-none')}
+                if (dat.published == 0) {
+                    $('.publish-div').removeClass('d-none')
+                }
                 let published = dat.published;
                 sessionStorage.setItem('published', published);
                 try {
@@ -69,12 +72,14 @@
                     $('#course_id').val(dat.id);
                     $("#shortlink").val(dat.link);
                     description.setData(dat.description ?? '');
-                    $(`#selcourse_type option[value="${dat.course_type}"]`).prop("selected", true);
+                    // $(`#selcourse_type option[value="${dat.course_type}"]`).prop("selected", true);
+                    course_type = dat.course_type;
                     $(`#course_level option[value="${dat.level}"]`).prop("selected", true);
                     $(".custom-file-container__image-preview").css("background-image", `url(${imageUrl(dat.image)}),url(../../assets/images/image.jpeg)`)
                     getCategory(dat.category_id);
                     setTopic2(dat.category_id, dat.topic_id);
-                } catch(err) {}
+                } catch (err) {
+                }
                 ////////pricing
                 $('.course_price').val(res.data.price)
                 $('input[name="course_update_id"]').val(res.data.id)
@@ -85,7 +90,8 @@
                     welmess.setData(dat.welcome_message ?? '');
                     cermess.setData(dat.certification_message ?? '');
                     $('#mycourse_id').val(dat.id);
-                } catch(err) {}
+                } catch (err) {
+                }
                 $("button").removeAttr('disabled')
                 ///section
                 $('#course_id').val(dat.id)

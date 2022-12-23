@@ -6,19 +6,9 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\VimeoController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::post('/session_login_infomation', [Controller::class, 'sessionLoginInfomation']);
-Route::get('/', function() {
+Route::get('/', function () {
     return view('index');
 });
 
@@ -31,7 +21,7 @@ Route::get('/indexpagefile', [JsonFileController::class, 'indexPageJsonFile']);
 Route::get('/cats_and_subcats_file', [JsonFileController::class, 'categoriesNdSubscategoriesJsonFile']);
 Route::get('/cats_file', [JsonFileController::class, 'categoriesJsonFile']);
 
-Route::get('/demo', function() {
+Route::get('/demo', function () {
     return view('instructor.demo');
 });
 
@@ -48,9 +38,8 @@ Route::view('checkout/affiliate_activation/{id}/{package_id}',
 Route::view('checkout_success/course', 'checkout_success')->name('checkout_success.course');
 Route::view('checkout_success/activation', 'checkout_success')->name('checkout_success.activation');
 Route::view('terms', 'terms')->name('terms');
-Route::view('student/', 'student.index')->name('student.index');
 Route::view('privacy', 'privacy')->name('privacy');
-Route::prefix('affiliate')->as('affiliate.')->group(function() {
+Route::middleware(['auth2'])->prefix('affiliate')->as('affiliate.')->group(function () {
     Route::view('active-users', 'affiliate.activeusers')->name('active-users');
     Route::view('compensation', 'affiliate.compensation')->name('compensation');
     Route::view('dashboard', 'affiliate.dashboard')->name('dashboard');
@@ -64,54 +53,52 @@ Route::prefix('affiliate')->as('affiliate.')->group(function() {
     Route::view('inactive-users', 'affiliate.inactiveusers')->name('inactive-users');
 });
 
+Route::prefix('my-courses')->as('my-courses.')->middleware(['auth2'])->group(function () {
+    Route::view('learning', 'student.index')->name('learning');
+    Route::view('/{slug}', 'student.classroom')->name('classroom');
+});
 
-Route::group(['prefix' => 'instructor', 'as' => 'instructor.', 'middleware' => ['auth2', 'instructor']],
-    function() {
-        Route::get('/dashboard', function() {
-            return view('instructor.index');
-        })->name('dashboard');
-        Route::view('/courses', 'instructor.courses')->name('courses');
-        Route::view('/add_course', 'instructor.add_course')->name('add_course');
-        Route::view('/course/{slug}', 'instructor.course')->name('course');
-        Route::view('/course_message/{slug}', 'instructor.course_message')->name('course_message');
-        Route::view('/goals/{slug}', 'instructor.learners')->name('learners');
-        Route::view('/pricing/{slug}', 'instructor.pricing')->name('pricing');
-        Route::view('/curriculum/{slug}', 'instructor.curriculum')->name('curriculum');
-        Route::view('/faq/{slug}', 'instructor.faq')->name('faq');
-        Route::view('/profile', 'instructor.instructor_profile')->name('instructor_profile');
-        Route::view('/course_review/{slug}', 'instructor.course_review')->name('course_review');
-        Route::post('cke_upload', [UploadController::class, 'upload_image_cke'])->name('ckeditor.upload');
-        Route::view('/classroom/{slug}', 'instructor.classroom')->name('classroom');
-        Route::post('upload_video', [VimeoController::class, 'uploadVideo']);
-        Route::post('delete_video', [VimeoController::class, 'deleteVideo']);
-        Route::post('get_oembed', [VimeoController::class, 'getOembed2']);
-        Route::post('get_vimeo_status', [VimeoController::class, 'getTranscodingStatus']);
-    });
+Route::prefix('instructor')->as('instructor.')->middleware(['auth2', 'instructor'])->group(function () {
+    Route::view('/dashboard', 'instructor.index')->name('dashboard');
+    Route::view('/courses', 'instructor.courses')->name('courses');
+    Route::view('/add_course', 'instructor.add_course')->name('add_course');
+    Route::view('/course/{slug}', 'instructor.course')->name('course');
+    Route::view('/course_message/{slug}', 'instructor.course_message')->name('course_message');
+    Route::view('/goals/{slug}', 'instructor.learners')->name('learners');
+    Route::view('/pricing/{slug}', 'instructor.pricing')->name('pricing');
+    Route::view('/curriculum/{slug}', 'instructor.curriculum')->name('curriculum');
+    Route::view('/faq/{slug}', 'instructor.faq')->name('faq');
+    Route::view('/profile', 'instructor.instructor_profile')->name('instructor_profile');
+    Route::view('/course_review/{slug}', 'instructor.course_review')->name('course_review');
+    Route::post('cke_upload', [UploadController::class, 'upload_image_cke'])->name('ckeditor.upload');
+    Route::view('/classroom/{slug}', 'instructor.classroom')->name('classroom');
+    Route::post('upload_video', [VimeoController::class, 'uploadVideo']);
+    Route::post('delete_video', [VimeoController::class, 'deleteVideo']);
+    Route::post('get_oembed', [VimeoController::class, 'getOembed2']);
+    Route::post('get_vimeo_status', [VimeoController::class, 'getTranscodingStatus']);
+});
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth2', 'admin']], function() {
-    Route::get('/dashboard', function() {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth2', 'admin']], function () {
+    Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
-    Route::get('/category', function() {
+    Route::get('/category', function () {
         return view('admin.course_category');
     });
-    Route::get('/topic', function() {
+    Route::get('/topic', function () {
         return view('admin.course_topics');
     });
 
-    Route::get('/course/{id}/{slug}', function($id, $slug) {
+    Route::get('/course/{id}/{slug}', function ($id, $slug) {
         $published = $_GET['published'];
-        if($published = 5) {
+        if ($published = 5) {
             return view('course_single');
         }
         return back()->with('error', 'You cannot access the page');
     });
-    Route::get('/course_review/{slug}', function($slug) {
+    Route::get('/course_review/{slug}', function ($slug) {
         $published = $_GET['published'] ?? 0;
-        if($published == 5) {
-            return view('instructor.course_review', compact('slug'));
-        }
-        return back()->with('error', 'You cannot access the page');
+        return $published == 5 ? view('instructor.course_review', compact('slug')) : back()->with('error', 'You cannot access the page');
     });
 
     Route::view('/courses', 'admin.all_courses');
@@ -120,7 +107,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth2', '
     Route::view('/purchase_history', 'admin.course_purchase_history');
 });
 
-Route::get('/logout', function() {
+Route::get('/logout', function () {
     session()->flush();
 
     return redirect('/')->with('success', 'You have been logged out');

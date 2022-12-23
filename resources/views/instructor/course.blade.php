@@ -1,7 +1,6 @@
 @extends('layouts.instructor')
-@section('page_title')
-    Course | {{ $slug }}
-@endsection
+@section('page_title',"Course | $slug")
+
 
 @section('page_content')
     <div class="pt-5 pb-5">
@@ -50,14 +49,14 @@
 
                                 <div class="row">
                                     <label class="form-label"><b>Basic Info</b></label>
-                                    <div class="mb-3 col-4">
+                                    <div class="mb-3 col-6">
                                         <select class="form-control form-selectbs4" name="language" id="course_language"
                                                 data-width="100%">
                                             <option value="english">English</option>
                                         </select>
                                     </div>
 
-                                    <div class="mb-3 col-4">
+                                    <div class="mb-3 col-6">
                                         <select class="form-control" name="level" id="course_level" data-width="100%">
                                             <option value="">Select level</option>
                                             <option value="1">Beginner</option>
@@ -66,24 +65,23 @@
                                         </select>
                                     </div>
 
-                                    <div class="mb-3 col-4">
-                                        <select class="form-control" id="selcourse_type">
-                                            <option value="">Select Course Type</option>
-                                            <option value="1">Virtual Live Training</option>
-                                            <option value="2">Recorded Course</option>
-                                        </select>
-                                    </div>
+                                    {{--                                    <div class="mb-3 col-4">--}}
+                                    {{--                                        <select class="form-control" id="selcourse_type">--}}
+                                    {{--                                            <option value="">Select Course Type</option>--}}
+
+                                    {{--                                        </select>--}}
+                                    {{--                                    </div>--}}
                                 </div>
 
-                                <div class="row justify-content-end">
+                                <div class="row">
 
-                                    <div class="mb-3 col-4">
+                                    <div class="mb-3 col-6">
                                         <select class="form-control" name="category_id" id="selcategory">
                                             <option value="">Select a category</option>
                                         </select>
                                     </div>
 
-                                    <div class="mb-3 col-4">
+                                    <div class="mb-3 col-6">
                                         <select class="form-control" name="topic_id" id="selsubcat">
                                             <option value="">Select a SubCategory</option>
                                         </select>
@@ -137,11 +135,13 @@
                     </div>
                     <div class="modal-body">
                         <form class="row text-start g-3" id="editLinkForm">
-                            <div class="col-md-12">
+                            <div class="col-md-12" x-data>
                                 <label for="twitter" class="form-label">Short Link</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="shortlink-addon">https://www.lentoria.com/</span>
-                                    <input type="text" class="form-control" name="shortlink" placeholder="Shortlink"
+                                    <input x-on:beforeinput="showVerifying()"
+                                           x-on:input.debounce.1000ms="validateShortlink($event.target.value)"
+                                           type="text" class="form-control" name="shortlink" placeholder="Shortlink"
                                            id="shortlink" aria-describedby="shortlink-addon">
                                 </div>
                                 <span class="text-sm d-none" id="valmess"></span>
@@ -161,38 +161,105 @@
         </div>
 
         <script>
-            $(document).ready(function() {
+            function showVerifying() {
+                const vermes = document.getElementById(`vermess`), valmes = document.getElementById(`valmess`);
+                vermes.classList.remove('d-none');
+                valmes.classList.add('d-none');
+                vermes.innerHTML = 'Verifying link...'
+            }
+
+            function validateShortlink(link) {
+                let valmess = $("#valmess");
+                let vermess = $("#vermess");
+                $.ajax({
+                    url: api_url + 'admin/vaildate_link',
+                    method: "POST",
+                    data: {
+                        link: link,
+                    },
+                    beforeSend: () => {
+                        $("#editLinkForm").find($("button[type='submit']")).attr('disabled', 'true');
+                    }
+                }).done(res => {
+                    vermess.addClass("d-none");
+                    if (res.status == true) {
+                        valmess.removeClass("d-none");
+                        if (valmess.hasClass("text-danger")) {
+                            valmess.removeClass("text-danger");
+                        }
+                        valmess.addClass("text-success");
+                        valmess.html(res.message);
+                        $("#editLinkForm").find($("button[type='submit']")).attr('disabled', false);
+                        setTimeout(() => {
+                            valmess.addClass("d-none");
+                        }, 10000)
+                    } else if (res.status == false) {
+                        valmess.removeClass("d-none");
+                        if (valmess.hasClass("text-success")) {
+                            valmess.removeClass("text-success");
+                        }
+                        valmess.addClass("text-danger");
+                        valmess.html(res.message);
+                        setTimeout(() => {
+                            valmess.addClass("d-none");
+                        }, 10000)
+                        $("#editLinkForm").find($("button[type='submit']")).attr('disabled', false);
+                    }
+                }).fail(res => {
+                    $("#editLinkForm").find($("button[type='submit']")).attr('disabled', false);
+                })
+            }
+
+            $(function () {
 
                 let subcategories;
                 const jsonfile = `{{asset('json_files/subcategories.json')}}`;
                 getLoadSubCategories();
 
+
+                // const interval = setInterval(() => {
+                //     if (course_type != undefined) {
+                //         clearInterval(interval);
+                //         fetchCourseTypes(course_type);
+                //     }
+                // }, 100)
+
                 function getLoadSubCategories() {
                     $.getJSON(jsonfile, res => subcategories = res);
                 }
 
-                $("#courseTitle").on("input", function(e) {
+                $("#courseTitle").on("input", function (e) {
                     e.preventDefault();
                     let length = $(this).val().length
                     let maxlength = 60;
                     return $('#count').html(maxlength - length);
                 })
 
-                $('#selcategory').on("change", function(e) {
+                $('#selcategory').on("change", function (e) {
                     e.preventDefault();
                     let cat = $(this).val();
-                    if(cat) {
+                    if (cat) {
                         let subcats = subcategories.data[cat];
                         let selectsub = $('#selsubcat');
                         selectsub.html('<option selected disabled>Select Course Topic</option>');
-                        if(subcats) {
+                        if (subcats) {
                             subcats.forEach(sub => selectsub.append(`<option value="${sub.id}">${sub.name}</option>`))
                         }
                     }
                 });
 
+                function fetchCourseTypes(c_type) {
+                    $.get(`${api_url}admin/fetch_types`).done(res => {
+                        res.message.forEach(type => {
+                            $("#selcourse_type").append(`<option value="${type.id}">${type.type}</option>`);
+                            $(`#selcourse_type option[value="${c_type}"]`).prop("selected", true);
+                        })
+                    }).fail(res => {
+                        concatError(res.responseJSON);
+                    })
+                }
 
-                $('#updateCourseForm').on('submit', function(e) {
+                $('#updateCourseForm').on('submit', function (e) {
                     e.preventDefault();
                     id = $('#course_id').val();
                     title = $('#courseTitle').val();
@@ -202,24 +269,24 @@
                     level = $('#course_level :selected').val();
                     category_id = $('#selcategory :selected').val();
                     topic_id = $('#selsubcat :selected').val();
-                    course_type = $('#selcourse_type :selected').val();
+                    // course_type = $('#selcourse_type :selected').val();
                     purpose = $('#purpose').val();
                     image = $('#course_image').get(0).files.length;
                     video = $('#promo_video').get(0).files.length;
                     let published = sessionStorage.getItem('published');
-                    if(published && published != 0) {
+                    if (published && published != 0) {
                         salat('This course has been submitted for review and cannot be edited', 1);
                         return;
                     }
-                    if(!title || !subtitle || !description || !language || !level || !category_id || !topic_id) {
+                    if (!title || !subtitle || !description || !language || !level || !category_id || !topic_id) {
                         salat('All Text Fields Required', 1);
                         return
                     }
                     let form_data = new FormData();
-                    if(image != 0) {
+                    if (image != 0) {
                         form_data.append('image', document.getElementById('course_image').files[0]);
                     }
-                    if(video != 0) {
+                    if (video != 0) {
                         form_data.append('video', document.getElementById('promo_video').files[0]);
                     }
 
@@ -231,7 +298,7 @@
                     form_data.append('level', level);
                     form_data.append('category_id', category_id);
                     form_data.append('topic_id', topic_id);
-                    form_data.append('course_type', course_type);
+                    // form_data.append('course_type', course_type);
 
                     $.ajax({
                         method: 'POST',
@@ -255,7 +322,7 @@
                 });
 
 
-                $("#editLinkForm").submit(function(e) {
+                $("#editLinkForm").submit(function (e) {
                     e.preventDefault();
                     link = $('#shortlink').val();
                     id = $('#course_id').val();
@@ -280,73 +347,6 @@
                         btn(bt, 'Submit', 'after');
                     })
                 })
-
-                function validateShortlink(link) {
-                    let valmess = $("#valmess");
-                    let vermess = $("#vermess");
-                    $.ajax({
-                        url: api_url + 'admin/vaildate_link',
-                        method: "POST",
-                        data: {
-                            link: link,
-                        },
-                        beforeSend: () => {
-                            $("#editLinkForm").find($("button[type='submit']")).attr('disabled', 'true');
-                            valmess.addClass("d-none");
-                            vermess.removeClass("d-none");
-                            vermess.html('Verifying link...');
-                        }
-                    }).done(res => {
-                        vermess.addClass("d-none");
-                        if(res.status == true) {
-                            valmess.removeClass("d-none");
-                            if(valmess.hasClass("text-danger")) {
-                                valmess.removeClass("text-danger");
-                            }
-                            valmess.addClass("text-success");
-                            valmess.html(res.message);
-                            $("#editLinkForm").find($("button[type='submit']")).attr('disabled', false);
-                        } else if(res.status == false) {
-                            valmess.removeClass("d-none");
-                            if(valmess.hasClass("text-success")) {
-                                valmess.removeClass("text-success");
-                            }
-                            valmess.addClass("text-danger");
-                            valmess.html(res.message);
-                            $("#editLinkForm").find($("button[type='submit']")).attr('disabled', false);
-                        }
-                        let messageTimeout = setTimeout(() => {
-                            valmess.addClass("d-none");
-                        }, 3000);
-
-                        if(valmess.hasClass("d-none")) {
-                            clearTimeout(messageTimeout);
-                        }
-                    }).fail(res => {
-                        console.log(res);
-                        $("#editLinkForm").find($("button[type='submit']")).attr('disabled', false);
-                    })
-                }
-
-                //setup before functions
-                let typingTimer; //timer identifier
-                let doneTypingInterval = 900;
-                let input = $('#shortlink');
-
-                //on keyup, start the countdown
-                input.on('keyup', function() {
-                    clearTimeout(typingTimer);
-                    typingTimer = setTimeout(doneTyping, doneTypingInterval);
-                });
-
-                //on keydown, clear the countdown
-                input.onkeydown = () => clearTimeout(typingTimer);
-
-                //"finished typing," do something
-                function doneTyping() {
-                    link = input.val();
-                    validateShortlink(link);
-                }
             })
         </script>
 @endsection

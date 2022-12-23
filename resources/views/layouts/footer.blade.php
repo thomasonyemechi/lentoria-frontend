@@ -1,8 +1,9 @@
 @php
     $routes = ['instructor/course_review/{slug}','instructor/classroom/{slug}'];
-    $route = Route::current()->uri();
+    $route = request()->route()->uri;
 @endphp
 @if(!in_array($route,$routes))
+
     <div class="footer">
         <div class="container">
             <div class="row align-items-center g-0 border-top py-2">
@@ -115,7 +116,7 @@
                     </div>
                 </form>
                 <div class="mt-3"><span class="fs-5">By Clicking Sign Up, you agree to our <a
-                                href="{{ route('terms') }}" target="_blank" class="fw-bold text-primary">Terms and Conditions</a></span>
+                            href="{{ route('terms') }}" target="_blank" class="fw-bold text-primary">Terms and Conditions</a></span>
                 </div>
 
             </div>
@@ -124,20 +125,20 @@
 </div>
 
 <script>
-    $(function() {
+    $(function () {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
-        $('.opensignup').on('click', function() {
+        $('.opensignup').on('click', function () {
             $('#login_modal').modal('hide');
             $('#signup_modal').modal('show');
         });
 
 
-        $('.openlogin').on('click', function() {
+        $('.openlogin').on('click', function () {
             $('#signup_modal').modal('hide');
             $('#login_modal').modal('show');
 
@@ -151,7 +152,7 @@
                     email: email,
                     password: password
                 },
-            }).done(function(res) {
+            }).done(function (res) {
                 console.log(res);
                 message = res.message;
                 $.ajax({
@@ -160,29 +161,29 @@
                     data: {
                         data: res
                     }
-                }).done(function(res) {
+                }).done(function (res) {
                     salat(message);
                     window.location.reload();
                 });
-            }).fail(function(res) {
+            }).fail(function (res) {
                 concatError(res.responseJSON);
             });
         }
 
 
-        $('#loginForm').on('submit', function(e) {
+        $('#loginForm').on('submit', function (e) {
             e.preventDefault();
             form = $(this);
             email = $(form).find('input[name="email"]').val();
             password = $(form).find('input[name="password"]').val();
             bt = $(form).find('button[type="submit"]');
 
-            if(!email || !password) {
+            if (!email || !password) {
                 salat('All fields are required', 1);
                 return;
             }
 
-            if(!email) {
+            if (!email) {
                 salat('Pls enter a valid email address', 1);
                 return;
             }
@@ -196,7 +197,7 @@
                 beforeSend: () => {
                     btn(bt, 'Sign In', 'before');
                 }
-            }).done(function(res) {
+            }).done(function (res) {
                 message = res.message;
                 instructor = res.data.instructor;
 
@@ -206,24 +207,24 @@
                     data: {
                         data: res
                     }
-                }).done(function(res) {
+                }).done(function (res) {
                     salat(message);
                     console.log(instructor);
-                    if(instructor) {
+                    if (instructor) {
                         location.href = '/instructor/dashboard'
                     }
 
                     location.reload();
                     $("#login_modal").modal('hide');
                 });
-            }).fail(function(res) {
+            }).fail(function (res) {
                 concatError(res.responseJSON);
                 btn(bt, 'Sign In', 'after');
             });
         });
 
 
-        $('#signUpForm').on('submit', function(e) {
+        $('#signUpForm').on('submit', function (e) {
             e.preventDefault();
             form = $(this);
             email = $(form).find('input[name="email"]').val();
@@ -233,11 +234,11 @@
             password = $(form).find('input[name="password"]').val();
             bt = $(form).find('button[type="submit"]');
 
-            if(!email || !password || !fname || !lname || !phone) {
+            if (!email || !password || !fname || !lname || !phone) {
                 salat('All fields are required', 1);
                 return;
             }
-            if(!email) {
+            if (!email) {
                 salat('Pls enter a valid email address', 1);
                 return;
             }
@@ -254,12 +255,12 @@
                 beforeSend: () => {
                     btn(bt, '', 'before');
                 }
-            }).done(function(res) {
+            }).done(function (res) {
                 console.log(res);
                 salat(res.message);
                 btn(bt, 'Sign Up', 'after');
                 loginAuto(email, password);
-            }).fail(function(res) {
+            }).fail(function (res) {
                 console.log(res);
                 concatError(res.responseJSON);
                 btn(bt, 'Sign Up', 'after');

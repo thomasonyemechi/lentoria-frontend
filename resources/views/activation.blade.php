@@ -1,5 +1,5 @@
 @extends('layouts.instructor')
-@section('page_title', 'Lentoria|Activation')
+@section('page_title', 'Lentoria || Activation')
 @section('page_content')
     <div class="py-lg-13 py-8 bg-primary">
         <div class="container">

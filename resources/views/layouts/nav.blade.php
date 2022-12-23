@@ -95,7 +95,7 @@
                                         </li>
                                     @endif
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{route('my-courses.learning')}}">
                                             My Learning
                                         </a>
                                     </li>
@@ -228,7 +228,7 @@
                                             </li>
                                         @endif
                                         <li>
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="{{route('my-courses.learning')}}">
                                                 My Learning
                                             </a>
                                         </li>
@@ -279,9 +279,10 @@
 @endif
 
 <script>
-    $(function() {
+    $(function () {
         let jsonfile = `{{asset('json_files/categories_and_subcategories.json')}}`
         getCats()
+
         function getCats() {
             $.getJSON(jsonfile).done(res => {
                 res.data.map(cats => {

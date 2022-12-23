@@ -53,7 +53,7 @@ class GetTopicsFromApi extends Command
             }
         } catch(Exception $exception) {
             Notification::route('mail', 'temmyk7@gmail.com')
-                        ->notify(new FetchTopicsToJsonFile("An Error Occured While Performing Cron Job: " . $exception->getMessage(), 1));
+                        ->notify(new FetchTopicsToJsonFile("An Error Occurred While Performing Cron Job: " . $exception->getMessage(), 1));
             info($exception->getMessage());
         }
 

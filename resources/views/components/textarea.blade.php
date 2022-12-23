@@ -34,16 +34,11 @@
         watchdog{{$id}}.on('error', handleError);
 
         function handleError(error) {
-            // console.error('Oops, something went wrong!');
-            // console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
-            // console.warn('Build id: fe94q0kie7jx-onhledi53v79');
             console.error(error);
         }
 
         watchdog{{$id}}.create(document.querySelector('#{{$id}}'), {
-            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
-                'blockQuote', '|', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor',
-                '|', 'undo', 'redo'
+            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor', '|', 'undo', 'redo'
             ],
             list: {
                 properties: {
@@ -122,8 +117,6 @@
 
         function handleError(error) {
             console.error('Oops, something went wrong!');
-            // console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
-            // console.warn('Build id: fe94q0kie7jx-onhledi53v79');
             console.error(error);
         }
 
@@ -160,27 +153,13 @@
         watchdog{{$id}}.on('error', handleError);
 
         function handleError(error) {
-            console.error('Oops, something went wrong!');
-            // console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
-            // console.warn('Build id: fe94q0kie7jx-onhledi53v79');
             console.error(error);
         }
 
         watchdog{{$id}}.create(document.querySelector('#{{$id}}'), {
             toolbar: {
                 items: [
-                    'exportPDF', 'exportWord', '|',
-                    'findAndReplace', 'selectAll', '|',
-                    'heading', '|',
-                    'bold', 'italic', 'strikethrough', 'underline',
-                    'removeFormat', '|',
-                    'bulletedList', 'numberedList', '|',
-                    'outdent', 'indent', '|',
-                    'undo', 'redo',
-                    '-',
-                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight', '|',
-                    'alignment', '|',
-                    'link', 'blockQuote', 'insertTable',
+                    'findAndReplace', 'selectAll', '|', 'heading', '|', 'bold', 'italic', 'strikethrough', 'underline', 'removeFormat', '|', 'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|', 'undo', 'redo', '-', 'fontSize', 'fontFamily', 'fontColor','fontBackgroundColor', 'highlight', '|','alignment', '|', 'link', 'blockQuote', 'insertTable',
                 ],
                 shouldNotGroupWhenFull: false
             },
@@ -318,8 +297,6 @@
 
         function handleError(error) {
             console.error('Oops, something went wrong!');
-            // console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
-            // console.warn('Build id: fe94q0kie7jx-onhledi53v79');
             console.error(error);
         }
 

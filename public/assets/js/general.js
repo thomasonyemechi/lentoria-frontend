@@ -1,11 +1,6 @@
-// api_url = 'http://api.lentoria.com/api/';
-// api_root = 'http://api.lentoria.com/';
-// image_url = 'http://api.lentoria.com/assets/uploads/';
-// video_url = "https://lentoria.site/watchvideo/";
-
-api_url = 'http://127.0.0.1:8000/api/';
-api_root = 'http://127.0.0.1:8000/';
-image_url = 'http://127.0.0.1:8000/assets/uploads/';
+api_url = 'http://lentoria-backend.test/api/';
+api_root = 'http://lentoria-backend.test/';
+image_url = 'http://lentoria-backend.test/assets/uploads/';
 video_url = "https://lentoria.site/watchvideo/";
 
 function validateEmail(email) {
@@ -143,53 +138,52 @@ const money = (num) => {
     return numb.format(num);
 };
 
-function checkLevel(level) {
-    if(level == 1) {
-        return 'Beginner';
-    } else if(level == 2) {
-        return 'Intermediate';
-    } else if(level == 3) {
-        return 'Advanced';
-    } else {
-        return 'Super';
-    }
+const naira = num => {
+    let numb = new Intl.NumberFormat('en-NG', {
+        style: 'currency',
+        currency: 'NGN'
+    });
+
+    return numb.format(num || 0);
 }
 
-function levelBar(level) {
-    if(level == 1) {
-        return `<rect x="3" y="8" width="2" height="6" rx="1" fill="#FFD700"></rect>
+const levels = {
+    1: "Beginner",
+    2: "Intermediate",
+    3: "Advanced"
+}
+
+const checkLevel = (level) => levels[level] || 'Super'
+
+
+const bars = {
+    1: `<rect x="3" y="8" width="2" height="6" rx="1" fill="#FFD700"></rect>
         <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9"></rect>
         <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9">
-        </rect>`;
-    } else if(level == 2) {
-        return `<rect x="3" y="8" width="2" height="6" rx="1" fill="#FFD700"></rect>
+        </rect>`,
+    2: `<rect x="3" y="8" width="2" height="6" rx="1" fill="#FFD700"></rect>
         <rect x="7" y="5" width="2" height="9" rx="1" fill="#FFD700"></rect>
         <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9">
-        </rect>`;
-    } else if(level == 3) {
-        return `<rect x="3" y="8" width="2" height="6" rx="1" fill="#FFD700"></rect>
+        </rect>`,
+    3: `<rect x="3" y="8" width="2" height="6" rx="1" fill="#FFD700"></rect>
         <rect x="7" y="5" width="2" height="9" rx="1" fill="#FFD700"></rect>
         <rect x="11" y="2" width="2" height="12" rx="1" fill="#FFD700">
-        </rect>`;
-    } else {
-        return `<rect x="3" y="8" width="2" height="6" rx="1" fill="#DBD8E9"></rect>
-        <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9"></rect>
-        <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9">
-        </rect>`;
-    }
+        </rect>`,
 }
 
-function courseStatus(status) {
-    let badge = "";
-    if(status == 0) {
-        badge += `<span class="badge bg-danger">Not Submitted</span>`
-    } else if(status == 5) {
-        badge += `<span class="badge bg-info">Pending</span>`
-    } else if(status == 1) {
-        badge += `<span class="badge bg-success">Published</span>`
-    }
-    return badge;
+const levelBar = (level) => bars[level] || `<rect x="3" y="8" width="2" height="6" rx="1" fill="#DBD8E9"></rect>
+        <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9"></rect>
+        <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9">
+        </rect>`
+
+
+const statuses = {
+    0: `<span class="badge bg-danger">Not Submitted</span>`,
+    5: `<span class="badge bg-info">Pending</span>`,
+    1: `<span class="badge bg-success">Published</span>`
 }
+
+const courseStatus = (status) => statuses[status] || "";
 
 function stripLower(str) {
     return str.toLowerCase().replace(/ /g, '');
@@ -220,7 +214,7 @@ let imageUrl = (image) => image_url + image;
 let videoUrl = (video) => video_url + video;
 
 function convertStoMs(seconds) {
-    if(seconds !== 0) {
+    if (seconds !== 0) {
         let minutes = ~~(seconds / 60);
         let extraSeconds = seconds % 60;
         return `${minutes}m${Math.trunc(extraSeconds)}s`
@@ -245,9 +239,7 @@ function percentage(num, percentage) {
     return ((percentage / 100) * num);
 }
 
-function allAreEmpty(array) {
-    return array.every(val => val === "");
-}
+const allAreEmpty = array => array.every(val => val === "");
 
 $.fn.multiply = function(numCopies) {
     var newElements = this.clone();
@@ -280,8 +272,21 @@ function getWithExpiry(key) {
     return item.value
 }
 
+function shareApi() {
+    const shareData = {
+        title: 'MDN',
+        text: 'Learn web development on MDN!',
+        url: 'https://developer.mozilla.org'
+    }
 
-function errorFetchingDataRefresh()
-{
-    return `An error occured while fetching your data <a href="">Refresh Page</a>`
+    const btn = document.querySelector('button');
+    const resultPara = document.querySelector('.result');
+    btn.addEventListener('click', async () => {
+        try {
+            await navigator.share(shareData);
+            resultPara.textContent = 'MDN shared successfully';
+        } catch (err) {
+            resultPara.textContent = `Error: ${err}`;
+        }
+    });
 }

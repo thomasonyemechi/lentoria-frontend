@@ -1,7 +1,5 @@
 @extends('layouts.instructor')
-@section('page_title')
-    Instructors Dashboard
-@endsection
+@section('page_title',"Instructors Dashboard")
 
 @section('page_content')
     <div class="pt-5 pb-5">
@@ -61,7 +59,6 @@
     <script>
         $(function () {
 
-            console.log(setSessionWithExpiry(1209600000));//2 weeks
             fetchCourses();
 
             function fetchCourses() {

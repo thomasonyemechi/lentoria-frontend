@@ -82,7 +82,7 @@
                                                 <label for="twitter" class="form-label">Twitter</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"
-                                                        id="twitter-addon">http://www.twitter.com/</span>
+                                                        id="twitter-addon">https://www.twitter.com/</span>
                                                     <input type="text" class="form-control" name="twitter"
                                                         placeholder="Username" id="twitter"
                                                         aria-describedby="twitter-addon3">
@@ -90,14 +90,14 @@
                                                 <label for="face" class="form-label">Facebook</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"
-                                                        id="facebook-addon">http://www.facebook.com/</span>
+                                                        id="facebook-addon">https://www.facebook.com/</span>
                                                     <input type="text" class="form-control" placeholder="Username"
                                                         id="face" name="face" />
                                                 </div>
                                                 <label for="linked" class="form-label">LinkedIn</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"
-                                                        id="linkedin-addon">http://www.linkedin.com/</span>
+                                                        id="linkedin-addon">https://www.linkedin.com/</span>
                                                     <input type="text" class="form-control" placeholder="Resource ID"
                                                         id="linked" name="linked" />
                                                 </div>
@@ -105,7 +105,7 @@
                                                 <label for="yout" class="form-label">Youtube</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"
-                                                        id="youtube-addon">http://www.youtube.com/</span>
+                                                        id="youtube-addon">https://www.youtube.com/</span>
                                                     <input type="text" class="form-control" placeholder="Username"
                                                         id="yout" name="you" />
                                                 </div>

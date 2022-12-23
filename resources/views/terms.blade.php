@@ -1,5 +1,5 @@
 @extends('layouts.instructor')
-@section('page_title','Terms and Conditions')
+@section('page_title','Lentoria || Terms and Conditions')
 @section('page_content')
     <div class="py-10">
         <div class="container">

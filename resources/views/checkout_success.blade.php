@@ -1,5 +1,5 @@
 @extends('layouts.instructor')
-@section('page_title', 'Course | Checkout Success')
+@section('page_title', 'Lentoria || Checkout Success')
 @section('page_content')
     <script>
         if (window.location.pathname == "/checkout_success/course") {
@@ -144,7 +144,7 @@
             if (window.location.pathname == "/checkout_success/course") {
                 course_info = JSON.parse(sessionStorage.getItem("courseinfo"));
                 console.log(course_info);
-                $("#prodprice").html(`Price: &#8358;${money(course_info.course_price)}`);
+                $("#prodprice").html(`Price: ${naira(course_info.course_price)}`);
                 $("#ctitle").html(`${course_info.course_title}`);
                 $("#prodtype").html(`Transaction Type: ${course_info.transaction_type}`);
                 $("#cdesc").html(`${course_info.course_description}`);
@@ -155,7 +155,7 @@
                 })
             } else if (window.location.pathname == "/checkout_success/activation") {
                 package_info = JSON.parse(sessionStorage.getItem("packageinfo"));
-                $("#prodprice").html(`Price: &#8358;${money(package_info.price)}`);
+                $("#prodprice").html(`Price: ${naira(package_info.price)}`);
                 $("#prodtype").html(`Transaction Type: ${package_info.tansaction_type}`);
                 $("#pname").html(package_info.product_type);
                 $("#pdesc").html(package_info.product_desc);
