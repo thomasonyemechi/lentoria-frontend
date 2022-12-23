@@ -227,7 +227,7 @@
             </div>
             <div class="col-lg-6 m-0 p-0">
 
-                <img src="{{asset('assets/images/learn.jpg')}}" width="100%" alt=""/>
+                <img src="{{asset('assets/images/new_img/d0c31f3543.jpg')}}" width="100%" alt=""/>
 
             </div>
         </div>
@@ -322,7 +322,8 @@
                                     <div class="item">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <img src="{{asset('assets/images/learn.jpg')}}" class="d-block w-100"
+                                                <img src="{{asset('assets/images/new_img/626c62d596.jpg')}}"
+                                                     class="d-block w-100"
                                                      alt="...">
                                             </div>
                                             <div class="col-lg-6">

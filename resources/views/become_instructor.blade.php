@@ -220,7 +220,7 @@
             </div>
             <div class="col-lg-6 m-0 p-0">
 
-                <img src="{{asset('assets/images/learn.jpg')}}" width="100%" alt=""/>
+                <img src="{{asset('assets/images/new_img/74a7b5fb87.jpg')}}" width="100%" alt=""/>
 
             </div>
         </div>
@@ -228,12 +228,12 @@
         <div class="row bg-warning">
             <div class="col-lg-6 m-0 p-0">
 
-                <img src="{{asset('assets/images/coding.jpg')}}" width="100%" alt=""/>
+                <img src="{{asset('assets/images/new_img/09374a55c3.jpg')}}" width="100%" alt=""/>
 
             </div>
             <div class="col-lg-6 text-center m-0 p-8">
                 <h1 class="text-white display-4">Leverage Corporate Marketing & Sales</h1>
-                <h2 class="lead text-white">You dont have to bother about generating traffic or marketing your
+                <h2 class="lead text-white">You don't have to bother about generating traffic or marketing your
                     course, Lentoria will help you generate the leads to enable you focus your attention on creating
                     your course. Our sales network will go all out to get thousands of students for your course</h2>
             </div>
@@ -332,7 +332,8 @@
                                     <div class="item">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <img src="{{asset('assets/images/learn.jpg')}}" class="d-block w-100"
+                                                <img src="{{asset('assets/images/new_img/d4c30b6486.jpg')}}"
+                                                     class="d-block w-100"
                                                      alt="...">
                                             </div>
                                             <div class="col-lg-6">
@@ -473,7 +474,7 @@
                             <div class="mb-5">
                                 <h2 class="fw-bold">PREMIUM</h2>
                                 <p class="mb-0 ">Access to instructor success challenge,<span
-                                            class="text-dark fw-medium">
+                                        class="text-dark fw-medium">
                                         a Unique store, and to 3 paid courses.</span>
                                 </p>
                             </div>

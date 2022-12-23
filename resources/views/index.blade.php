@@ -172,7 +172,7 @@
         <div class="row bg-secondary">
             <div class="col-lg-6 m-0 p-0">
 
-                <img src="{{asset('assets/images/coding.jpg')}}" width="100%" alt="image"/>
+                <img src="{{asset('assets/images/new_img/01a169c4b3.jpg')}}" width="100%" alt="image"/>
 
             </div>
             <div class="col-lg-6 text-center m-0 p-8">
@@ -201,7 +201,7 @@
             </div>
             <div class="col-lg-6 m-0 p-0">
 
-                <img src="{{asset('assets/images/learn.jpg')}}" width="100%" alt="image"/>
+                <img src="{{asset('assets/images/new_img/cc0a53c7d7.jpg')}}" width="100%" alt="image"/>
 
             </div>
         </div>
@@ -228,7 +228,7 @@
             </div>
             <div class="col-lg-6 m-0 p-0">
 
-                <img src="{{asset('assets/images/learn.jpg')}}" width="100%" alt="image"/>
+                <img src="{{asset('assets/images/new_img/d0c31f3543.jpg')}}" width="100%" alt="image"/>
 
             </div>
         </div>
@@ -238,7 +238,7 @@
     <div class="pt-lg-12 pb-lg-3 pt-8 pb-6 mb-0">
         <div class="row bg-primary mb-0">
             <div class="col-lg-6 m-0 p-0 mb-0">
-                <img src="{{asset('assets/images/learn.jpg')}}" width="100%">
+                <img src="{{asset('assets/images/new_img/c86d94d6ed.jpg')}}" width="100%">
             </div>
             <div class="col-lg-6 text-center m-0 p-6">
                 <h1 class="text-white display-4">Earn Money Sharing What You Know</h1>
