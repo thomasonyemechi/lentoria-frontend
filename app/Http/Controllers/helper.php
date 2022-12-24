@@ -93,10 +93,9 @@ function getDeviceId()
     $device_id = Cookie::get('device_id');
     if (!$device_id) {
         $device_id = uniqid('len_', false).'_'.time();
-        Cookie::queue('device_id', $device_id, 720);
-    }else {
-        $device_id = Cookie::get('device_id');
+        Cookie::queue('device_id', $device_id, (525960 * 5));
     }
+    $device_id = Cookie::get('device_id');
     return $device_id;
 }
 
@@ -173,7 +172,7 @@ function getBrowser()
     }
 
     return array(
-        'userAgent' => $u_agent,
+        'user_agent' => $u_agent,
         'name'      => $bname,
         'version'   => $version,
         'platform'  => $platform,

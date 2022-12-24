@@ -39,7 +39,10 @@ class Controller extends BaseController
             Cookie::queue('ref_id', $ref, 720);
         }
         $ref = Cookie::get('ref_id');
-        $res = Http::asForm()->post(env('BACKEND') . 'api/get_course_from_link/'.$link.'/'.$ref, getBrowser() );
+        $referer = request()->headers->get('referer');
+        $data = getBrowser();
+        $data['referer'] = $referer;
+        $res = Http::asForm()->post(env('BACKEND') . 'api/get_course_from_link/'.$link.'/'.$ref, $data );
         $res = json_decode($res);
 
         if ($res->data) {

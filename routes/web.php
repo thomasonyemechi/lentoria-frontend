@@ -21,9 +21,7 @@ Route::post('/session_login_infomation', [Controller::class, 'sessionLoginInfoma
 Route::get('/', function() {
     return view('index');
 });
-
-Route::get('/about2', function () { return getDeviceId(); });
-
+// $_SERVER['HTTPS']
 
 Route::post('/addtosession', [Controller::class, 'updateInstructorSession']);
 
