@@ -1,7 +1,5 @@
 @extends('layouts.instructor')
-@section('page_title')
-    Instructor
-@endsection
+@section('page_title',"Lentoria || Instructor")
 
 @section('page_content')
     <!-- Bg -->

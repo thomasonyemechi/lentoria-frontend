@@ -1,7 +1,6 @@
 @extends('layouts.instructor')
-@section('page_title')
-    Course | {{ $slug }}
-@endsection
+@section('page_title',"Course | $slug")
+
 @section('page_content')
     <div class="pt-5 pb-5">
         <div class="container">
@@ -327,31 +326,14 @@
                         <input type="hidden" name="lecture_id"/>
                         <div class="col-md-12 mb-3">
                             <label for="lang">Select a language</label>
-                            <select name="lang" id="lang" class="form-control" required>
-                                <option value="" selected disabled>...Select a language</option>
-                                <option value="css">CSS</option>
-                                <option value="html">HTML</option>
-                                <option value="js">JavaScript</option>
-                                <option value="aspnet">ASP.NET</option>
-                                <option value="c">C</option>
-                                <option value="csharp">C#</option>
-                                <option value="cpp">C++</option>
-                                <option value="django">Django</option>
-                                <option value="dart">Dart</option>
-                                <option value="git">Git</option>
-                                <option value="java">Java</option>
-                                <option value="lisp">Lisp</option>
-                                <option value="Markdown">Markdown</option>
-                                <option value="matlab">MATLAB</option>
-                                <option value="mongodb">MongoDB</option>
-                                <option value="php">PHP</option>
-                                <option value="py">Python</option>
-                                <option value="r">R</option>
-                                <option value="razor">Razor C#</option>
-                                <option value="jsx">React JSX</option>
-                                <option value="jsx">Ruby</option>
-                                <option value="ts">TypeScript</option>
-                            </select>
+                            <div id="select2" x-data>
+                                <select name="lang" id="lang" class="form-control" required>
+                                    <option value="" selected disabled>...Select a language</option>
+                                    <template x-for="(language,index) in languages" :key="index">
+                                        <option :value="language.value" x-html="language.html"></option>
+                                    </template>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-md-12">
                             <textarea id="codearea" name="codearea" class="form-control border-2" rows="3"></textarea>
@@ -372,37 +354,42 @@
         </div>
     </div>
     <script>
-        $(document).ready(function() {
+        const languages = [
+            {value: "css", html: "CSS"}, {value: "html", html: "HTML"}, {value: "js", html: "Javascript"},
+            {value: "aspnet", html: "ASP.NET"}, {value: "c", html: "C"}, {value: "csharp", html: "C#"},
+            {value: "cpp", html: "C++"}, {value: "django", html: "Django"}, {value: "dart", html: "Dart"},
+            {value: "git", html: "Git"}, {value: "java", html: "Java"}, {value: "lisp", html: "Lisp"},
+            {value: "Markdown", html: "Markdown"}, {value: "matlab", html: "MATLAB"},
+            {value: "mongodb", html: "MongoDB"}, {value: "php", html: "PHP"},
+            {value: "py", html: "Python"}, {value: "r", html: "R"}, {value: "razor", html: "Razor C#"},
+            {value: "jsx", html: "Ruby"}, {value: "ts", html: "Typescript"}
+        ]
+    </script>
+    <script>
+        $(function () {
 
             let interval = setInterval(() => {
                 cid = $("#course_id").val();
                 type = $("#ctype").val();
 
-                if(cid != "" && type != "") {
+                if (cid != "" && type != "") {
                     clearInterval(interval);
                     getAllSections(cid, type)
                 }
             }, 200);
 
             function contentType(type) {
-                but = "";
-                if(type == 2) {
-                    but +=
-                        `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal">Add Video Content +</a> `
-                } else if(type == 1) {
-                    but +=
-                        `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal">Add Video Content +</a>&nbsp;&nbsp;`
-                    but +=
-                        `<a href="javascript:void(0)" class="btn btn-secondary btn-sm textmodal2" data-bs-target="#addTextModal2" data-bs-toggle="modal">Add Text Content +</a>&nbsp;&nbsp;`
-                    but +=
-                        `<a href="javascript:void(0)" class="btn btn-secondary btn-sm imgmodal" data-bs-target="#addImageModal" data-bs-toggle="modal">Add Image Content +</a>&nbsp;&nbsp;`
-                    but +=
-                        `<a href="javascript:void(0)" class="btn btn-secondary btn-sm codemodal" data-bs-target="#addCodeModal" data-bs-toggle="modal">Add Code +</a> `
-                } else if(type == 3) {
-                    but +=
-                        `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addTextModal" class="btn btn-secondary btn-sm textmodal">Add Text Content +</a>`
+
+                const buttons = {
+                    1: `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal my-1">Add Video Content +</a>&nbsp;&nbsp;
+                        <a href="javascript:void(0)" class="btn btn-secondary btn-sm textmodal2 my-1" data-bs-target="#addTextModal2" data-bs-toggle="modal">Add Text Content +</a>&nbsp;&nbsp;
+                        <a href="javascript:void(0)" class="btn btn-secondary btn-sm imgmodal my-1" data-bs-target="#addImageModal" data-bs-toggle="modal">Add Image Content +</a>&nbsp;&nbsp;
+                        <a href="javascript:void(0)" class="btn btn-secondary btn-sm codemodal my-1" data-bs-target="#addCodeModal" data-bs-toggle="modal">Add Code +</a>`,
+                    2: `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal my-1">Add Video Content +</a>`,
+                    3: `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addTextModal" class="btn btn-secondary btn-sm textmodal my-1">Add Text Content +</a>`,
                 }
-                return but;
+                const button = (ty) => buttons[ty] || "";
+                return button(type);
             }
 
             window.URL = window.URL || window.webkitURL;
@@ -414,10 +401,10 @@
                 let video = document.createElement('video');
                 video.preload = 'metadata';
 
-                video.onloadedmetadata = function() {
+                video.onloadedmetadata = function () {
                     window.URL.revokeObjectURL(video.src);
                     var duration = video.duration;
-                    if(duration > 654) {
+                    if (duration > 654) {
                         $("#file_upload").fileinput('clear')
                         salat("The video is longer is longer than 10mins and cannot be uploaded", 1);
                     } else {
@@ -433,7 +420,7 @@
                 lecture_id = $("#lecu_id").val();
                 duration = $("input#video_length").val();
                 let published = sessionStorage.getItem('published');
-                if(published && published != 0) {
+                if (published && published != 0) {
                     salat('This course has been submitted for review and cannot be edited', 1);
                     return;
                 }
@@ -454,7 +441,7 @@
 
             function updateMainContent2(lecture_id, content, bt) {
                 let published = sessionStorage.getItem('published');
-                if(published && published != 0) {
+                if (published && published != 0) {
                     salat('This course has been submitted for review and cannot be edited', 1);
                     return;
                 }
@@ -484,7 +471,7 @@
 
             function updateTextContent(lecture_id, content, bt) {
                 let published = sessionStorage.getItem('published');
-                if(published && published != 0) {
+                if (published && published != 0) {
                     salat('This course has been submitted for review and cannot be edited', 1);
                     return;
                 }
@@ -514,7 +501,7 @@
 
             function updateCodeContent(lecture_id, code, lang, bt) {
                 let published = sessionStorage.getItem('published');
-                if(published && published != 0) {
+                if (published && published != 0) {
                     salat('This course has been submitted for review and cannot be edited', 1);
                     return;
                 }
@@ -542,7 +529,7 @@
                 })
             }
 
-            $("#addCodeForm").submit(function(e) {
+            $("#addCodeForm").submit(function (e) {
                 e.preventDefault();
                 but = $(this).find($('button[type="submit"]'));
                 lecture_id = $(this).find($('input[name="lecture_id"]')).val();
@@ -552,7 +539,7 @@
             });
 
 
-            $(document).on('click', '.textmodal', function(e) {
+            $(document).on('click', '.textmodal', function (e) {
                 e.preventDefault();
                 grandparent2 = $(this).parent().parent().parent();
                 lect_id = grandparent2.find($("input.lec_id")).val();
@@ -561,23 +548,24 @@
                 textcontent.setData(main_con);
             })
 
-            $(document).on('click', '.textmodal2', function(e) {
+            $(document).on('click', '.textmodal2', function (e) {
                 e.preventDefault();
                 grandparent2 = $(this).parent().parent().parent();
                 lect_id = grandparent2.find($("input.lec_id")).val();
                 main_con = grandparent2.find($("div.tc")).html();
+                console.log(grandparent2.find($("div")));
                 $("#addTextForm2").find($('input[name="lecture_id"]')).val(lect_id);
                 textcontent2.setData(main_con);
             })
 
-            $(document).on('click', '.imgmodal', function(e) {
+            $(document).on('click', '.imgmodal', function (e) {
                 e.preventDefault();
                 grandparent2 = $(this).parent().parent().parent();
                 lect_id = grandparent2.find($("input.lec_id")).val();
                 $("#image_info").find($('input[name="lecture_id"]')).val(lect_id);
             })
 
-            $(document).on('click', '.codemodal', function(e) {
+            $(document).on('click', '.codemodal', function (e) {
                 e.preventDefault();
                 grandparent3 = $(this).parent().parent().parent();
                 lect_id = grandparent3.find($("input.lec_id")).val();
@@ -585,42 +573,43 @@
             })
 
             function mainContentField(type, content, text) {
-                field = ""
-                if(type == 3) {
-                    field += `<div class="mc" hidden>${content}</div>`
-                } else if(type == 2) {
-                    field += `<div class="tc" hidden>${text}</div>`
+                let fields = {
+                    1: `<div class="tc" hidden>${text}</div>`,
+                    2: `<div class="mc" hidden>${content}</div>`,
+                    3: `<div class="mc" hidden>${content}</div>`,
                 }
-                return field;
+
+                const field = (ty) => fields[ty] || '';
+                return field(type);
             }
 
-            $("#addTextForm").submit(function(e) {
+            $("#addTextForm").submit(function (e) {
                 e.preventDefault();
                 lecture_id = $(this).find($('input[name="lecture_id"]')).val();
                 content = textcontent.getData();
                 bt = $(this).find($("button[type='submit']"));
-                if(!content) {
+                if (!content) {
                     salat("Text field is required", 1);
                     return;
                 }
                 updateMainContent2(lecture_id, content, bt);
             })
 
-            $("#addTextForm2").submit(function(e) {
+            $("#addTextForm2").submit(function (e) {
                 e.preventDefault();
                 lecture_id = $(this).find($('input[name="lecture_id"]')).val();
                 content = textcontent2.getData();
                 bt = $(this).find($("button[type='submit']"));
-                if(!content) {
+                if (!content) {
                     salat("Text field is required", 1);
                     return;
                 }
                 updateTextContent(lecture_id, content, bt);
             })
 
-            $("#file_upload").on('filepreupload', function(event, data, previewId, index, jqXHR) {
+            $("#file_upload").on('filepreupload', function (event, data, previewId, index, jqXHR) {
                 let published = sessionStorage.getItem('published');
-                if(published && published != 0) {
+                if (published && published != 0) {
                     return {
                         message: 'course submitted for review no more uploads allowed',
                         data: {
@@ -631,7 +620,7 @@
                 }
             });
             $("#file_upload").fileinput({
-                uploadUrl: "https://vi.beelsacademy.com/api/video",
+                uploadUrl: "https://lentoria.site/api/video",
                 allowedFileExtensions: [
                     'mp4',
                     'ogg'
@@ -647,26 +636,26 @@
                     showUpload: false,
                 },
                 mergeAjaxCallbacks: false,
-                uploadExtraData: function(previewId, index) {
+                uploadExtraData: function (previewId, index) {
                     return {
                         title: $("#lecu_title").val(),
                         lecture_id: $("#lecu_id").val(),
                         duration: $("input#video_length").val(),
                     };
                 },
-            }).on('fileuploaded', function(event, data) {
-                var form     = data.form,
-                    files    = data.files,
-                    extra    = data.extra,
+            }).on('fileuploaded', function (event, data) {
+                var form = data.form,
+                    files = data.files,
+                    extra = data.extra,
                     response = data.response,
-                    reader   = data.reader;
+                    reader = data.reader;
                 updateMainContent(response.url);
                 $("#addVideoModal").modal("hide");
                 $("#file_upload").fileinput('clear');
             });
-            $("#image_upload").on('filepreupload', function(event, data, previewId, index, jqXHR) {
+            $("#image_upload").on('filepreupload', function (event, data, previewId, index, jqXHR) {
                 let published = sessionStorage.getItem('published');
-                if(published && published != 0) {
+                if (published && published != 0) {
                     return {
                         message: 'course submitted for review no more uploads allowed',
                         data: {
@@ -688,37 +677,36 @@
 
                 uploadAsync: true,
                 mergeAjaxCallbacks: true,
-                uploadExtraData: function(previewId, index) {
+                uploadExtraData: function (previewId, index) {
                     lecture_id = $("#image_info").find($('input[name="lecture_id"]')).val()
                     return {
                         lecture_id: lecture_id,
                     };
                 },
-            }).on('fileuploaded', function(event, data) {
-                var form     = data.form,
-                    files    = data.files,
-                    extra    = data.extra,
+            }).on('fileuploaded', function (event, data) {
+                var form = data.form,
+                    files = data.files,
+                    extra = data.extra,
                     response = data.response,
-                    reader   = data.reader;
+                    reader = data.reader;
                 $("#addImageModal").modal("hide");
                 salat(response.message);
                 $("#image_upload").fileinput('clear');
             });
-            ;
 
-            $('#addsec1').click(function(e) {
+            $('#addsec1').click(function (e) {
                 e.preventDefault();
                 card = $(document).find($('#addseccard2'))
-                if(!card.hasClass('d-none')) {
+                if (!card.hasClass('d-none')) {
                     card.addClass('d-none');
                     card.find($('form'))[0].reset();
                 }
                 $('#addseccard').removeClass('d-none');
             });
-            $('#addsec2').click(function(e) {
+            $('#addsec2').click(function (e) {
                 e.preventDefault();
                 card = $(document).find($('#addseccard'))
-                if(!card.hasClass('d-none')) {
+                if (!card.hasClass('d-none')) {
                     card.addClass('d-none');
                     card.find($('form'))[0].reset();
                 }
@@ -744,7 +732,7 @@
                     },
                 }).done(res => {
                     console.log(res);
-                    if(res.data.length == 0) {
+                    if (res.data.length == 0) {
                         cardbody.html(`<div class="bg-light-secondary rounded p-2 mb-4 dummy">
                         <div class="d-inline-block me-3"><p class="text-capitalize fw-bold text-dark fs-4">Section 1:</p></div>
                             <div class="d-inline-block me-3">
@@ -781,7 +769,6 @@
                     res.data.map(sec => {
                         lectures = ''
                         sec.lectures.forEach(lec => {
-
                             lectures += `
                         <div class="list-group-item rounded px-3 mb-1" id="${stripLower(lec.title + lec.id)}">
                             <div class="d-flex align-items-center justify-content-between lec_details">
@@ -837,10 +824,10 @@
                 })
             }
 
-            $(document).on('click', '.alt_section', function(e) {
+            $(document).on('click', '.alt_section', function (e) {
                 e.preventDefault();
                 card = $(document).find($('#addseccard2'))
-                if(!card.hasClass('d-none')) {
+                if (!card.hasClass('d-none')) {
                     card.addClass('d-none');
                     card.find($('form'))[0].reset();
                 }
@@ -849,13 +836,13 @@
 
 
             form = $("div.addseccard").find($('form'));
-            form.submit(function(e) {
+            form.submit(function (e) {
                 e.preventDefault();
                 title = $(this).find('input[name="title"]').val();
                 gain = $(this).find('input[name="purpose"]').val();
                 course_id = $('#course_id').val();
                 bt = $('form').find('button[type="submit"]');
-                if(!title || !gain) {
+                if (!title || !gain) {
                     salat('All Fields Required', 1);
                     return;
                 }
@@ -877,10 +864,11 @@
                     console.log(res);
                     salat(res.message);
                     btn(bt, 'Add Section', 'after');
-                    if(dummy) {
+                    if (dummy) {
                         dummy.remove();
                     }
-                    cardbody.append(`<div class="bg-light-secondary rounded p-2 mb-4 section">
+                    cardbody.append(`
+                        <div class="bg-light-secondary rounded p-2 mb-4 section">
                             <div class="d-inline-block me-3"><p class="text-capitalize fw-bold text-dark fs-4">Section ${++i}:</p></div>
                             <div class="d-inline-block me-3">
                             <input type="hidden" name="section_id" value="${res.id}" />
@@ -895,9 +883,8 @@
                                 </div>
                             <div><button href="#" class="btn btn-outline-primary btn-sm mt-3 addlec" data-bs-toggle="modal"
                                 data-bs-target="#addLectureModal">Add Lecture +</button></div>
-
                         </div>`)
-                    $('form').each(function() {
+                    $('form').each(function () {
                         this.reset()
                     });
                     $('.addseccard').addClass('d-none');
@@ -910,7 +897,7 @@
 
             });
             $('.closecard').each((i, obj) => {
-                $(obj).find($('a')).on('click', function(e) {
+                $(obj).find($('a')).on('click', function (e) {
                     e.preventDefault();
                     $(this).closest($('.addseccard')).addClass('d-none');
                     $(this).closest($('.addseccard')).find('form')[0].reset()
@@ -918,10 +905,10 @@
             });
 
 
-            $(document).on('click', '.section', function(e) {
+            $(document).on('click', '.section', function (e) {
                 e.preventDefault();
 
-                if($(event.target).hasClass('sec_edit')) {
+                if ($(e.target).hasClass('sec_edit')) {
                     section = $(this);
                     title = section.find($('.sec_title')).html();
                     gain = section.find($('input[name="gain"]')).val();
@@ -939,7 +926,7 @@
 
 
             form = $('#editSectionModal').find($('form'));
-            form.submit(function(e) {
+            form.submit(function (e) {
                 e.preventDefault();
                 title = $(this).find($('input[name="title"]')).val();
                 id = $(this).find($('input[name="section_id"]')).val();
@@ -947,7 +934,7 @@
                 course_id = $('#course_id').val();
                 bt = $(this).find($('button[type="submit"]'));
 
-                if(!title || !gain) {
+                if (!title || !gain) {
                     salat('All Fields Required', 1);
                     return;
                 }
@@ -978,9 +965,9 @@
             })
 
 
-            $(document).on('click', '.section', function(e) {
+            $(document).on('click', '.section', function (e) {
                 e.preventDefault();
-                if($(event.target).hasClass('addlec')) {
+                if ($(event.target).hasClass('addlec')) {
                     section = $(this);
                     section_id = section.find($('input[name="section_id"]')).val();
                     form = $('#addLectureModal').find($('form'))
@@ -988,7 +975,7 @@
                 }
 
             });
-            $('#addLectureModal').find($('form')).submit(function(e) {
+            $('#addLectureModal').find($('form')).submit(function (e) {
                 e.preventDefault();
                 title = $(this).find($('input[name="title"]')).val();
                 section_id = $(this).find($('input[name="section_id"]')).val();
@@ -996,7 +983,7 @@
                 bt = $(this).find($('button[type="submit"]'));
                 type = $("#ctype").val();
 
-                if(!title || !description) {
+                if (!title || !description) {
                     salat('All Fields Required', 1);
                     return;
                 }
@@ -1042,13 +1029,13 @@
                                 ${contentType(type)}
                                 </div>
                             </div>
-                            </div>
+                        </div>
                         `)
                     $('#addLectureModal').modal('toggle')
                     form[0].reset();
                     try {
                         c_desc.setData('')
-                    } catch(error) {
+                    } catch (error) {
                         console.error(error);
                     }
                 }).fail(res => {
@@ -1059,7 +1046,7 @@
                 })
             })
 
-            $(document).on('click', '.edit_lec', function(e) {
+            $(document).on('click', '.edit_lec', function (e) {
                 e.preventDefault();
                 parent = $(this).closest($("div.lec_details"));
 
@@ -1077,7 +1064,7 @@
 
             })
 
-            $("#editLectureForm").submit(function(e) {
+            $("#editLectureForm").submit(function (e) {
                 e.preventDefault();
                 form = $(this);
                 title = form.find($('input[name="title"]')).val();
@@ -1115,7 +1102,7 @@
 
             });
 
-            $(document).on('click', '.vidmodal', function(e) {
+            $(document).on('click', '.vidmodal', function (e) {
                 e.preventDefault();
                 grandparent = $(this).parent().parent().parent();
                 title = grandparent.find($("span.lec_tit")).html();

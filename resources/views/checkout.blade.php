@@ -457,7 +457,7 @@
                     $('#ctit').html(res.data.title);
                     $('#cdesc').html(res.data.subtitle);
                     $('#c-price').val(`${res.data.price}`);
-                    $('#prodprice').html(`Price: &#8358; ${money(res.data.price)}`);
+                    $('#prodprice').html(`Price: ${naira(res.data.price)}`);
                     $("button").removeAttr("disabled");
                 }).fail(function(res) {
                     console.log(res);
@@ -473,7 +473,7 @@
                         url: api_url + `admin/balance/${live_id}`,
                     }).done(res => {
                         $("input#hidbal").val(res.balance);
-                        $("#bal").html(`NGN ${money(res.balance)}`);
+                        $("#bal").html(`${naira(res.balance)}`);
                     }).fail(res => {
                         console.log(res);
                         concatError(res.responseJSON);

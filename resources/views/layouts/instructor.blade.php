@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('page_title')</title>
+    <script src="{{asset('assets/alpine.js/alpine.js')}}" defer></script>
     <link rel="icon" href="{{ asset('assets/images/logo2.png') }}"/>
     <link href="{{ asset('assets/fonts/feather/feather.css') }}" rel="stylesheet"/>
     <link href="{{asset('assets/libs/videojs/videojs.css')}}" rel="stylesheet"/>

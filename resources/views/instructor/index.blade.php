@@ -6,19 +6,16 @@
 @section('page_content')
     <style>
 
-        /* Let's get this party started */
         .scroller::-webkit-scrollbar {
             width: 1px;
         }
 
-        /* Track */
         .scroller::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
             -webkit-border-radius: 10px;
             border-radius: 10px;
         }
 
-        /* Handle */
         .scroller::-webkit-scrollbar-thumb {
             -webkit-border-radius: 10px;
             border-radius: 10px;
@@ -44,7 +41,7 @@
                                 <div class="p-4">
                                     <span class="fs-6 text-uppercase fw-semi-bold">Balance</span>
                                     <h2 class="mt-4 fw-bold mb-1 d-flex align-items-center h1 lh-1">
-                                        &#8358 <span class="bal">0</span>
+                                         <span class="bal">&#8358;0.00</span>
                                     </h2>
                                     <span class="d-flex justify-content-between align-items-center">
                                         <span>Earning this month</span>
@@ -307,14 +304,14 @@
         </div>
     </div>
     <script>
-        $("#questionnaire").length && document.addEventListener("DOMContentLoaded", (function() {
+        $("#questionnaire").length && document.addEventListener("DOMContentLoaded", (function () {
             qnaire = new Stepper(document.querySelector("#questionnaire"), {
                 linear: 1,
                 animation: !0
             })
         }));
 
-        $(function() {
+        $(function () {
             getQuestions();
             getBalance();
 
@@ -324,7 +321,8 @@
                 $.ajax({
                     url: api_url + `admin/balance/${live_id}`,
                 }).done(res => {
-                    $(".bal").html(`${money(res.balance)}`);
+                    console.log(res);
+                    $(".bal").html(`${naira(res.balance)}`);
                 }).fail(res => {
                     console.log(res);
                     concatError(res.responseJSON);
@@ -400,7 +398,7 @@
                 return question;
             }
 
-            $("#lastbtn").click(function(e) {
+            $("#lastbtn").click(function (e) {
                 e.preventDefault();
                 but = $(this);
                 questions = pushToArray();
@@ -409,7 +407,7 @@
                     ansd = que.answer;
                     answers.push(ansd);
                 });
-                if(answers.includes("")) {
+                if (answers.includes("")) {
                     salat("Answer all questions before submitting", 1);
                     return;
                 }
@@ -451,7 +449,7 @@
                 optionB = $(que).find($('.opt-b')).html();
                 optionC = $(que).find($('.opt-c')).html();
                 optionD = $(que).find($('.opt-d')).html();
-                if(opt.length > 0) {
+                if (opt.length > 0) {
                     opt = opt.attr('class').split(' ')[1];
                 } else {
                     opt = '';

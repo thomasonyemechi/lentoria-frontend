@@ -31,18 +31,18 @@
                     <div class="offset-lg-1 col-lg-10 col-md-12 col-12">
                         <!-- Stepper Button -->
                         <div class="bs-stepper-header shadow-sm" role="tablist">
-                            <div class="step" data-target="#test-l-1">
-                                <button type="button" class="step-trigger" role="tab" id="courseFormtrigger1"
-                                        aria-controls="test-l-1">
-                                    <span class="bs-stepper-circle">1</span>
-                                    <span class="bs-stepper-label">Course Type</span>
-                                </button>
-                            </div>
-                            <div class="bs-stepper-line"></div>
+                            {{--                            <div class="step" data-target="#test-l-1">--}}
+                            {{--                                <button type="button" class="step-trigger" role="tab" id="courseFormtrigger1"--}}
+                            {{--                                        aria-controls="test-l-1">--}}
+                            {{--                                    <span class="bs-stepper-circle">1</span>--}}
+                            {{--                                    <span class="bs-stepper-label">Course Type</span>--}}
+                            {{--                                </button>--}}
+                            {{--                            </div>--}}
+                            {{--                            <div class="bs-stepper-line"></div>--}}
                             <div class="step" data-target="#test-l-2">
                                 <button type="button" class="step-trigger" role="tab" id="courseFormtrigger2"
                                         aria-controls="test-l-2" disabled>
-                                    <span class="bs-stepper-circle">2</span>
+                                    <span class="bs-stepper-circle">1</span>
                                     <span class="bs-stepper-label">Course Category</span>
                                 </button>
                             </div>
@@ -50,79 +50,32 @@
                             <div class="step" data-target="#test-l-3">
                                 <button type="button" class="step-trigger" role="tab" id="courseFormtrigger3"
                                         aria-controls="test-l-3" disabled>
-                                    <span class="bs-stepper-circle">3 </span>
+                                    <span class="bs-stepper-circle">2</span>
                                     <span class="bs-stepper-label">Course Title</span>
                                 </button>
                             </div>
                         </div>
                         <div class="bs-stepper-content mt-5">
                             <form onSubmit="return false">
-                                <div id="test-l-1" role="tabpanel" class="bs-stepper-pane fade"
-                                     aria-labelledby="courseFormtrigger1">
-                                    <div class="card mb-3 ">
-                                        <div class="card-header border-bottom px-4 py-3">
-                                            <h4 class="mb-0">Course Type</h4>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="card bg-dark-primary shadow-none text-center mx-4 my-8">
-                                                        <div class="card-body py-6">
-                                                            <div class="mt-4">
-                                                                <h5 class="text-white">Virtual Live Training</h5>
-                                                                <p class="text-white-50 fs-6">
-                                                                    Designed to replicate the experience and benefit of
-                                                                    attending a face-to-face training course
-                                                                </p>
-                                                                <a href="javascript:void(0)"
-                                                                   class="btn btn-white btn-sm mt-2 seltype"
-                                                                   data-type="1" onclick="courseForm.next()">Select</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="card bg-dark-primary shadow-none text-center mx-4 my-8">
-                                                        <div class="card-body py-6">
-                                                            <div class="mt-4">
-                                                                <h5 class="text-white">Recorded Course</h5>
-                                                                <p class="text-white-50 fs-6">
-                                                                    Add Course Materials For Students To Learn At Their
-                                                                    Own
-                                                                    Pace
-                                                                </p>
-                                                                <a href="javascript:void(0)"
-                                                                   class="btn btn-white btn-sm mt-2 seltype"
-                                                                   data-type="2" onclick="courseForm.next()">Select</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="card bg-dark-primary shadow-none text-center mx-4 my-8">
-                                                        <div class="card-body py-6">
-                                                            <div class="mt-4">
-                                                                <h5 class="text-white">Unlimited Access</h5>
-                                                                <p class="text-white-50 fs-6">
-                                                                    Upgrade your plan from a Free trial, to select
-                                                                    ‘Business
-                                                                    Plan’.
-                                                                    Start Now
-                                                                </p>
-                                                                <a href="javascript:void(0)"
-                                                                   class="btn btn-white btn-sm mt-2 seltype"
-                                                                   data-type="3" onclick="courseForm.next()">Select</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <input type="hidden" id="course_type">
+                                {{--                                <div id="test-l-1" role="tabpanel" class="bs-stepper-pane fade"--}}
+                                {{--                                     aria-labelledby="courseFormtrigger1">--}}
+                                {{--                                    <div class="card mb-3 ">--}}
+                                {{--                                        <div class="card-header border-bottom px-4 py-3">--}}
+                                {{--                                            <div class="d-flex justify-content-between">--}}
+                                {{--                                                <h4 class="mb-0">Course Type</h4>--}}
+                                {{--                                                <span--}}
+                                {{--                                                    class="badge show-selected bg-dark-primary py-2 px-3 fs-5">0</span>--}}
+                                {{--                                            </div>--}}
+                                {{--                                        </div>--}}
+                                {{--                                        <div class="card-body">--}}
+                                {{--                                            <div class="row" id="course_types_container">--}}
+                                {{--                                                <input type="hidden" id="course_type">--}}
 
-                                            </div>
+                                {{--                                            </div>--}}
 
-                                        </div>
-                                    </div>
-                                </div>
+                                {{--                                        </div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
                                 <div id="test-l-2" role="tabpanel" class="bs-stepper-pane fade"
                                      aria-labelledby="courseFormtrigger2">
                                     <div class="card mb-3  border-0">
@@ -131,24 +84,24 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="mb-3">
-                                                <label class="form-label">Select Course Cateory</label>
+                                                <label class="form-label">Select Course Category</label>
                                                 <select class="form-control" id="selectcat" data-width="100%">
-                                                    <option value="">Select Cateory</option>
+                                                    <option value="">Select Category</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">Select Course Sub-Cateory</label>
+                                                <label class="form-label">Select Course Sub-Category</label>
                                                 <select class="form-control" id="selsubcat" data-width="100%">
-                                                    <option value="">Select Sub-Cateory</option>
+                                                    <option value="">Select Sub-Category</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Button -->
-                                    <div class="d-flex justify-content-between">
-                                        <button class="btn btn-secondary" onclick="courseForm.previous()">
-                                            Previous
-                                        </button>
+                                    <div class="d-flex justify-content-end">
+                                        {{--                                        <button class="btn btn-secondary" onclick="courseForm.previous()">--}}
+                                        {{--                                            Previous--}}
+                                        {{--                                        </button>--}}
                                         <button class="btn btn-primary" onclick="courseForm.next()">
                                             Next
                                         </button>
@@ -164,7 +117,7 @@
                                             <div class="mb-3">
                                                 <label for="courseTitle" class="form-label">Course Title</label>
                                                 <div
-                                                        class="d-flex justify-content-center align-items-center border bg-white pe-2">
+                                                    class="d-flex justify-content-center align-items-center border bg-white pe-2">
                                                     <input id="courseTitle" name="title" class="form-control border-0"
                                                            type="text" placeholder="Course Title" maxlength="60">
                                                     <div>
@@ -200,29 +153,47 @@
     </div>
 
     <script>
-        $(function() {
+        $(function () {
             let subcategories;
             const jsonfile = `{{asset('json_files/subcategories.json')}}`;
             getLoadSubCategories();
+            // getCourseTypes();
 
             function getLoadSubCategories() {
                 $.getJSON(jsonfile, res => subcategories = res);
             }
 
+            function getCourseTypes() {
+                $.get(`${api_url}admin/fetch_types`).done(res => {
+                    res.message.forEach(type => {
+                        $("#course_types_container").append(
+                            `<div class="col-md-4 d-flex align-items-stretch justify-content-center">
+                                <div class="card bg-dark-primary shadow-none text-center mx-4 my-8">
+                                    <div class="card-body py-6">
+                                        <div class="mt-4">
+                                            <h5 class="text-white">${type.type}</h5>
+                                            <p class="text-white-50 fs-6">
+                                                ${type.description}
+                                            </p>
+                                            <a href="javascript:void(0)"
+                                               class="btn btn-white btn-sm mt-2 seltype"
+                                               data-type="${type.id}">Select</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`
+                        )
+                    });
+                })
+            }
 
-            $("#courseTitle").on("input", function(e) {
+            $("#courseTitle").on("input", function (e) {
                 e.preventDefault();
                 let length = $(this).val().length
                 let maxlength = 60;
                 return $('#count').html(maxlength - length);
             })
 
-
-            $('.seltype').on('click', function(e) {
-                e.preventDefault();
-                let type = $(this).data('type');
-                $('#course_type').val(type);
-            })
 
             function loadCategory() {
                 selcat = $('#selectcat');
@@ -239,28 +210,28 @@
             }
 
             loadCategory()
-            $('#selectcat').on("click", function(e) {
+            $('#selectcat').on("click", function (e) {
                 e.preventDefault();
                 let cat = $(this).val();
-                if(cat) {
+                if (cat) {
                     let subcats = subcategories.data[cat];
                     let selectsub = $('#selsubcat');
                     selectsub.html('<option selected disabled>Select Course Topic</option>');
-                    if(subcats) {
+                    if (subcats) {
                         subcats.forEach(sub => selectsub.append(`<option value="${sub.id}">${sub.name}</option>`))
                     }
                 }
             });
 
-            $('#addCourse').on('click', function(e) {
+            $('#addCourse').on('click', function (e) {
                 e.preventDefault();
-                course_type = $('#course_type').val();
+                // course_type = $('#course_type').val();
                 category_id = $('#selectcat :selected').val();
                 topic_id = $('#selsubcat :selected').val();
                 title = $('#courseTitle').val();
                 subtitle = $('#courseSubtitle').val();
                 bt = $('#addCourse');
-                if(!course_type || !category_id || !subtitle || !title || !topic_id) {
+                if (!category_id || !subtitle || !title || !topic_id) {
                     salat('All Fields Required', 1);
                     return
                 }
@@ -269,7 +240,7 @@
                     method: 'POST',
                     url: api_url + 'admin/create_new_course',
                     data: {
-                        course_type: course_type,
+                        // course_type: course_type,
                         category_id: category_id,
                         topic_id: topic_id,
                         title: title,
@@ -279,17 +250,21 @@
                         btn(bt, '', 'before');
                     }
                 }).done(res => {
-                    console.log(res);
                     location.href = `/instructor/course/${res.slug}?type=${course_type}`
                     btn(bt, 'Submit', 'after');
                 }).fail(res => {
                     concatError(res.responseJSON);
-                    console.log(res)
                     btn(bt, 'Submit', 'after');
                 })
             })
 
-
+            $(document).on('click', '.seltype', function (e) {
+                e.preventDefault();
+                const selected = $(e.target).data('type');
+                $('#course_type').val(selected);
+                $(".show-selected").html(selected);
+                setTimeout(() => courseForm.next(), 1000)
+            })
         });
     </script>
 @endsection

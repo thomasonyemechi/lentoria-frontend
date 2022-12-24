@@ -30,7 +30,7 @@ class FetchTopicsToJsonFile extends Notification
      * @param mixed $notifiable
      * @return array
      */
-    public function via($notifiable): array
+    public function via(mixed $notifiable): array
     {
         //mail,database,broadcast,vonage and slack
         return ['mail'];
@@ -40,7 +40,7 @@ class FetchTopicsToJsonFile extends Notification
      * Get the mail representation of the notification.
      *
      * @param mixed $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return MailMessage
      */
     public function toMail(mixed $notifiable): MailMessage
     {
@@ -48,7 +48,7 @@ class FetchTopicsToJsonFile extends Notification
             ->greeting('Hello Admin!')
             ->subject('Topics Json File')
             ->line($this->message)
-            ->line($this->type === 1 ? 'An Error Occured While Performing Cron Job' : 'Cron Job Performed Successfully');
+            ->line($this->type === 1 ? 'An error occurred while performing cron job' : 'Cron job performed successfully');
     }
 
     /**
