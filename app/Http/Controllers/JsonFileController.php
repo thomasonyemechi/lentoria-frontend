@@ -140,4 +140,14 @@ class JsonFileController extends Controller
             info($exception->getMessage());
         }
     }
+
+
+    function runAllJson()
+    {
+        $this->updateFile();
+        $this->indexPageJsonFile();
+        $this->categoriesNdSubscategoriesJsonFile();
+        $this->categoriesJsonFile();
+        return;
+    }
 }
