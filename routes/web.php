@@ -14,6 +14,7 @@ Route::post('/addtosession', [Controller::class, 'updateInstructorSession']);
 
 Route::get('/c/{link}/{ref?}', [Controller::class, 'fetchCourseInfoByLink']);
 
+Route::get('/alljsonrun', [JsonFileController::class, 'runAllJson']);
 Route::get('/jsonfile', [JsonFileController::class, 'updateFile']);
 Route::get('/indexpagefile', [JsonFileController::class, 'indexPageJsonFile']);
 Route::get('/cats_and_subcats_file', [JsonFileController::class, 'categoriesNdSubscategoriesJsonFile']);
