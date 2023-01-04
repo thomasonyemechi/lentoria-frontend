@@ -9,6 +9,10 @@
             -moz-transform: scale(1.1);
             -o-transform: scale(1.1)
         }
+
+        button.get-started-btn:disabled {
+            cursor: not-allowed;
+        }
     </style>
     <!-- Hero Content -->
     <div class="bg-primary-a" style="background-color: #036">
@@ -22,7 +26,7 @@
                             Become an Instructor in Lentoria and transform your experience and knowledge into a thriving
                             business that generates consistent cash flow even while you are away.
                         </p>
-                        <a href="" class="btn btn-outline-white text-white mt-4 gsbtn">Get Started</a>
+                        <a href="" class="btn btn-outline-white text-white mt-4 gsbtn outline-btn">Get Started</a>
 
                     </div>
                 </div>
@@ -185,7 +189,8 @@
                 </div>
                 <div class="col-md-12 col-12 text-center">
 
-                    <a href="" class="btn btn-outline-white mt-5 text-white gsbtn">Become an Instructor Now</a>
+                    <a href="" class="btn btn-outline-white mt-5 text-white gsbtn outline-btn">Become an Instructor
+                        Now</a>
 
                 </div>
             </div>
@@ -299,104 +304,104 @@
         </div>
     </div>
 
-    <div class="pb-16 pt-10"
-         style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%), rgba(221, 218, 255, 0.3) ; background-size: cover; background-position: top center">
-        <!-- Container -->
-        <div class="container">
-            <div class="row">
-                <div class="offset-xl-1 col-xl-10 col-12">
-                    <!-- Row -->
-                    <div class="row mb-0">
-                        <div class="col-lg-10 col-md-12 col-12 mb-8">
-                            <!-- Heading -->
-                            <h2 class="display-4 fw-bold">Our instructors are saying
-                            </h2>
-                            <!-- Para -->
-                            <p class="h2 text-muted">Lentoria has greatly impacted their lives positively</p>
-                        </div>
-                        <div class="col-md-12 col-12">
-                            <div class="position-relative">
-                                <!-- controls -->
-                                <ul class="controls-testimonial controls  justify-content-start"
-                                    id="sliderTestimonialSecondControls">
-                                    <li class="prev me-2 ms-0">
-                                        <i class="fe fe-chevron-left"></i>
-                                    </li>
-                                    <li class="next">
-                                        <i class="fe fe-chevron-right"></i>
-                                    </li>
-                                </ul>
-                                <!-- slider -->
-                                <div class="sliderTestimonialSecond">
+    {{--    <div class="pb-16 pt-10"--}}
+    {{--         style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%), rgba(221, 218, 255, 0.3) ; background-size: cover; background-position: top center">--}}
+    {{--        <!-- Container -->--}}
+    {{--        <div class="container">--}}
+    {{--            <div class="row">--}}
+    {{--                <div class="offset-xl-1 col-xl-10 col-12">--}}
+    {{--                    <!-- Row -->--}}
+    {{--                    <div class="row mb-0">--}}
+    {{--                        <div class="col-lg-10 col-md-12 col-12 mb-8">--}}
+    {{--                            <!-- Heading -->--}}
+    {{--                            <h2 class="display-4 fw-bold">Our instructors are saying--}}
+    {{--                            </h2>--}}
+    {{--                            <!-- Para -->--}}
+    {{--                            <p class="h2 text-muted">Lentoria has greatly impacted their lives positively</p>--}}
+    {{--                        </div>--}}
+    {{--                        <div class="col-md-12 col-12">--}}
+    {{--                            <div class="position-relative">--}}
+    {{--                                <!-- controls -->--}}
+    {{--                                <ul class="controls-testimonial controls  justify-content-start"--}}
+    {{--                                    id="sliderTestimonialSecondControls">--}}
+    {{--                                    <li class="prev me-2 ms-0">--}}
+    {{--                                        <i class="fe fe-chevron-left"></i>--}}
+    {{--                                    </li>--}}
+    {{--                                    <li class="next">--}}
+    {{--                                        <i class="fe fe-chevron-right"></i>--}}
+    {{--                                    </li>--}}
+    {{--                                </ul>--}}
+    {{--                                <!-- slider -->--}}
+    {{--                                <div class="sliderTestimonialSecond">--}}
 
-                                    <div class="item">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <img src="{{asset('assets/images/new_img/d4c30b6486.jpg')}}"
-                                                     class="d-block w-100"
-                                                     alt="...">
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks
-                                                    has created an incredibly seamless experience for
-                                                    app design. My mind
-                                                    is blown. Vestibulum ante ipsum primis in faucibus
-                                                    orci luctus et ultrices pos
-                                                    uere cubilia curae fusce consequat ligula in dui
-                                                    congue interdum."</p>
-                                                <p><b>Paulo Dichone</b><br>
-                                                    Developer (Android Speciality)</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <img src="{{asset('assets/images/coding.jp')}}g" class="d-block w-100"
-                                                     alt="...">
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks
-                                                    has created an incredibly seamless experience for
-                                                    app design. My mind
-                                                    is blown. Vestibulum ante ipsum primis in faucibus
-                                                    orci luctus et ultrices pos
-                                                    uere cubilia curae fusce consequat ligula in dui
-                                                    congue interdum."</p>
-                                                <p><b>Paulo Dichone</b><br>
-                                                    Developer (Android Speciality)</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <img src="{{asset('assets/images/learn.jpg')}}" class="d-block w-100"
-                                                     alt="...">
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks
-                                                    has created an incredibly seamless experience for
-                                                    app design. My mind
-                                                    is blown. Vestibulum ante ipsum primis in faucibus
-                                                    orci luctus et ultrices pos
-                                                    uere cubilia curae fusce consequat ligula in dui
-                                                    congue interdum."</p>
-                                                <p><b>Paulo Dichone</b><br>
-                                                    Developer (Android Speciality)</p>
-                                            </div>
-                                        </div>
-                                    </div>
+    {{--                                    <div class="item">--}}
+    {{--                                        <div class="row">--}}
+    {{--                                            <div class="col-lg-6">--}}
+    {{--                                                <img src="{{asset('assets/images/new_img/d4c30b6486.jpg')}}"--}}
+    {{--                                                     class="d-block w-100"--}}
+    {{--                                                     alt="...">--}}
+    {{--                                            </div>--}}
+    {{--                                            <div class="col-lg-6">--}}
+    {{--                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks--}}
+    {{--                                                    has created an incredibly seamless experience for--}}
+    {{--                                                    app design. My mind--}}
+    {{--                                                    is blown. Vestibulum ante ipsum primis in faucibus--}}
+    {{--                                                    orci luctus et ultrices pos--}}
+    {{--                                                    uere cubilia curae fusce consequat ligula in dui--}}
+    {{--                                                    congue interdum."</p>--}}
+    {{--                                                <p><b>Paulo Dichone</b><br>--}}
+    {{--                                                    Developer (Android Speciality)</p>--}}
+    {{--                                            </div>--}}
+    {{--                                        </div>--}}
+    {{--                                    </div>--}}
+    {{--                                    <div class="item">--}}
+    {{--                                        <div class="row">--}}
+    {{--                                            <div class="col-lg-6">--}}
+    {{--                                                <img src="{{asset('assets/images/coding.jp')}}g" class="d-block w-100"--}}
+    {{--                                                     alt="...">--}}
+    {{--                                            </div>--}}
+    {{--                                            <div class="col-lg-6">--}}
+    {{--                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks--}}
+    {{--                                                    has created an incredibly seamless experience for--}}
+    {{--                                                    app design. My mind--}}
+    {{--                                                    is blown. Vestibulum ante ipsum primis in faucibus--}}
+    {{--                                                    orci luctus et ultrices pos--}}
+    {{--                                                    uere cubilia curae fusce consequat ligula in dui--}}
+    {{--                                                    congue interdum."</p>--}}
+    {{--                                                <p><b>Paulo Dichone</b><br>--}}
+    {{--                                                    Developer (Android Speciality)</p>--}}
+    {{--                                            </div>--}}
+    {{--                                        </div>--}}
+    {{--                                    </div>--}}
+    {{--                                    <div class="item">--}}
+    {{--                                        <div class="row">--}}
+    {{--                                            <div class="col-lg-6">--}}
+    {{--                                                <img src="{{asset('assets/images/learn.jpg')}}" class="d-block w-100"--}}
+    {{--                                                     alt="...">--}}
+    {{--                                            </div>--}}
+    {{--                                            <div class="col-lg-6">--}}
+    {{--                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks--}}
+    {{--                                                    has created an incredibly seamless experience for--}}
+    {{--                                                    app design. My mind--}}
+    {{--                                                    is blown. Vestibulum ante ipsum primis in faucibus--}}
+    {{--                                                    orci luctus et ultrices pos--}}
+    {{--                                                    uere cubilia curae fusce consequat ligula in dui--}}
+    {{--                                                    congue interdum."</p>--}}
+    {{--                                                <p><b>Paulo Dichone</b><br>--}}
+    {{--                                                    Developer (Android Speciality)</p>--}}
+    {{--                                            </div>--}}
+    {{--                                        </div>--}}
+    {{--                                    </div>--}}
 
-                                </div>
-                            </div>
+    {{--                                </div>--}}
+    {{--                            </div>--}}
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
 
     <div class="py-lg-13 py-8 bg-primary">
         <div class="container">
@@ -560,240 +565,240 @@
     <!-- Instructor -->
     <hr class="my-0">
 
-{{--    <div class="pb-16 pt-10"--}}
-{{--         style=" background-size: cover; background: rgba(221, 218, 255, 0.3) linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%) top center;">--}}
-{{--        <!-- Container -->--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-xl-12 col-12">--}}
+    {{--    <div class="pb-16 pt-10"--}}
+    {{--         style=" background-size: cover; background: rgba(221, 218, 255, 0.3) linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%) top center;">--}}
+    {{--        <!-- Container -->--}}
+    {{--        <div class="container">--}}
+    {{--            <div class="row">--}}
+    {{--                <div class="col-xl-12 col-12">--}}
 
-{{--                    <div class="col-lg-12 col-md-12 col-12 mb-lg-3 mb-sm-0 ms-7">--}}
-{{--                        <!-- Heading -->--}}
-{{--                        <h2 class="display-4 fw-bold">Questionnaire</h2>--}}
-{{--                        <p>All Questions Are Required</p>--}}
-{{--                    </div>--}}
-{{--                    <!-- Row -->--}}
-{{--                    <div class="container">--}}
-{{--                        <div id="questionnaire" class="bs-stepper">--}}
-{{--                            <div class="container">--}}
-{{--                                <div class="row">--}}
-{{--                                    <div class="col-lg-12 col-md-12 col-12">--}}
-{{--                                        <!-- Stepper Button -->--}}
-{{--                                        <div class="bs-stepper-header shadow-sm" role="tablist">--}}
-{{--                                            <div class="step" data-target="#test-l-1">--}}
-{{--                                                <button type="button" class="step-trigger" role="tab"--}}
-{{--                                                        id="qnairetrigger1" aria-controls="test-l-1">--}}
-{{--                                                    <span class="bs-stepper-circle">1</span>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="bs-stepper-line"></div>--}}
-{{--                                            <div class="step" data-target="#test-l-2">--}}
-{{--                                                <button type="button" class="step-trigger" role="tab"--}}
-{{--                                                        id="qnairetrigger2" aria-controls="test-l-2">--}}
-{{--                                                    <span class="bs-stepper-circle">2</span>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="bs-stepper-line"></div>--}}
-{{--                                            <div class="step" data-target="#test-l-3">--}}
-{{--                                                <button type="button" class="step-trigger" role="tab"--}}
-{{--                                                        id="qnairetrigger3" aria-controls="test-l-3">--}}
-{{--                                                    <span class="bs-stepper-circle">3 </span>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="bs-stepper-line"></div>--}}
-{{--                                            <div class="step" data-target="#test-l-4">--}}
-{{--                                                <button type="button" class="step-trigger" role="tab"--}}
-{{--                                                        id="qnairetrigger4" aria-controls="test-l-4">--}}
-{{--                                                    <span class="bs-stepper-circle">4 </span>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="bs-stepper-line"></div>--}}
-{{--                                            <div class="step" data-target="#test-l-5">--}}
-{{--                                                <button type="button" class="step-trigger" role="tab"--}}
-{{--                                                        id="qnairetrigger5" aria-controls="test-l-5">--}}
-{{--                                                    <span class="bs-stepper-circle">5 </span>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="bs-stepper-line"></div>--}}
-{{--                                            <div class="step" data-target="#test-l-6">--}}
-{{--                                                <button type="button" class="step-trigger" role="tab"--}}
-{{--                                                        id="qnairetrigger6" aria-controls="test-l-6">--}}
-{{--                                                    <span class="bs-stepper-circle">6 </span>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="bs-stepper-line"></div>--}}
-{{--                                            <div class="step" data-target="#test-l-7">--}}
-{{--                                                <button type="button" class="step-trigger" role="tab"--}}
-{{--                                                        id="qnairetrigger7" aria-controls="test-l-7">--}}
-{{--                                                    <span class="bs-stepper-circle">7 </span>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="bs-stepper-line"></div>--}}
-{{--                                            <div class="step" data-target="#test-l-8">--}}
-{{--                                                <button type="button" class="step-trigger" role="tab"--}}
-{{--                                                        id="qnairetrigger8" aria-controls="test-l-8">--}}
-{{--                                                    <span class="bs-stepper-circle">8 </span>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="bs-stepper-line"></div>--}}
-{{--                                            <div class="step" data-target="#test-l-9">--}}
-{{--                                                <button type="button" class="step-trigger" role="tab"--}}
-{{--                                                        id="qnairetrigger9" aria-controls="test-l-9">--}}
-{{--                                                    <span class="bs-stepper-circle">9 </span>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="bs-stepper-line"></div>--}}
-{{--                                            <div class="step" data-target="#test-l-10">--}}
-{{--                                                <button type="button" class="step-trigger" role="tab"--}}
-{{--                                                        id="qnairetrigger10" aria-controls="test-l-10">--}}
-{{--                                                    <span class="bs-stepper-circle">10 </span>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
+    {{--                    <div class="col-lg-12 col-md-12 col-12 mb-lg-3 mb-sm-0 ms-7">--}}
+    {{--                        <!-- Heading -->--}}
+    {{--                        <h2 class="display-4 fw-bold">Questionnaire</h2>--}}
+    {{--                        <p>All Questions Are Required</p>--}}
+    {{--                    </div>--}}
+    {{--                    <!-- Row -->--}}
+    {{--                    <div class="container">--}}
+    {{--                        <div id="questionnaire" class="bs-stepper">--}}
+    {{--                            <div class="container">--}}
+    {{--                                <div class="row">--}}
+    {{--                                    <div class="col-lg-12 col-md-12 col-12">--}}
+    {{--                                        <!-- Stepper Button -->--}}
+    {{--                                        <div class="bs-stepper-header shadow-sm" role="tablist">--}}
+    {{--                                            <div class="step" data-target="#test-l-1">--}}
+    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                        id="qnairetrigger1" aria-controls="test-l-1">--}}
+    {{--                                                    <span class="bs-stepper-circle">1</span>--}}
+    {{--                                                </button>--}}
+    {{--                                            </div>--}}
+    {{--                                            <div class="bs-stepper-line"></div>--}}
+    {{--                                            <div class="step" data-target="#test-l-2">--}}
+    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                        id="qnairetrigger2" aria-controls="test-l-2">--}}
+    {{--                                                    <span class="bs-stepper-circle">2</span>--}}
+    {{--                                                </button>--}}
+    {{--                                            </div>--}}
+    {{--                                            <div class="bs-stepper-line"></div>--}}
+    {{--                                            <div class="step" data-target="#test-l-3">--}}
+    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                        id="qnairetrigger3" aria-controls="test-l-3">--}}
+    {{--                                                    <span class="bs-stepper-circle">3 </span>--}}
+    {{--                                                </button>--}}
+    {{--                                            </div>--}}
+    {{--                                            <div class="bs-stepper-line"></div>--}}
+    {{--                                            <div class="step" data-target="#test-l-4">--}}
+    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                        id="qnairetrigger4" aria-controls="test-l-4">--}}
+    {{--                                                    <span class="bs-stepper-circle">4 </span>--}}
+    {{--                                                </button>--}}
+    {{--                                            </div>--}}
+    {{--                                            <div class="bs-stepper-line"></div>--}}
+    {{--                                            <div class="step" data-target="#test-l-5">--}}
+    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                        id="qnairetrigger5" aria-controls="test-l-5">--}}
+    {{--                                                    <span class="bs-stepper-circle">5 </span>--}}
+    {{--                                                </button>--}}
+    {{--                                            </div>--}}
+    {{--                                            <div class="bs-stepper-line"></div>--}}
+    {{--                                            <div class="step" data-target="#test-l-6">--}}
+    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                        id="qnairetrigger6" aria-controls="test-l-6">--}}
+    {{--                                                    <span class="bs-stepper-circle">6 </span>--}}
+    {{--                                                </button>--}}
+    {{--                                            </div>--}}
+    {{--                                            <div class="bs-stepper-line"></div>--}}
+    {{--                                            <div class="step" data-target="#test-l-7">--}}
+    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                        id="qnairetrigger7" aria-controls="test-l-7">--}}
+    {{--                                                    <span class="bs-stepper-circle">7 </span>--}}
+    {{--                                                </button>--}}
+    {{--                                            </div>--}}
+    {{--                                            <div class="bs-stepper-line"></div>--}}
+    {{--                                            <div class="step" data-target="#test-l-8">--}}
+    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                        id="qnairetrigger8" aria-controls="test-l-8">--}}
+    {{--                                                    <span class="bs-stepper-circle">8 </span>--}}
+    {{--                                                </button>--}}
+    {{--                                            </div>--}}
+    {{--                                            <div class="bs-stepper-line"></div>--}}
+    {{--                                            <div class="step" data-target="#test-l-9">--}}
+    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                        id="qnairetrigger9" aria-controls="test-l-9">--}}
+    {{--                                                    <span class="bs-stepper-circle">9 </span>--}}
+    {{--                                                </button>--}}
+    {{--                                            </div>--}}
+    {{--                                            <div class="bs-stepper-line"></div>--}}
+    {{--                                            <div class="step" data-target="#test-l-10">--}}
+    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
+    {{--                                                        id="qnairetrigger10" aria-controls="test-l-10">--}}
+    {{--                                                    <span class="bs-stepper-circle">10 </span>--}}
+    {{--                                                </button>--}}
+    {{--                                            </div>--}}
+    {{--                                        </div>--}}
 
-{{--                                        <div class="d-flex justify-content-center opacity-50 loader my-10">--}}
-{{--                                            <div class="spinner-border text-bold fs-3 text-black-100"--}}
-{{--                                                 style="width: 5rem; height: 5rem;" role="status">--}}
-{{--                                                <span class="visually-hidden">Loading...</span>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="bs-stepper-content mt-5">--}}
-{{--                                            <form onSubmit="return false" id="queform">--}}
-{{--                                                <div id="test-l-1" role="tabpanel" class="bs-stepper-pane fade"--}}
-{{--                                                     aria-labelledby="qnairetrigger1">--}}
+    {{--                                        <div class="d-flex justify-content-center opacity-50 loader my-10">--}}
+    {{--                                            <div class="spinner-border text-bold fs-3 text-black-100"--}}
+    {{--                                                 style="width: 5rem; height: 5rem;" role="status">--}}
+    {{--                                                <span class="visually-hidden">Loading...</span>--}}
+    {{--                                            </div>--}}
+    {{--                                        </div>--}}
+    {{--                                        <div class="bs-stepper-content mt-5">--}}
+    {{--                                            <form onSubmit="return false" id="queform">--}}
+    {{--                                                <div id="test-l-1" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger1">--}}
 
-{{--                                                    <!-- Button -->--}}
-{{--                                                    <div class="d-flex justify-content-end">--}}
-{{--                                                        <button class="btn btn-primary fibtn">--}}
-{{--                                                            Next--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div id="test-l-2" role="tabpanel" class="bs-stepper-pane fade"--}}
-{{--                                                     aria-labelledby="qnairetrigger2">--}}
-{{--                                                    <!-- Button -->--}}
-{{--                                                    <div class="d-flex justify-content-between">--}}
-{{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-{{--                                                            Previous--}}
-{{--                                                        </button>--}}
-{{--                                                        <button class="btn btn-primary nxt" onclick="qnaire.next()">--}}
-{{--                                                            Next--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div id="test-l-3" role="tabpanel" class="bs-stepper-pane fade"--}}
-{{--                                                     aria-labelledby="qnairetrigger3">--}}
-{{--                                                    <!-- Button -->--}}
-{{--                                                    <div class="d-flex justify-content-between">--}}
-{{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-{{--                                                            Previous--}}
-{{--                                                        </button>--}}
-{{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
-{{--                                                            Next--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div id="test-l-4" role="tabpanel" class="bs-stepper-pane fade"--}}
-{{--                                                     aria-labelledby="qnairetrigger4">--}}
-{{--                                                    <!-- Button -->--}}
-{{--                                                    <div class="d-flex justify-content-between">--}}
-{{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-{{--                                                            Previous--}}
-{{--                                                        </button>--}}
-{{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
-{{--                                                            Next--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div id="test-l-5" role="tabpanel" class="bs-stepper-pane fade"--}}
-{{--                                                     aria-labelledby="qnairetrigger5">--}}
-{{--                                                    <!-- Button -->--}}
-{{--                                                    <div class="d-flex justify-content-between">--}}
-{{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-{{--                                                            Previous--}}
-{{--                                                        </button>--}}
-{{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
-{{--                                                            Next--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div id="test-l-6" role="tabpanel" class="bs-stepper-pane fade"--}}
-{{--                                                     aria-labelledby="qnairetrigger6">--}}
-{{--                                                    <!-- Button -->--}}
-{{--                                                    <div class="d-flex justify-content-between">--}}
-{{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-{{--                                                            Previous--}}
-{{--                                                        </button>--}}
-{{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
-{{--                                                            Next--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div id="test-l-7" role="tabpanel" class="bs-stepper-pane fade"--}}
-{{--                                                     aria-labelledby="qnairetrigger7">--}}
-{{--                                                    <!-- Button -->--}}
-{{--                                                    <div class="d-flex justify-content-between">--}}
-{{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-{{--                                                            Previous--}}
-{{--                                                        </button>--}}
-{{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
-{{--                                                            Next--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div id="test-l-8" role="tabpanel" class="bs-stepper-pane fade"--}}
-{{--                                                     aria-labelledby="qnairetrigger8">--}}
-{{--                                                    <!-- Button -->--}}
-{{--                                                    <div class="d-flex justify-content-between">--}}
-{{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-{{--                                                            Previous--}}
-{{--                                                        </button>--}}
-{{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
-{{--                                                            Next--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div id="test-l-9" role="tabpanel" class="bs-stepper-pane fade"--}}
-{{--                                                     aria-labelledby="qnairetrigger9">--}}
-{{--                                                    <!-- Button -->--}}
-{{--                                                    <div class="d-flex justify-content-between">--}}
-{{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-{{--                                                            Previous--}}
-{{--                                                        </button>--}}
-{{--                                                        <button class="btn btn-primary" onclick="qnaire.next();">--}}
-{{--                                                            Next--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div id="test-l-10" role="tabpanel" class="bs-stepper-pane fade"--}}
-{{--                                                     aria-labelledby="qnairetrigger10">--}}
-{{--                                                    <!-- Button -->--}}
-{{--                                                    <div class="d-flex justify-content-between">--}}
-{{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-{{--                                                            Previous--}}
-{{--                                                        </button>--}}
-{{--                                                        <button class="btn btn-primary" id="lastbtn">--}}
-{{--                                                            Submit--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </form>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    {{--                                                    <!-- Button -->--}}
+    {{--                                                    <div class="d-flex justify-content-end">--}}
+    {{--                                                        <button class="btn btn-primary fibtn">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-2" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger2">--}}
+    {{--                                                    <!-- Button -->--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary nxt" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-3" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger3">--}}
+    {{--                                                    <!-- Button -->--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-4" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger4">--}}
+    {{--                                                    <!-- Button -->--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-5" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger5">--}}
+    {{--                                                    <!-- Button -->--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-6" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger6">--}}
+    {{--                                                    <!-- Button -->--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-7" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger7">--}}
+    {{--                                                    <!-- Button -->--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-8" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger8">--}}
+    {{--                                                    <!-- Button -->--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-9" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger9">--}}
+    {{--                                                    <!-- Button -->--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next();">--}}
+    {{--                                                            Next--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                                <div id="test-l-10" role="tabpanel" class="bs-stepper-pane fade"--}}
+    {{--                                                     aria-labelledby="qnairetrigger10">--}}
+    {{--                                                    <!-- Button -->--}}
+    {{--                                                    <div class="d-flex justify-content-between">--}}
+    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
+    {{--                                                            Previous--}}
+    {{--                                                        </button>--}}
+    {{--                                                        <button class="btn btn-primary" id="lastbtn">--}}
+    {{--                                                            Submit--}}
+    {{--                                                        </button>--}}
+    {{--                                                    </div>--}}
+    {{--                                                </div>--}}
+    {{--                                            </form>--}}
+    {{--                                        </div>--}}
+    {{--                                    </div>--}}
+    {{--                                </div>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
 
     <!-- Become an Instructor -->
 
     <!-- call to action -->
     <div class="bg-primary-a"
-         style="background-color: #036 !important;  margin-left: -100px; margin-right: -100px; padding-bottom: 60px; padding-top: 60px;">
+         style="background-color: #036 !important; padding-bottom: 60px; padding-top: 60px;">
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-md-9 col-12">
@@ -801,8 +806,11 @@
                     <p class="lead text-white px-lg-12 mb-6">Effective learning starts with assessment. Learning a
                         new skill is hard work—Lentoria makes it easier.</p>
                     <div class="d-grid d-md-block">
-                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signup_modal"
-                           class="btn btn-success text-white mt-4">Start Learning</a>
+                        <button
+                            @disabled(session('info')) class="btn btn-outline-white text-white mb-2 mb-md-0 outline-btn get-started-btn"
+                            data-bs-target="#signup_modal"
+                            data-bs-toggle="modal">Start Learning
+                        </button>
                     </div>
                 </div>
             </div>
@@ -815,9 +823,9 @@
         //         animation: !0
         //     })
         // }));
-        $(function() {
+        $(function () {
             // getQuestions();
-            $(".gsbtn").click(function(e) {
+            $(".gsbtn").click(function (e) {
                 e.preventDefault();
                 bt = $(".gsbtn")
                 $('html, body').animate({
@@ -825,14 +833,6 @@
                 }, 'slow');
             })
 
-            {{--$(".fibtn").click(function(e) {--}}
-            {{--    e.preventDefault();--}}
-            {{--    if(!@js(session('info'))) {--}}
-            {{--        $("#login_modal").modal('show');--}}
-            {{--    } else {--}}
-            {{--        qnaire.next();--}}
-            {{--    }--}}
-            {{--})--}}
             // $("#lastbtn").click(function(e) {
             //     e.preventDefault();
             //     but = $(this);
@@ -904,39 +904,39 @@
             //     });
             // }
 
-    //         function questionaire(que, a, b, c, d, id) {
-    //             let question = "";
-    //             question += `<div class="card mb-3 question border-0" data-id="${id}">
-    //     <div class="card-header border-bottom px-4 py-3">
-    //         <h3 class="mb-0">${que}</h3>
-    //     </div>
-    //     <div class="card-body">
-    //         <div class="vstack gap-2">
-    //             <!-- Feed ques item -->
-    //             <div>
-    //                 <input type="radio" class="btn-check a" name="ques${id}" id="${id}option1">
-    //                 <label class="btn btn-outline-primary w-100 opt-a" for="${id}option1">${a}</label>
-    //             </div>
-    //             <!-- Feed ques item -->
-    //             <div>
-    //                 <input type="radio" class="btn-check b" name="ques${id}" id="${id}option2">
-    //                 <label class="btn btn-outline-primary w-100 opt-b" for="${id}option2">${b}</label>
-    //             </div>
-    //             <!-- Feed ques item -->
-    //             <div>
-    //                 <input type="radio" class="btn-check c" name="ques${id}" id="${id}option3">
-    //                 <label class="btn btn-outline-primary w-100 opt-c" for="${id}option3">${c}</label>
-    //             </div>
-    //             <!-- Feed ques item -->
-    //             <div>
-    //                 <input type="radio" class="btn-check d" name="ques${id}" id="${id}option4">
-    //                 <label class="btn btn-outline-primary w-100 opt-d" for="${id}option4">${d}</label>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>`;
-    //             return question;
-    //         }
+            //         function questionaire(que, a, b, c, d, id) {
+            //             let question = "";
+            //             question += `<div class="card mb-3 question border-0" data-id="${id}">
+            //     <div class="card-header border-bottom px-4 py-3">
+            //         <h3 class="mb-0">${que}</h3>
+            //     </div>
+            //     <div class="card-body">
+            //         <div class="vstack gap-2">
+            //             <!-- Feed ques item -->
+            //             <div>
+            //                 <input type="radio" class="btn-check a" name="ques${id}" id="${id}option1">
+            //                 <label class="btn btn-outline-primary w-100 opt-a" for="${id}option1">${a}</label>
+            //             </div>
+            //             <!-- Feed ques item -->
+            //             <div>
+            //                 <input type="radio" class="btn-check b" name="ques${id}" id="${id}option2">
+            //                 <label class="btn btn-outline-primary w-100 opt-b" for="${id}option2">${b}</label>
+            //             </div>
+            //             <!-- Feed ques item -->
+            //             <div>
+            //                 <input type="radio" class="btn-check c" name="ques${id}" id="${id}option3">
+            //                 <label class="btn btn-outline-primary w-100 opt-c" for="${id}option3">${c}</label>
+            //             </div>
+            //             <!-- Feed ques item -->
+            //             <div>
+            //                 <input type="radio" class="btn-check d" name="ques${id}" id="${id}option4">
+            //                 <label class="btn btn-outline-primary w-100 opt-d" for="${id}option4">${d}</label>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </div>`;
+            //             return question;
+            //         }
         });
 
 
@@ -953,7 +953,7 @@
                 optionB = $(que).find($('.opt-b')).html();
                 optionC = $(que).find($('.opt-c')).html();
                 optionD = $(que).find($('.opt-d')).html();
-                if(opt.length > 0) {
+                if (opt.length > 0) {
                     opt = opt.attr('class').split(' ')[1];
                 } else {
                     opt = '';

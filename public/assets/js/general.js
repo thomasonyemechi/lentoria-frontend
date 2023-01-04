@@ -8,6 +8,7 @@ function validateEmail(email) {
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 }
+
 function salat(msg, t = 0) {
     color = (t == 1) ? 'danger' : 'success';
     icon = (t == 1) ? 'ban' : 'checked';
@@ -20,7 +21,7 @@ function salat(msg, t = 0) {
     alat.fadeIn();
     alat.html(ret);
 
-    setTimeout(function() {
+    setTimeout(function () {
         alat.fadeOut();
     }, 5000);
 }
@@ -37,7 +38,7 @@ function salat2(msg, t = 0) {
     alat.fadeIn();
     alat.html(ret);
 
-    setTimeout(function() {
+    setTimeout(function () {
         alat.fadeOut();
     }, 20000);
 }
@@ -45,11 +46,11 @@ function salat2(msg, t = 0) {
 
 function concatError(error) {
     error_text = '';
-    if(!error) {
+    if (!error) {
         error_text = 'Error processing request, Pls try again';
-    } else if(error.message) {
+    } else if (error.message) {
         error_text = error.message;
-    } else if(error.errors) {
+    } else if (error.errors) {
         errs = error.errors;
         errs.forEach(err => {
             error_text += err + '<br>'
@@ -64,11 +65,11 @@ function concatError(error) {
 
 function concatError2(error) {
     error_text = '';
-    if(!error) {
+    if (!error) {
         error_text = 'Error processing request, Pls try again';
-    } else if(error.message) {
+    } else if (error.message) {
         error_text = error.message;
-    } else if(error.errors) {
+    } else if (error.errors) {
         errs = error.errors;
         errs.forEach(err => {
             error_text += err + '<br>'
@@ -83,15 +84,15 @@ function concatError2(error) {
 
 
 function btn(selector, btn_text, moment) {
-    if(typeof (selector) == 'object') {
+    if (typeof (selector) == 'object') {
         selector = selector;
     } else {
         selector = $(selector);
     }
-    if(moment == 'before') {
+    if (moment == 'before') {
         selector.attr('disabled', 'disabled');
         selector.html(`<span class="spinner-border spinner-border-sm" aria-hidden="true"></span> <i>processing ... </i>`);
-    } else if(moment == 'after') {
+    } else if (moment == 'after') {
         selector.removeAttr('disabled');
         selector.html(btn_text);
     }
@@ -112,10 +113,10 @@ function dropPaginatedPages(links) {
 }
 
 function formatDate(date) {
-    let d     = new Date(date),
+    let d = new Date(date),
         month = '' + (d.getMonth() + 1),
-        day   = '' + d.getDate(),
-        year  = d.getFullYear();
+        day = '' + d.getDate(),
+        year = d.getFullYear();
     const monthNames = [
         "Jan",
         "Feb",
@@ -153,7 +154,7 @@ const levels = {
     3: "Advanced"
 }
 
-const checkLevel = (level) => levels[level] || 'Super'
+const checkLevel = (level) => levels[level] || 'level'
 
 
 const bars = {
@@ -195,7 +196,7 @@ function serialNo() {
     body = $("#faq_table tbody");
     check = body.find('tr:first').hasClass('que-tr');
     trlength = $("#faq_table tbody tr").length;
-    if(check) {
+    if (check) {
         return trlength + 1;
     } else {
         return trlength + 1;
@@ -205,7 +206,7 @@ function serialNo() {
 function randomString(length) {
     chars = '0123456789';
     let result = '';
-    for(let i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    for (let i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
     return result;
 }
 
@@ -241,9 +242,9 @@ function percentage(num, percentage) {
 
 const allAreEmpty = array => array.every(val => val === "");
 
-$.fn.multiply = function(numCopies) {
+$.fn.multiply = function (numCopies) {
     var newElements = this.clone();
-    for(var i = 1; i < numCopies; i++) {
+    for (var i = 1; i < numCopies; i++) {
         newElements = newElements.add(this.clone());
     }
     return newElements;
@@ -257,13 +258,13 @@ function setSessionWithExpiry(TTL) {
 function getWithExpiry(key) {
     const itemStr = localStorage.getItem(key)
     // if the item doesn't exist, return null
-    if(!itemStr) {
+    if (!itemStr) {
         return null
     }
     const item = JSON.parse(itemStr)
     const now = new Date()
     // compare the expiry time of the item with the current time
-    if(now.getTime() > item.expiry) {
+    if (now.getTime() > item.expiry) {
         // If the item is expired, delete the item from storage
         // and return null
         localStorage.removeItem(key)
@@ -289,4 +290,8 @@ function shareApi() {
             resultPara.textContent = `Error: ${err}`;
         }
     });
+    function getTypes() {
+        const params = new URL(document.location).searchParams;
+        return params.get('type');
+    }
 }

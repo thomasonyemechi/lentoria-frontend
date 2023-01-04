@@ -86,6 +86,15 @@
             -ms-overflow-style: none; /* IE and Edge */
             scrollbar-width: none; /* Firefox */
         }
+
+        button.outline-btn:hover, a.outline-btn:hover {
+            color: #036 !important;
+        }
+
+        button.outline-btn-secondary:hover, a.outline-btn-secondary:hover {
+            color: #79758f !important;
+        }
+
     </style>
     <script src="{{ asset('assets/js/general.js') }}"></script>
 

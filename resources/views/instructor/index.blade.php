@@ -443,7 +443,7 @@
                 que = que_card[que];
                 id = $(que).data('id');
                 name = `ques${id}`
-                var opt = $(que).find('input:checked');
+                let opt = $(que).find('input:checked');
                 question = $(que).find('h3').html();
                 optionA = $(que).find($('.opt-a')).html();
                 optionB = $(que).find($('.opt-b')).html();

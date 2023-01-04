@@ -45,23 +45,23 @@
                             <div class="card-body">
                                 <h4>Course Title</h4>
                                 <span id="ctitle"><p
-                                            class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
+                                        class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                                 <hr>
 
                                 <h4>Description</h4>
                                 <span id="cdesc"><p
-                                            class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
+                                        class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                             </div>
                         @elseif (request()->routeIs('checkout_success.activation'))
                             <div class="card-body">
                                 <h4>Package</h4>
                                 <span id="pname"><p
-                                            class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
+                                        class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                                 <hr>
 
                                 <h4>Description</h4>
                                 <span id="pdesc"><p
-                                            class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
+                                        class="animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                             </div>
                         @endif
                     </div>
@@ -77,13 +77,13 @@
                             <div class="mb-1">
                                 <span class="text-dark h4" id="prodprice">
                                     Price: <p
-                                            class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p>
+                                        class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p>
                                 </span>
                             </div>
                             <div class="mb-3">
                                 <span class="text-dark h4" id="prodtype">
                                     Transaction Type: <p
-                                            class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p>
+                                        class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p>
                                 </span>
                             </div>
                             <b>Other Information</b>
@@ -105,17 +105,17 @@
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
                                         <span class="pinfo"><p
-                                                    class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
+                                                class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
                                         <span class="pinfo"><p
-                                                    class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
+                                                class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                                     </li>
                                     <li class="mb-1">
                                         <span class="text-success me-1"><i class="far fa-check-circle"></i></span>
                                         <span class="pinfo"><p
-                                                    class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
+                                                class="d-inline animate__animated animate__flash animate__slow animate__infinite">loading...</p></span>
                                     </li>
                                 @endif
                             </ul>
@@ -151,7 +151,7 @@
 
                 $("button").click(function (e) {
                     sessionStorage.removeItem("courseinfo");
-                    window.location.href = "/"
+                    window.location.href = "/my-courses/learning"
                 })
             } else if (window.location.pathname == "/checkout_success/activation") {
                 package_info = JSON.parse(sessionStorage.getItem("packageinfo"));
@@ -168,7 +168,7 @@
 
                 $("button").click(function (e) {
                     sessionStorage.removeItem("packageinfo");
-                    window.location.href = "/"
+                    window.location.href = "/instructor/dashboard"
                 });
 
             }

@@ -33,7 +33,7 @@
                 <li class="nav-item @if (request()->routeIs('instructor.course_review')) active @endif">
                     <a class="nav-link" target="_blank"
                        href="/instructor/course_review/{{ $slug }}?type={{app('request')->input('type')}}"><i
-                                class="fe fe-video nav-icon"></i>Course Review</a>
+                                class="fe fe-video nav-icon"></i>Course Preview</a>
                 </li>
 
                 <li class="nav-item @if (request()->routeIs('instructor.pricing')) active @endif">

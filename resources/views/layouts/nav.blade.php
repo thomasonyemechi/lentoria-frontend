@@ -60,9 +60,25 @@
                     @if (session('info'))
                         <li class="dropdown stopevent">
                             <a class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary"
-                               href="#" role="button" data-bs-toggle="dropdown">
-                                <i class="fe fe-bell"></i>
+                               href="#"
+                               role="button" data-bs-toggle="dropdown">
+                                <i class="fe fe-bell"> </i>
                             </a>
+                            <div class="dropdown-menu dropdown-menu-end shadow">
+                                <div>
+                                    <div
+                                        class="border-bottom px-3 pb-3 d-flex justify-content-between align-items-center">
+                                        <span class="h5 mb-0">Notifications</span>
+                                        <a href="javascript:void(0)" class="text-muted"><span class="align-middle"><i
+                                                    class="fe fe-settings me-1"></i></span></a>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <p class="text-muted">No notifications</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </li>
                         <li class="dropdown ms-2">
                             <a class="rounded-circle" href="#" role="button" data-bs-toggle="dropdown">
@@ -90,50 +106,56 @@
                                     @if (session('info')['instructor'] == 1 && !request()->is('instructor/*'))
                                         <li>
                                             <a class="dropdown-item" href="{{ route('instructor.dashboard') }}">
-                                                Instructor
+                                                Instructor Dashboard
+                                            </a>
+                                        </li>
+                                    @elseif (session('info')['instructor']!=1)
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('become_instructor') }}">
+                                                Become Instructor
                                             </a>
                                         </li>
                                     @endif
-                                    <li>
-                                        <a class="dropdown-item" href="{{route('my-courses.learning')}}">
-                                            My Learning
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            My Cart
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            My Wishlist
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="dropdown-divider"></div>
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Purchase History
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="dropdown-divider"></div>
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Public Profile
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="dropdown-divider"></div>
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('logout') }}">
-                                            <i class="fe fe-power me-2"></i>Sign Out
-                                        </a>
-                                    </li>
-                                </ul>
+                                    {{--                                    <li>--}}
+                                    {{--                                        <a class="dropdown-item" href="{{route('my-courses.learning')}}">--}}
+                                    {{--                                            My Learning--}}
+                                    {{--                                        </a>--}}
+                                    {{--                                    </li>--}}
+                                    {{--                                    <li>--}}
+                                    {{--                                        <a class="dropdown-item" href="#">--}}
+                                    {{--                                            My Cart--}}
+                                    {{--                                        </a>--}}
+                                    {{--                                    </li>--}}
+                                    {{--                                    <li>--}}
+                                    {{--                                        <a class="dropdown-item" href="#">--}}
+                                    {{--                                            My Wishlist--}}
+                                    {{--                                        </a>--}}
+                                    {{--                                    </li>--}}
+                                    {{--                                </ul>--}}
+                                    {{--                                <div class="dropdown-divider"></div>--}}
+                                    {{--                                <ul class="list-unstyled">--}}
+                                    {{--                                    <li>--}}
+                                    {{--                                        <a class="dropdown-item" href="#">--}}
+                                    {{--                                            Purchase History--}}
+                                    {{--                                        </a>--}}
+                                    {{--                                    </li>--}}
+                                    {{--                                </ul>--}}
+                                    <div class="dropdown-divider"></div>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                Public Profile
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="dropdown-divider"></div>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('logout') }}">
+                                                <i class="fe fe-power me-2"></i>Sign Out
+                                            </a>
+                                        </li>
+                                    </ul>
                             </div>
                         </li>
                     @endif
@@ -156,19 +178,19 @@
                                data-bs-display="static">
                                 Course Categories
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-arrow" data-bs-auto-close="outside"
+                            <ul class="dropdown-menu dropdown-menu-arrow"
                                 style="width:200px"
                                 id="drop_categories" aria-labelledby="navbarBrowse">
 
                             </ul>
                         </li>
                     </ul>
-                    <form class="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">
-                    <span class="position-absolute ps-3 search-icon">
-                        <i class="fe fe-search"></i>
-                    </span>
-                        <input type="search" class="form-control ps-6" placeholder="Search Courses"/>
-                    </form>
+                    {{--                    <form class="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">--}}
+                    {{--                    <span class="position-absolute ps-3 search-icon">--}}
+                    {{--                        <i class="fe fe-search"></i>--}}
+                    {{--                    </span>--}}
+                    {{--                        <input type="search" class="form-control ps-6" placeholder="Search Courses"/>--}}
+                    {{--                    </form>--}}
 
                     <ul class="navbar-nav navbar-right-wrap ms-auto d-none d-lg-block">
 
@@ -191,10 +213,27 @@
                         @if (session('info'))
                             <li class="dropdown d-inline-block stopevent">
                                 <a class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary"
-                                   href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                   aria-expanded="false">
-                                    <i class="fe fe-bell"></i>
+                                   href="#" role="button" id="dropdownNotificationSecond" data-bs-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    <i class="fe fe-bell"> </i>
                                 </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg"
+                                     aria-labelledby="dropdownNotificationSecond">
+                                    <div>
+                                        <div
+                                            class="border-bottom px-3 pb-3 d-flex justify-content-between align-items-center">
+                                            <span class="h5 mb-0">Notifications</span>
+                                            <a href="javascript:void(0)" class="text-muted"><span
+                                                    class="align-middle"><i
+                                                        class="fe fe-settings me-1"></i></span></a>
+                                        </div>
+                                        <ul class="list-group list-group-flush ">
+                                            <li class="list-group-item">
+                                                <p class="text-muted">No notifications</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </li>
 
                             <li class="dropdown ms-2 d-inline-block">
@@ -223,50 +262,55 @@
                                         @if (session('info')['instructor'] == 1 && !request()->is('instructor/*'))
                                             <li>
                                                 <a class="dropdown-item" href="{{ route('instructor.dashboard') }}">
-                                                    Instructor
+                                                    Instructor's Dashboard
+                                                </a>
+                                            </li>
+                                        @elseif (session('info')['instructor']!=1)
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('become_instructor') }}">
+                                                    Become Instructor
                                                 </a>
                                             </li>
                                         @endif
-                                        <li>
-                                            <a class="dropdown-item" href="{{route('my-courses.learning')}}">
-                                                My Learning
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">
-                                                My Cart
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">
-                                                My Wishlist
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="dropdown-divider"></div>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <a class="dropdown-item" href="#">
-                                                Purchase History
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="dropdown-divider"></div>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <a class="dropdown-item" href="#">
-                                                Public Profile
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="dropdown-divider"></div>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <a class="dropdown-item" href="{{ route('logout') }}">
-                                                <i class="fe fe-power me-2"></i>Sign Out
-                                            </a>
-                                        </li>
-                                    </ul>
+                                        {{--                                        <li>--}}
+                                        {{--                                            <a class="dropdown-item" href="{{route('my-courses.learning')}}">--}}
+                                        {{--                                                My Learning--}}
+                                        {{--                                            </a>--}}
+                                        {{--                                        </li>--}}
+                                        {{--                                        <li>--}}
+                                        {{--                                            <a class="dropdown-item" href="#">--}}
+                                        {{--                                                My Cart--}}
+                                        {{--                                            </a>--}}
+                                        {{--                                        </li>--}}
+                                        {{--                                        <li>--}}
+                                        {{--                                            <a class="dropdown-item" href="#">--}}
+                                        {{--                                                My Wishlist--}}
+                                        {{--                                            </a>--}}
+                                        {{--                                        </li>--}}
+                                        {{--                                    </ul>--}}
+                                        {{--                                    <div class="dropdown-divider"></div>--}}
+                                        {{--                                    <ul class="list-unstyled">--}}
+                                        {{--                                        <li>--}}
+                                        {{--                                            <a class="dropdown-item" href="#">--}}
+                                        {{--                                                Purchase History--}}
+                                        {{--                                            </a>--}}
+                                        {{--                                        </li>--}}
+                                        {{--                                    </ul>--}}
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+                                                    Public Profile
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="dropdown-divider"></div>
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('logout') }}">
+                                                    <i class="fe fe-power me-2"></i>Sign Out
+                                                </a>
+                                            </li>
+                                        </ul>
                                 </div>
                             </li>
                         @endif
@@ -297,7 +341,7 @@
                     });
                     $("#drop_categories").append(`
                 <li class="dropdown-submenu dropend">
-                    <a class="dropdown-item spe dropdown-list-group-item dropdown-toggle show fw-light" href="javascript:void(0)" aria-expanded="false">${cats.name}</a>
+                    <a class="dropdown-item spe dropdown-list-group-item dropdown-toggle show fw-light" data-bs-toggle="dropdown" href="javascript:void(0)" aria-expanded="false">${cats.name}</a>
                     <ul class="dropdown-menu" style="width: 310px;">
                         ${sub_topic}
                     </ul>

@@ -22,19 +22,17 @@
                                 <div class="mb-3">
                                     <label for="courseTitle" class="form-label"><b>Course Price Tier</b></label>
                                     <p>
-                                        If you intend to offer your course for free, the total length of video content
-                                        must
-                                        be less than 2 hours.
+                                        The minimum price of a course must be &#8358;2500
                                     </p>
                                     <div class="d-flex ">
-                                        <select class="form-control" name="currency" style="width: 100px">
-                                            <option value="NGN" selected>NGN</option>
-{{--                                            <option value="USD">USD</option>--}}
+                                        <select class="form-control text-center" name="currency" style="width: 4rem;">
+                                            <option value="NGN" selected>&#8358;</option>
                                         </select>
-                                        <input type="number" step='0.1' class="form-control course_price ms-3"
+                                        <input type="number" min="2500" step='0.1'
+                                               class="form-control course_price ms-3"
                                                style="width:200px"/>
                                         <input type="hidden" name="course_update_id"/>
-                                        <button type="submit" class=" ms-3 btn btn-primary">Save</button>
+                                        <button type="submit" class=" ms-3 btn btn-primary">Save and Next</button>
                                     </div>
                                 </div>
                             </form>
@@ -46,7 +44,7 @@
     </div>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             function pickInfo() {
                 data = $('#course_info_29').val();
@@ -54,18 +52,18 @@
             }
 
 
-            setTimeout(function() {
+            setTimeout(function () {
                 data = '';
 
                 i = 0;
-                while(!data || data) {
+                while (!data || data) {
                     new_data = pickInfo();
-                    if(new_data) {
+                    if (new_data) {
                         data = new_data;
                         return;
                     }
 
-                    if(i == 1000) {
+                    if (i == 1000) {
                         console.log('we reached');
                         return;
                     }
@@ -78,11 +76,11 @@
             }, 3000)
 
         });
-        $(function() {
-            $('#updatePrice').on('submit', function(e) {
+        $(function () {
+            $('#updatePrice').on('submit', function (e) {
                 e.preventDefault();
                 let published = sessionStorage.getItem('published');
-                if(published && published != 0) {
+                if (published && published != 0) {
                     salat('This course has been submitted for review and cannot be edited', 1);
                     return;
                 }
@@ -91,7 +89,8 @@
                 id = $(form).find('input[name="course_update_id"]').val();
                 cur = $(form).find('select[name="currency"]').val();
                 bt = $(form).find('button');
-
+                const params = new URL(document.location).searchParams;
+                const type = params.get('type');
                 $.ajax({
                     method: 'post',
                     url: api_url + `admin/update_price`,
@@ -103,11 +102,14 @@
                     beforeSend: () => {
                         btn(bt, '', 'before')
                     }
-                }).done(function(res) {
-                    btn(bt, 'Save', 'after')
+                }).done(function (res) {
+                    btn(bt, 'Save and Next', 'after')
                     salat(res.message);
-                }).fail(function(res) {
-                    btn(bt, 'Save', 'after')
+                    setTimeout(()=>{
+                        location.href=`/instructor/course_message/{{$slug}}?type=${type}`
+                    },1000)
+                }).fail(function (res) {
+                    btn(bt, 'Save and Next', 'after')
                     concatError(res.responseJSON);
                 })
                 console.log(price, cur);

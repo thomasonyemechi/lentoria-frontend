@@ -27,12 +27,12 @@
                         Courses</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fe fe-pie-chart nav-icon"></i>Earnings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fe fe-user nav-icon"></i>Students</a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="#"><i class="fe fe-pie-chart nav-icon"></i>Earnings</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="#"><i class="fe fe-user nav-icon"></i>Students</a>--}}
+{{--                </li>--}}
             </ul>
             <span class="navbar-header">Account Settings</span>
             <ul class="list-unstyled ms-n2 mb-0">

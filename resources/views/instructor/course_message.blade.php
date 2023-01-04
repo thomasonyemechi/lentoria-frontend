@@ -37,8 +37,8 @@
                                     <x-textarea id="cermess" name="cermess"/>
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button type="submit" class="btn btn-primary btn-block" id="addMessage">Add
-                                        Message
+                                    <button type="submit" class="btn btn-primary btn-block" id="addMessage">Save and
+                                        Next
                                     </button>
                                 </div>
                             </form>
@@ -52,18 +52,20 @@
 
 
     <script>
-        $(function() {
+        $(function () {
 
-            $('#addMessageForm').submit(function(e) {
+            $('#addMessageForm').submit(function (e) {
                 e.preventDefault();
                 let published = sessionStorage.getItem('published');
-                if(published && published != 0) {
+                if (published && published != 0) {
                     salat('This course has been submitted for review and cannot be edited', 1);
                     return;
                 }
                 course_id = $('#mycourse_id').val();
                 welcome_message = $('#welmess').val();
                 certification_message = $('#cermess').val();
+                const params = new URL(document.location).searchParams;
+                const type = params.get('type');
                 $.ajax({
                     method: 'POST',
                     url: api_url + 'admin/course_messageupdate',
@@ -76,13 +78,14 @@
                         btn($('#addMessage'), '', 'before');
                     }
                 }).done((res) => {
-                    console.log(res);
                     salat(res.message);
-                    btn($('#addMessage'), 'Add Message', 'after');
+                    btn($('#addMessage'), 'Save and Next', 'after');
+                    setTimeout(() => {
+                        location.href = `/instructor/faq/{{$slug}}?type=${type}`;
+                    }, 1000)
                 }).fail((res) => {
                     concatError(res.responseJSON)
-                    console.log(res)
-                    btn($('#addMessage'), 'Add Message', 'after');
+                    btn($('#addMessage'), 'Save and Next', 'after');
                 });
             });
 

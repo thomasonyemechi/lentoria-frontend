@@ -100,7 +100,7 @@
 
                                 <input type="hidden" name="course_id">
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button type="submit" class="updateLearners btn btn-primary">Save</button>
+                                    <button type="submit" class="updateLearners btn btn-primary">Save and Next</button>
                                 </div>
                             </form>
                         </div>
@@ -113,7 +113,6 @@
     <script>
         $(function() {
             fetchLearners(@js($slug));
-
             $(document).on('click', '.updateLearners', function(e) {
                 e.preventDefault();
                 form = $('#updateLearners'); //wywl == what you will learn
@@ -165,7 +164,8 @@
                         new_pur.push(pu.value)
                     }
                 })
-
+                const params = new URL(document.location).searchParams;
+                const type = params.get('type');
                 $.ajax({
                     method: 'post',
                     url: api_url + 'admin/course_update_info',
@@ -179,12 +179,15 @@
                     },
                     beforeSend: () => btn(bt, '', 'before')
                 }).done(res => {
-                    btn(bt, 'Save Answers', 'after')
+                    btn(bt, 'Save and Next', 'after')
                     salat(res.message);
+                    setTimeout(()=>{
+                        location.href=`/instructor/curriculum/{{$slug}}?type=${type}`
+                    })
+
                 }).fail(res => {
-                    console.log(res);
                     concatError(res.responseJSON);
-                    btn(bt, 'Save Answers', 'after')
+                    btn(bt, 'Save and Next', 'after')
                 })
 
             })
@@ -211,7 +214,6 @@
                     let pur = parse(data.purpose);
                     let aud = parse(data.course_audience);
                     let wywl = parse(data.what_you_will_learn);
-                    console.log(wywl);
                     let wywls = Array.from(document.querySelectorAll(".what_you_will_learn"));
                     let audience = Array.from(document.querySelectorAll(".learners"));
                     let purpose = Array.from(document.querySelectorAll(".purpose"));

@@ -31,8 +31,10 @@
                             <x-add-section-card id="addseccard2" type="add"/>
                         </div>
                         <div class="card-footer">
-                            <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" id="addsec2">Add
-                                Section</a>
+                            <div class="d-flex justify-content-between">
+                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" id="addsec2">Add
+                                    Section</a>
+                                <a href="{{"/instructor/pricing/$slug?type=".request()->input('type')}}" class="btn btn-sm btn-primary">Next</a></div>
                         </div>
 
                     </div>

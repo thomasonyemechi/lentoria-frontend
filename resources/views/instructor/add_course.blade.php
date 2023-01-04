@@ -95,6 +95,15 @@
                                                     <option value="">Select Sub-Category</option>
                                                 </select>
                                             </div>
+                                            <div class="mb-3">
+                                                <select class="form-control" name="level" id="course_level"
+                                                        data-width="100%">
+                                                    <option value="">Select level</option>
+                                                    <option value="1">Beginner</option>
+                                                    <option value="2">Intermediate</option>
+                                                    <option value="3">Advanced</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Button -->
@@ -157,6 +166,7 @@
             let subcategories;
             const jsonfile = `{{asset('json_files/subcategories.json')}}`;
             getLoadSubCategories();
+
             // getCourseTypes();
 
             function getLoadSubCategories() {
@@ -226,10 +236,11 @@
             $('#addCourse').on('click', function (e) {
                 e.preventDefault();
                 // course_type = $('#course_type').val();
-                category_id = $('#selectcat :selected').val();
-                topic_id = $('#selsubcat :selected').val();
-                title = $('#courseTitle').val();
-                subtitle = $('#courseSubtitle').val();
+               let category_id = $('#selectcat :selected').val();
+               let topic_id = $('#selsubcat :selected').val();
+                let course_level = $('#course_level :selected').val();
+                let title = $('#courseTitle').val();
+                let subtitle = $('#courseSubtitle').val();
                 bt = $('#addCourse');
                 if (!category_id || !subtitle || !title || !topic_id) {
                     salat('All Fields Required', 1);
@@ -240,7 +251,7 @@
                     method: 'POST',
                     url: api_url + 'admin/create_new_course',
                     data: {
-                        // course_type: course_type,
+                        course_level: course_level,
                         category_id: category_id,
                         topic_id: topic_id,
                         title: title,
@@ -250,7 +261,7 @@
                         btn(bt, '', 'before');
                     }
                 }).done(res => {
-                    location.href = `/instructor/course/${res.slug}?type=${course_type}`
+                    location.href = `/instructor/course/${res.slug}?type=${res.course_type}`
                     btn(bt, 'Submit', 'after');
                 }).fail(res => {
                     concatError(res.responseJSON);

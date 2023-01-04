@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/session_login_infomation', [Controller::class, 'sessionLoginInfomation']);
-Route::get('/', function () {
-    return view('index');
-});
+Route::view('/', 'index')->name('index');
 
 Route::post('/addtosession', [Controller::class, 'updateInstructorSession']);
 
@@ -25,6 +23,7 @@ Route::get('/demo', function () {
     return view('instructor.demo');
 });
 
+Route::view('coming-soon', 'coming-soon')->name('coming-soon');
 Route::view('/course/{id}/{slug}', 'course_single');
 Route::view('/instructor/{id}/profile', 'instructor_profile')->name('instructor_profile');
 Route::view('activate_account', 'activation')->name('activation');

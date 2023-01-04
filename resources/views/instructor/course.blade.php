@@ -109,9 +109,12 @@
                                 <div class="custom-file-container">
                                     <label class="form-label" for="promo_video"><b>Promo Video</b></label>
                                     <input type="file" class="form-control" name="promo_video" id="promo_video"/>
+                                    <small class="mt-3 d-block">Upload your course promotional video here. It must meet
+                                        our course promo video quality standards to be accepted.Important guidelines:
+                                        not more than 2m30s; .mp4 .no text on the video.</small>
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button class="btn btn-primary btn-block" id="updateCourse">Save</button>
+                                    <button class="btn btn-primary btn-block" id="updateCourse">Save and Next</button>
                                 </div>
                             </form>
                         </div>
@@ -211,7 +214,6 @@
             }
 
             $(function () {
-
                 let subcategories;
                 const jsonfile = `{{asset('json_files/subcategories.json')}}`;
                 getLoadSubCategories();
@@ -274,6 +276,8 @@
                     image = $('#course_image').get(0).files.length;
                     video = $('#promo_video').get(0).files.length;
                     let published = sessionStorage.getItem('published');
+                    const params = new URL(document.location).searchParams;
+                    const type = params.get('type');
                     if (published && published != 0) {
                         salat('This course has been submitted for review and cannot be edited', 1);
                         return;
@@ -311,12 +315,15 @@
                             btn($('#updateCourse'), '', 'before');
                         }
                     }).done((res) => {
-                        btn($('#updateCourse'), 'Submit For Review', 'after');
-                        salat(res.message)
+                        btn($('#updateCourse'), 'Save and Next', 'after');
+                        salat(res.message);
+                        setTimeout(() => {
+                            location.href = `/instructor/goals/{{$slug}}?type=${type}`
+                        }, 1000)
                     }).fail((res) => {
                         concatError(res.responseJSON)
                         console.log(res)
-                        btn($('#updateCourse'), 'Submit For Review', 'after');
+                        btn($('#updateCourse'), 'Save and Next', 'after');
                     })
 
                 });

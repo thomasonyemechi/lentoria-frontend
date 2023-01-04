@@ -47,7 +47,7 @@
     </style>
     <!-- Page Content -->
     <div class="py-lg-8 py-0 bg-auto mb-0"
-         style="background-size: cover; background: rgba(221, 218, 255, 0.3) url('../../assets/images/hero/hero-graphics.svg') linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%) no-repeat top center;">
+         style="background: url(../../assets/images/hero/hero-graphics.svg)no-repeat , linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%), rgba(221, 218, 255, 0.3) ; background-size: cover; background-position: top center;">
         <div class="container">
             <!-- Hero Section -->
             <div class="row justify-content-center">
@@ -57,8 +57,7 @@
                             <span class="headingTyped text-primary"></span>
                         </h1>
                         <p class="mb-4 h4 text-dark">
-                            Build skills with courses Join Geeks to watch, play, learn, make, and discover, precipitous
-                            esi elementum the latest non et Podio.
+                            watch, play, learn, make, discover and build skills with courses on lentoria
                         </p>
                         <div class="mt-8 mb-0">
                         </div>
@@ -119,27 +118,35 @@
                 $.get(`${api_url}user/courses`).done(res => {
                     const data = res.data;
                     $(".loader").remove();
-                    data.forEach(course => {
-                        $(".my_courses").append(`
-                        <div class="item col-6 col-sm-4 col-md-3 d-flex align-items-stretch">
-                            <div class="card mb-4 card-hover">
-                                <a href="/my-courses/${course.slug}" class="card-img-top"><img
-                                        src="${imageUrl(course.image)}" alt="" onerror="this.src='../../assets/images/image.jpeg'"
-                                        class="rounded-top-md card-img-top"></a>
-                                <div class="card-body">
-                                    <h4 class="mb-2 text-ellipsis">
-                                        <a href="/my-courses/${course.slug}" class="text-inherit">${course.title}</a>
-                                    </h4>
-                                    <ul class="mb-3 list-inline">
-                                        <li class="list-inline-item"><i class="fa fa-book me-1"></i>${course.lectures_count} lectures</li>
-                                    </ul>
-                                    <span class="fs-6">
-                                        <a href="/my-courses/${course.slug}">START COURSE</a>
-                                    </span>
+                    if (data.length > 0) {
+                        data.forEach(course => {
+                            $(".my_courses").append(`
+                            <div class="item col-6 col-sm-4 col-md-3 d-flex align-items-stretch">
+                                <div class="card mb-4 card-hover">
+                                    <a href="/my-courses/${course.slug}" class="card-img-top"><img
+                                            src="${imageUrl(course.image)}" alt="" onerror="this.src='../../assets/images/image.jpeg'"
+                                            class="rounded-top-md card-img-top"></a>
+                                    <div class="card-body">
+                                        <h4 class="mb-2 text-ellipsis">
+                                            <a href="/my-courses/${course.slug}" class="text-inherit">${course.title}</a>
+                                        </h4>
+                                        <ul class="mb-3 list-inline">
+                                            <li class="list-inline-item"><i class="fa fa-book me-1"></i>${course.lectures_count} lectures</li>
+                                        </ul>
+                                        <span class="fs-6">
+                                            <a href="/my-courses/${course.slug}">START COURSE</a>
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>`)
-                    });
+                            </div>`)
+                        });
+                    } else {
+                        $(".my_courses").append(
+                            `<div class="text-center mt-4">
+                                <h4 class="text-gray-500">No courses purchased yet</h4>
+                            </div>`
+                        )
+                    }
                 }).fail(res => {
                     console.log(res);
                 })
@@ -149,56 +156,63 @@
                 $.get(`${api_url}user/similar_courses`).done(res => {
                     const data = res.data;
                     $(".loader2").remove();
-                    data.forEach(course => {
+                    if (data.length > 0) {
+                        data.forEach(course => {
+                            $(".similar_courses").append(`
+                        <div class="item col-6 col-sm-4 col-md-3 d-flex align-items-stretch">
+                            <div class="card mb-4 card-hover">
+                                <a href="/course/${course.id}/${course.slug}" class="card-img-top">
+                                    <img src="${imageUrl(course.image)}" alt="" onerror="this.src='../../assets/images/image.jpeg'"
+                                         class="card-img-top rounded-top-md"></a>
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <h3 class="h4 mb-2 text-truncate-line-2 ">
+                                        <a href="/course/${course.id}/${course.slug}" class="text-inherit">${course.title}</a>
+                                    </h3>
+                                     <ul class="mb-3 list-inline">
+                                    <li class="list-inline-item">
+                                        <svg class="me-1 mt-n1" width="16" height="16"
+                                            viewBox="0 0 16 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            ${levelBar(course.level)}
+                                        </svg>
+                                        ${checkLevel(course.level)}
+                                    </li>
+                                </ul>
+                                <div class="lh-1">
+                                    <span class="text-bold font-weight-bolder fs-3 text-black">
+                                       ${naira(percentage(course.price, 50))}
+                                    </span>
+                                    <span class="text-bold text-decoration-line-through fs-4 text-black">${naira(course.price)}</span>
+                                </div>
+                                </div>
+                                <!-- Card footer -->
+                               <div class="card-footer">
+                                <div class="row align-items-center g-0">
+                                    <div class="col-auto">
+                                        <img src="../../assets/images/avatar/avatar-1.jpg"
+                                            class="rounded-circle avatar-xs" alt="">
+                                    </div>
+                                    <div class="col ms-2">
+                                        <span>${course.user.firstname} ${course.user.lastname}</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a href="#" class="text-muted bookmark">
+                                            <i class="fe fe-bookmark"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                       </div>
+                            `)
+                        })
+                    } else {
                         $(".similar_courses").append(`
-                    <div class="item col-6 col-sm-4 col-md-3 d-flex align-items-stretch">
-                        <div class="card mb-4 card-hover">
-                            <a href="/course/${course.id}/${course.slug}" class="card-img-top">
-                                <img src="${imageUrl(course.image)}" alt="" onerror="this.src='../../assets/images/image.jpeg'"
-                                     class="card-img-top rounded-top-md"></a>
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <h3 class="h4 mb-2 text-truncate-line-2 ">
-                                    <a href="/course/${course.id}/${course.slug}" class="text-inherit">${course.title}</a>
-                                </h3>
-                                 <ul class="mb-3 list-inline">
-                                <li class="list-inline-item">
-                                    <svg class="me-1 mt-n1" width="16" height="16"
-                                        viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        ${levelBar(course.level)}
-                                    </svg>
-                                    ${checkLevel(course.level)}
-                                </li>
-                            </ul>
-                            <div class="lh-1">
-                                <span class="text-bold font-weight-bolder fs-3 text-black">
-                                   ${naira(percentage(course.price, 50))}
-                                </span>
-                                <span class="text-bold text-decoration-line-through fs-4 text-black">${naira(course.price)}</span>
-                            </div>
-                            </div>
-                            <!-- Card footer -->
-                           <div class="card-footer">
-                            <div class="row align-items-center g-0">
-                                <div class="col-auto">
-                                    <img src="../../assets/images/avatar/avatar-1.jpg"
-                                        class="rounded-circle avatar-xs" alt="">
-                                </div>
-                                <div class="col ms-2">
-                                    <span>${course.user.firstname} ${course.user.lastname}</span>
-                                </div>
-                                <div class="col-auto">
-                                    <a href="#" class="text-muted bookmark">
-                                        <i class="fe fe-bookmark"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                   </div>
-                        `)
-                    })
+                            <div class="text-center mt-2">
+                                <h4 class="text-gray-500">No similar courses available</h4>
+                            </div>`);
+                    }
                 })
             }
 

@@ -6,6 +6,7 @@
         .cta-btn:hover {
             color: #036;
         }
+
     </style>
     <div class="bg-primary-a" style="background-color: #036;">
         <div class="container">
@@ -19,7 +20,8 @@
                             and become a professional that is positioned to get hired by the best companies around the
                             world.
                         </p>
-                        <a href="javascript:void(0)" class="btn btn-outline-white text-white mt-4">Explore courses</a>
+                        <a href="javascript:void(0)" class="btn btn-outline-white text-white mt-4 outline-btn">Explore
+                            courses</a>
                     </div>
                 </div>
                 <div class=" col-xl-7 col-lg-6 col-md-12 text-lg-end text-center">
@@ -182,7 +184,8 @@
                     Our master classes are designed to get you to master new skills with well-planned
                     practical sessions and simplified class activities tailored towards completing certain class
                     projects</h2>
-                <a href="javascript:void(0)" class="btn btn-outline-white text-white mt-4" data-bs-toggle="modal"
+                <a href="javascript:void(0)" class="btn btn-outline-white text-white mt-4 outline-btn-secondary"
+                   data-bs-toggle="modal"
                    data-bs-target="#signup_modal">Learn more</a>
             </div>
 
@@ -197,7 +200,7 @@
                     easier than you can imagine.
                     Take a bold step today and kick-start your journey to expertise
                 </h2>
-                <a href="" class="btn btn-outline-white text-white mt-4">Explore courses</a>
+                <a href="{{route('coming-soon')}}" class="btn btn-outline-white text-white mt-4 outline-btn">Explore courses</a>
             </div>
             <div class="col-lg-6 m-0 p-0">
 
@@ -216,13 +219,14 @@
     </div>
 
     <div class="pt-lg-12 pb-lg-3 pt-8 pb-6">
-        <div class="row bg-primary">
+        <div class="row bg-secondary">
             <div class="col-lg-6 text-center m-0 p-8">
                 <h1 class="text-white display-4">Earn Money as an Affiliate</h1>
                 <h2 class="lead text-white">You can become your own boss and earn decent income promoting excellent
                     online courses, business acceleration programmes and educational resources. Our affiliate
                     programme simplifies every thing and keep you in control of your cash flow game</h2>
-                <a href="{{ route('affiliate') }}" class="btn btn-outline-white text-white mt-4 cta-btn">Join Our
+                <a href="{{ route('affiliate') }}" class="btn btn-outline-white text-white mt-4 outline-btn-secondary">Join
+                    Our
                     Affiliate
                     Programme</a>
             </div>
@@ -232,10 +236,7 @@
 
             </div>
         </div>
-    </div>
 
-
-    <div class="pt-lg-12 pb-lg-3 pt-8 pb-6 mb-0">
         <div class="row bg-primary mb-0">
             <div class="col-lg-6 m-0 p-0 mb-0">
                 <img src="{{asset('assets/images/new_img/c86d94d6ed.jpg')}}" width="100%">
@@ -246,7 +247,8 @@
                     into a thriving business-generating consistent cash flow even when you are away.
                     Lentoria will make you a pro within days.
                     Nothing can be more satisfying</h2>
-                <button class="btn btn-outline-white text-white mt-4 gsbtn">Become an Instructor</button>
+                <a href="{{route('become_instructor')}}" class="btn btn-outline-white text-white mt-4 outline-btn">Become
+                    an Instructor</a>
             </div>
 
         </div>
@@ -297,7 +299,7 @@
     </div>
 
     <div class="bg-primary-a"
-         style="background-color: #036 !important; background: url(assets/images/background/course-graphics.svg)no-repeat; background-size: cover; background-position: top center;  margin: left -100px right -100px; padding-bottom: 60px; padding-top: 60px;">
+         style="background-color: #036 !important; background-repeat:no-repeat; background-size: cover; background-position: top center;  margin: left -100px right -100px; padding-bottom: 60px; padding-top: 60px;">
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-md-9 col-12">
@@ -305,7 +307,8 @@
                     <p class="lead text-white px-lg-12 mb-6">Effective learning starts with assessment. Learning a new
                         skill is hard work—Lentoria makes it easier.</p>
                     <div class="d-grid d-md-block">
-                        <button class="btn btn-success mb-2 mb-md-0" data-bs-target="#signup_modal"
+                        <button @disabled(session('info')) class="btn btn-outline-white text-white mb-2 mb-md-0 outline-btn"
+                                data-bs-target="#signup_modal"
                                 data-bs-toggle="modal">Start Learning
                         </button>
                     </div>

@@ -15,27 +15,10 @@ function user()
 function userDetail($detail)
 {
     $user = user();
-    if($detail == 1) {
-        return $user->firstname . ' ' . $user->lastname;
-    }
-
-    if($detail == 2) {
-        return $user->email;
-    }
+    return [1=>"$user->firstname $user->lastname",2=> (string)$user->email][$detail];
 }
 
 
-function names($type)
-{
-    $user = user();
-    if($type == 1) {
-        return $user->firstname;
-    }
-
-    if($type == 2) {
-        return $user->lastname;
-    }
-}
 
 function userAvatar()
 {
