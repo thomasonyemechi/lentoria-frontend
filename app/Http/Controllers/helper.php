@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Cookie;
 use Laravolt\Avatar\Facade as Avatar;
+
 
 function access_token()
 {
@@ -18,7 +20,10 @@ function userDetail($detail)
     return [1=>"$user->firstname $user->lastname",2=> (string)$user->email][$detail];
 }
 
-
+function names($type){
+    $user = user();
+    return[1=> (string)$user->firstname,2=> (string)$user->lastname][$type];
+}
 
 function userAvatar()
 {

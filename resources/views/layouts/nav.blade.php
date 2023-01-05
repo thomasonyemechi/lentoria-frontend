@@ -7,33 +7,6 @@
         white-space: normal;
         -webkit-line-clamp: 5;
     }
-
-    @media (min-width: 1200px) {
-        header.navbar-sticky-on {
-            position: fixed;
-            z-index: 1020;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #fff;
-            -webkit-animation: fadeInDown 0.5s;
-            animation: fadeInDown 0.5s;
-            width: 100%;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        header.navbar-sticky-on .navbar-top {
-            display: none !important;
-        }
-
-        header.navbar-sticky-on .navbar-brand {
-            padding: 14px 0;
-        }
-
-        header.navbar-sticky-on .navbar-brand .navbar-brand-item {
-            height: 22px;
-        }
-    }
 </style>
 @if(!request()->routeIs('instructor.course_review'))
     <header class="navbar-light">
@@ -156,6 +129,7 @@
                                             </a>
                                         </li>
                                     </ul>
+                                </ul>
                             </div>
                         </li>
                     @endif
@@ -172,7 +146,7 @@
                 <!-- Collapse -->
                 <div class="collapse w-100 navbar-collapse" id="navbar-default">
                     <ul class="navbar-nav navbar-nav-scroll">
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown d-none d-md-none d-lg-block">
                             <a class="nav-link dropdown-toggle active" href="#" id="navbarBrowse"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                data-bs-display="static">
