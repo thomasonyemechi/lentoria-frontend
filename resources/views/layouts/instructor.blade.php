@@ -129,6 +129,7 @@
 <script src="{{ asset('assets/libs/bootstrap_file_input/js/plugins/filetype.min.js') }}"></script>
 <script src="{{ asset('assets/libs/bootstrap_file_input/js/fileinput.min.js') }}"></script>
 <script src="{{ asset('assets/libs/bootstrap_file_input/bs5/theme.min.js') }}"></script>
+<script src="{{asset('assets/libs/bootstrap_file_input/js/plugins/piexif.min.js')}}"></script>
 <script src="{{ asset('assets/libs/bs-stepper/dist/js/bs-stepper.min.js') }}"></script>
 <script src="{{ asset('assets/libs/jQuery.print/jQuery.print.js') }}"></script>
 <script src="{{ asset('assets/libs/auxiliary-rater/index.js') }}"></script>

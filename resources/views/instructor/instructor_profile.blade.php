@@ -22,11 +22,11 @@
                                 <ul class="nav nav-lb-tab" id="tab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="table-tab" data-bs-toggle="pill" href="#profile"
-                                            role="tab" aria-controls="table" aria-selected="true">Lentoria Profile</a>
+                                           role="tab" aria-controls="table" aria-selected="true">Lentoria Profile</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="table-tab" data-bs-toggle="pill" href="#profile_pic"
-                                            role="tab" aria-controls="table" aria-selected="true">Profile Picture</a>
+                                           role="tab" aria-controls="table" aria-selected="true">Profile Picture</a>
                                     </li>
                                 </ul>
                             </div>
@@ -35,7 +35,7 @@
                         <div class="card-body">
                             <div class="tab-content" id="tabContent">
                                 <div class="tab-pane fade show active overlay" id="profile" role="tabpanel"
-                                    aria-labelledby="profile-tab">
+                                     aria-labelledby="profile-tab">
                                     <form id="editProfileForm">
 
                                         <div class="row">
@@ -43,22 +43,22 @@
                                                 <div class="form-group mb-3">
                                                     <label for="fristname" class="form-label">First Name</label>
                                                     <input type="text" class="form-control" id="firstname" readonly
-                                                        value="{{ names(1) }}" name="fname" />
+                                                           value="{{ names(1) }}" name="fname"/>
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="lastname" class="form-label">Last Name</label>
                                                     <input type="text" class="form-control" id="lastname" readonly
-                                                        value="{{ names(2) }}" name="lname" />
+                                                           value="{{ names(2) }}" name="lname"/>
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="headine" class="form-label">Headline</label>
                                                     <input type="text" class="form-control"
-                                                        placeholder="Instructor at Lentoria" id="headline"
-                                                        name="headline" />
+                                                           placeholder="Instructor at Lentoria" id="headline"
+                                                           name="headline"/>
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="biography" class="form-label">Biography</label>
-                                                    <x-textarea id="biography" name="biography" type="1" />
+                                                    <x-textarea id="biography" name="biography" type="1"/>
                                                     <small>Your biography should have at least 50 characters, links and
                                                         coupon codes are not permitted.</small>
                                                 </div>
@@ -66,7 +66,7 @@
                                                 <div class="form-group mb-3">
                                                     <label for="lang" class="form-label">Language</label>
                                                     <select type="text" class="form-control"
-                                                        placeholder="Instructor at Lentoria" id="lang" name="lang">
+                                                            placeholder="Instructor at Lentoria" id="lang" name="lang">
                                                         <option value="english">English</option>
                                                         <option value="french">French</option>
                                                     </select>
@@ -76,38 +76,39 @@
 
                                                 <div class="form-group mb-3">
                                                     <label for="name" class="form-label">Website</label>
-                                                    <input type="text" class="form-control shadow-none" placeholder="Url"
-                                                        id="site" name="site" />
+                                                    <input type="text" class="form-control shadow-none"
+                                                           placeholder="Url"
+                                                           id="site" name="site"/>
                                                 </div>
                                                 <label for="twitter" class="form-label">Twitter</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"
-                                                        id="twitter-addon">https://www.twitter.com/</span>
+                                                          id="twitter-addon">https://www.twitter.com/</span>
                                                     <input type="text" class="form-control" name="twitter"
-                                                        placeholder="Username" id="twitter"
-                                                        aria-describedby="twitter-addon3">
+                                                           placeholder="Username" id="twitter"
+                                                           aria-describedby="twitter-addon3">
                                                 </div>
                                                 <label for="face" class="form-label">Facebook</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"
-                                                        id="facebook-addon">https://www.facebook.com/</span>
+                                                          id="facebook-addon">https://www.facebook.com/</span>
                                                     <input type="text" class="form-control" placeholder="Username"
-                                                        id="face" name="face" />
+                                                           id="face" name="face"/>
                                                 </div>
                                                 <label for="linked" class="form-label">LinkedIn</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"
-                                                        id="linkedin-addon">https://www.linkedin.com/</span>
+                                                          id="linkedin-addon">https://www.linkedin.com/</span>
                                                     <input type="text" class="form-control" placeholder="Resource ID"
-                                                        id="linked" name="linked" />
+                                                           id="linked" name="linked"/>
                                                 </div>
 
                                                 <label for="yout" class="form-label">Youtube</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"
-                                                        id="youtube-addon">https://www.youtube.com/</span>
+                                                          id="youtube-addon">https://www.youtube.com/</span>
                                                     <input type="text" class="form-control" placeholder="Username"
-                                                        id="yout" name="you" />
+                                                           id="yout" name="you"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -119,8 +120,13 @@
                                 </div>
 
                                 <div class="tab-pane fade" id="profile_pic" role="tabpanel"
-                                    aria-labelledby="profile_pic-tab">
-
+                                     aria-labelledby="profile_pic-tab">
+                                    <small class="text-muted">Minimum 200x200 pixels, Maximum 6000x6000 pixels</small>
+                                    <form class="row text-start g-3" id="addVideoForm" enctype="multipart/form-data">
+                                        <div class="col-md-12">
+                                            <input name="profile_pic" type="file" id="file_upload"/>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -131,10 +137,41 @@
     </div>
 
     <script>
-        $(function() {
+        $(function () {
             instructorInfo();
-
-            $("#editProfileForm").submit(function(e) {
+            $("#file_upload").fileinput({
+                uploadUrl: "https://lentoria.site/api/video",
+                allowedFileTypes: ['image'],
+                minImageWidth: 200,
+                minImageHeight: 200,
+                maxImageWidth: 6000,
+                maxImageHeight: 6000,
+                removeFromPreviewOnError: true,
+                dropZoneEnabled: true,
+                resizeImage: true,
+                theme: "bs5",
+                browseOnZoneClick: true,
+                uploadAsync: true,
+                fileActionSettings: {
+                    showZoom: true,
+                    showUpload: false,
+                },
+                mergeAjaxCallbacks: false,
+                uploadExtraData: function (previewId, index) {
+                    return {
+                        title: $("#lecu_title").val(),
+                        lecture_id: $("#lecu_id").val(),
+                        duration: $("input#video_length").val(),
+                    };
+                },
+            }).on('fileuploaded', function (event, data) {
+                var form = data.form,
+                    files = data.files,
+                    extra = data.extra,
+                    response = data.response,
+                    reader = data.reader;
+            });
+            $("#editProfileForm").submit(function (e) {
                 e.preventDefault();
                 form = $(this);
                 bt = form.find($('button[type="submit"]'));

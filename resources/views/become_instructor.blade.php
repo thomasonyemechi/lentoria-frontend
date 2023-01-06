@@ -11,7 +11,11 @@
         }
 
         button.get-started-btn:disabled {
-            cursor: not-allowed;
+            cursor: not-allowed !important;
+        }
+
+        .btn.disabled, .btn:disabled, fieldset:disabled .btn {
+            pointer-events: all;
         }
     </style>
     <!-- Hero Content -->
@@ -427,7 +431,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-12">
                     <!-- Card -->
-                    <div class="card  border border-primary mb-3">
+                    <div class="card border border-primary mb-3 package_3" x-data>
                         <!-- Card Body -->
                         <div class="p-5 text-center">
                             <div class="mb-5">
@@ -438,21 +442,25 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center mb-4">
-                                <span class="h3 mb-0 fw-bold">N</span>
-                                <div class="price-card--price-number toggle-price-content odometer"
+                                <span class="h3 mb-0 fw-bold">&#8358;</span>
+                                <div class="price-card--price-number toggle-price-content"
                                      data-price-monthly="0"
-                                     data-price-yearly="0">15,000
+                                     data-price-yearly="0">
+                                    <span class="price-plan fw-bold fs-2 text-dark" x-ref="price_plan">15,000</span>
                                 </div>
 
                             </div>
                             <div class="d-grid">
-                                <a href="{{ url('checkout/instructor_activation/3/'.Str::random(8)) }}"
-                                   class="btn btn-primary">Activate Now</a>
+                                <button
+                                    @click="setStorageAndRedirect($refs.price_plan.innerHTML,$el.getAttribute('href'))"
+                                    href="{{ url('checkout/instructor_activation/3/'.Str::random(8)) }}" disabled
+                                    class="btn btn-primary plan-btn">Activate Now
+                                </button>
                             </div>
                         </div>
                         <hr class="m-0">
                         <div class="p-5">
-                            <h4 class="fw-bold mb-4">Everything in Starter, including:</h4>
+                            <h4 class="fw-bold mb-4">Everything in Starter, plus:</h4>
                             <!-- List -->
                             <ul class="list-unstyled mb-0">
                                 <li class="mb-1">
@@ -461,7 +469,7 @@
                                 </li>
                                 <li class="mb-1">
                                     <span class="text-success me-2"><i class="far fa-check-circle"></i></span>
-                                    <span class="fw-bold text-dark">Instructor Paid Training Package</span>
+                                    <span class="fw-bold text-dark">Paid Training Package</span>
                                 </li>
                                 <li class="mb-1">
                                     <span class="text-success me-2"><i class="far fa-check-circle"></i></span>
@@ -473,7 +481,7 @@
                 </div>
                 <div class="col-lg-4 col-md-12 col-12">
                     <!-- Card -->
-                    <div class="card border border-primary mb-3 mb-lg-0">
+                    <div class="card border border-primary mb-3 mb-lg-0 package_4" x-data>
                         <!-- Card Body -->
                         <div class="p-5 text-center">
                             <div class="mb-5">
@@ -484,15 +492,19 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center mb-4">
-                                <span class="h3 mb-0 fw-bold">N</span>
-                                <div class="price-card--price-number toggle-price-content odometer"
-                                     data-price-monthly="39" data-price-yearly="99">40,000
+                                <sup class="h3 mb-0 fw-bold">&#8358;</sup>
+                                <div class="price-card--price-number toggle-price-content"
+                                     data-price-monthly="39" data-price-yearly="99"><span
+                                        class="price-plan fw-bold fs-2 text-dark" x-ref="price_plan">40,000</span>
                                 </div>
                             </div>
                             <div class="d-grid">
 
-                                <a href="{{ url('checkout/instructor_activation/4/'.Str::random(8)) }}"
-                                   class="btn btn-primary ">Activate Now</a>
+                                <button
+                                    @click="setStorageAndRedirect($refs.price_plan.innerHTML,$el.getAttribute('href'))"
+                                    href="{{ url('checkout/instructor_activation/4/'.Str::random(8)) }}" disabled
+                                    class="btn btn-primary plan-btn">Activate Now
+                                </button>
                             </div>
                         </div>
                         <hr class="m-0">
@@ -517,7 +529,7 @@
                 </div>
                 <div class="col-lg-4 col-md-12 col-12">
                     <!-- Card -->
-                    <div class="card  border border-primary mb-3 mb-lg-0">
+                    <div class="card border border-primary mb-3 mb-lg-0 package_5" x-data>
                         <!-- Card Body -->
                         <div class="p-5 text-center">
                             <div class="mb-5">
@@ -527,14 +539,18 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center mb-4">
-                                <span class="h3 mb-0 fw-bold">N</span>
-                                <div class="price-card--price-number toggle-price-content odometer"
-                                     data-price-monthly="99" data-price-yearly="199">115,000
+                                <span class="h3 mb-0 fw-bold">&#8358;</span>
+                                <div class="price-card--price-number toggle-price-content"
+                                     data-price-monthly="99" data-price-yearly="199"><span
+                                        class="price-plan fw-bold fs-2 text-dark" x-ref="price_plan">115,000</span>
                                 </div>
                             </div>
                             <div class="d-grid">
-                                <a href="{{ url('checkout/instructor_activation/5/'.Str::random(8)) }}"
-                                   class="btn btn-primary">Activate Now</a>
+                                <button
+                                    @click="setStorageAndRedirect($refs.price_plan.innerHTML,$el.getAttribute('href'))"
+                                    href="{{ url('checkout/instructor_activation/5/'.Str::random(8)) }}" disabled
+                                    class="btn btn-primary plan-btn">Activate Now
+                                </button>
                             </div>
                         </div>
                         <hr class="m-0">
@@ -560,241 +576,19 @@
                     </div>
                 </div>
             </div>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-10 text-center mb-3">
+                    <button class="btn btn-primary">Become an Instructor Now</button>
+                </div>
+                <div class="text-center">
+                    <span class="text-muted">Since a package has been activated you can click the button above to become an
+                        instructor</span>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Instructor -->
     <hr class="my-0">
-
-    {{--    <div class="pb-16 pt-10"--}}
-    {{--         style=" background-size: cover; background: rgba(221, 218, 255, 0.3) linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%) top center;">--}}
-    {{--        <!-- Container -->--}}
-    {{--        <div class="container">--}}
-    {{--            <div class="row">--}}
-    {{--                <div class="col-xl-12 col-12">--}}
-
-    {{--                    <div class="col-lg-12 col-md-12 col-12 mb-lg-3 mb-sm-0 ms-7">--}}
-    {{--                        <!-- Heading -->--}}
-    {{--                        <h2 class="display-4 fw-bold">Questionnaire</h2>--}}
-    {{--                        <p>All Questions Are Required</p>--}}
-    {{--                    </div>--}}
-    {{--                    <!-- Row -->--}}
-    {{--                    <div class="container">--}}
-    {{--                        <div id="questionnaire" class="bs-stepper">--}}
-    {{--                            <div class="container">--}}
-    {{--                                <div class="row">--}}
-    {{--                                    <div class="col-lg-12 col-md-12 col-12">--}}
-    {{--                                        <!-- Stepper Button -->--}}
-    {{--                                        <div class="bs-stepper-header shadow-sm" role="tablist">--}}
-    {{--                                            <div class="step" data-target="#test-l-1">--}}
-    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
-    {{--                                                        id="qnairetrigger1" aria-controls="test-l-1">--}}
-    {{--                                                    <span class="bs-stepper-circle">1</span>--}}
-    {{--                                                </button>--}}
-    {{--                                            </div>--}}
-    {{--                                            <div class="bs-stepper-line"></div>--}}
-    {{--                                            <div class="step" data-target="#test-l-2">--}}
-    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
-    {{--                                                        id="qnairetrigger2" aria-controls="test-l-2">--}}
-    {{--                                                    <span class="bs-stepper-circle">2</span>--}}
-    {{--                                                </button>--}}
-    {{--                                            </div>--}}
-    {{--                                            <div class="bs-stepper-line"></div>--}}
-    {{--                                            <div class="step" data-target="#test-l-3">--}}
-    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
-    {{--                                                        id="qnairetrigger3" aria-controls="test-l-3">--}}
-    {{--                                                    <span class="bs-stepper-circle">3 </span>--}}
-    {{--                                                </button>--}}
-    {{--                                            </div>--}}
-    {{--                                            <div class="bs-stepper-line"></div>--}}
-    {{--                                            <div class="step" data-target="#test-l-4">--}}
-    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
-    {{--                                                        id="qnairetrigger4" aria-controls="test-l-4">--}}
-    {{--                                                    <span class="bs-stepper-circle">4 </span>--}}
-    {{--                                                </button>--}}
-    {{--                                            </div>--}}
-    {{--                                            <div class="bs-stepper-line"></div>--}}
-    {{--                                            <div class="step" data-target="#test-l-5">--}}
-    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
-    {{--                                                        id="qnairetrigger5" aria-controls="test-l-5">--}}
-    {{--                                                    <span class="bs-stepper-circle">5 </span>--}}
-    {{--                                                </button>--}}
-    {{--                                            </div>--}}
-    {{--                                            <div class="bs-stepper-line"></div>--}}
-    {{--                                            <div class="step" data-target="#test-l-6">--}}
-    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
-    {{--                                                        id="qnairetrigger6" aria-controls="test-l-6">--}}
-    {{--                                                    <span class="bs-stepper-circle">6 </span>--}}
-    {{--                                                </button>--}}
-    {{--                                            </div>--}}
-    {{--                                            <div class="bs-stepper-line"></div>--}}
-    {{--                                            <div class="step" data-target="#test-l-7">--}}
-    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
-    {{--                                                        id="qnairetrigger7" aria-controls="test-l-7">--}}
-    {{--                                                    <span class="bs-stepper-circle">7 </span>--}}
-    {{--                                                </button>--}}
-    {{--                                            </div>--}}
-    {{--                                            <div class="bs-stepper-line"></div>--}}
-    {{--                                            <div class="step" data-target="#test-l-8">--}}
-    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
-    {{--                                                        id="qnairetrigger8" aria-controls="test-l-8">--}}
-    {{--                                                    <span class="bs-stepper-circle">8 </span>--}}
-    {{--                                                </button>--}}
-    {{--                                            </div>--}}
-    {{--                                            <div class="bs-stepper-line"></div>--}}
-    {{--                                            <div class="step" data-target="#test-l-9">--}}
-    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
-    {{--                                                        id="qnairetrigger9" aria-controls="test-l-9">--}}
-    {{--                                                    <span class="bs-stepper-circle">9 </span>--}}
-    {{--                                                </button>--}}
-    {{--                                            </div>--}}
-    {{--                                            <div class="bs-stepper-line"></div>--}}
-    {{--                                            <div class="step" data-target="#test-l-10">--}}
-    {{--                                                <button type="button" class="step-trigger" role="tab"--}}
-    {{--                                                        id="qnairetrigger10" aria-controls="test-l-10">--}}
-    {{--                                                    <span class="bs-stepper-circle">10 </span>--}}
-    {{--                                                </button>--}}
-    {{--                                            </div>--}}
-    {{--                                        </div>--}}
-
-    {{--                                        <div class="d-flex justify-content-center opacity-50 loader my-10">--}}
-    {{--                                            <div class="spinner-border text-bold fs-3 text-black-100"--}}
-    {{--                                                 style="width: 5rem; height: 5rem;" role="status">--}}
-    {{--                                                <span class="visually-hidden">Loading...</span>--}}
-    {{--                                            </div>--}}
-    {{--                                        </div>--}}
-    {{--                                        <div class="bs-stepper-content mt-5">--}}
-    {{--                                            <form onSubmit="return false" id="queform">--}}
-    {{--                                                <div id="test-l-1" role="tabpanel" class="bs-stepper-pane fade"--}}
-    {{--                                                     aria-labelledby="qnairetrigger1">--}}
-
-    {{--                                                    <!-- Button -->--}}
-    {{--                                                    <div class="d-flex justify-content-end">--}}
-    {{--                                                        <button class="btn btn-primary fibtn">--}}
-    {{--                                                            Next--}}
-    {{--                                                        </button>--}}
-    {{--                                                    </div>--}}
-    {{--                                                </div>--}}
-    {{--                                                <div id="test-l-2" role="tabpanel" class="bs-stepper-pane fade"--}}
-    {{--                                                     aria-labelledby="qnairetrigger2">--}}
-    {{--                                                    <!-- Button -->--}}
-    {{--                                                    <div class="d-flex justify-content-between">--}}
-    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-    {{--                                                            Previous--}}
-    {{--                                                        </button>--}}
-    {{--                                                        <button class="btn btn-primary nxt" onclick="qnaire.next()">--}}
-    {{--                                                            Next--}}
-    {{--                                                        </button>--}}
-    {{--                                                    </div>--}}
-    {{--                                                </div>--}}
-    {{--                                                <div id="test-l-3" role="tabpanel" class="bs-stepper-pane fade"--}}
-    {{--                                                     aria-labelledby="qnairetrigger3">--}}
-    {{--                                                    <!-- Button -->--}}
-    {{--                                                    <div class="d-flex justify-content-between">--}}
-    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-    {{--                                                            Previous--}}
-    {{--                                                        </button>--}}
-    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
-    {{--                                                            Next--}}
-    {{--                                                        </button>--}}
-    {{--                                                    </div>--}}
-    {{--                                                </div>--}}
-    {{--                                                <div id="test-l-4" role="tabpanel" class="bs-stepper-pane fade"--}}
-    {{--                                                     aria-labelledby="qnairetrigger4">--}}
-    {{--                                                    <!-- Button -->--}}
-    {{--                                                    <div class="d-flex justify-content-between">--}}
-    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-    {{--                                                            Previous--}}
-    {{--                                                        </button>--}}
-    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
-    {{--                                                            Next--}}
-    {{--                                                        </button>--}}
-    {{--                                                    </div>--}}
-    {{--                                                </div>--}}
-    {{--                                                <div id="test-l-5" role="tabpanel" class="bs-stepper-pane fade"--}}
-    {{--                                                     aria-labelledby="qnairetrigger5">--}}
-    {{--                                                    <!-- Button -->--}}
-    {{--                                                    <div class="d-flex justify-content-between">--}}
-    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-    {{--                                                            Previous--}}
-    {{--                                                        </button>--}}
-    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
-    {{--                                                            Next--}}
-    {{--                                                        </button>--}}
-    {{--                                                    </div>--}}
-    {{--                                                </div>--}}
-    {{--                                                <div id="test-l-6" role="tabpanel" class="bs-stepper-pane fade"--}}
-    {{--                                                     aria-labelledby="qnairetrigger6">--}}
-    {{--                                                    <!-- Button -->--}}
-    {{--                                                    <div class="d-flex justify-content-between">--}}
-    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-    {{--                                                            Previous--}}
-    {{--                                                        </button>--}}
-    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
-    {{--                                                            Next--}}
-    {{--                                                        </button>--}}
-    {{--                                                    </div>--}}
-    {{--                                                </div>--}}
-    {{--                                                <div id="test-l-7" role="tabpanel" class="bs-stepper-pane fade"--}}
-    {{--                                                     aria-labelledby="qnairetrigger7">--}}
-    {{--                                                    <!-- Button -->--}}
-    {{--                                                    <div class="d-flex justify-content-between">--}}
-    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-    {{--                                                            Previous--}}
-    {{--                                                        </button>--}}
-    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
-    {{--                                                            Next--}}
-    {{--                                                        </button>--}}
-    {{--                                                    </div>--}}
-    {{--                                                </div>--}}
-    {{--                                                <div id="test-l-8" role="tabpanel" class="bs-stepper-pane fade"--}}
-    {{--                                                     aria-labelledby="qnairetrigger8">--}}
-    {{--                                                    <!-- Button -->--}}
-    {{--                                                    <div class="d-flex justify-content-between">--}}
-    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-    {{--                                                            Previous--}}
-    {{--                                                        </button>--}}
-    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next()">--}}
-    {{--                                                            Next--}}
-    {{--                                                        </button>--}}
-    {{--                                                    </div>--}}
-    {{--                                                </div>--}}
-    {{--                                                <div id="test-l-9" role="tabpanel" class="bs-stepper-pane fade"--}}
-    {{--                                                     aria-labelledby="qnairetrigger9">--}}
-    {{--                                                    <!-- Button -->--}}
-    {{--                                                    <div class="d-flex justify-content-between">--}}
-    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-    {{--                                                            Previous--}}
-    {{--                                                        </button>--}}
-    {{--                                                        <button class="btn btn-primary" onclick="qnaire.next();">--}}
-    {{--                                                            Next--}}
-    {{--                                                        </button>--}}
-    {{--                                                    </div>--}}
-    {{--                                                </div>--}}
-    {{--                                                <div id="test-l-10" role="tabpanel" class="bs-stepper-pane fade"--}}
-    {{--                                                     aria-labelledby="qnairetrigger10">--}}
-    {{--                                                    <!-- Button -->--}}
-    {{--                                                    <div class="d-flex justify-content-between">--}}
-    {{--                                                        <button class="btn btn-secondary" onclick="qnaire.previous()">--}}
-    {{--                                                            Previous--}}
-    {{--                                                        </button>--}}
-    {{--                                                        <button class="btn btn-primary" id="lastbtn">--}}
-    {{--                                                            Submit--}}
-    {{--                                                        </button>--}}
-    {{--                                                    </div>--}}
-    {{--                                                </div>--}}
-    {{--                                            </form>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-
-    <!-- Become an Instructor -->
 
     <!-- call to action -->
     <div class="bg-primary-a"
@@ -817,14 +611,14 @@
         </div>
     </div>
     <script>
-        // $("#questionnaire").length && document.addEventListener("DOMContentLoaded", (function() {
-        //     qnaire = new Stepper(document.querySelector("#questionnaire"), {
-        //         linear: 1,
-        //         animation: !0
-        //     })
-        // }));
+        function setStorageAndRedirect(price, url) {
+            sessionStorage.setItem('current_price', price);
+            setTimeout(() => {
+                location.href = url;
+            }, 100);
+        }
+
         $(function () {
-            // getQuestions();
             $(".gsbtn").click(function (e) {
                 e.preventDefault();
                 bt = $(".gsbtn")
@@ -832,146 +626,35 @@
                     scrollTop: $(`#payplan`).offset().top
                 }, 'slow');
             })
+            if (@js(session('info'))) {
+                comparePlans(@js(session('info'))['data']['live_id'])
+            }
 
-            // $("#lastbtn").click(function(e) {
-            //     e.preventDefault();
-            //     but = $(this);
-            //     questions = pushToArray();
-            //     answers = [];
-            //     questions.forEach(que => {
-            //         ansd = que.answer;
-            //         answers.push(ansd);
-            //     });
-            //     if(answers.includes("")) {
-            //         salat("Answer all questions before submitting", 1);
-            //         return;
-            //     }
-            //     $.ajax({
-            //         url: api_url + "admin/submit_questionnaire",
-            //         method: "POST",
-            //         data: {
-            //             type: 2,
-            //             questions: questions,
-            //         },
-            //         beforeSend: () => {
-            //             btn(but, '', 'before');
-            //         }
-            //     }).done(res => {
-            //         btn(but, 'Submit', 'after');
-            //         salat(res.message);
-            //         $("#queform")[0].reset();
-            //
-            //     }).fail(res => {
-            //         console.log(res);
-            //         concatError(res.responseJSON);
-            //         btn(but, 'Submit', 'after');
-            //     })
-            //
-            // })
-
-            // function getQuestions() {
-            //     $.ajax({
-            //         url: api_url + 'fetch_instructor_questions',
-            //         beforeSend: () => {
-            //             $(".fibtn").parent().addClass('d-none');
-            //         }
-            //     }).done(res => {
-            //         $(".loader").remove();
-            //         $("#test-l-1")
-            //             .prepend(questionaire(res.data[0].question, res.data[0].a, res.data[0].b, res.data[0].c, res.data[0].d, res.data[0].id));
-            //         $("#test-l-2")
-            //             .prepend(questionaire(res.data[1].question, res.data[1].a, res.data[1].b, res.data[1].c, res.data[1].d, res.data[1].id));
-            //         $("#test-l-3")
-            //             .prepend(questionaire(res.data[2].question, res.data[2].a, res.data[2].b, res.data[2].c, res.data[2].d, res.data[2].id));
-            //         $("#test-l-4")
-            //             .prepend(questionaire(res.data[3].question, res.data[3].a, res.data[3].b, res.data[3].c, res.data[3].d, res.data[3].id));
-            //         $("#test-l-5")
-            //             .prepend(questionaire(res.data[4].question, res.data[4].a, res.data[4].b, res.data[4].c, res.data[4].d, res.data[4].id));
-            //         $("#test-l-6")
-            //             .prepend(questionaire(res.data[5].question, res.data[5].a, res.data[5].b, res.data[5].c, res.data[5].d, res.data[5].id));
-            //         $("#test-l-7")
-            //             .prepend(questionaire(res.data[6].question, res.data[6].a, res.data[6].b, res.data[6].c, res.data[6].d, res.data[6].id));
-            //         $("#test-l-8")
-            //             .prepend(questionaire(res.data[7].question, res.data[7].a, res.data[7].b, res.data[7].c, res.data[7].d, res.data[7].id));
-            //         $("#test-l-9")
-            //             .prepend(questionaire(res.data[8].question, res.data[8].a, res.data[8].b, res.data[8].c, res.data[8].d, res.data[8].id));
-            //         $("#test-l-10")
-            //             .prepend(questionaire(res.data[9].question, res.data[9].a, res.data[9].b, res.data[9].c, res.data[9].d, res.data[9].id));
-            //         $(".fibtn").parent().removeClass('d-none');
-            //     }).fail(res => {
-            //         console.log(res);
-            //         concatError(res.responseJSON);
-            //     });
-            // }
-
-            //         function questionaire(que, a, b, c, d, id) {
-            //             let question = "";
-            //             question += `<div class="card mb-3 question border-0" data-id="${id}">
-            //     <div class="card-header border-bottom px-4 py-3">
-            //         <h3 class="mb-0">${que}</h3>
-            //     </div>
-            //     <div class="card-body">
-            //         <div class="vstack gap-2">
-            //             <!-- Feed ques item -->
-            //             <div>
-            //                 <input type="radio" class="btn-check a" name="ques${id}" id="${id}option1">
-            //                 <label class="btn btn-outline-primary w-100 opt-a" for="${id}option1">${a}</label>
-            //             </div>
-            //             <!-- Feed ques item -->
-            //             <div>
-            //                 <input type="radio" class="btn-check b" name="ques${id}" id="${id}option2">
-            //                 <label class="btn btn-outline-primary w-100 opt-b" for="${id}option2">${b}</label>
-            //             </div>
-            //             <!-- Feed ques item -->
-            //             <div>
-            //                 <input type="radio" class="btn-check c" name="ques${id}" id="${id}option3">
-            //                 <label class="btn btn-outline-primary w-100 opt-c" for="${id}option3">${c}</label>
-            //             </div>
-            //             <!-- Feed ques item -->
-            //             <div>
-            //                 <input type="radio" class="btn-check d" name="ques${id}" id="${id}option4">
-            //                 <label class="btn btn-outline-primary w-100 opt-d" for="${id}option4">${d}</label>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </div>`;
-            //             return question;
-            //         }
+            function comparePlans(live_id) {
+                $.get(`${api_url}compare_plan/${live_id}`).done(res => {
+                    $(".plan-btn").removeAttr('disabled')
+                    const data = res.data;
+                    let pac_act = 0;
+                    data.forEach((plan, index) => {
+                        let card = $(`.package_${plan.package_sn}`);
+                        if (card) {
+                            if (plan.has_package) {
+                                pac_act += parseInt(plan.price);
+                                $(card).find('.d-grid > button').attr('disabled', true);
+                                $(card).find('.d-grid > button').html('Activated');
+                                $(card).find('.d-grid > button').css('cursor', 'not-allowed');
+                            } else {
+                                let str = $(card).find('.price-plan').html();
+                                let variable = parseInt(str?.replace(/,/g, ""));
+                                $(card).find('.price-plan').html(new Intl.NumberFormat().format(variable - pac_act));
+                            }
+                        }
+                    })
+                }).fail(res => {
+                    console.log(res);
+                });
+            }
         });
-
-
-        function pushToArray() {
-            que_card = $(".question");
-            arr = [];
-            que_card.map((que) => {
-                que = que_card[que];
-                id = $(que).data('id');
-                name = `ques${id}`
-                var opt = $(que).find('input:checked');
-                question = $(que).find('h3').html();
-                optionA = $(que).find($('.opt-a')).html();
-                optionB = $(que).find($('.opt-b')).html();
-                optionC = $(que).find($('.opt-c')).html();
-                optionD = $(que).find($('.opt-d')).html();
-                if (opt.length > 0) {
-                    opt = opt.attr('class').split(' ')[1];
-                } else {
-                    opt = '';
-                }
-                let ans = {
-                    id: id,
-                    question: question,
-                    answer: opt,
-                    a: optionA,
-                    b: optionB,
-                    c: optionC,
-                    d: optionD,
-                };
-                arr.push(ans)
-            })
-
-            return arr;
-        }
     </script>
 
 @endsection

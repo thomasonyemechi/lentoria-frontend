@@ -34,7 +34,7 @@ Route::view('checkout/course/{slug}', 'checkout')->name('course.checkout');
 Route::view('checkout/instructor_activation/{id}/{package_id}',
     'checkout')->name('instructor.activation.checkout')->whereIn('id', [3, 4, 5]);
 Route::view('checkout/affiliate_activation/{id}/{package_id}',
-    'checkout')->name('affliate.activation.checkout')->whereIn('id', [2, 3, 4]);
+    'checkout')->name('affiliate.activation.checkout')->whereIn('id', [2, 3, 4]);
 Route::view('checkout_success/course', 'checkout_success')->name('checkout_success.course');
 Route::view('checkout_success/activation', 'checkout_success')->name('checkout_success.activation');
 Route::view('terms', 'terms')->name('terms');

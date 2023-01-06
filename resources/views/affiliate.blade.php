@@ -10,8 +10,13 @@
             -moz-transform: scale(1.1);
             -o-transform: scale(1.1)
         }
+
         button.outline-btn:disabled, a.outline-btn:disabled {
             cursor: not-allowed !important;
+        }
+
+        .btn.disabled, .btn:disabled, fieldset:disabled .btn {
+            pointer-events: all;
         }
     </style>
     <!-- Hero Content -->
@@ -416,7 +421,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-12">
                     <!-- Card -->
-                    <div class="card  border border-primary mb-3">
+                    <div class="card  border border-primary mb-3 package_2" x-data>
                         <!-- Card Body -->
                         <div class="p-5 text-center">
                             <div class="mb-5">
@@ -426,16 +431,18 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center mb-4">
-                                <span class="h3 mb-0 fw-bold">N</span>
-                                <div class="price-card--price-number toggle-price-content odometer"
-                                     data-price-monthly="0"
-                                     data-price-yearly="0">5,000
+                                <span class="h3 mb-0 fw-bold">&#8358;</span>
+                                <div class="price-card--price-number toggle-price-content">
+                                    <span class="price-plan fw-bold fs-2 text-dark" x-ref="price_plan">5,000</span>
                                 </div>
 
                             </div>
                             <div class="d-grid">
-                                <a href="{{ url('checkout/affiliate_activation/2/' . Str::random(8)) }}"
-                                   class="btn btn-primary">Activate Now</a>
+                                <button disabled
+                                    @click="setStorageAndRedirect($refs.price_plan.innerHTML,$el.getAttribute('href'))"
+                                    href="{{ url('checkout/affiliate_activation/2/' . Str::random(8)) }}"
+                                    class="btn btn-primary">Activate Now
+                                </button>
                             </div>
                         </div>
                         <hr class="m-0">
@@ -461,7 +468,7 @@
                 </div>
                 <div class="col-lg-4 col-md-12 col-12">
                     <!-- Card -->
-                    <div class="card border border-primary mb-3 mb-lg-0">
+                    <div class="card border border-primary mb-3 mb-lg-0 package_3" x-data>
                         <!-- Card Body -->
                         <div class="p-5 text-center">
                             <div class="mb-5">
@@ -471,15 +478,17 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center mb-4">
-                                <span class="h3 mb-0 fw-bold">N</span>
-                                <div class="price-card--price-number toggle-price-content odometer"
-                                     data-price-monthly="39" data-price-yearly="99">15,000
+                                <span class="h3 mb-0 fw-bold">&#8358;</span>
+                                <div class="price-card--price-number toggle-price-content">
+                                    <span class="price-plan fw-bold fs-2 text-dark" x-ref="price_plan">15,000</span>
                                 </div>
                             </div>
                             <div class="d-grid">
-
-                                <a href="{{ url('checkout/affiliate_activation/3/' . Str::random(8)) }}"
-                                   class="btn btn-primary">Activate Now</a>
+                                <button disabled
+                                    @click="setStorageAndRedirect($refs.price_plan.innerHTML,$el.getAttribute('href'))"
+                                    href="{{ url('checkout/affiliate_activation/3/' . Str::random(8)) }}"
+                                    class="btn btn-primary">Activate Now
+                                </button>
                             </div>
                         </div>
                         <hr class="m-0">
@@ -504,7 +513,7 @@
                 </div>
                 <div class="col-lg-4 col-md-12 col-12">
                     <!-- Card -->
-                    <div class="card  border border-primary mb-3 mb-lg-0">
+                    <div class="card border border-primary mb-3 mb-lg-0 package_4" x-data>
                         <!-- Card Body -->
                         <div class="p-5 text-center">
                             <div class="mb-5">
@@ -515,15 +524,18 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center mb-4">
-                                <span class="h3 mb-0 fw-bold">N</span>
-                                <div class="price-card--price-number toggle-price-content odometer"
-                                     data-price-monthly="99" data-price-yearly="199">40,000
+                                <span class="h3 mb-0 fw-bold">&#8358;</span>
+                                <div class="price-card--price-number toggle-price-content">
+                                    <span class="price-plan fw-bold fs-2 text-dark" x-ref="price_plan">40,000</span>
                                 </div>
 
                             </div>
                             <div class="d-grid">
-                                <a href="{{ url('checkout/affiliate_activation/4/' . Str::random(8)) }}"
-                                   class="btn btn-primary">Activate Now</a>
+                                <button disabled
+                                    @click="setStorageAndRedirect($refs.price_plan.innerHTML,$el.getAttribute('href'))"
+                                    href="{{ url('checkout/affiliate_activation/4/' . Str::random(8)) }}"
+                                    class="btn btn-primary">Activate Now
+                                </button>
                             </div>
                         </div>
                         <hr class="m-0">
@@ -579,6 +591,13 @@
 
 
     <script>
+        function setStorageAndRedirect(price, url) {
+            sessionStorage.setItem('current_price', price);
+            setTimeout(() => {
+                location.href = url;
+            }, 100);
+        }
+
         $(function () {
             $(".gsbtn").click(function (e) {
                 e.preventDefault();
@@ -587,41 +606,34 @@
                 }, 'slow');
             })
 
-
-
-            function pushToArray() {
-                que_card = $(".question");
-                arr = [];
-                que_card.map((que) => {
-                    que = que_card[que];
-                    id = $(que).data('id');
-                    name = `ques${id}`
-                    var opt = $(que).find('input:checked');
-                    question = $(que).find('h3').html();
-                    optionA = $(que).find($('.opt-a')).html();
-                    optionB = $(que).find($('.opt-b')).html();
-                    optionC = $(que).find($('.opt-c')).html();
-                    optionD = $(que).find($('.opt-d')).html();
-                    if (opt.length > 0) {
-                        opt = opt.attr('class').split(' ')[1];
-                    } else {
-                        opt = '';
-                    }
-                    ans = {
-                        id: id,
-                        question: question,
-                        answer: opt,
-                        a: optionA,
-                        b: optionB,
-                        c: optionC,
-                        d: optionD,
-                    }
-                    arr.push(ans)
-                })
-
-                return arr;
+            if (@js(session('info'))) {
+                comparePlans(@js(session('info'))['data']['live_id'])
             }
 
+            function comparePlans(live_id) {
+                $.get(`${api_url}compare_plan/${live_id}`).done(res => {
+                    $(".plan-btn").removeAttr('disabled')
+                    const data = res.data;
+                    let pac_act = 0;
+                    data.forEach((plan, index) => {
+                        let card = $(`.package_${plan.package_sn}`);
+                        if (card) {
+                            if (plan.has_package) {
+                                pac_act += parseInt(plan.price);
+                                $(card).find('.d-grid > button').attr('disabled', true);
+                                $(card).find('.d-grid > button').html('Activated');
+                                $(card).find('.d-grid > button').css('cursor', 'not-allowed');
+                            } else {
+                                let str = $(card).find('.price-plan').html();
+                                let variable = parseInt(str?.replace(/,/g, ""));
+                                $(card).find('.price-plan').html(new Intl.NumberFormat().format(variable - pac_act));
+                            }
+                        }
+                    })
+                }).fail(res => {
+                    console.log(res);
+                });
+            }
         });
     </script>
 
