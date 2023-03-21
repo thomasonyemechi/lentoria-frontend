@@ -1,5 +1,5 @@
 @extends('layouts.instructor')
-@section('page_title',"Course | $slug")
+@section('page_title', "Course | $slug")
 
 @section('page_content')
     <div class="pt-5 pb-5">
@@ -12,32 +12,33 @@
 
                 <div class="col-lg-9 col-md-8 col-12">
                     <!-- Card -->
-                    <div class="card mb-4" id="cur_card">
-                        <div class="card-header border-bottom px-4 py-3">
-                            <div class="d-flex justify-content-between">
-                                <h4 class="mb-0 pt-3">Curriculum</h4>
-                                <a href="javascript:void(0)" class="btn btn-outline-primary btn-sm" id="addsec1">Add
-                                    Section</a>
+                        <div class="card mb-4" id="cur_card">
+                            <div class="card-header border-bottom px-4 py-3">
+                                <div class="d-flex justify-content-between">
+                                    <h4 class="mb-0 pt-3">Curriculum</h4>
+                                    <a href="javascript:void(0)" class="btn btn-outline-primary btn-sm" id="addsec1">Add
+                                        Topic</a>
+                                </div>
+                            </div>
+                            <!-- Card body -->
+                            <div class="card-body ">
+                                <input type="hidden" id="course_id"/>
+                                <x-add-section-card id="addseccard" type="add"/>
+
+                                <div class="main">
+
+                                </div>
+                                <x-add-section-card id="addseccard2" type="add"/>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-between">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" id="addsec2">Add
+                                        Topic</a>
+                                    <a href="{{ url("/instructor/pricing/$type/$slug") }}"
+                                       class="btn btn-sm btn-primary">Next</a>
+                                </div>
                             </div>
                         </div>
-                        <!-- Card body -->
-                        <div class="card-body ">
-                            <input type="hidden" id="course_id"/>
-                            <x-add-section-card id="addseccard" type="add"/>
-
-                            <div class="main">
-
-                            </div>
-                            <x-add-section-card id="addseccard2" type="add"/>
-                        </div>
-                        <div class="card-footer">
-                            <div class="d-flex justify-content-between">
-                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" id="addsec2">Add
-                                    Section</a>
-                                <a href="{{"/instructor/pricing/$slug?type=".request()->input('type')}}" class="btn btn-sm btn-primary">Next</a></div>
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </div>
@@ -50,7 +51,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="editSectionModalLabel">
-                        Edit Section
+                        Edit Topic
                     </h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="fe fe-x-circle"></i></span>
@@ -338,7 +339,7 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <textarea id="codearea" name="codearea" class="form-control border-2" rows="3"></textarea>
+                            <label for="codearea" class="d-none"></label><textarea id="codearea" name="codearea" class="form-control border-2" rows="3"></textarea>
                         </div>
 
                         <div class="d-flex justify-content-between">
@@ -356,24 +357,85 @@
         </div>
     </div>
     <script>
-        const languages = [
-            {value: "css", html: "CSS"}, {value: "html", html: "HTML"}, {value: "js", html: "Javascript"},
-            {value: "aspnet", html: "ASP.NET"}, {value: "c", html: "C"}, {value: "csharp", html: "C#"},
-            {value: "cpp", html: "C++"}, {value: "django", html: "Django"}, {value: "dart", html: "Dart"},
-            {value: "git", html: "Git"}, {value: "java", html: "Java"}, {value: "lisp", html: "Lisp"},
-            {value: "Markdown", html: "Markdown"}, {value: "matlab", html: "MATLAB"},
-            {value: "mongodb", html: "MongoDB"}, {value: "php", html: "PHP"},
-            {value: "py", html: "Python"}, {value: "r", html: "R"}, {value: "razor", html: "Razor C#"},
-            {value: "jsx", html: "Ruby"}, {value: "ts", html: "Typescript"}
+        const languages = [{
+            value: "css",
+            html: "CSS"
+        }, {
+            value: "html",
+            html: "HTML"
+        }, {
+            value: "js",
+            html: "Javascript"
+        },
+            {
+                value: "aspnet",
+                html: "ASP.NET"
+            }, {
+                value: "c",
+                html: "C"
+            }, {
+                value: "csharp",
+                html: "C#"
+            },
+            {
+                value: "cpp",
+                html: "C++"
+            }, {
+                value: "django",
+                html: "Django"
+            }, {
+                value: "dart",
+                html: "Dart"
+            },
+            {
+                value: "git",
+                html: "Git"
+            }, {
+                value: "java",
+                html: "Java"
+            }, {
+                value: "lisp",
+                html: "Lisp"
+            },
+            {
+                value: "Markdown",
+                html: "Markdown"
+            }, {
+                value: "matlab",
+                html: "MATLAB"
+            },
+            {
+                value: "mongodb",
+                html: "MongoDB"
+            }, {
+                value: "php",
+                html: "PHP"
+            },
+            {
+                value: "py",
+                html: "Python"
+            }, {
+                value: "r",
+                html: "R"
+            }, {
+                value: "razor",
+                html: "Razor C#"
+            },
+            {
+                value: "jsx",
+                html: "Ruby"
+            }, {
+                value: "ts",
+                html: "Typescript"
+            }
         ]
     </script>
     <script>
         $(function () {
-
+            let type;
             let interval = setInterval(() => {
                 cid = $("#course_id").val();
                 type = $("#ctype").val();
-
                 if (cid != "" && type != "") {
                     clearInterval(interval);
                     getAllSections(cid, type)
@@ -392,6 +454,12 @@
                 }
                 const button = (ty) => buttons[ty] || "";
                 return button(type);
+            }
+
+            function dropDownButton(){
+                if (type!=4){
+                    return ``
+                }
             }
 
             window.URL = window.URL || window.webkitURL;
@@ -654,6 +722,7 @@
                 updateMainContent(response.url);
                 $("#addVideoModal").modal("hide");
                 $("#file_upload").fileinput('clear');
+                salat('Video upload successful');
             });
             $("#image_upload").on('filepreupload', function (event, data, previewId, index, jqXHR) {
                 let published = sessionStorage.getItem('published');
@@ -736,7 +805,7 @@
                     console.log(res);
                     if (res.data.length == 0) {
                         cardbody.html(`<div class="bg-light-secondary rounded p-2 mb-4 dummy">
-                        <div class="d-inline-block me-3"><p class="text-capitalize fw-bold text-dark fs-4">Section 1:</p></div>
+                        <div class="d-inline-block me-3"><p class="text-capitalize fw-bold text-dark fs-4">Topic 1:</p></div>
                             <div class="d-inline-block me-3">
                             <span class="d-inline-block me-3"><h4 class="text-capitalize">Introduction</h4></span>
                             <span class="d-inline-block"><a href="javascript:void(0)" class="me-1 text-inherit alt_section" data-bs-toggle="tooltip" data-placement="top"
@@ -803,7 +872,7 @@
                         })
                         cardbody.append(`
                     <div class="bg-light-secondary rounded p-2 mb-4 section">
-                            <div class="d-inline-block me-3"><p class="text-capitalize fw-bold text-dark fs-4">Section ${i++}:</p></div>
+                            <div class="d-inline-block me-3"><p class="text-capitalize fw-bold text-dark fs-4">Topic ${i++}:</p></div>
                             <div class="d-inline-block me-3">
                             <input type="hidden" name="section_id" value="${sec.id}" />
                             <input type="hidden" name="gain" value="${sec.course_gain}" />
@@ -871,7 +940,7 @@
                     }
                     cardbody.append(`
                         <div class="bg-light-secondary rounded p-2 mb-4 section">
-                            <div class="d-inline-block me-3"><p class="text-capitalize fw-bold text-dark fs-4">Section ${++i}:</p></div>
+                            <div class="d-inline-block me-3"><p class="text-capitalize fw-bold text-dark fs-4">Topic ${++i}:</p></div>
                             <div class="d-inline-block me-3">
                             <input type="hidden" name="section_id" value="${res.id}" />
                             <input type="hidden" name="gain" value="${gain}" />
@@ -1116,7 +1185,6 @@
                 video_form.find($('input[name="lecture_title"]')).val(title);
                 video_form.find($('input[name="lecture_description"]')).val(description);
             })
-
 
         });
     </script>

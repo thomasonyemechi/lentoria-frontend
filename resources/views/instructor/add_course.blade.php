@@ -31,18 +31,18 @@
                     <div class="offset-lg-1 col-lg-10 col-md-12 col-12">
                         <!-- Stepper Button -->
                         <div class="bs-stepper-header shadow-sm" role="tablist">
-                            {{--                            <div class="step" data-target="#test-l-1">--}}
-                            {{--                                <button type="button" class="step-trigger" role="tab" id="courseFormtrigger1"--}}
-                            {{--                                        aria-controls="test-l-1">--}}
-                            {{--                                    <span class="bs-stepper-circle">1</span>--}}
-                            {{--                                    <span class="bs-stepper-label">Course Type</span>--}}
-                            {{--                                </button>--}}
-                            {{--                            </div>--}}
-                            {{--                            <div class="bs-stepper-line"></div>--}}
+                            <div class="step" data-target="#test-l-1">
+                                <button type="button" class="step-trigger" role="tab" id="courseFormtrigger1"
+                                        aria-controls="test-l-1">
+                                    <span class="bs-stepper-circle">1</span>
+                                    <span class="bs-stepper-label">Course Type</span>
+                                </button>
+                            </div>
+                            <div class="bs-stepper-line"></div>
                             <div class="step" data-target="#test-l-2">
                                 <button type="button" class="step-trigger" role="tab" id="courseFormtrigger2"
                                         aria-controls="test-l-2" disabled>
-                                    <span class="bs-stepper-circle">1</span>
+                                    <span class="bs-stepper-circle">2</span>
                                     <span class="bs-stepper-label">Course Category</span>
                                 </button>
                             </div>
@@ -50,32 +50,32 @@
                             <div class="step" data-target="#test-l-3">
                                 <button type="button" class="step-trigger" role="tab" id="courseFormtrigger3"
                                         aria-controls="test-l-3" disabled>
-                                    <span class="bs-stepper-circle">2</span>
+                                    <span class="bs-stepper-circle">3</span>
                                     <span class="bs-stepper-label">Course Title</span>
                                 </button>
                             </div>
                         </div>
                         <div class="bs-stepper-content mt-5">
                             <form onSubmit="return false">
-                                {{--                                <div id="test-l-1" role="tabpanel" class="bs-stepper-pane fade"--}}
-                                {{--                                     aria-labelledby="courseFormtrigger1">--}}
-                                {{--                                    <div class="card mb-3 ">--}}
-                                {{--                                        <div class="card-header border-bottom px-4 py-3">--}}
-                                {{--                                            <div class="d-flex justify-content-between">--}}
-                                {{--                                                <h4 class="mb-0">Course Type</h4>--}}
-                                {{--                                                <span--}}
-                                {{--                                                    class="badge show-selected bg-dark-primary py-2 px-3 fs-5">0</span>--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                        <div class="card-body">--}}
-                                {{--                                            <div class="row" id="course_types_container">--}}
-                                {{--                                                <input type="hidden" id="course_type">--}}
+                                <div id="test-l-1" role="tabpanel" class="bs-stepper-pane fade"
+                                     aria-labelledby="courseFormtrigger1">
+                                    <div class="card mb-3 ">
+                                        <div class="card-header border-bottom px-4 py-3">
+                                            <div class="d-flex justify-content-between">
+                                                <h4 class="mb-0">Course Type</h4>
+                                                <span
+                                                    class="badge show-selected bg-dark-primary py-2 px-3 fs-5">0</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row" id="course_types_container">
+                                                <input type="hidden" id="course_type">
 
-                                {{--                                            </div>--}}
+                                            </div>
 
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="test-l-2" role="tabpanel" class="bs-stepper-pane fade"
                                      aria-labelledby="courseFormtrigger2">
                                     <div class="card mb-3  border-0">
@@ -107,10 +107,10 @@
                                         </div>
                                     </div>
                                     <!-- Button -->
-                                    <div class="d-flex justify-content-end">
-                                        {{--                                        <button class="btn btn-secondary" onclick="courseForm.previous()">--}}
-                                        {{--                                            Previous--}}
-                                        {{--                                        </button>--}}
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-secondary" onclick="courseForm.previous()">
+                                            Previous
+                                        </button>
                                         <button class="btn btn-primary" onclick="courseForm.next()">
                                             Next
                                         </button>
@@ -167,7 +167,7 @@
             const jsonfile = `{{asset('json_files/subcategories.json')}}`;
             getLoadSubCategories();
 
-            // getCourseTypes();
+            getCourseTypes();
 
             function getLoadSubCategories() {
                 $.getJSON(jsonfile, res => subcategories = res);
@@ -177,8 +177,8 @@
                 $.get(`${api_url}admin/fetch_types`).done(res => {
                     res.message.forEach(type => {
                         $("#course_types_container").append(
-                            `<div class="col-md-4 d-flex align-items-stretch justify-content-center">
-                                <div class="card bg-dark-primary shadow-none text-center mx-4 my-8">
+                            `<div class="col-md-4 d-flex align-items-stretch mx-auto justify-content-center">
+                                <div class="card flex-fill bg-dark-primary shadow-none text-center mx-4 my-8">
                                     <div class="card-body py-6">
                                         <div class="mt-4">
                                             <h5 class="text-white">${type.type}</h5>
@@ -235,9 +235,9 @@
 
             $('#addCourse').on('click', function (e) {
                 e.preventDefault();
-                // course_type = $('#course_type').val();
-               let category_id = $('#selectcat :selected').val();
-               let topic_id = $('#selsubcat :selected').val();
+                let course_type = $('#course_type').val();
+                let category_id = $('#selectcat :selected').val();
+                let topic_id = $('#selsubcat :selected').val();
                 let course_level = $('#course_level :selected').val();
                 let title = $('#courseTitle').val();
                 let subtitle = $('#courseSubtitle').val();
@@ -252,6 +252,7 @@
                     url: api_url + 'admin/create_new_course',
                     data: {
                         course_level: course_level,
+                        course_type: course_type,
                         category_id: category_id,
                         topic_id: topic_id,
                         title: title,
@@ -261,7 +262,7 @@
                         btn(bt, '', 'before');
                     }
                 }).done(res => {
-                    location.href = `/instructor/course/${res.slug}?type=${res.course_type}`
+                    location.href = `/instructor/course/${res.course_type}/${res.slug}`
                     btn(bt, 'Submit', 'after');
                 }).fail(res => {
                     concatError(res.responseJSON);
@@ -276,6 +277,8 @@
                 $(".show-selected").html(selected);
                 setTimeout(() => courseForm.next(), 1000)
             })
+
+
         });
     </script>
 @endsection

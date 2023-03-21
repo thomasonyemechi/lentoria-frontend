@@ -4,13 +4,38 @@
 @endsection
 @section('page_content')
     <!-- Video section -->
+    <style>
+        .bg-dark {
+            background-image: url('../assets/images/pdf.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        #download_link.btn-primary {
+            z-index: 2;
+            position: relative;
+        }
+    </style>
     <div class="p-lg-5 py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-12 mb-5">
-                    <div class="rounded-3 position-relative w-100 d-block overflow-hidden p-0" style="height: 400px;">
-                        <video-js id="vid"
-                                  class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100"></video-js>
+            <div class="container-fluid bg-dark d-flex justify-content-center align-items-center mb-5" style="height: 400px;">
+                <div class="overlay"></div>
+                <div class="row w-100 align-items-center justify-content-center">
+                    <div class="col-lg-6 col-md-8 col-sm-10 text-center">
+                        <h2 class="text-gray-900 mb-4">Download the e-book</h2>
+                        <button id="download_link" href="#" class="btn btn-primary btn-lg rounded-pill px-5">Download <i class="fe fe-download"></i></button>
                     </div>
                 </div>
             </div>
@@ -21,6 +46,7 @@
                     <div class="card mb-5">
                         <!-- Card body -->
                         <div class="card-body">
+                            <div class="d-none" hidden id="course_id"></div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <h1 class="fw-semi-bold mb-2 course-title">
                                     Course Title
@@ -116,35 +142,13 @@
 
     <script>
         $(function () {
-            $("#vid").bind("contextmenu", function () {
-                return false;
-            });
             getSectionsAndLectures(@js($slug));
             getCourseInfo(@js($slug));
             getFaqs(@js($slug));
-            const player = videojs('vid', {
-                controls: true,
-                autoplay: false,
-                preload: "auto",
-                responsive: true,
-                liveui: true,
-                fill: true,
-                metadata: true,
-                notSupportedMessage: "An Error Occurred While Fetching Video or No Video Available For This Course",
-                userActions: {
-                    hotkeys: function (event) {
-                        // `space` key = pause
-                        if (event.which === 32) {
-                            if (this.paused()) {
-                                this.play();
-                            } else {
-                                this.pause();
-                            }
-                        }
-                    }
-                }
-            });
 
+            function enableDownloadButton(){
+                $("#download_link").removeAttribute('disabled');
+            }
             function getSectionsAndLectures(slug) {
                 $.get(`${api_url}user/section_lectures/${slug}`).done(res => {
                     console.log(res);
@@ -162,24 +166,19 @@
                                         <span>No Lectures Available</span>
                                     </div>
                                 </a>
-                            </li>`
-
-                        )
+                            </li>`)
                         return;
                     }
                     sections.forEach((section, index) => {
                         section.lectures.forEach(lecture => {
                             lectures += `<li class="list-group-item">
-                                            <a href="#" data-vid="${lecture.main_content}"
+                                            <a href="#"
                                                class="d-flex justify-content-between align-items-center text-inherit text-decoration-none vidwatch">
                                                 <div class="text-truncate">
                                                     <span
                                                         class="icon-shape bg-light text-primary icon-sm rounded-circle me-2"><i
-                                                            class="mdi mdi-play fs-4"></i></span>
+                                                            class="mdi mdi-book-open fs-4"></i></span>
                                                     <span>${lecture.title}</span>
-                                                </div>
-                                                <div class="text-truncate">
-                                                    <span>${convertStoMs(lecture.duration)}</span>
                                                 </div>
                                             </a>
                                         </li>`
@@ -212,6 +211,7 @@
             function getCourseInfo(slug) {
                 $.get(`${api_url}user/get_course_info/${slug}`).done(res => {
                     const data = res.data;
+                    $("#course_id").html(data.course_info.id);
                     $(".course-title").html(data.course_info.title);
                     $(".course-info svg").html(levelBar(data.course_info.level));
                     $(".course-info span").html(checkLevel(data.course_info.level));
@@ -226,6 +226,7 @@
                                 <span>${l}</span>
                             </li>`)
                     })
+                    enableDownloadButton();
                 }).fail(res => {
                     console.log(res);
                 })
@@ -246,21 +247,35 @@
                 })
             }
 
-            $(document).on('click', '.vidwatch', function (e) {
+            $(document).on('click', '#download_link', function (e) {
                 e.preventDefault();
-                let video_link = $(this).data('vid');
-                $(".vidwatch").each(function (i) {
-                    $(this).removeClass('text-white').addClass('text-inherit');
-                    $(this).parent().removeClass('active');
-                })
-                $(this).parent().addClass('active');
-                $(this).removeClass('text-inherit').addClass('text-white');
-                player.ready(function () {
-                    player.src(
-                        video_url + video_link
-                    );
-                });
+               let course_id = $(document).find($('#course_id')).html();
+               course_id = course_id.toString().trim();
+               let info = @js(session('info'));
+               let user_id = info.data.id;
+                download(course_id,user_id);
             });
+
+
+            function download(course_id,user_id){
+                $.ajax({
+                    url: `http://lentoria-video-server.test/api/download-book`,
+                    type: 'POST',
+                    data:{
+                        course_id,
+                        user_id
+                    }
+                }).done(res=>{
+                    const path = res.path;
+                    const link = document.createElement('a');
+                    link.href  = `http://lentoria-video-server.test/${path}`;
+
+                    document.body.appendChild(link);
+                    link.click();
+                }).fail(res=>{
+                    console.log(res);
+                })
+            }
         })
     </script>
 @endsection

@@ -8,6 +8,7 @@
 </div>
 <input type="hidden" name="course_info_29" id="course_info_29">
 <input type="hidden" id="ctype"/>
+<input type="hidden" id="cid"/>
 <script>
     let course_type;
     $(function () {
@@ -33,8 +34,9 @@
                 method: 'get',
                 url: api_url + 'admin/topics/' + cat,
             }).done((res) => {
-                let selectsub = $('#selsubcat');
-                selectsub.html('<option selected disabled>Select Course SubCategory</option>')
+                console.log(res)
+                let selectsub = $(document).find('#selsubcat');
+                selectsub.html('<option selected disabled>Select Course Topic</option>')
                 res.data.map(dat => {
                     selectsub.append(`<option value="${dat.id}">${dat.name}</option>`);
                 })
@@ -57,6 +59,7 @@
                 $('input[name="course_info_29"]').val(JSON.stringify(res.data));
                 $('.course-title').html(res.data.title);
                 $("#ctype").val(res.data.course_type);
+                $("#cid").val(res.data.id);
                 dat = res.data
                 if (dat.published == 0) {
                     $('.publish-div').removeClass('d-none')

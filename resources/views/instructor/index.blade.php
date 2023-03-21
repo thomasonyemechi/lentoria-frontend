@@ -41,7 +41,7 @@
                                 <div class="p-4">
                                     <span class="fs-6 text-uppercase fw-semi-bold">Balance</span>
                                     <h2 class="mt-4 fw-bold mb-1 d-flex align-items-center h1 lh-1">
-                                         <span class="bal">&#8358;0.00</span>
+                                        <span class="bal">&#8358;0.00</span>
                                     </h2>
                                     <span class="d-flex justify-content-between align-items-center">
                                         <span>Earning this month</span>
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mb-4">
+                    <div class="card mb-4 d-none qnaire-card">
                         <div class="card-header border-bottom-0">
                             <h3 class="h4 mb-0">Questionnaire</h3>
                             <span>All questions are to be answered before being submitted</span>
@@ -314,6 +314,7 @@
         $(function () {
             getQuestions();
             getBalance();
+            checkQnaireStatus();
 
             function getBalance() {
                 info = @js(session('info'));
@@ -323,6 +324,19 @@
                 }).done(res => {
                     console.log(res);
                     $(".bal").html(`${naira(res.balance)}`);
+                }).fail(res => {
+                    console.log(res);
+                    concatError(res.responseJSON);
+                })
+            }
+
+            function checkQnaireStatus() {
+                $.post(`${api_url}admin/check_qnaire_status`).done(res => {
+                    console.log(res);
+                    const data = res.data;
+                    if (!data) {
+                        $(".qnaire-card").removeClass("d-none");
+                    }
                 }).fail(res => {
                     console.log(res);
                     concatError(res.responseJSON);
@@ -426,6 +440,7 @@
                     salat(res.message);
                     $("#queform")[0].reset();
                     qnaire.reset();
+                    $(".qnaire-card").remove();
 
                 }).fail(res => {
                     console.log(res);

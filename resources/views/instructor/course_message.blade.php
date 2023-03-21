@@ -65,7 +65,7 @@
                 welcome_message = $('#welmess').val();
                 certification_message = $('#cermess').val();
                 const params = new URL(document.location).searchParams;
-                const type = params.get('type');
+                const type = @js($type);
                 $.ajax({
                     method: 'POST',
                     url: api_url + 'admin/course_messageupdate',
@@ -81,7 +81,7 @@
                     salat(res.message);
                     btn($('#addMessage'), 'Save and Next', 'after');
                     setTimeout(() => {
-                        location.href = `/instructor/faq/{{$slug}}?type=${type}`;
+                        location.href = `/instructor/faq/${type}/{{$slug}}`;
                     }, 1000)
                 }).fail((res) => {
                     concatError(res.responseJSON)

@@ -23,7 +23,7 @@
                                     <div class="mb-3">
                                         <label for="courseTitle" class="form-label"><b>Course Price Tier</b></label>
                                         <p>
-                                            The minimum price of a course must be &#8358;2500
+                                            The minimum price of a course must be &#8358;2,500
                                         </p>
                                         <div class="row">
                                             <div class="col-4 col-sm-3 col-lg-2 mb-3">
@@ -114,7 +114,7 @@
                     btn(bt, 'Save and Next', 'after')
                     salat(res.message);
                     setTimeout(() => {
-                        location.href = `/instructor/course_message/{{$slug}}?type=${type}`
+                        location.href = `/instructor/course_message/{{$type}}/{{$slug}}`
                     }, 1000)
                 }).fail(function (res) {
                     btn(bt, 'Save and Next', 'after')

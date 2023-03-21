@@ -4,10 +4,8 @@
     <!--suppress ProblematicWhitespace -->
     <script>
         let urlSearchParams = new URLSearchParams(window.location.search);
-        let para = urlSearchParams.get('type');
-        if(!para || para != 2) {
-            history.back();
-        }
+        let para = {{$type}};
+        if (para != 1) window.close();
     </script>
     <style>
         .blackboard {
@@ -322,10 +320,10 @@
                         <div class="tab-pane fade show active overflow-visible" id="btns_container">
                             <div class="row justify-content-between mb-4">
                                 <div class="col-sm-12 col-lg-5 col-md-5">
-                                    <h1 class="mb-0 text-capitalize tit">Instructor Class
-                                        Board</h1>
+                                    <h2 class="mb-0 text-capitalize tit">Instructor Class Board</h2>
                                 </div>
-                                <div class="col-sm-12 col-lg-7 col-md-7 d-lg-flex d-md-flex justify-content-lg-end justify-content-md-end align-self-auto btns">
+                                <div
+                                    class="col-sm-12 col-lg-7 col-md-7 d-lg-flex d-md-flex justify-content-lg-end justify-content-md-end align-self-auto btns">
                                     <span class="bt p-sm-0 d-none">
                                         <a href="javascript:void(0)"
                                            class="text-primary btn-sm classroom vid-btn"
@@ -335,7 +333,7 @@
                                            data-bs-toggle="tooltip"
                                            data-bs-placement="bottom"
                                            title="video"><i
-                                                    class="mdi mdi-video" style="font-size: 26px;"></i></a>
+                                                class="mdi mdi-video" style="font-size: 26px;"></i></a>
                                         <a href="javascript:void(0)"
                                            class="text-primary btn-sm classroom img-btn"
                                            data-link=""
@@ -344,7 +342,7 @@
                                            data-bs-toggle="tooltip"
                                            data-bs-placement="bottom"
                                            title="image"><i
-                                                    class="mdi mdi-image" style="font-size: 26px;"></i></a>
+                                                class="mdi mdi-image" style="font-size: 26px;"></i></a>
                                         <a href="javascript:void(0)"
                                            class="text-primary btn-sm classroom text-btn"
                                            data-link=""
@@ -353,7 +351,7 @@
                                            data-bs-toggle="tooltip"
                                            data-bs-placement="bottom"
                                            title="text"><i
-                                                    class="mdi mdi-file-document" style="font-size: 26px;"></i></a>
+                                                class="mdi mdi-file-document" style="font-size: 26px;"></i></a>
                                         <a href="javascript:void(0)"
                                            class="text-primary btn-sm classroom code-btn"
                                            data-link=""
@@ -362,7 +360,7 @@
                                            data-bs-toggle="tooltip"
                                            data-bs-placement="bottom"
                                            title="code"><i
-                                                    class="mdi mdi-xml" style="font-size: 26px;"></i></a>
+                                                class="mdi mdi-xml" style="font-size: 26px;"></i></a>
                                         <a href="javascript:void(0)"
                                            class="text-primary btn-sm classroom comm-btn"
                                            data-link=""
@@ -371,7 +369,7 @@
                                            data-bs-toggle="tooltip"
                                            data-bs-placement="bottom"
                                            title="comment"><i
-                                                    class="mdi mdi-comment-account" style="font-size: 26px;"></i></a>
+                                                class="mdi mdi-comment-account" style="font-size: 26px;"></i></a>
                                         <a href="javascript:void(0)"
                                            class="text-success btn-sm d-none push-btn"
                                            data-bs-toggle="tooltip"
@@ -393,12 +391,13 @@
                             <div class="embed-responsive position-relative d-none p-0 blackboard board re no-scroll"
                                  id="video_container" style="height: 300px;">
                                 <video-js
-                                        class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100 vjs-theme-fantasy"
-                                        id="vid">
+                                    class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100 vjs-theme-fantasy"
+                                    id="vid">
                                 </video-js>
                             </div>
-                            <div class="embed-responsive position-relative d-none top-0 mb-lg-10 mb-md-10 mb-sm-3 end-0 start-0 bottom-0 p-0 h-100 w-100 board scroller"
-                                 id="chat_container" style="height: 300px;">
+                            <div
+                                class="embed-responsive position-relative d-none top-0 mb-lg-10 mb-md-10 mb-sm-3 end-0 start-0 bottom-0 p-0 h-100 w-100 board scroller"
+                                id="chat_container" style="height: 300px;">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="ibox">
@@ -426,7 +425,8 @@
                                                     <div class="col-lg-12">
                                                         <div class="chat-message-form">
                                                             <div class="form-group">
-                                                                <div class="d-flex justify-content-center align-items-center border bg-white pe-2">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center border bg-white pe-2">
                                                                 <textarea class="form-control message-input border-0"
                                                                           style="resize: none;"
                                                                           name="message"
@@ -479,11 +479,13 @@
 
 
     <script>
-        $(function() {
+        $(function () {
 
             const user_detail = `{{userDetail(1)}}`;
             const user_avatar = `{{userAvatar()}}`;
-            $("#vid").bind("contextmenu", () => {return false;});
+            $("#vid").bind("contextmenu", () => {
+                return false;
+            });
 
             const player = videojs('vid', {
                 "controls": true,
@@ -497,10 +499,10 @@
                 notSupportedMessage: "An Error Occurred While Fetching Video or No Video Available For This Course",
                 // playbackRates: [1, 1.5, 2],
                 userActions: {
-                    hotkeys: function(event) {
+                    hotkeys: function (event) {
                         // `space` key = pause
-                        if(event.which === 32) {
-                            if(this.paused()) {
+                        if (event.which === 32) {
+                            if (this.paused()) {
                                 this.play();
                             } else {
                                 this.pause();
@@ -509,7 +511,7 @@
                     }
                 }
             });
-            player.on('pause', function(e) {
+            player.on('pause', function (e) {
                 whereYouAt = player.currentTime();
             });
             const slug = @js($slug);

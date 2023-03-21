@@ -438,7 +438,7 @@
 
                             </div>
                             <div class="d-grid">
-                                <button disabled
+                                <button @disabled(session('info'))
                                     @click="setStorageAndRedirect($refs.price_plan.innerHTML,$el.getAttribute('href'))"
                                     href="{{ url('checkout/affiliate_activation/2/' . Str::random(8)) }}"
                                     class="btn btn-primary">Activate Now
@@ -484,7 +484,7 @@
                                 </div>
                             </div>
                             <div class="d-grid">
-                                <button disabled
+                                <button @disabled(session('info'))
                                     @click="setStorageAndRedirect($refs.price_plan.innerHTML,$el.getAttribute('href'))"
                                     href="{{ url('checkout/affiliate_activation/3/' . Str::random(8)) }}"
                                     class="btn btn-primary">Activate Now
@@ -531,7 +531,7 @@
 
                             </div>
                             <div class="d-grid">
-                                <button disabled
+                                <button @disabled(session('info'))
                                     @click="setStorageAndRedirect($refs.price_plan.innerHTML,$el.getAttribute('href'))"
                                     href="{{ url('checkout/affiliate_activation/4/' . Str::random(8)) }}"
                                     class="btn btn-primary">Activate Now

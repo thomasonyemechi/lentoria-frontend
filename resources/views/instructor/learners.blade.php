@@ -165,7 +165,7 @@
                     }
                 })
                 const params = new URL(document.location).searchParams;
-                const type = params.get('type');
+
                 $.ajax({
                     method: 'post',
                     url: api_url + 'admin/course_update_info',
@@ -182,7 +182,7 @@
                     btn(bt, 'Save and Next', 'after')
                     salat(res.message);
                     setTimeout(()=>{
-                        location.href=`/instructor/curriculum/{{$slug}}?type=${type}`
+                        location.href=`/instructor/curriculum/{{$type}}/{{$slug}}`
                     })
 
                 }).fail(res => {

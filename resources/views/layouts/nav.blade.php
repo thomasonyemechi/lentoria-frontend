@@ -89,11 +89,11 @@
                                             </a>
                                         </li>
                                     @endif
-                                    {{--                                    <li>--}}
-                                    {{--                                        <a class="dropdown-item" href="{{route('my-courses.learning')}}">--}}
-                                    {{--                                            My Learning--}}
-                                    {{--                                        </a>--}}
-                                    {{--                                    </li>--}}
+                                    <li>
+                                        <a class="dropdown-item" href="{{route('my-courses.learning')}}">
+                                            My Learning
+                                        </a>
+                                    </li>
                                     {{--                                    <li>--}}
                                     {{--                                        <a class="dropdown-item" href="#">--}}
                                     {{--                                            My Cart--}}
@@ -114,14 +114,14 @@
                                     {{--                                    </li>--}}
                                     {{--                                </ul>--}}
                                     <div class="dropdown-divider"></div>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <a class="dropdown-item" href="#">
-                                                Public Profile
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="dropdown-divider"></div>
+                                    {{--                                    <ul class="list-unstyled">--}}
+                                    {{--                                        <li>--}}
+                                    {{--                                            <a class="dropdown-item" href="#">--}}
+                                    {{--                                                Public Profile--}}
+                                    {{--                                            </a>--}}
+                                    {{--                                        </li>--}}
+                                    {{--                                    </ul>--}}
+                                    {{--                                    <div class="dropdown-divider"></div>--}}
                                     <ul class="list-unstyled">
                                         <li>
                                             <a class="dropdown-item" href="{{ route('logout') }}">
@@ -159,12 +159,13 @@
                             </ul>
                         </li>
                     </ul>
-                    {{--                    <form class="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">--}}
-                    {{--                    <span class="position-absolute ps-3 search-icon">--}}
-                    {{--                        <i class="fe fe-search"></i>--}}
-                    {{--                    </span>--}}
-                    {{--                        <input type="search" class="form-control ps-6" placeholder="Search Courses"/>--}}
-                    {{--                    </form>--}}
+
+                    <form class="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">
+                                        <span class="position-absolute ps-3 search-icon">
+                                            <i class="fe fe-search"></i>
+                                        </span>
+                        <input type="search" class="form-control ps-6" placeholder="Search Courses"/>
+                    </form>
 
                     <ul class="navbar-nav navbar-right-wrap ms-auto d-none d-lg-block">
 
@@ -236,7 +237,7 @@
                                         @if (session('info')['instructor'] == 1 && !request()->is('instructor/*'))
                                             <li>
                                                 <a class="dropdown-item" href="{{ route('instructor.dashboard') }}">
-                                                    Instructor's Dashboard
+                                                    Instructor Dashboard
                                                 </a>
                                             </li>
                                         @elseif (session('info')['instructor']!=1)
@@ -246,11 +247,11 @@
                                                 </a>
                                             </li>
                                         @endif
-                                        {{--                                        <li>--}}
-                                        {{--                                            <a class="dropdown-item" href="{{route('my-courses.learning')}}">--}}
-                                        {{--                                                My Learning--}}
-                                        {{--                                            </a>--}}
-                                        {{--                                        </li>--}}
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('my-courses.learning')}}">
+                                                My Learning
+                                            </a>
+                                        </li>
                                         {{--                                        <li>--}}
                                         {{--                                            <a class="dropdown-item" href="#">--}}
                                         {{--                                                My Cart--}}
@@ -270,13 +271,13 @@
                                         {{--                                            </a>--}}
                                         {{--                                        </li>--}}
                                         {{--                                    </ul>--}}
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                <a class="dropdown-item" href="#">
-                                                    Public Profile
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        {{--                                        <ul class="list-unstyled">--}}
+                                        {{--                                            <li>--}}
+                                        {{--                                                <a class="dropdown-item" href="#">--}}
+                                        {{--                                                    Public Profile--}}
+                                        {{--                                                </a>--}}
+                                        {{--                                            </li>--}}
+                                        {{--                                        </ul>--}}
                                         <div class="dropdown-divider"></div>
                                         <ul class="list-unstyled">
                                             <li>

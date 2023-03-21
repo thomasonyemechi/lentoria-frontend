@@ -597,7 +597,7 @@
                     customizations: {
                         title: "Course Purchase",
                         description: "Payment for buying a course",
-                        logo: "https://test.lentoria.com/assets/images/logo2.png",
+                        logo: "https://lentoria.com/assets/images/logo2.png",
                     },
                 });
             }

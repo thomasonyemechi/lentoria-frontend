@@ -5,7 +5,7 @@
         <form>
             <div class="row mb-3">
                 <div class="col-lg-2 mt-3 col-md-4 col-12">
-                    <h5 class="text-bold fw-bolder">New Section:</h5>
+                    <h5 class="text-bold fw-bolder">New Topic:</h5>
                 </div>
                 <div class="col-lg-10 col-md-8 col-12">
                     <input type="text" name="title" class="form-control mb-1" placeholder="Enter a title">
@@ -24,7 +24,7 @@
             <div class="d-flex justify-content-end">
                 <p class="pt-3 me-3 fw-semi-bold text-bold closecard"><a href="javascript:void(0)">Cancel</a></p>
                 <button type="submit" class="btn btn-primary btn-block btn-xs">Add
-                    Section</button>
+                    Topic</button>
             </div>
         </form>
     </div>

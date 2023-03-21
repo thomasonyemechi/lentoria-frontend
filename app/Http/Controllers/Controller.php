@@ -48,9 +48,9 @@ class Controller extends BaseController
         if ($res->data) {
             $data = $res->data;
             return redirect('/course/' . $data->id . '/' . $data->slug);
-        } else {
-            throw new NotFoundHttpException();
         }
+
+        throw new NotFoundHttpException();
     }
 
 }

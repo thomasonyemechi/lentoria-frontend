@@ -68,14 +68,13 @@
                                                     <select type="text" class="form-control"
                                                             placeholder="Instructor at Lentoria" id="lang" name="lang">
                                                         <option value="english">English</option>
-                                                        <option value="french">French</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
 
                                                 <div class="form-group mb-3">
-                                                    <label for="name" class="form-label">Website</label>
+                                                    <label for="site" class="form-label">Website</label>
                                                     <input type="text" class="form-control shadow-none"
                                                            placeholder="Url"
                                                            id="site" name="site"/>
@@ -121,10 +120,10 @@
 
                                 <div class="tab-pane fade" id="profile_pic" role="tabpanel"
                                      aria-labelledby="profile_pic-tab">
-                                    <small class="text-muted">Minimum 200x200 pixels, Maximum 6000x6000 pixels</small>
+                                    <small class="text-muted">Minimum 200x200 pixels, Maximum 400x400 pixels</small>
                                     <form class="row text-start g-3" id="addVideoForm" enctype="multipart/form-data">
                                         <div class="col-md-12">
-                                            <input name="profile_pic" type="file" id="file_upload"/>
+                                            <input name="image" type="file" id="file_upload"/>
                                         </div>
                                     </form>
                                 </div>
@@ -140,12 +139,12 @@
         $(function () {
             instructorInfo();
             $("#file_upload").fileinput({
-                uploadUrl: "https://lentoria.site/api/video",
+                uploadUrl: `${api_url}admin/update_instructor_picture`,
                 allowedFileTypes: ['image'],
                 minImageWidth: 200,
                 minImageHeight: 200,
-                maxImageWidth: 6000,
-                maxImageHeight: 6000,
+                maxImageWidth: 400,
+                maxImageHeight: 400,
                 removeFromPreviewOnError: true,
                 dropZoneEnabled: true,
                 resizeImage: true,
@@ -157,19 +156,18 @@
                     showUpload: false,
                 },
                 mergeAjaxCallbacks: false,
-                uploadExtraData: function (previewId, index) {
-                    return {
-                        title: $("#lecu_title").val(),
-                        lecture_id: $("#lecu_id").val(),
-                        duration: $("input#video_length").val(),
-                    };
-                },
             }).on('fileuploaded', function (event, data) {
-                var form = data.form,
+                let form = data.form,
                     files = data.files,
                     extra = data.extra,
                     response = data.response,
                     reader = data.reader;
+                console.log(response);
+            });
+            $('#file_upload').on('fileuploaderror', function (event, data, msg) {
+                var form = data.form, files = data.files, extra = data.extra,
+                    response = data.response, reader = data.reader;
+                console.log(form);
             });
             $("#editProfileForm").submit(function (e) {
                 e.preventDefault();

@@ -294,4 +294,5 @@ function shareApi() {
         const params = new URL(document.location).searchParams;
         return params.get('type');
     }
+
 }

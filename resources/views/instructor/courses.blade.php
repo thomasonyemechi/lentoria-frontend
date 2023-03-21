@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="ms-lg-3 mt-2 mt-lg-0">
                                         <h4 class="mb-1 h5">
-                                            <a href="/instructor/course/${cat.slug}?type=${cat.course_type}" class="text-inherit">
+                                            <a href="/instructor/course/${cat.course_type}/${cat.slug}" class="text-inherit">
                                                 ${cat.title}
                                             </a>
                                         </h4>

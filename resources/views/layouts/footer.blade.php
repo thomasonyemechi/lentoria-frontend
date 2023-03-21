@@ -1,5 +1,5 @@
 @php
-    $routes = ['instructor/course_review/{slug}','instructor/classroom/{slug}'];
+    $routes = ['instructor/course_review/{type}/{slug}','instructor/classroom/{type}/{slug}'];
     $route = request()->route()->uri;
 @endphp
 @if(!in_array($route,$routes))

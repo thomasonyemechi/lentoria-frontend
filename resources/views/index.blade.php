@@ -20,7 +20,7 @@
                             and become a professional that is positioned to get hired by the best companies around the
                             world.
                         </p>
-                        <a href="javascript:void(0)" class="btn btn-outline-white text-white mt-4 outline-btn">Explore
+                        <a href="{{route('coming-soon')}}" class="btn btn-outline-white text-white mt-4 outline-btn">Explore
                             courses</a>
                     </div>
                 </div>
@@ -146,24 +146,26 @@
             <div class="row">
                 <div class="col-md-12">
                     <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-lg">Browse Courses</span>
-                    <h2 class="mb-1 display-4 fw-bold">The world's top courses</h2>
+                    <h2 class="mb-1 display-4 fw-bold">The top courses</h2>
                     <p class="mb-8 lead">Choose from online video courses with new additions published every month.</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 text-center">
+
+                    <h2 class="text-muted">No courses available yet</h2>
                     <!-- Nav tab -->
-                    <ul class="nav nav-lb-tab mb-6" id="pills-tab" role="tablist">
-                    </ul>
+                    {{--                    <ul class="nav nav-lb-tab mb-6" id="pills-tab" role="tablist">--}}
+                    {{--                    </ul>--}}
                     <!-- Tab content -->
-                    <div class="tab-content" id="pills-tabContent">
-                        <div class="d-flex justify-content-center opacity-50 loader">
-                            <div class="spinner-border text-bold fs-3 text-black-100" style="width: 5rem; height: 5rem;"
-                                 role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
-                    </div>
+                    {{--                    <div class="tab-content" id="pills-tabContent">--}}
+                    {{--                        <div class="d-flex justify-content-center opacity-50 loader">--}}
+                    {{--                            <div class="spinner-border text-bold fs-3 text-black-100" style="width: 5rem; height: 5rem;"--}}
+                    {{--                                 role="status">--}}
+                    {{--                                <span class="visually-hidden">Loading...</span>--}}
+                    {{--                            </div>--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
                 </div>
             </div>
         </div>
@@ -200,7 +202,8 @@
                     easier than you can imagine.
                     Take a bold step today and kick-start your journey to expertise
                 </h2>
-                <a href="{{route('coming-soon')}}" class="btn btn-outline-white text-white mt-4 outline-btn">Explore courses</a>
+                <a href="{{route('coming-soon')}}" class="btn btn-outline-white text-white mt-4 outline-btn">Explore
+                    courses</a>
             </div>
             <div class="col-lg-6 m-0 p-0">
 
@@ -288,7 +291,7 @@
                             </p>
                         </div>
                         <div class="col-md-12 mt-3 justify-content-center">
-                            <a href="" class="btn btn-primary gsbtn"> Start Teaching Today</a>
+                            <a href="{{route('become_instructor')}}" class="btn btn-primary"> Start Teaching Today</a>
                         </div>
                     </div>
                 </div>
@@ -307,9 +310,10 @@
                     <p class="lead text-white px-lg-12 mb-6">Effective learning starts with assessment. Learning a new
                         skill is hard work—Lentoria makes it easier.</p>
                     <div class="d-grid d-md-block">
-                        <button @disabled(session('info')) class="btn btn-outline-white text-white mb-2 mb-md-0 outline-btn"
-                                data-bs-target="#signup_modal"
-                                data-bs-toggle="modal">Start Learning
+                        <button
+                            @disabled(session('info')) class="btn btn-outline-white text-white mb-2 mb-md-0 outline-btn"
+                            data-bs-target="#signup_modal"
+                            data-bs-toggle="modal">Start Learning
                         </button>
                     </div>
                 </div>
@@ -322,7 +326,7 @@
             let jsonfile = `{{asset('json_files/course_by_type.json')}}`;
             let categoryJsonFile = `{{asset('json_files/categories.json')}}`;
             getCategories();
-            getCourses();
+            // getCourses();
 
             $(".gsbtn").click(function (e) {
                 e.preventDefault();

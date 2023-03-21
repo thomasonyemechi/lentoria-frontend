@@ -83,7 +83,7 @@
 
                                     <div class="mb-3 col-6">
                                         <select class="form-control" name="topic_id" id="selsubcat">
-                                            <option value="">Select a SubCategory</option>
+                                            <option value="">Select course topic</option>
                                         </select>
                                     </div>
                                 </div>
@@ -241,7 +241,9 @@
                     e.preventDefault();
                     let cat = $(this).val();
                     if (cat) {
+                        console.log(subcategories);
                         let subcats = subcategories.data[cat];
+                        console.log(subcats);
                         let selectsub = $('#selsubcat');
                         selectsub.html('<option selected disabled>Select Course Topic</option>');
                         if (subcats) {
@@ -277,7 +279,7 @@
                     video = $('#promo_video').get(0).files.length;
                     let published = sessionStorage.getItem('published');
                     const params = new URL(document.location).searchParams;
-                    const type = params.get('type');
+                    const type = @js($type);
                     if (published && published != 0) {
                         salat('This course has been submitted for review and cannot be edited', 1);
                         return;
@@ -318,7 +320,7 @@
                         btn($('#updateCourse'), 'Save and Next', 'after');
                         salat(res.message);
                         setTimeout(() => {
-                            location.href = `/instructor/goals/{{$slug}}?type=${type}`
+                            location.href = `/instructor/goals/${type}/{{$slug}}`
                         }, 1000)
                     }).fail((res) => {
                         concatError(res.responseJSON)

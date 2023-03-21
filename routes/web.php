@@ -15,10 +15,6 @@ Route::post('/addtosession', [Controller::class, 'updateInstructorSession']);
 Route::get('/c/{link}/{ref?}', [Controller::class, 'fetchCourseInfoByLink']);
 
 Route::get('/alljsonrun', [JsonFileController::class, 'runAllJson']);
-Route::get('/jsonfile', [JsonFileController::class, 'updateFile']);
-Route::get('/indexpagefile', [JsonFileController::class, 'indexPageJsonFile']);
-Route::get('/cats_and_subcats_file', [JsonFileController::class, 'categoriesNdSubscategoriesJsonFile']);
-Route::get('/cats_file', [JsonFileController::class, 'categoriesJsonFile']);
 
 Route::get('/demo', function () {
     return view('instructor.demo');
@@ -30,6 +26,7 @@ Route::view('/instructor/{id}/profile', 'instructor_profile')->name('instructor_
 Route::view('activate_account', 'activation')->name('activation');
 Route::view('become-instructor', 'become_instructor')->name('become_instructor');
 Route::view('become-affiliate', 'affiliate')->name('affiliate');
+Route::view('courses', 'course-list')->name('courses');
 Route::view('checkout/course/{slug}', 'checkout')->name('course.checkout');
 Route::view('checkout/instructor_activation/{id}/{package_id}',
     'checkout')->name('instructor.activation.checkout')->whereIn('id', [3, 4, 5]);
@@ -56,22 +53,23 @@ Route::middleware(['auth2'])->prefix('affiliate')->as('affiliate.')->group(funct
 Route::prefix('my-courses')->as('my-courses.')->middleware(['auth2'])->group(function () {
     Route::view('learning', 'student.index')->name('learning');
     Route::view('/{slug}', 'student.classroom')->name('classroom');
+    Route::view('/t/ebooks/{slug}', 'student.ebook-classroom')->name('ebook-classroom');
 });
-
 Route::prefix('instructor')->as('instructor.')->middleware(['auth2', 'instructor'])->group(function () {
     Route::view('/dashboard', 'instructor.index')->name('dashboard');
     Route::view('/courses', 'instructor.courses')->name('courses');
     Route::view('/add_course', 'instructor.add_course')->name('add_course');
-    Route::view('/course/{slug}', 'instructor.course')->name('course');
-    Route::view('/course_message/{slug}', 'instructor.course_message')->name('course_message');
-    Route::view('/goals/{slug}', 'instructor.learners')->name('learners');
-    Route::view('/pricing/{slug}', 'instructor.pricing')->name('pricing');
-    Route::view('/curriculum/{slug}', 'instructor.curriculum')->name('curriculum');
-    Route::view('/faq/{slug}', 'instructor.faq')->name('faq');
+    Route::view('/course/{type}/{slug}', 'instructor.course')->name('course')->whereNumber(['type']);
+    Route::view('/course_message/{type}/{slug}', 'instructor.course_message')->name('course_message');
+    Route::view('/goals/{type}/{slug}', 'instructor.learners')->name('learners');
+    Route::view('/pricing/{type}/{slug}', 'instructor.pricing')->name('pricing');
+    Route::view('/curriculum/{type}/{slug}', 'instructor.curriculum')->name('curriculum');
+    Route::view('/upload-ebook/{type}/{slug}', 'instructor.upload-ebook')->name('upload-ebook');
+    Route::view('/faq/{type}/{slug}', 'instructor.faq')->name('faq');
     Route::view('/profile', 'instructor.instructor_profile')->name('instructor_profile');
-    Route::view('/course_review/{slug}', 'instructor.course_review')->name('course_review');
+    Route::view('/course_review/{type}/{slug}', 'instructor.course_review')->name('course_review');
     Route::post('cke_upload', [UploadController::class, 'upload_image_cke'])->name('ckeditor.upload');
-    Route::view('/classroom/{slug}', 'instructor.classroom')->name('classroom');
+    Route::view('/classroom/{type}/{slug}', 'instructor.classroom')->name('classroom');
     Route::post('upload_video', [VimeoController::class, 'uploadVideo']);
     Route::post('delete_video', [VimeoController::class, 'deleteVideo']);
     Route::post('get_oembed', [VimeoController::class, 'getOembed2']);

@@ -14,7 +14,9 @@
             cursor: not-allowed !important;
         }
 
-        .btn.disabled, .btn:disabled, fieldset:disabled .btn {
+        .btn.disabled,
+        .btn:disabled,
+        fieldset:disabled .btn {
             pointer-events: all;
         }
     </style>
@@ -48,7 +50,7 @@
                 <div class="col-lg-8 col-md-12 col-12 text-center">
                     <!-- caption -->
                     <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-xl">Build a brand and Scale with
-                        Lentoria</span>
+                    Lentoria</span>
                     <h2 class="mb-2 display-4 fw-bold ">Lentoria Professional Knowledge Facilitator Program</h2>
                     <p class="lead">This Program simplifies the whole process of becoming a professional online
                         instructor. It will take you from a complete novice to expert level</p>
@@ -207,7 +209,7 @@
                 <div class="col-lg-8 col-md-12 col-12 text-center">
                     <!-- caption -->
                     <span class="text-primary mb-3 d-block text-uppercase fw-semi-bold ls-xl">Take the bold step
-                        to expanding your opportunities</span>
+                    to expanding your opportunities</span>
                     <h2 class="mb-2 display-4 fw-bold ">It doesn't have to be difficult</h2>
                     <p class="lead">Our expert team is available to take you through the entire process, guide you
                         all the way and answer every question you may have from start to publishing. After launching
@@ -308,104 +310,106 @@
         </div>
     </div>
 
-    {{--    <div class="pb-16 pt-10"--}}
-    {{--         style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%), rgba(221, 218, 255, 0.3) ; background-size: cover; background-position: top center">--}}
-    {{--        <!-- Container -->--}}
-    {{--        <div class="container">--}}
-    {{--            <div class="row">--}}
-    {{--                <div class="offset-xl-1 col-xl-10 col-12">--}}
-    {{--                    <!-- Row -->--}}
-    {{--                    <div class="row mb-0">--}}
-    {{--                        <div class="col-lg-10 col-md-12 col-12 mb-8">--}}
-    {{--                            <!-- Heading -->--}}
-    {{--                            <h2 class="display-4 fw-bold">Our instructors are saying--}}
-    {{--                            </h2>--}}
-    {{--                            <!-- Para -->--}}
-    {{--                            <p class="h2 text-muted">Lentoria has greatly impacted their lives positively</p>--}}
-    {{--                        </div>--}}
-    {{--                        <div class="col-md-12 col-12">--}}
-    {{--                            <div class="position-relative">--}}
-    {{--                                <!-- controls -->--}}
-    {{--                                <ul class="controls-testimonial controls  justify-content-start"--}}
-    {{--                                    id="sliderTestimonialSecondControls">--}}
-    {{--                                    <li class="prev me-2 ms-0">--}}
-    {{--                                        <i class="fe fe-chevron-left"></i>--}}
-    {{--                                    </li>--}}
-    {{--                                    <li class="next">--}}
-    {{--                                        <i class="fe fe-chevron-right"></i>--}}
-    {{--                                    </li>--}}
-    {{--                                </ul>--}}
-    {{--                                <!-- slider -->--}}
-    {{--                                <div class="sliderTestimonialSecond">--}}
+    {{-- <div class="pb-16 pt-10"--}}
+    {{-- style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%), rgba(221, 218, 255, 0.3) ; background-size: cover; background-position: top center">--}}
+    {{-- <!-- Container -->--}}
+    {{-- <div class="container">--}}
+    {{-- <div class="row">--}}
+    {{-- <div class="offset-xl-1 col-xl-10 col-12">--}}
+    {{-- <!-- Row -->--}}
+    {{-- <div class="row mb-0">--}}
+    {{-- <div class="col-lg-10 col-md-12 col-12 mb-8">--}}
+    {{-- <!-- Heading -->--}}
+    {{-- <h2 class="display-4 fw-bold">Our instructors are saying--}}
+    {{-- </h2>--}}
+    {{-- <!-- Para -->--}}
+    {{-- <p class="h2 text-muted">Lentoria has greatly impacted their lives positively</p>--}}
+    {{-- </div>--}}
+    {{-- <div class="col-md-12 col-12">--}}
+    {{-- <div class="position-relative">--}}
+    {{-- <!-- controls -->--}}
+    {{-- <ul class="controls-testimonial controls  justify-content-start"--}}
+    {{-- id="sliderTestimonialSecondControls">--}}
+    {{-- <li class="prev me-2 ms-0">--}}
+    {{-- <i class="fe fe-chevron-left"></i>--}}
+    {{-- </li>--}}
+    {{-- <li class="next">--}}
+    {{-- <i class="fe fe-chevron-right"></i>--}}
+    {{-- </li>--}}
+    {{-- </ul>--}}
+    {{-- <!-- slider -->--}}
+    {{-- <div class="sliderTestimonialSecond">--}}
 
-    {{--                                    <div class="item">--}}
-    {{--                                        <div class="row">--}}
-    {{--                                            <div class="col-lg-6">--}}
-    {{--                                                <img src="{{asset('assets/images/new_img/d4c30b6486.jpg')}}"--}}
-    {{--                                                     class="d-block w-100"--}}
-    {{--                                                     alt="...">--}}
-    {{--                                            </div>--}}
-    {{--                                            <div class="col-lg-6">--}}
-    {{--                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks--}}
-    {{--                                                    has created an incredibly seamless experience for--}}
-    {{--                                                    app design. My mind--}}
-    {{--                                                    is blown. Vestibulum ante ipsum primis in faucibus--}}
-    {{--                                                    orci luctus et ultrices pos--}}
-    {{--                                                    uere cubilia curae fusce consequat ligula in dui--}}
-    {{--                                                    congue interdum."</p>--}}
-    {{--                                                <p><b>Paulo Dichone</b><br>--}}
-    {{--                                                    Developer (Android Speciality)</p>--}}
-    {{--                                            </div>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="item">--}}
-    {{--                                        <div class="row">--}}
-    {{--                                            <div class="col-lg-6">--}}
-    {{--                                                <img src="{{asset('assets/images/coding.jp')}}g" class="d-block w-100"--}}
-    {{--                                                     alt="...">--}}
-    {{--                                            </div>--}}
-    {{--                                            <div class="col-lg-6">--}}
-    {{--                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks--}}
-    {{--                                                    has created an incredibly seamless experience for--}}
-    {{--                                                    app design. My mind--}}
-    {{--                                                    is blown. Vestibulum ante ipsum primis in faucibus--}}
-    {{--                                                    orci luctus et ultrices pos--}}
-    {{--                                                    uere cubilia curae fusce consequat ligula in dui--}}
-    {{--                                                    congue interdum."</p>--}}
-    {{--                                                <p><b>Paulo Dichone</b><br>--}}
-    {{--                                                    Developer (Android Speciality)</p>--}}
-    {{--                                            </div>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="item">--}}
-    {{--                                        <div class="row">--}}
-    {{--                                            <div class="col-lg-6">--}}
-    {{--                                                <img src="{{asset('assets/images/learn.jpg')}}" class="d-block w-100"--}}
-    {{--                                                     alt="...">--}}
-    {{--                                            </div>--}}
-    {{--                                            <div class="col-lg-6">--}}
-    {{--                                                <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks--}}
-    {{--                                                    has created an incredibly seamless experience for--}}
-    {{--                                                    app design. My mind--}}
-    {{--                                                    is blown. Vestibulum ante ipsum primis in faucibus--}}
-    {{--                                                    orci luctus et ultrices pos--}}
-    {{--                                                    uere cubilia curae fusce consequat ligula in dui--}}
-    {{--                                                    congue interdum."</p>--}}
-    {{--                                                <p><b>Paulo Dichone</b><br>--}}
-    {{--                                                    Developer (Android Speciality)</p>--}}
-    {{--                                            </div>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
+    {{-- <div class="item">--}}
+    {{-- <div class="row">--}}
+    {{-- <div class="col-lg-6">--}}
+    {{-- <img src="{{asset('assets/images/new_img/d4c30b6486.jpg')}}"--}}
+    {{-- class="d-block w-100"--}}
+    {{-- alt="...">--}}
+    {{-- </div>--}}
+    {{-- <div class="col-lg-6">--}}
+    {{-- <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks--}}
+    {{-- has created an incredibly seamless experience for--}}
+    {{-- app design. My mind--}}
+    {{-- is blown. Vestibulum ante ipsum primis in faucibus--}}
+    {{-- orci luctus et ultrices pos--}}
+    {{-- uere cubilia curae fusce consequat ligula in dui--}}
+    {{-- congue interdum."</p>--}}
+    {{-- <p><b>Paulo Dichone</b><br>--}}
+    {{-- Developer (Android Speciality)</p>--}}
+    {{-- </div>--}}
+    {{-- </div>--}}
+    {{-- </div>--}}
+    {{-- <div class="item">--}}
+    {{-- <div class="row">--}}
+    {{-- <div class="col-lg-6">--}}
+    {{-- <img src="{{asset('assets/images/coding.jp')}}g" class="d-block
+    w-100"--}}
+    {{-- alt="...">--}}
+    {{-- </div>--}}
+    {{-- <div class="col-lg-6">--}}
+    {{-- <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks--}}
+    {{-- has created an incredibly seamless experience for--}}
+    {{-- app design. My mind--}}
+    {{-- is blown. Vestibulum ante ipsum primis in faucibus--}}
+    {{-- orci luctus et ultrices pos--}}
+    {{-- uere cubilia curae fusce consequat ligula in dui--}}
+    {{-- congue interdum."</p>--}}
+    {{-- <p><b>Paulo Dichone</b><br>--}}
+    {{-- Developer (Android Speciality)</p>--}}
+    {{-- </div>--}}
+    {{-- </div>--}}
+    {{-- </div>--}}
+    {{-- <div class="item">--}}
+    {{-- <div class="row">--}}
+    {{-- <div class="col-lg-6">--}}
+    {{-- <img src="{{asset('assets/images/learn.jpg')}}" class="d-block
+    w-100"--}}
+    {{-- alt="...">--}}
+    {{-- </div>--}}
+    {{-- <div class="col-lg-6">--}}
+    {{-- <p class="fs-3 text-dark lh-lg mb-4 mt-4">"Geeks--}}
+    {{-- has created an incredibly seamless experience for--}}
+    {{-- app design. My mind--}}
+    {{-- is blown. Vestibulum ante ipsum primis in faucibus--}}
+    {{-- orci luctus et ultrices pos--}}
+    {{-- uere cubilia curae fusce consequat ligula in dui--}}
+    {{-- congue interdum."</p>--}}
+    {{-- <p><b>Paulo Dichone</b><br>--}}
+    {{-- Developer (Android Speciality)</p>--}}
+    {{-- </div>--}}
+    {{-- </div>--}}
+    {{-- </div>--}}
 
-    {{--                                </div>--}}
-    {{--                            </div>--}}
+    {{-- </div>--}}
+    {{-- </div>--}}
 
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
+    {{-- </div>--}}
+    {{-- </div>--}}
+    {{-- </div>--}}
+    {{-- </div>--}}
+    {{-- </div>--}}
+    {{-- </div>--}}
 
     <div class="py-lg-13 py-8 bg-primary">
         <div class="container">
@@ -437,14 +441,13 @@
                             <div class="mb-5">
                                 <h2 class="fw-bold">STANDARD</h2>
                                 <p class="mb-0 ">Access to become an instructor,<span class="text-dark fw-medium">Access
-                                        to instructor training package & 1 paid
-                                        course. </span>
+                                    to instructor training package & 1 paid
+                                    course. </span>
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center mb-4">
                                 <span class="h3 mb-0 fw-bold">&#8358;</span>
-                                <div class="price-card--price-number toggle-price-content"
-                                     data-price-monthly="0"
+                                <div class="price-card--price-number toggle-price-content" data-price-monthly="0"
                                      data-price-yearly="0">
                                     <span class="price-plan fw-bold fs-2 text-dark" x-ref="price_plan">15,000</span>
                                 </div>
@@ -453,7 +456,7 @@
                             <div class="d-grid">
                                 <button
                                     @click="setStorageAndRedirect($refs.price_plan.innerHTML,$el.getAttribute('href'))"
-                                    href="{{ url('checkout/instructor_activation/3/'.Str::random(8)) }}" disabled
+                                    href="{{ url('checkout/instructor_activation/3/'.Str::random(8)) }}" @disabled(session('info'))
                                     class="btn btn-primary plan-btn">Activate Now
                                 </button>
                             </div>
@@ -488,21 +491,21 @@
                                 <h2 class="fw-bold">PREMIUM</h2>
                                 <p class="mb-0 ">Access to instructor success challenge,<span
                                         class="text-dark fw-medium">
-                                        a Unique store, and to 3 paid courses.</span>
+                                    a Unique store, and to 3 paid courses.</span>
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center mb-4">
                                 <sup class="h3 mb-0 fw-bold">&#8358;</sup>
-                                <div class="price-card--price-number toggle-price-content"
-                                     data-price-monthly="39" data-price-yearly="99"><span
-                                        class="price-plan fw-bold fs-2 text-dark" x-ref="price_plan">40,000</span>
+                                <div class="price-card--price-number toggle-price-content" data-price-monthly="39"
+                                     data-price-yearly="99"><span class="price-plan fw-bold fs-2 text-dark"
+                                                                  x-ref="price_plan">40,000</span>
                                 </div>
                             </div>
                             <div class="d-grid">
 
                                 <button
                                     @click="setStorageAndRedirect($refs.price_plan.innerHTML,$el.getAttribute('href'))"
-                                    href="{{ url('checkout/instructor_activation/4/'.Str::random(8)) }}" disabled
+                                    href="{{ url('checkout/instructor_activation/4/'.Str::random(8)) }}" @disabled(session('info'))
                                     class="btn btn-primary plan-btn">Activate Now
                                 </button>
                             </div>
@@ -540,15 +543,15 @@
                             </div>
                             <div class="d-flex justify-content-center mb-4">
                                 <span class="h3 mb-0 fw-bold">&#8358;</span>
-                                <div class="price-card--price-number toggle-price-content"
-                                     data-price-monthly="99" data-price-yearly="199"><span
-                                        class="price-plan fw-bold fs-2 text-dark" x-ref="price_plan">115,000</span>
+                                <div class="price-card--price-number toggle-price-content" data-price-monthly="99"
+                                     data-price-yearly="199"><span class="price-plan fw-bold fs-2 text-dark"
+                                                                   x-ref="price_plan">115,000</span>
                                 </div>
                             </div>
                             <div class="d-grid">
                                 <button
                                     @click="setStorageAndRedirect($refs.price_plan.innerHTML,$el.getAttribute('href'))"
-                                    href="{{ url('checkout/instructor_activation/5/'.Str::random(8)) }}" disabled
+                                    href="{{ url('checkout/instructor_activation/5/'.Str::random(8)) }}" @disabled(session('info'))
                                     class="btn btn-primary plan-btn">Activate Now
                                 </button>
                             </div>
@@ -576,23 +579,32 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center align-items-center">
+            <div class="row justify-content-center align-items-center d-none hidden become-instructor-btn">
                 <div class="col-10 text-center mb-3">
                     <button class="btn btn-primary">Become an Instructor Now</button>
                 </div>
                 <div class="text-center">
-                    <span class="text-muted">Since a package has been activated you can click the button above to become an
-                        instructor</span>
+                <span class="text-muted">Since a package has been activated you can click the button above to become an
+                    instructor</span>
                 </div>
             </div>
+            @if(session('info') && session('info')['instructor'] == 1)
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-10 text-center mb-3">
+                        <a href="{{route('instructor.dashboard')}}" class="btn btn-primary">Go to your dashboard</a>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-muted">You are already an instructor you can go to your dashboard</span>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
     <!-- Instructor -->
     <hr class="my-0">
 
     <!-- call to action -->
-    <div class="bg-primary-a"
-         style="background-color: #036 !important; padding-bottom: 60px; padding-top: 60px;">
+    <div class="bg-primary-a" style="background-color: #036 !important; padding-bottom: 60px; padding-top: 60px;">
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-md-9 col-12">
@@ -600,10 +612,9 @@
                     <p class="lead text-white px-lg-12 mb-6">Effective learning starts with assessment. Learning a
                         new skill is hard work—Lentoria makes it easier.</p>
                     <div class="d-grid d-md-block">
-                        <button
-                            @disabled(session('info')) class="btn btn-outline-white text-white mb-2 mb-md-0 outline-btn get-started-btn"
-                            data-bs-target="#signup_modal"
-                            data-bs-toggle="modal">Start Learning
+                        <button @disabled(session('info'))
+                                class="btn btn-outline-white text-white mb-2 mb-md-0 outline-btn get-started-btn"
+                                data-bs-target="#signup_modal" data-bs-toggle="modal">Start Learning
                         </button>
                     </div>
                 </div>
@@ -630,13 +641,52 @@
                 comparePlans(@js(session('info'))['data']['live_id'])
             }
 
+            $(".become-instructor-btn").click(() => {
+                become_instructor();
+            })
+
+            function become_instructor() {
+                let button = $(".become-instructor-btn").find("button");
+                $.ajax({
+                    url: `${api_url}admin/become_instructor`,
+                    beforeSend: () => {
+                        btn(button, '', 'before');
+                    }
+                }).done(res => {
+                    btn(button, 'Become an Instructor Now', 'after');
+                    addToSession();
+                }).fail(res => {
+                    concatError(res.responseJSON);
+                    btn(button, 'Become an Instructor Now', 'after');
+                });
+            } 
+
+            function addToSession() {
+                $.ajax({
+                    url: '/addtosession',
+                    method: "POST",
+                }).done(res => {
+                    salat("Congratulations you are now an instructor");
+                    setTimeout(() => {
+                        window.location.href = "/instructor/dashboard"
+                    }, 500);
+                }).fail(res => {
+                    console.log(res);
+                    concatError(res.responseJSON);
+                })
+            }
+
             function comparePlans(live_id) {
                 $.get(`${api_url}compare_plan/${live_id}`).done(res => {
                     $(".plan-btn").removeAttr('disabled')
                     const data = res.data;
+                    console.log(data);
                     let pac_act = 0;
                     data.forEach((plan, index) => {
                         let card = $(`.package_${plan.package_sn}`);
+                        if (plan.package_sn >= 3 && plan.has_package && @js(session('info'))['instructor'] == 0) {
+                            $(".become-instructor-btn").removeClass("d-none");
+                        }
                         if (card) {
                             if (plan.has_package) {
                                 pac_act += parseInt(plan.price);
@@ -645,8 +695,11 @@
                                 $(card).find('.d-grid > button').css('cursor', 'not-allowed');
                             } else {
                                 let str = $(card).find('.price-plan').html();
+
+
                                 let variable = parseInt(str?.replace(/,/g, ""));
-                                $(card).find('.price-plan').html(new Intl.NumberFormat().format(variable - pac_act));
+                                $(card).find('.price-plan').html(new Intl.NumberFormat().format(
+                                    variable - pac_act));
                             }
                         }
                     })
