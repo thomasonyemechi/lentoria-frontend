@@ -61,9 +61,8 @@
                 $("#ctype").val(res.data.course_type);
                 $("#cid").val(res.data.id);
                 dat = res.data
-                if (dat.published == 0) {
-                    $('.publish-div').removeClass('d-none')
-                }
+                dat.published == 0 ? $('.publish-div').removeClass('d-none') : $('.share-div').removeClass('d-none')
+                $(document).find($("#link_div")).data('link',dat.link);
                 let published = dat.published;
                 sessionStorage.setItem('published', published);
                 try {

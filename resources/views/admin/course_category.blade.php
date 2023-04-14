@@ -141,7 +141,7 @@
                 $.ajax({
                     method: 'post',
                     url: api_url+'admin/category/'+id,
-                    data: { name: name, id: id },
+                        data: { name: name, category_id: id },
                     beforeSend:() => {
                         btn(bt, '', 'before');
                     }

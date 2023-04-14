@@ -117,6 +117,7 @@
     window.HELP_IMPROVE_VIDEOJS = false;
 </script>
 <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{asset('assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
 <script src="{{ asset('assets/libs/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{asset('assets/libs/videojs/video.min.js')}}"></script>

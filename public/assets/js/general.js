@@ -2,6 +2,7 @@ api_url = 'http://lentoria-backend.test/api/';
 api_root = 'http://lentoria-backend.test/';
 image_url = 'http://lentoria-backend.test/assets/uploads/';
 video_url = "https://lentoria.site/watchvideo/";
+const app_url = `${location.protocol}//${location.host}`;
 
 function validateEmail(email) {
     return email.match(
@@ -98,18 +99,62 @@ function btn(selector, btn_text, moment) {
     }
 }
 
-function dropPaginatedPages(links) {
-    link_txt = '';
-    links.forEach(link => {
-        link_txt += ` <li class = "page-item goToList ${(link.active == true) ? 'active' : ''}"data - data = "${JSON.stringify(link)}" >
-        <a href = "?page=${link.label}"class = "page-link" > ${link.label} </a></li > `;
-    });
+function generatePagination(pagination) {
+    let nav = `
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-end">
+        <li class="page-item ${pagination.prev_page_url === null ? 'disabled' : ''}">
+          <a class="page-link pagination-link" href="${pagination.prev_page_url || '#'}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>`;
 
-    body = ` <div class = "d-flex justify-content-center mt-3 mb-3" >
-        <div class = "card-tools" >
-        <ul class = "pagination" >${link_txt}</ul> </div> </div>
-    `;
-    return (links.length > 3) ? body : '';
+    for (let i = 1; i <= pagination.last_page; i++) {
+        nav += `
+      <li class="page-item ${pagination.current_page === i ? 'active' : ''}">
+        <a class="page-link pagination-link" href="${pagination.path}?page=${i}">${i}</a>
+      </li>`;
+    }
+
+    nav += `
+        <li class="page-item ${pagination.next_page_url === null ? 'disabled' : ''}">
+          <a class="page-link pagination-link" href="${pagination.next_page_url || '#'}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>`;
+
+    return nav;
+}
+
+function extractPaginationData(data) {
+    const {
+        current_page,
+        first_page_url,
+        from,
+        last_page,
+        last_page_url,
+        links,
+        next_page_url,
+        path,
+        per_page,
+        prev_page_url,
+        to
+    } = data.data;
+    return {
+        current_page,
+        first_page_url,
+        from,
+        last_page,
+        last_page_url,
+        links,
+        next_page_url,
+        path,
+        per_page,
+        prev_page_url,
+        to
+    };
 }
 
 function formatDate(date) {
@@ -273,26 +318,28 @@ function getWithExpiry(key) {
     return item.value
 }
 
-function shareApi() {
-    const shareData = {
-        title: 'MDN',
-        text: 'Learn web development on MDN!',
-        url: 'https://developer.mozilla.org'
+async function shareApi(data) {
+    try {
+        return await navigator.share(data);
+    } catch (err) {
+        throw new Error(err);
     }
+}
 
-    const btn = document.querySelector('button');
-    const resultPara = document.querySelector('.result');
-    btn.addEventListener('click', async () => {
-        try {
-            await navigator.share(shareData);
-            resultPara.textContent = 'MDN shared successfully';
-        } catch (err) {
-            resultPara.textContent = `Error: ${err}`;
+function getTypes() {
+    const params = new URL(document.location).searchParams;
+    return params.get('type');
+}
+
+function searchItems(jsonData, keyword) {
+    const results = [];
+
+    jsonData.data.forEach(item => {
+        const {title, description} = item;
+        if (title.toLowerCase().includes(keyword.toLowerCase()) || description.toLowerCase().includes(keyword.toLowerCase())) {
+            results.push(item);
         }
     });
-    function getTypes() {
-        const params = new URL(document.location).searchParams;
-        return params.get('type');
-    }
 
+    return results;
 }

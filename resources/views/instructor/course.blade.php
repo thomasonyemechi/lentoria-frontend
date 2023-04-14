@@ -141,7 +141,7 @@
                             <div class="col-md-12" x-data>
                                 <label for="twitter" class="form-label">Short Link</label>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="shortlink-addon">https://www.lentoria.com/</span>
+                                    <span class="input-group-text" id="shortlink-addon">https://www.lentoria.com/c/</span>
                                     <input x-on:beforeinput="showVerifying()"
                                            x-on:input.debounce.1000ms="validateShortlink($event.target.value)"
                                            type="text" class="form-control" name="shortlink" placeholder="Shortlink"
@@ -304,7 +304,7 @@
                     form_data.append('level', level);
                     form_data.append('category_id', category_id);
                     form_data.append('topic_id', topic_id);
-                    // form_data.append('course_type', course_type);
+                    form_data.append('course_type', type);
 
                     $.ajax({
                         method: 'POST',

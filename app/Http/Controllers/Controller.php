@@ -42,9 +42,9 @@ class Controller extends BaseController
         $referer = request()->headers->get('referer');
         $data = getBrowser();
         $data['referer'] = $referer;
-        $res = Http::asForm()->post(env('BACKEND') . 'api/get_course_from_link/'.$link.'/'.$ref, $data );
+        $url = config('app.api_backend');
+        $res = Http::asForm()->post($url.'api/get_course_from_link/' . $link . '/' . $ref, $data);
         $res = json_decode($res);
-
         if ($res->data) {
             $data = $res->data;
             return redirect('/course/' . $data->id . '/' . $data->slug);

@@ -52,7 +52,7 @@
             }, 200);
 
             $("#e_book-uploader").fileinput({
-                uploadUrl: "http://lentoria-video-server.test/api/book",
+                uploadUrl: "https://lentoria.site/api/book",
                 allowedFileExtensions: [
                     'pdf'
                 ],
@@ -123,6 +123,8 @@
                     response = data.response,
                     reader = data.reader;
                 $("#e_book-uploader").fileinput('clear');
+                $("#book_title").val("");
+                location.href = @js(route('instructor.pricing',['type'=>$type,'slug'=>$slug]));
             }).on('fileuploaderror', function (event, data) {
                 let response = data.jqXHR.responseJSON;
                 let errorMsg = '';

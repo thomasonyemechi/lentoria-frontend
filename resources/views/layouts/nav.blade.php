@@ -7,6 +7,49 @@
         white-space: normal;
         -webkit-line-clamp: 5;
     }
+
+    .search-results-container {
+        background-color: #fff;
+        border: 1px solid #d1d7dc;
+        left: 25%;
+        /*padding: 1.6rem;*/
+        margin-top: 0.1rem;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        transform-origin: top;
+        z-index: 10000;
+        overflow: auto;
+        padding: 0.8rem 0;
+        max-width: 400px;
+        border-radius: 1px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+    }
+
+    .search-results-close {
+        position: absolute;
+        top: -5px;
+        right: 0;
+        cursor: pointer;
+    }
+
+    .search-results li {
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+
+    .search-results li:hover {
+        background-color: #f5f5f5;
+    }
+
+    @media (width <= 990px) {
+        .search-results-container {
+            max-width: 100%;
+            left: 0;
+            margin-inline: 0.2rem;
+        }
+    }
 </style>
 @if(!request()->routeIs('instructor.course_review'))
     <header class="navbar-light">
@@ -160,11 +203,13 @@
                         </li>
                     </ul>
 
-                    <form class="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">
+                    <form class="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center search-form">
                                         <span class="position-absolute ps-3 search-icon">
                                             <i class="fe fe-search"></i>
                                         </span>
-                        <input type="search" class="form-control ps-6" placeholder="Search Courses"/>
+                        <input x-data @input.debounce.500ms="searchCourses($event,$event.target.value)"
+                               class="form-control ps-6 search-courses"
+                               placeholder="Search Courses"/>
                     </form>
 
                     <ul class="navbar-nav navbar-right-wrap ms-auto d-none d-lg-block">
@@ -286,21 +331,76 @@
                                                 </a>
                                             </li>
                                         </ul>
+                                    </ul>
                                 </div>
                             </li>
                         @endif
                     </ul>
                 </div>
             </div>
+            <ul class="search-results-container d-none hidden">
+                <div class="mb-3">
+                    <button type="button" class="btn-close search-results-close" aria-label="Close">
+                        <i class="fe fe-x-circle"></i>
+                    </button>
+                </div>
+                <div class="search-results">
+
+                </div>
+            </ul>
         </nav>
     </header>
 
 @endif
 
 <script>
+    let coursesFile = `{{asset('json_files/all-courses.json')}}`;
+    let courses;
+
+    function searchCourses(event, keyword) {
+
+        let results;
+        const resultContainer = document.querySelector('.search-results-container .search-results');
+        if (keyword.trim() !== '') {
+            results = searchItems(courses, keyword);
+            resultContainer.innerHTML = '';
+            if (results && results.length > 0) {
+                results.forEach(res => {
+                    const li = document.createElement('li');
+                    li.textContent = res.title;
+                    li.dataset['link'] = res.link;
+                    li.classList.add('search-result');
+                    resultContainer.appendChild(li);
+                })
+                resultContainer.parentElement.classList.remove('d-none', 'hidden');
+            } else {
+                const li = document.createElement('li');
+                li.textContent = "No matching result";
+                resultContainer.appendChild(li);
+                resultContainer.parentElement.classList.remove('d-none', 'hidden');
+            }
+
+        } else {
+            resultContainer.parentElement.classList.add('d-none', 'hidden');
+        }
+
+    }
+
+    let searchResults = document.querySelector(".search-results");
+    const url = `${app_url}/c`
+    searchResults.addEventListener("click", (event) => {
+        if (event.target.classList.contains("search-result")) {
+            const target = event.target;
+            const link = target.dataset['link'];
+            window.open(`${url}/${link}`, '_blank');
+        }
+    });
+
+
     $(function () {
-        let jsonfile = `{{asset('json_files/categories_and_subcategories.json')}}`
-        getCats()
+        let jsonfile = `{{asset('json_files/categories_and_subcategories.json')}}`;
+
+        getCats();
 
         function getCats() {
             $.getJSON(jsonfile).done(res => {
@@ -329,5 +429,48 @@
             });
 
         }
+
+
+        $.getJSON(coursesFile).done(res => {
+            courses = res;
+        }).fail(res => {
+            console.log(res);
+            concatError(res);
+        });
+
+        $(".search-results-close").on('click', function (evt) {
+            evt.preventDefault();
+            const resultContainer = $(".search-results-container");
+            resultContainer.addClass('d-none');
+            resultContainer.addClass('hidden');
+
+        })
+
+
+        const searchForm = $(".search-form");
+        searchForm.on('submit', function (event) {
+            event.preventDefault();
+
+            let input = $(this).find($("input"));
+            const value = input.val();
+
+
+            // Set the search parameter using the value of the input
+            const searchParams = new URLSearchParams(window.location.search);
+            searchParams.set("q", value);
+
+            // Check if the current path is not "/course_list"
+            if (window.location.pathname !== "/courses") {
+                // Open the URL in a new tab with the updated search parameter
+                const url = `${app_url}/courses?` + searchParams.toString();
+                window.open(url, "_blank");
+            } else {
+                // Redirect to the same URL with the updated search parameter
+                window.location.href = `${app_url}/courses?` + searchParams.toString();
+            }
+
+        })
     });
+
+
 </script>

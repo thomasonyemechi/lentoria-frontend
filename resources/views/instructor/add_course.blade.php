@@ -64,13 +64,12 @@
                                             <div class="d-flex justify-content-between">
                                                 <h4 class="mb-0">Course Type</h4>
                                                 <span
-                                                    class="badge show-selected bg-dark-primary py-2 px-3 fs-5">0</span>
+                                                    class="badge show-selected bg-primary py-2 px-3 fs-5">0</span>
                                             </div>
                                         </div>
                                         <div class="card-body">
                                             <div class="row" id="course_types_container">
-                                                <input type="hidden" id="course_type">
-
+                                                <div hidden class="d-none" id="course_type"></div>
                                             </div>
 
                                         </div>
@@ -178,7 +177,7 @@
                     res.message.forEach(type => {
                         $("#course_types_container").append(
                             `<div class="col-md-4 d-flex align-items-stretch mx-auto justify-content-center">
-                                <div class="card flex-fill bg-dark-primary shadow-none text-center mx-4 my-8">
+                                <div class="card flex-fill bg-primary shadow-none text-center mx-4 my-8">
                                     <div class="card-body py-6">
                                         <div class="mt-4">
                                             <h5 class="text-white">${type.type}</h5>
@@ -235,7 +234,7 @@
 
             $('#addCourse').on('click', function (e) {
                 e.preventDefault();
-                let course_type = $('#course_type').val();
+                let course_type = $('#course_type').html().toString().trim();
                 let category_id = $('#selectcat :selected').val();
                 let topic_id = $('#selsubcat :selected').val();
                 let course_level = $('#course_level :selected').val();
@@ -273,7 +272,7 @@
             $(document).on('click', '.seltype', function (e) {
                 e.preventDefault();
                 const selected = $(e.target).data('type');
-                $('#course_type').val(selected);
+                $('#course_type').html(selected);
                 $(".show-selected").html(selected);
                 setTimeout(() => courseForm.next(), 1000)
             })

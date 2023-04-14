@@ -12,33 +12,33 @@
 
                 <div class="col-lg-9 col-md-8 col-12">
                     <!-- Card -->
-                        <div class="card mb-4" id="cur_card">
-                            <div class="card-header border-bottom px-4 py-3">
-                                <div class="d-flex justify-content-between">
-                                    <h4 class="mb-0 pt-3">Curriculum</h4>
-                                    <a href="javascript:void(0)" class="btn btn-outline-primary btn-sm" id="addsec1">Add
-                                        Topic</a>
-                                </div>
-                            </div>
-                            <!-- Card body -->
-                            <div class="card-body ">
-                                <input type="hidden" id="course_id"/>
-                                <x-add-section-card id="addseccard" type="add"/>
-
-                                <div class="main">
-
-                                </div>
-                                <x-add-section-card id="addseccard2" type="add"/>
-                            </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between">
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" id="addsec2">Add
-                                        Topic</a>
-                                    <a href="{{ url("/instructor/pricing/$type/$slug") }}"
-                                       class="btn btn-sm btn-primary">Next</a>
-                                </div>
+                    <div class="card mb-4" id="cur_card">
+                        <div class="card-header border-bottom px-4 py-3">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="mb-0 pt-3">Curriculum</h4>
+                                <a href="javascript:void(0)" class="btn btn-outline-primary btn-sm" id="addsec1">Add
+                                    Topic</a>
                             </div>
                         </div>
+                        <!-- Card body -->
+                        <div class="card-body ">
+                            <input type="hidden" id="course_id"/>
+                            <x-add-section-card id="addseccard" type="add"/>
+
+                            <div class="main">
+
+                            </div>
+                            <x-add-section-card id="addseccard2" type="add"/>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-between">
+                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" id="addsec2">Add
+                                    Topic</a>
+                                <a href="{{ url("/instructor/pricing/$type/$slug") }}"
+                                   class="btn btn-sm btn-primary">Next</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -115,7 +115,7 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <button class="btn btn-primary btn-sm" type="submit">
-                                Save
+                                Add Lecture
                             </button>
                             <button class="btn btn-outline-white btn-sm" data-bs-dismiss="modal" aria-label="Close">
                                 Close
@@ -339,7 +339,9 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <label for="codearea" class="d-none"></label><textarea id="codearea" name="codearea" class="form-control border-2" rows="3"></textarea>
+                            <label for="codearea" class="d-none"></label><textarea id="codearea" name="codearea"
+                                                                                   class="form-control border-2"
+                                                                                   rows="3"></textarea>
                         </div>
 
                         <div class="d-flex justify-content-between">
@@ -456,9 +458,14 @@
                 return button(type);
             }
 
-            function dropDownButton(){
-                if (type!=4){
+            function dropDownButton(id) {
+                if (type == 4) {
                     return ``
+                } else {
+                    return `<a href="#" class="text-inherit" data-bs-toggle="collapse"
+                                    data-bs-target="#collapselist${id}" aria-expanded="false"
+                                    aria-controls="collapselist${id}">
+                                    <span class="chevron-arrow"><i class="fe fe-chevron-down"></i></span></a>`
                 }
             }
 
@@ -714,7 +721,7 @@
                     };
                 },
             }).on('fileuploaded', function (event, data) {
-                var form = data.form,
+                let form = data.form,
                     files = data.files,
                     extra = data.extra,
                     response = data.response,
@@ -803,7 +810,7 @@
                     },
                 }).done(res => {
                     console.log(res);
-                    if (res.data.length == 0) {
+                    if (res.data.length === 0) {
                         cardbody.html(`<div class="bg-light-secondary rounded p-2 mb-4 dummy">
                         <div class="d-inline-block me-3"><p class="text-capitalize fw-bold text-dark fs-4">Topic 1:</p></div>
                             <div class="d-inline-block me-3">
@@ -855,10 +862,7 @@
                                 </h5>
                                 <div><a href="javascript:void(0)" class="me-1 text-inherit edit_lec" data-bs-toggle="tooltip" data-placement="top"
                                     title="Edit"><i class="fe fe-edit fs-6"></i></a>
-                                <a href="#" class="text-inherit" data-bs-toggle="collapse"
-                                    data-bs-target="#collapselist${lec.id}" aria-expanded="false"
-                                    aria-controls="collapselist${lec.id}">
-                                    <span class="chevron-arrow"><i class="fe fe-chevron-down"></i></span></a>
+                                ${dropDownButton(lec.id)}
                                 </div>
                             </div>
                             <div id="collapselist${lec.id}" class="collapse" aria-labelledby="${stripLower(lec.title + lec.id)}"
@@ -1088,10 +1092,7 @@
                                 </h5>
                                 <div><a href="javascript:void(0)" class="me-1 text-inherit edit_lec" data-bs-toggle="tooltip" data-placement="top"
                                     title="Edit"><i class="fe fe-edit fs-6"></i></a>
-                                <a href="#" class="text-inherit" data-bs-toggle="collapse"
-                                    data-bs-target="#collapselist${res.id}" aria-expanded="false"
-                                    aria-controls="collapselist${res.id}">
-                                    <span class="chevron-arrow"><i class="fe fe-chevron-down"></i></span></a>
+                                ${dropDownButton(res.id)}
                                 </div>
                             </div>
                             <div id="collapselist${res.id}" class="collapse" aria-labelledby="${stripLower(title + res.id)}"

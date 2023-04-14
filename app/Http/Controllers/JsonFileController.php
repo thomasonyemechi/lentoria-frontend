@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Notifications\FetchTopicsToJsonFile;
 use Exception;
+use Illuminate\Http\Client\Response;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
@@ -21,26 +22,10 @@ class JsonFileController extends Controller
 
         try {
             $contents = Http::post($api_url . '/topics_by_categories');
-            if ($contents->successful()) {
-                if (!File::exists($file)) {
-                    File::put($file, $contents);
-                    Notification::route('mail', 'temmyk7@gmail.com')
-                        ->notify(new FetchTopicsToJsonFile('Subcategories Json File Created and Contents Added Successfully'));
-                    info('File Created and Contents Added Successfully');
-                } else {
-                    File::replace($file, $contents);
-                    Notification::route('mail', 'temmyk7@gmail.com')
-                        ->notify(new FetchTopicsToJsonFile('Subcategories Json File Updated Successfully'));
-                    info('File Updated Successfully');
-                }
-            } else {
-                Notification::route('mail', 'temmyk7@gmail.com')
-                    ->notify(new FetchTopicsToJsonFile('The api server as an error'));
-                info('Cron Job Failed');
-            }
+            $this->putContents($contents, $file, 'subcategories');
         } catch (Exception $exception) {
-            Notification::route('mail', 'temmyk7@gmail.com')
-                ->notify(new FetchTopicsToJsonFile("An Error Occured While Performing Cron Job For The Subcaregories Json File: " . $exception->getMessage(), 1));
+            Notification::route('mail', config('mail.admin_mail'))
+                ->notify(new FetchTopicsToJsonFile("An error occurred while performing cron job for the subcategories json file: " . $exception->getMessage(), 1));
             info($exception->getMessage());
         }
     }
@@ -53,26 +38,10 @@ class JsonFileController extends Controller
         try {
             $contents = Http::get($api_url . '/courses');
 
-            if ($contents->successful()) {
-                if (!File::exists($file)) {
-                    File::put($file, $contents);
-                    Notification::route('mail', 'temmyk7@gmail.com')
-                        ->notify(new FetchTopicsToJsonFile('Index Page Json File Created and Contents Added Successfully'));
-                    info('File Created and Contents Added Successfully');
-                } else {
-                    File::replace($file, $contents);
-                    Notification::route('mail', 'temmyk7@gmail.com')
-                        ->notify(new FetchTopicsToJsonFile('Index Page Json File Updated Successfully'));
-                    info('File Updated Successfully');
-                }
-            } else {
-                Notification::route('mail', 'temmyk7@gmail.com')
-                    ->notify(new FetchTopicsToJsonFile('The api server as an error'));
-                info('Cron Job Failed');
-            }
+            $this->putContents($contents, $file, "index page");
         } catch (Exception $exception) {
-            Notification::route('mail', 'temmyk7@gmail.com')
-                ->notify(new FetchTopicsToJsonFile("An Error Occured While Performing Cron Job For The Index Page File: " . $exception->getMessage(), 1));
+            Notification::route('mail', config('mail.admin_mail'))
+                ->notify(new FetchTopicsToJsonFile("An error occurred while performing cron job for the index page file: " . $exception->getMessage(), 1));
             info($exception->getMessage());
         }
     }
@@ -84,28 +53,10 @@ class JsonFileController extends Controller
 
         try {
             $contents = Http::get($api_url . '/category');
-            if ($contents->successful()) {
-                if (!File::exists($path)) {
-
-                    File::put($path, $contents);
-                    Notification::route('mail', config('mail.admin_mail'))
-                        ->notify(new FetchTopicsToJsonFile('Categories and Subcategories Json File Created and Contents Added Successfully'));
-                    info("Categories and Subcategories Json File Created and Updated Successfully");
-
-                } else {
-                    File::replace($path, $contents);
-                    Notification::route('mail', config('mail.admin_mail'))
-                        ->notify(new FetchTopicsToJsonFile('Categories and Subcategories Json File Updated Successfully'));
-                    info("Categories and Subcategories Json File Updated Successfully");
-                }
-            } else {
-                Notification::route('mail', config('mail.admin_mail'))
-                    ->notify(new FetchTopicsToJsonFile('The api server as an error'));
-                info($contents);
-            }
+            $this->putContents($contents, $path, 'categories and subcategories');
         } catch (Exception $exception) {
             Notification::route('mail', config('mail.admin_mail'))
-                ->notify(new FetchTopicsToJsonFile("An Error Occured While Performing Cron Job For The Categories and Subcategories File: " . $exception->getMessage(), 1));
+                ->notify(new FetchTopicsToJsonFile("error occurred while performing cron job for the categories and subcategories File: " . $exception->getMessage(), 1));
             info($exception->getMessage());
         }
     }
@@ -116,38 +67,64 @@ class JsonFileController extends Controller
         $path = public_path('json_files/categories.json');
 
         try {
-            $contents = Http::get($api_url . '/category');
-            if ($contents->successful()) {
-                if (!File::exists($path)) {
-                    File::put($path, $contents);
-                    info("Categories Json File Created and Updated Successfully");
-                    Notification::route('mail', config('mail.admin_mail'))
-                        ->notify(new FetchTopicsToJsonFile('Categories and Subcategories Json File Created and Contents Added Successfully'));
-                } else {
-                    File::replace($path, $contents);
-                    info("Categories Json File Updated Successfully");
-                    Notification::route('mail', config('mail.admin_mail'))
-                        ->notify(new FetchTopicsToJsonFile('Categories Json File Updated Successfully'));
-                }
-            } else {
-                info($contents);
-                Notification::route('mail', config('mail.admin_mail'))
-                    ->notify(new FetchTopicsToJsonFile('An error occurred with the api server'));
-            }
+            $contents = Http::get($api_url . '/categories');
+            $this->putContents($contents, $path,"categories");
         } catch (Exception $exception) {
             Notification::route('mail', config('mail.admin_mail'))
-                ->notify(new FetchTopicsToJsonFile("An Error Occured While Performing Cron Job For The Categories and Subcategories File: " . $exception->getMessage(), 1));
+                ->notify(new FetchTopicsToJsonFile("An error occurred while performing cron job for the categories file: " . $exception->getMessage(), 1));
             info($exception->getMessage());
         }
     }
 
+    public function allCoursesJson()
+    {
+        $api_url = config('app.api_url');
+        $path = public_path('json_files/all-courses.json');
+
+        try {
+            $contents = Http::get($api_url . '/all-courses');
+            $this->putContents($contents, $path,"courses");
+        } catch (Exception $exception) {
+            Notification::route('mail', config('mail.admin_mail'))
+                ->notify(new FetchTopicsToJsonFile("An error occurred while performing cron job for the courses file: " . $exception->getMessage(), 1));
+            info($exception->getMessage());
+        }
+    }
 
     function runAllJson()
     {
+        $this->allCoursesJson();
         $this->updateFile();
         $this->indexPageJsonFile();
         $this->categoriesNdSubscategoriesJsonFile();
         $this->categoriesJsonFile();
         return;
+    }
+
+    /**
+     * @param Response $contents
+     * @param mixed $path
+     * @param string $filename
+     * @return void
+     */
+    public function putContents(Response $contents, string $path, string $filename): void
+    {
+        if ($contents->successful()) {
+            if (!File::exists($path)) {
+                File::put($path, $contents);
+                info("$filename Json File Created and Updated Successfully");
+                Notification::route('mail', config('mail.admin_mail'))
+                    ->notify(new FetchTopicsToJsonFile("$filename json file created and contents added successfully"));
+            } else {
+                File::replace($path, $contents);
+                info("$filename Json File Updated Successfully");
+                Notification::route('mail', config('mail.admin_mail'))
+                    ->notify(new FetchTopicsToJsonFile("$filename json file updated successfully"));
+            }
+        } else {
+            info($contents);
+            Notification::route('mail', config('mail.admin_mail'))
+                ->notify(new FetchTopicsToJsonFile('An error occurred with the api server'));
+        }
     }
 }

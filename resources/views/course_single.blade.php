@@ -370,7 +370,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="position-relative">
-                                    <img src="/assets/images/avatar/avatar-1.jpg" alt=""
+                                    <img id="ins_image" src="/assets/images/avatar/avatar-1.jpg" alt=""
                                          class="rounded-circle avatar-xl"/>
                                     <a href="#" class="position-absolute mt-2 ms-n3" data-bs-toggle="tooltip"
                                        data-placement="top" title="Verifed">
@@ -633,6 +633,8 @@
                     $('#ins-bio').html(`${res.data.instructor.biography ?? 'Instructor\'s Biography'}`);
                     $('#ins-link').attr('href',
                         `/instructor/${res.data.course_info.user_id}/profile`);
+
+                    $('#ins_image').attr('src',imageUrl(res.data.instructor.image));
                     other_info = res.data.other_info
                     course_audience = parse(other_info.course_audience);
                     course_requirement = parse(other_info.course_requirement);
@@ -812,7 +814,7 @@
                                         <div class="card-footer">
                                             <div class="row align-items-center g-0">
                                                 <div class="col-auto">
-                                                    <img src="../../assets/images/avatar/avatar-1.jpg"
+                                                    <img src="${imageUrl(cor.instructor.image)}"
                                                         class="rounded-circle avatar-xs" alt="">
                                                 </div>
                                                 <div class="col ms-2">

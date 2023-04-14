@@ -121,7 +121,7 @@
                                 <div class="tab-pane fade" id="profile_pic" role="tabpanel"
                                      aria-labelledby="profile_pic-tab">
                                     <small class="text-muted">Minimum 200x200 pixels, Maximum 400x400 pixels</small>
-                                    <form class="row text-start g-3" id="addVideoForm" enctype="multipart/form-data">
+                                    <form class="row text-start g-3" id="addPicForm" enctype="multipart/form-data">
                                         <div class="col-md-12">
                                             <input name="image" type="file" id="file_upload"/>
                                         </div>
@@ -139,7 +139,7 @@
         $(function () {
             instructorInfo();
             $("#file_upload").fileinput({
-                uploadUrl: `${api_url}admin/update_instructor_picture`,
+                uploadUrl: `${api_url}admin/upload_profile_picture`,
                 allowedFileTypes: ['image'],
                 minImageWidth: 200,
                 minImageHeight: 200,
@@ -163,11 +163,21 @@
                     response = data.response,
                     reader = data.reader;
                 console.log(response);
+                salat(response.message);
+                $("#file_upload").fileinput('clear');
             });
             $('#file_upload').on('fileuploaderror', function (event, data, msg) {
-                var form = data.form, files = data.files, extra = data.extra,
-                    response = data.response, reader = data.reader;
+                var form = data.form, files = data.files, extra = data.extra, reader = data.reader;
                 console.log(form);
+                let response = data.jqXHR.responseJSON;
+                let errorMsg = '';
+                let errorContainer = $(document).find('.kv-fileinput-error');
+                if (response && response.errors) {
+                    response.errors.forEach(function (error) {
+                        errorMsg += `<li>${error}</li>`;
+                    })
+                    errorContainer.html(`<ul>${errorMsg}</ul>`);
+                }
             });
             $("#editProfileForm").submit(function (e) {
                 e.preventDefault();

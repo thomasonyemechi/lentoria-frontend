@@ -87,6 +87,16 @@
                     </li>
                 </ul>
             </div>
+            <div class="d-none share-div">
+                <span class="navbar-header">Share Course</span>
+                <ul class="list-unstyled ms-n2 mb-4">
+                    <li class="nav-item d-flex justify-content-lg-center justify-content-sm-start">
+                        <div class="d-none" id="link_div" data-link></div>
+                        <button class="share-btn btn btn-xs btn-primary me-lg-4 w-100">Share <i class="fe fe-share"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
 
         </div>
     </div>
@@ -112,6 +122,7 @@
                 salat(res.message);
                 btn(but, 'Submit', 'after');
                 $('.publish-div').remove();
+                $('.share-div').removeClass('d-none');
             }).fail(res => {
                 console.log(res);
                 err = res.responseJSON
@@ -120,5 +131,40 @@
                 btn(but, 'Submit', 'after');
             })
         })
+
+        document.querySelector(".share-btn").addEventListener('click',async (e)=>{
+            e.preventDefault();
+            const link = $(document).find($("#link_div")).data('link');
+            const data = {
+                title: 'Lentoria',
+                text: 'Share your Lentoria Course',
+                url: `${app_url}/c/${link}`
+            }
+            console.log(data)
+            try {
+                await navigator.share(data);
+                console.log('link shared successfully');
+            } catch (err) {
+                console.log(err);
+            }
+        })
+        // $(".share-btn").click(async function (e) {
+        //     e.preventDefault();
+        //     const link = $(document).find($("#link_div")).data('link');
+        //     const data = {
+        //         title: 'Lentoria',
+        //         text: 'Share your Lentoria Course',
+        //         url: `${app_url}/c/${link}`
+        //     }
+        //     console.log(data)
+        //     try {
+        //         await navigator.share(data);
+        //         console.log('link shared successfully');
+        //     } catch (err) {
+        //         console.log(err);
+        //     }
+        //
+        // })
+
     })
 </script>
