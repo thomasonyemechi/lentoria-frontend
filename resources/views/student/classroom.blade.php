@@ -124,7 +124,7 @@
             getFaqs(@js($slug));
             const player = videojs('vid', {
                 controls: true,
-                autoplay: false,
+                autoplay: true,
                 preload: "auto",
                 responsive: true,
                 liveui: true,
@@ -150,7 +150,7 @@
                     console.log(res);
                     const sections = res.data;
                     let lectures = "";
-                    if(!sections.length){
+                    if (!sections.length) {
                         $("#section_lecture_container").append(
                             `<li class="list-group-item">
                                 <a href="#"
@@ -163,7 +163,6 @@
                                     </div>
                                 </a>
                             </li>`
-
                         )
                         return;
                     }

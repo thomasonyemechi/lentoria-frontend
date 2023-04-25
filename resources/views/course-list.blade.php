@@ -120,34 +120,56 @@
                     <div class="card">
                         <!-- Card header -->
                         <div class="card-header">
-                            <h4 class="mb-0">Filter</h4>
+
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h4 class="mb-0">Filter</h4>
+                                <a id="clearFilters" style="cursor: pointer" class="mb-0">Clear Filters</a>
+                            </div>
                         </div>
                         <!-- Card body -->
                         <div class="card-body border-top">
-                            <span class="dropdown-header px-0 mb-2"> Skill Level</span>
+                            <span class="dropdown-header px-0 mb-2">Level</span>
                             <!-- Checkbox -->
                             <div class="form-check mb-1">
-                                <input type="checkbox" name="course_level" class="form-check-input" id="allTwoCheck"
-                                       checked>
-                                <label class="form-check-label" for="allTwoCheck">All Level</label>
-                            </div>
-                            <!-- Checkbox -->
-                            <div class="form-check mb-1">
-                                <input type="checkbox" name="course_level" class="form-check-input"
+                                <input type="checkbox" name="course_level" class="form-check-input" value="1"
                                        id="beginnerTwoCheck">
                                 <label class="form-check-label" for="beginnerTwoCheck">Beginner</label>
                             </div>
                             <!-- Checkbox -->
                             <div class="form-check mb-1">
-                                <input type="checkbox" name="course_level" class="form-check-input"
+                                <input type="checkbox" name="course_level" class="form-check-input" value="2"
                                        id="intermediateCheck">
                                 <label class="form-check-label" for="intermediateCheck">Intermediate</label>
                             </div>
                             <!-- Checkbox -->
                             <div class="form-check mb-1">
-                                <input type="checkbox" name="course_level" class="form-check-input"
+                                <input type="checkbox" name="course_level" class="form-check-input" value="3"
                                        id="AdvancedTwoCheck">
-                                <label class="form-check-label" for="AdvancedTwoCheck">Advance</label>
+                                <label class="form-check-label" for="AdvancedTwoCheck">Advanced</label>
+                            </div>
+                        </div>
+                        <div class="card-body border-top">
+                            <span class="dropdown-header px-0 mb-2">Type</span>
+                            <!-- Checkbox -->
+                            <div class="form-check mb-1">
+                                <input type="checkbox" name="course_type" class="form-check-input" value="1"
+                                       id="courseLevelOne">
+                                <label class="form-check-label" for="courseLevelOne">Virtual Live Trainings</label>
+                            </div>
+                            <div class="form-check mb-1">
+                                <input type="checkbox" name="course_type" class="form-check-input" value="2"
+                                       id="courseLevelTwo">
+                                <label class="form-check-label" for="courseLevelTwo">Recorded Courses</label>
+                            </div>
+                            <div class="form-check mb-1">
+                                <input type="checkbox" name="course_type" class="form-check-input" value="3"
+                                       id="courseLevelThree">
+                                <label class="form-check-label" for="courseLevelThree">Discovery Programs</label>
+                            </div>
+                            <div class="form-check mb-1">
+                                <input type="checkbox" name="course_type" class="form-check-input" value="4"
+                                       id="courseLevelFour">
+                                <label class="form-check-label" for="courseLevelFour">E-books</label>
                             </div>
                         </div>
                     </div>
@@ -156,8 +178,49 @@
                 <div class="col-xl-9 col-lg-9 col-md-8 col-12">
 
                     <div class="row d-none" id="item_list"></div>
-                    <div id="skeleton_loaders" class="row" x-data="{number:12}">
-                        <template x-for="(index) in number" :key="index">
+                    <div id="skeleton_loaders" class="row d-none">
+                    </div>
+                </div>
+            </div>
+            <div id="paginated_links"></div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            const searchParams = new URLSearchParams(window.location.search);
+            const searchValue = searchParams.get("q");
+
+            getCourses(searchValue, `${api_url}search_courses`);
+
+
+            function getCourses(input, uri) {
+                const courseLevels = [];
+                const courseTypes = [];
+
+                const category_slug = `{{isset($slug) && $slug && $slug !== 'null' ? $slug : ''}}`;
+                // get all selected course levels
+                $('input[name="course_level"]:checked').each(function () {
+                    courseLevels.push($(this).val());
+                });
+                // get all selected course types
+                $('input[name="course_type"]:checked').each(function () {
+                    courseTypes.push($(this).val());
+                });
+
+                $.ajax({
+                    method: "POST",
+                    url: uri,
+                    data: {
+                        query: input,
+                        course_level: courseLevels,
+                        course_type: courseTypes,
+                        category_slug: category_slug ?? ''
+                    },
+                    beforeSend: () => {
+                        let loaders = ``;
+                        for (let i = 0; i < 12; i++) {
+                            loaders += `
                             <div class="col-lg-4 col-md-6 col-12">
                                 <!-- Card -->
                                 <div class="card mb-4 card-hover skeleton-loader">
@@ -183,33 +246,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </template>
-
-                    </div>
-                </div>
-            </div>
-            <div id="paginated_links"></div>
-        </div>
-    </div>
-
-    <script>
-        $(function () {
-            const searchParams = new URLSearchParams(window.location.search);
-            const searchValue = searchParams.get("q");
-
-            getCourses(searchValue, `${api_url}search_courses`);
-
-            function getCourses(input, uri) {
-                $.ajax({
-                    method: "POST",
-                    url: uri,
-                    data: {
-                        query: input
-                    },
+                            </div>`
+                        }
+                        $("#skeleton_loaders").html(loaders).removeClass('d-none');
+                    }
                 }).done(res => {
                     console.log(res);
-                    $("#skeleton_loaders").remove();
+                    $("#skeleton_loaders").addClass('d-none');
                     const items_container = $("#item_list");
                     const data = res.data.data;
                     const total = res.total;
@@ -229,62 +272,59 @@
                         data.forEach(item => {
                             items += `
                             <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="card card-hover mb-3">
-                                            <a href="c/${item.link}" class="card-img-top" target="_blank"><img
-                                                    src="${imageUrl(item.image)}" onerror="this.src='../../assets/images/image.jpeg';" alt=""
-                                                    class="rounded-top-md card-img-top course_image"></a>
-                                            <!-- Card Body -->
-                                            <div class="card-body">
-                                                <h4 class="mb-2 text-truncate-line-2"><a href="c/${item.link}" target="_blank"
-                                                        class="text-inherit" >${item.title}</a></h4>
-                                                <!-- List -->
-                                                <ul class="mb-3 list-inline">
-                                                    <li class="list-inline-item">
-                                                        <svg class="me-1 mt-n1" width="16" height="16"
-                                                            viewBox="0 0 16 16" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            ${levelBar(item.level)}
-                                                        </svg>
-                                                        ${checkLevel(item.level)}
-                                                    </li>
-                                                </ul>
-                                                <div class="lh-1">
-                                                    <span class="text-bold font-weight-bolder fs-3 text-black">
-                                                       ${naira(percentage(item.price, 50))}
-                                                    </span>
-                                                    <span class="text-bold text-decoration-line-through fs-4 text-black">${naira(item.price)}</span>
-                                                </div>
+                                <div class="card card-hover mb-3">
+                                    <a href="/c/${item.link}" class="card-img-top" target="_blank"><img
+                                            src="${imageUrl(item.image)}" onerror="this.src='../../assets/images/image.jpeg';" alt=""
+                                            class="rounded-top-md card-img-top course_image"></a>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <h4 class="mb-2 text-truncate-line-2"><a href="/c/${item.link}" target="_blank"
+                                                class="text-inherit" >${item.title}</a></h4>
+                                        <!-- List -->
+                                        <ul class="mb-3 list-inline">
+                                            <li class="list-inline-item">
+                                                <svg class="me-1 mt-n1" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    ${levelBar(item.level)}
+                                                </svg>
+                                                ${checkLevel(item.level)}
+                                            </li>
+                                        </ul>
+                                        <div class="lh-1">
+                                            <span class="text-bold font-weight-bolder fs-3 text-black">
+                                               ${naira(percentage(item.price, 50))}
+                                            </span>
+                                            <span class="text-bold text-decoration-line-through fs-4 text-black">${naira(item.price)}</span>
+                                        </div>
+                                    </div>
+                                    <!-- Card Footer -->
+                                    <div class="card-footer">
+                                        <div class="row align-items-center g-0">
+                                            <div class="col-auto">
+                                                <img src="${imageUrl(item.user.instructor.image)}" onerror="this.src='../../assets/images/avatar/avatar-1.jpg';"
+                                                    class="rounded-circle avatar-xs" alt="">
                                             </div>
-                                            <!-- Card Footer -->
-                                            <div class="card-footer">
-                                                <div class="row align-items-center g-0">
-                                                    <div class="col-auto">
-                                                        <img src="${imageUrl(item.user.instructor.image)}" onerror="this.src='../../assets/images/avatar/avatar-1.jpg';"
-                                                            class="rounded-circle avatar-xs" alt="">
-                                                    </div>
-                                                    <div class="col ms-2">
-                                                        <span>${item.user.firstname} ${item.user.lastname}</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <a href="#" class="text-muted bookmark">
-                                                            <i class="fe fe-bookmark"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                                            <div class="col ms-2">
+                                                <span>${item.user.firstname} ${item.user.lastname}</span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <a href="#" class="text-muted bookmark">
+                                                    <i class="fe fe-bookmark"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                `
+                                </div>
+                            </div>`
                             return items;
                         })
 
                         const pagination = extractPaginationData(res);
-
+                        items_container.html(items).removeClass('d-none');
                         $("#paginated_links").html(generatePagination(pagination));
 
-                        items_container.html(items).removeClass('d-none');
                     }
-
                 }).fail(res => {
                     console.log(res);
                     concatError(res.responseJSON);
@@ -299,6 +339,20 @@
                 getCourses(searchValue, href);
             });
 
+
+            $("input[name='course_level'],input[name='course_type']").on('change', function (e) {
+                e.preventDefault();
+                getCourses(searchValue, `${api_url}search_courses`);
+            });
+
+            $(document).on('click', '#clearFilters', function (e) {
+                e.preventDefault();
+                if ($("input[name='course_type'], input[name='course_level']").is(':checked')) {
+                    $("input[name='course_type'], input[name='course_level']").prop('checked', false);
+                    getCourses(searchValue, `${api_url}search_courses`);
+                }
+
+            })
         })
     </script>
 @endsection

@@ -2,13 +2,13 @@
 @section('page_title', 'Lentoria || Checkout')
 @section('page_content')
     <!-- Page header -->
-    <script>
-        window.onload = () => {
-            if (!sessionStorage.getItem('current_price') || sessionStorage.getItem('current_price') === null) {
-                history.back();
-            }
-        }
-    </script>
+    {{--    <script>--}}
+    {{--        window.onload = () => {--}}
+    {{--            if (!sessionStorage.getItem('current_price') || sessionStorage.getItem('current_price') === null) {--}}
+    {{--                history.back();--}}
+    {{--            }--}}
+    {{--        }--}}
+    {{--    </script>--}}
     <div class="py-lg-6 py-4 bg-primary">
         <div class="container">
             <div class="row">
@@ -361,7 +361,7 @@
             </div>
         </div>
     </div>
-    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <script src="{{asset('assets/js/flutterwave.js')}}"></script>
     <script>
         $(function () {
             if ($("#slug").length) {
@@ -473,7 +473,7 @@
                     $("#bal")
                         .html(`<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#login_modal">Login for balance</a>`);
                 }
-            };
+            }
 
             function courseWalletPurchase(course_id) {
                 $.ajax({
@@ -539,7 +539,7 @@
                     payment_options: "card,ussd",
                     callback: function (payment) {
                         console.log(payment);
-                        if (payment.status == "successful") {
+                        if (payment.status === "successful" || payment.status === "completed") {
                             tx_id = payment.tx_ref;
                             amount = payment.amount;
                             verifyInsCardPurchase(tx_id, plan_id, ins);
@@ -575,7 +575,7 @@
                     payment_options: "card,ussd",
                     callback: function (payment) {
                         console.log(payment);
-                        if (payment.status == "successful") {
+                        if (payment.status === "successful" || payment.status === "completed") {
                             tx_id = payment.tx_ref;
                             amount = payment.amount;
                             verifyCourseCardPurchase(tx_id, amount, course_id);
@@ -612,6 +612,7 @@
                         course_id: course_id,
                     },
                 }).done(res => {
+                    console.log(res);
                     salat(res.message);
                     courseSetStorage();
                     setTimeout(() => {
@@ -621,7 +622,7 @@
                     console.log(res);
                     concatError(res);
                 })
-            };
+            }
 
             function verifyInsCardPurchase(tx_id, plan_id, ins) {
                 $.ajax({
@@ -669,7 +670,7 @@
                     price = parseInt($("#a-price").val());
                     plan = $("#inspackid").val();
                     walletActivation(plan, 1);
-                    return;
+
                 } else if (trans_type.trim() == "aff_activation") {
                     plan = $("#affpackid").val();
                     walletActivation(plan, 0);

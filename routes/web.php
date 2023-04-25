@@ -26,7 +26,7 @@ Route::view('/instructor/{id}/profile', 'instructor_profile')->name('instructor_
 Route::view('activate_account', 'activation')->name('activation');
 Route::view('become-instructor', 'become_instructor')->name('become_instructor');
 Route::view('become-affiliate', 'affiliate')->name('affiliate');
-Route::view('courses', 'course-list')->name('courses');
+Route::view('courses/{slug?}', 'course-list')->name('courses');
 Route::view('checkout/course/{slug}', 'checkout')->name('course.checkout');
 Route::view('checkout/instructor_activation/{id}/{package_id}',
     'checkout')->name('instructor.activation.checkout')->whereIn('id', [3, 4, 5]);

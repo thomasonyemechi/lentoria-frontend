@@ -459,14 +459,13 @@
             const searchParams = new URLSearchParams(window.location.search);
             searchParams.set("q", value);
 
-            // Check if the current path is not "/course_list"
-            if (window.location.pathname !== "/courses") {
-                // Open the URL in a new tab with the updated search parameter
+            let pathname = location.pathname;
+            const pattern = /^\/courses\/[\w-]+$/;
+            if (pattern.test(pathname)) {
+                window.location.href = `${app_url}${pathname}?` + searchParams.toString();
+            } else {
                 const url = `${app_url}/courses?` + searchParams.toString();
                 window.open(url, "_blank");
-            } else {
-                // Redirect to the same URL with the updated search parameter
-                window.location.href = `${app_url}/courses?` + searchParams.toString();
             }
 
         })

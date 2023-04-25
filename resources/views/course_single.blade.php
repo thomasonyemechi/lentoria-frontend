@@ -540,6 +540,16 @@
                 })
             })
 
+            // $(document).on('click', "#pay", function (evt) {
+            //     evt.preventDefault();
+            //
+            //     const href = $(this).attr('href');
+            //     if(href !== 'javascript:void(0)'){
+            //        let currentPrice = $('#c-price').html();
+            //         console.log(currentPrice);
+            //         console.log(currentPrice);
+            //     }
+            // });
 
             function hasCourse(cid, price, slug) {
                 if (@js(session('info'))) {
@@ -634,7 +644,7 @@
                     $('#ins-link').attr('href',
                         `/instructor/${res.data.course_info.user_id}/profile`);
 
-                    $('#ins_image').attr('src',imageUrl(res.data.instructor.image));
+                    $('#ins_image').attr('src', imageUrl(res.data.instructor.image));
                     other_info = res.data.other_info
                     course_audience = parse(other_info.course_audience);
                     course_requirement = parse(other_info.course_requirement);

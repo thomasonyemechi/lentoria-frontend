@@ -20,7 +20,7 @@
                             and become a professional that is positioned to get hired by the best companies around the
                             world.
                         </p>
-                        <a href="{{route('coming-soon')}}" class="btn btn-outline-white text-white mt-4 outline-btn">Explore
+                        <a href="{{route('courses')}}" class="btn btn-outline-white text-white mt-4 outline-btn">Explore
                             courses</a>
                     </div>
                 </div>
@@ -202,7 +202,7 @@
                     easier than you can imagine.
                     Take a bold step today and kick-start your journey to expertise
                 </h2>
-                <a href="{{route('coming-soon')}}" class="btn btn-outline-white text-white mt-4 outline-btn">Explore
+                <a href="{{route('courses')}}" class="btn btn-outline-white text-white mt-4 outline-btn">Explore
                     courses</a>
             </div>
             <div class="col-lg-6 m-0 p-0">
@@ -607,13 +607,15 @@
                 $.getJSON(categoryJsonFile).done(res => {
                     res.data.map(cat => {
                         $("#cat_pills").append(`
-                        <a href="javascript:void(0)" class="btn btn-outline-primary rounded-pill m-1">${cat.name}</a>
+                        <a href="/courses/${cat.slug}" class="btn btn-outline-primary rounded-pill m-1 category-pill" target="_blank">${cat.name}</a>
                         `);
                     });
                 }).fail(res => {
                     concatError(res.responseJSON);
                 });
             }
+
+
         });
     </script>
 @endsection
