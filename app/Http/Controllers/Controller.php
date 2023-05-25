@@ -16,7 +16,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    function sessionLoginInfomation(Request $request)
+    public function sessionLoginInfomation(Request $request)
     {
         $data = $request->data;
         session()->put('info', $data);

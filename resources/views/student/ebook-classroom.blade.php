@@ -153,7 +153,6 @@
                 $.get(`${api_url}user/section_lectures/${slug}`).done(res => {
                     console.log(res);
                     const sections = res.data;
-                    let lectures = "";
                     if(!sections.length){
                         $("#section_lecture_container").append(
                             `<li class="list-group-item">
@@ -170,6 +169,7 @@
                         return;
                     }
                     sections.forEach((section, index) => {
+                        let lectures = '';
                         section.lectures.forEach(lecture => {
                             lectures += `<li class="list-group-item">
                                             <a href="#"

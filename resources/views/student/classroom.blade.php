@@ -167,6 +167,7 @@
                         return;
                     }
                     sections.forEach((section, index) => {
+                        let lectures = '';
                         section.lectures.forEach(lecture => {
                             lectures += `<li class="list-group-item">
                                             <a href="#" data-vid="${lecture.main_content}"
@@ -216,6 +217,7 @@
                     $(".course-info span").html(checkLevel(data.course_info.level));
                     $(".instructor-name").html(`${data.instructor_info.firstname} ${data.instructor_info.lastname}`);
                     $(".instructor-email").html(data.instructor_info.email);
+                    $(".instructor-image").attr('src', imageUrl(data.instructor_info.image));
                     $(".course_description").html(`<p>${data.course_info.description}</p>`);
                     $("#description").append(`<p>${data.course_info.subtitle}</p>`);
                     const wywl = parse(data.wywl);

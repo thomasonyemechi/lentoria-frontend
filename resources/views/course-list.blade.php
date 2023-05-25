@@ -262,7 +262,14 @@
                             `<div class="col-12 mt-3 text-center d-flex flex-column justify-content-center align-items-center">
                             <img src="/assets/images/data_not_found.svg" width="300px" height="150px" alt="not found">
                             <h3 class="text-muted">No matching results</h3>
-                            <p class="text-gray-800">search again</p>
+                            <form class="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center search-form">
+                                        <span class="position-absolute ps-3 search-icon">
+                                            <i class="fe fe-search"></i>
+                                        </span>
+                            <input
+                               class="form-control ps-6 search-again"
+                               placeholder="Search again"/>
+                            </form>
                             </div>`).removeClass('d-none');
                     } else {
                         let items = '';

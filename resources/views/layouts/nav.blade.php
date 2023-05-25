@@ -447,8 +447,7 @@
         })
 
 
-        const searchForm = $(".search-form");
-        searchForm.on('submit', function (event) {
+        $(document).on('submit', ".search-form,.search-again", function (event) {
             event.preventDefault();
 
             let input = $(this).find($("input"));
@@ -461,7 +460,7 @@
 
             let pathname = location.pathname;
             const pattern = /^\/courses\/[\w-]+$/;
-            if (pattern.test(pathname)) {
+            if (pattern.test(pathname) || pathname==='/courses') {
                 window.location.href = `${app_url}${pathname}?` + searchParams.toString();
             } else {
                 const url = `${app_url}/courses?` + searchParams.toString();

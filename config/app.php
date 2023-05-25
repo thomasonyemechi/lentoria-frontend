@@ -59,7 +59,7 @@ return [
 
     'api_url' => env('API_URL'),
 
-    'api_backend'=> env('BACKEND','http://lentoria-backend.test/'),
+    'api_backend' => env('BACKEND', 'http://lentoria-backend.test/'),
 
     /*
     |--------------------------------------------------------------------------

@@ -102,7 +102,7 @@ function btn(selector, btn_text, moment) {
 function generatePagination(pagination) {
     let nav = `
     <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-end">
+      <ul class="pagination justify-content-center">
         <li class="page-item ${pagination.prev_page_url === null ? 'disabled' : ''}">
           <a class="page-link pagination-link" href="${pagination.prev_page_url || '#'}" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>

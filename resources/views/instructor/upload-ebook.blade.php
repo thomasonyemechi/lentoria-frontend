@@ -122,9 +122,10 @@
                     extra = data.extra,
                     response = data.response,
                     reader = data.reader;
-                $("#e_book-uploader").fileinput('clear');
-                $("#book_title").val("");
-                location.href = @js(route('instructor.pricing',['type'=>$type,'slug'=>$slug]));
+
+                let courseId = $("#course_id").val();
+                updateBookName(response.url, courseId);
+
             }).on('fileuploaderror', function (event, data) {
                 let response = data.jqXHR.responseJSON;
                 let errorMsg = '';
@@ -136,6 +137,26 @@
                     errorContainer.html(`<ul>${errorMsg}</ul>`);
                 }
             });
+
+            function updateBookName(bookName, courseId) {
+                $.ajax({
+                    url: `${api_url}admin/update-book-name`,
+                    method: 'POST',
+                    data: {
+                        book_name: bookName,
+                        course_id: courseId
+                    }
+                }).done(res => {
+                    console.log(res);
+                    $("#e_book-uploader").fileinput('clear');
+                    $("#book_title").val("");
+                    salat("Book uploaded successfully");
+                    location.href = @js(route('instructor.pricing',['type'=>$type,'slug'=>$slug]));
+                }).fail(res => {
+                    console.log(res);
+                    salat("Error occurred while uploading book", 1)
+                })
+            }
         });
     </script>
 @endsection

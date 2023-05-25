@@ -6,7 +6,6 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\VimeoController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::post('/session_login_infomation', [Controller::class, 'sessionLoginInfomation']);
 Route::view('/', 'index')->name('index');
 
@@ -28,10 +27,14 @@ Route::view('become-instructor', 'become_instructor')->name('become_instructor')
 Route::view('become-affiliate', 'affiliate')->name('affiliate');
 Route::view('courses/{slug?}', 'course-list')->name('courses');
 Route::view('checkout/course/{slug}', 'checkout')->name('course.checkout');
-Route::view('checkout/instructor_activation/{id}/{package_id}',
-    'checkout')->name('instructor.activation.checkout')->whereIn('id', [3, 4, 5]);
-Route::view('checkout/affiliate_activation/{id}/{package_id}',
-    'checkout')->name('affiliate.activation.checkout')->whereIn('id', [2, 3, 4]);
+Route::view(
+    'checkout/instructor_activation/{id}/{package_id}',
+    'checkout'
+)->name('instructor.activation.checkout')->whereIn('id', [3, 4, 5]);
+Route::view(
+    'checkout/affiliate_activation/{id}/{package_id}',
+    'checkout'
+)->name('affiliate.activation.checkout')->whereIn('id', [2, 3, 4]);
 Route::view('checkout_success/course', 'checkout_success')->name('checkout_success.course');
 Route::view('checkout_success/activation', 'checkout_success')->name('checkout_success.activation');
 Route::view('terms', 'terms')->name('terms');
@@ -52,8 +55,9 @@ Route::middleware(['auth2'])->prefix('affiliate')->as('affiliate.')->group(funct
 
 Route::prefix('my-courses')->as('my-courses.')->middleware(['auth2'])->group(function () {
     Route::view('learning', 'student.index')->name('learning');
-    Route::view('/{slug}', 'student.classroom')->name('classroom');
+    Route::view('/t/video/{slug}', 'student.classroom')->name('classroom');
     Route::view('/t/ebooks/{slug}', 'student.ebook-classroom')->name('ebook-classroom');
+    Route::view('/t/discovery/{slug}', 'student.textcontent-classroom')->name('textcontent-classroom');
 });
 Route::prefix('instructor')->as('instructor.')->middleware(['auth2', 'instructor'])->group(function () {
     Route::view('/dashboard', 'instructor.index')->name('dashboard');
@@ -96,7 +100,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth2', '
     });
     Route::get('/course_review/{slug}', function ($slug) {
         $published = $_GET['published'] ?? 0;
-        return $published == 5 ? view('instructor.course_review', compact('slug')) : back()->with('error', 'You cannot access the page');
+        return ($published == 5) ? view('instructor.course_review', compact('slug')) : back()
+            ->with('error', 'You cannot access the page');
     });
 
     Route::view('/courses', 'admin.all_courses');

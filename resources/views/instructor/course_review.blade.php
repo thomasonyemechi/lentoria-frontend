@@ -2,6 +2,16 @@
 @section('page_title', "Course Review || $slug")
 
 @section('page_content')
+    <style>
+        .video-container{
+            height: 600px;
+        }
+        .fill-container {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+    </style>
     <div class="mt-5 course-container">
         <div class="container-fluid">
             <div class="row">
@@ -50,13 +60,13 @@
                             </div>
                             <!-- Video -->
                             <div
-                                class="embed-responsive position-relative t w-100 d-block overflow-auto no-scroll p-0 d-block"
+                                class="embed-responsive position-relative w-100 d-block overflow-auto no-scroll p-0 d-block video-container"
                                 id="vid_container" style="height: 600px;">
                                 <video-js
-                                    class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100 vjs-theme-fantasy"
-                                    id="vid">
+                                    class="position-absolute top-0 end-0 start-0 end-0 bottom-0 mt-6 fill-container vjs-theme-fantasy"
+                                    id="vid" style="height: 480px;">
                                 </video-js>
-                            </div>
+{{--                            </div>--}}
                             <div class="d-flex justify-content-center my-22 d-none" id="vid_preloader">
                                 <div class="spinner-grow" role="status" style="width: 5rem; height: 5rem;">
                                     <span class="visually-hidden">Loading...</span>
@@ -225,6 +235,10 @@
                     player.src(
                         video_url + video_link
                     );
+                    // player.on('loadedmetadata', function () {
+                    //     let videoHeight = player.videoHeight();
+                    //     $('.video-container').height(videoHeight);
+                    // });
                 });
             });
 

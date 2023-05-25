@@ -43,7 +43,7 @@
                         <span class="position-absolute ps-3 search-icon">
                             <i class="fe fe-search"></i>
                         </span>
-                        <input type="search" class="form-control ps-6" placeholder="Search Course" />
+                        <input type="search" class="form-control ps-6" placeholder="Search Course"/>
                     </form>
                 </div>
                 <div></div>
@@ -51,24 +51,25 @@
                     <!-- Table -->
                     <div class="tab-content" id="tabContent">
                         <!--Tab pane -->
-                        <div class="tab-pane fade show active" id="courses" role="tabpanel" aria-labelledby="courses-tab">
+                        <div class="tab-pane fade show active" id="courses" role="tabpanel"
+                             aria-labelledby="courses-tab">
                             <div class="table-responsive border-0 overflow-y-hidden">
                                 <table class="table mb-0 text-nowrap">
                                     <thead class="table-light">
-                                        <tr>
-                                            <th scope="col" class="border-0 text-uppercase">
-                                                Courses
-                                            </th>
-                                            <th scope="col" class="border-0 text-uppercase">
-                                                Instructor
-                                            </th>
-                                            <th scope="col" class="border-0 text-uppercase">
-                                                STATUS
-                                            </th>
-                                            <th scope="col" class="border-0 text-uppercase">
-                                                ACTION
-                                            </th>
-                                        </tr>
+                                    <tr>
+                                        <th scope="col" class="border-0 text-uppercase">
+                                            Courses
+                                        </th>
+                                        <th scope="col" class="border-0 text-uppercase">
+                                            Instructor
+                                        </th>
+                                        <th scope="col" class="border-0 text-uppercase">
+                                            STATUS
+                                        </th>
+                                        <th scope="col" class="border-0 text-uppercase">
+                                            ACTION
+                                        </th>
+                                    </tr>
                                     </thead>
                                     <tbody id="courses_body">
 
@@ -90,38 +91,41 @@
 
     </div>
 
-    <script>
+<script>
         function fetchCourses() {
             $.ajax({
                 method: 'get',
                 url: api_url + `admin/under_review_courses?page=<?= $page ?>`,
-            }).done(function(res) {
+            }).done(function (res) {
+                console.log(res);
                 body = $('#courses_body')
-                body.html('')
-                res.data.data.map(course => {
-                    body.append(`
+                body.html('');
+                $(".page_links").html('');
+                if (res.data.data.length > 0) {
+                    res.data.data.map(course => {
+                        body.append(`
                         <tr>
                             <td class="border-top-0">
                                 <a href="/admin/course_review/${course.slug}?published=${course.published}" class="text-inherit">
                                     <div class="d-lg-flex align-items-center">
                                         <div>
-                                            <img src="${api_root+'assets/uploads/'+course.image}"
+                                            <img src="${api_root + 'assets/uploads/' + course.image}"
                                                 alt="" class="img-4by3-lg rounded" />
                                         </div>
                                         <div class="ms-lg-3 mt-2 mt-lg-0">
                                             <h4 class="mb-1 text-primary-hover">
                                                 ${course.title}
                                             </h4>
-                                            <span class="text-inherit">Added on ${ formatDate(course.created_at) }</span>
+                                            <span class="text-inherit">Added on ${formatDate(course.created_at)}</span>
                                         </div>
                                     </div>
                                 </a>
                             </td>
                             <td class="align-middle border-top-0">
                                 <div class="d-flex align-items-center">
-                                    <img src="${api_root+'assets/avatar/user.jpg'}" alt=""
+                                    <img src="${api_root + 'assets/avatar/user.jpg'}" alt=""
                                         class="rounded-circle avatar-xs me-2" />
-                                    <h5 class="mb-0">${course.user.firstname+' '+course.user.lastname}</h5>
+                                    <h5 class="mb-0">${course.user.firstname + ' ' + course.user.lastname}</h5>
                                 </div>
                             </td>
                             <td class="align-middle border-top-0">
@@ -129,20 +133,61 @@
                                     class="badge-dot bg-warning me-1 d-inline-block align-middle"></span>Pending
                             </td>
                             <td class="align-middle border-top-0">
-                                <a href="#" class="btn btn-outline-white btn-sm">Reject</a>
-                                <a href="#" class="btn btn-success btn-sm">Approve</a>
+                                <a href="#" class="btn btn-outline-white btn-sm reject-btn" data-course-id ="${course.id}">Reject</a>
+                                <a href="#" class="btn btn-success btn-sm approve-btn" data-course-id ="${course.id}">Approve</a>
                             </td>
                         </tr>
 
                     `)
-                })
-                $('.page_links').append(adminPaginate(res.data.links));
+                    })
+                    const pagination = extractPaginationData(res);
+                    $('.page_links').append(generatePagination(pagination));
+                } else {
+                    body.append(`
+                        <tr>
+                            <td class="border-top-0 text-center" colspan="5">
+                               No courses under review
+                            </td>
+                        </tr>
 
-            }).fail(function(res) {
+                    `)
+                }
+
+
+            }).fail(function (res) {
                 salat('An error occured while fetching your data', 1);
             })
         }
 
+        function approveCourse(course_id, button) {
+            $.ajax({
+                method: 'POST',
+                url: api_url + 'admin/approve-course',
+                data: {course_id},
+                beforeSend: () => {
+                    btn(button, '', 'before');
+                }
+            }).done(res => {
+                console.log(res);
+                fetchCourses();
+                btn(button, 'Approve', 'after');
+            }).fail(res => {
+                console.log(res);
+                salat("An error occurred while approving course");
+                btn(button, 'Approve', 'after');
+            })
+        }
+
+        $(document).on('click', '.approve-btn', function (e) {
+            e.preventDefault();
+            let button = $(e.currentTarget);
+            console.log(button);
+
+            let courseId = button.data('courseId');
+
+            approveCourse(courseId, button);
+
+        })
         fetchCourses();
 
     </script>

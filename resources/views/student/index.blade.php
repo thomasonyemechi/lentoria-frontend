@@ -114,10 +114,11 @@
             getMyCourses();
             getSimilarCourses();
 
-            function putLinkByType(type,slug){
+            function putLinkByType(type, slug) {
                 const links = {
                     '4': `/my-courses/t/ebooks/${slug}`,
-                    'default': `/my-courses/${slug}`,
+                    '3': `/my-courses/t/discovery/${slug}`,
+                    'default': `/my-courses/t/video/${slug}`,
                 };
 
                 return links[type] || links['default'];
@@ -133,18 +134,18 @@
                             $(".my_courses").append(`
                             <div class="item col-6 col-sm-4 col-md-3 d-flex align-items-stretch">
                                 <div class="card mb-4 card-hover">
-                                    <a href="${putLinkByType(course.course_type,course.slug)}" class="card-img-top"><img
+                                    <a href="${putLinkByType(course.course_type, course.slug)}" class="card-img-top"><img
                                             src="${imageUrl(course.image)}" alt="" onerror="this.src='../../assets/images/image.jpeg'"
                                             class="rounded-top-md card-img-top"></a>
                                     <div class="card-body">
                                         <h4 class="mb-2 text-ellipsis">
-                                            <a href="${putLinkByType(course.course_type,course.slug)}" class="text-inherit">${course.title}</a>
+                                            <a href="${putLinkByType(course.course_type, course.slug)}" class="text-inherit">${course.title}</a>
                                         </h4>
                                         <ul class="mb-3 list-inline">
                                             <li class="list-inline-item"><i class="fa fa-book me-1"></i>${course.lectures_count} lectures</li>
                                         </ul>
                                         <span class="fs-6">
-                                            <a href="${putLinkByType(course.course_type,course.slug)}">START COURSE</a>
+                                            <a href="${putLinkByType(course.course_type, course.slug)}">START COURSE</a>
                                         </span>
                                     </div>
                                 </div>

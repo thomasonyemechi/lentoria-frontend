@@ -2,15 +2,44 @@
 @section('page_title',"Course || $slug")
 
 @section('page_content')
+    <style>
+        .loading-placeholder {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            padding: 20px;
+            overflow: hidden; /* hide any content that overflows outside the parent element */
+            position: relative;
+        }
+
+        .shimmer {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 100%);
+            height: 20px;
+            margin-bottom: 10px;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+            animation-name: placeholder-animation;
+        }
+
+        @keyframes placeholder-animation {
+            0% {
+                background-position: -200px 0;
+            }
+            100% {
+                background-position: 200px 0;
+            }
+        }
+    </style>
     <!-- Page header -->
     <div class="pt-lg-8 pb-lg-16 pt-8 pb-12 bg-primary">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-xl-7 col-lg-7 col-md-12">
+                <div class="col-xl-7 col-lg-7 col-md-12" hidden id="course_details">
                     <div>
                         <h3 class="text-white display-4 fw-semi-bold" id="c-title">Course Title</h3>
                         <p class="text-white mb-6 lead" id="c-subtitle">
                             Course Subtitle
+
                         </p>
                         <input type="hidden" id="cid">
                         <div class="d-flex align-items-center">
@@ -41,9 +70,18 @@
                                     </rect>
                                 </svg>
                                 <span class="align-middle" id="c-level">
-                                    Intermediate
+                                   Course Level
                                 </span>
                             </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-7 col-md-12 loader">
+                    <div>
+                        <div class="loading-placeholder">
+                            <div class="shimmer"></div>
+                            <div class="shimmer"></div>
+                            <div class="shimmer"></div>
                         </div>
                     </div>
                 </div>
@@ -405,7 +443,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <p id="ins-bio">I am an Innovation designer focussing on UX/UI based in Berlin. As a
+                            <p id="ins-bio text-capitalize">I am an Innovation designer focussing on UX/UI based in
+                                Berlin. As a
                                 creative
                                 resident at
                                 Figma explored the city of the future and how new technologies.</p>
@@ -616,6 +655,8 @@
                 }).done(function (res) {
                     console.log(res);
 
+                    $(".loader").remove();
+                    $("#course_details").attr('hidden', false);
                     // $('#cid').val(res.data.id);
                     $('#c-title').html(res.data.course_info.title);
                     $('#cde').append(res.data.course_info.description);

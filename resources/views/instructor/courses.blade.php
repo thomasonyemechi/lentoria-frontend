@@ -53,6 +53,7 @@
                     </div>
                 </div>
             </div>
+            <div id="paginated_links"></div>
         </div>
     </div>
 
@@ -62,7 +63,7 @@
             fetchCourses();
 
             function fetchCourses() {
-                body = $('#course_table tbody')
+               let body = $('#course_table tbody')
                 $.ajax({
                     method: 'get',
                     url: api_url + 'admin/fetch_my_course',
@@ -119,7 +120,8 @@
                         </tr>
                         `)
                     })
-
+                    const pagination = extractPaginationData(res);
+                    $("#paginated_links").html(generatePagination(pagination));
                 }).fail(function (res) {
                     salat('An error occurred while fetching your data', 1);
                 })

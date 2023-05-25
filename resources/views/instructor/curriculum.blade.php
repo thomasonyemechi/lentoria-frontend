@@ -481,9 +481,9 @@
                 video.onloadedmetadata = function () {
                     window.URL.revokeObjectURL(video.src);
                     var duration = video.duration;
-                    if (duration > 654) {
+                    if (duration > 1254) {
                         $("#file_upload").fileinput('clear')
-                        salat("The video is longer is longer than 10mins and cannot be uploaded", 1);
+                        salat("The video is longer is longer than 20mins and cannot be uploaded", 1);
                     } else {
                         $("input#video_length").val(duration);
                     }
