@@ -132,7 +132,7 @@
             })
         })
 
-        document.querySelector(".share-btn").addEventListener('click',async (e)=>{
+        document.querySelector(".share-btn").addEventListener('click', async (e) => {
             e.preventDefault();
             const link = $(document).find($("#link_div")).data('link');
             const data = {

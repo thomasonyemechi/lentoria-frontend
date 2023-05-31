@@ -3,9 +3,10 @@
 
 @section('page_content')
     <style>
-        .video-container{
+        .video-container {
             height: 600px;
         }
+
         .fill-container {
             width: 100%;
             height: 100%;
@@ -64,9 +65,9 @@
                                 id="vid_container" style="height: 600px;">
                                 <video-js
                                     class="position-absolute top-0 end-0 start-0 end-0 bottom-0 mt-6 fill-container vjs-theme-fantasy"
-                                    id="vid" style="height: 480px;">
+                                    id="vid">
                                 </video-js>
-{{--                            </div>--}}
+                            </div>
                             <div class="d-flex justify-content-center my-22 d-none" id="vid_preloader">
                                 <div class="spinner-grow" role="status" style="width: 5rem; height: 5rem;">
                                     <span class="visually-hidden">Loading...</span>

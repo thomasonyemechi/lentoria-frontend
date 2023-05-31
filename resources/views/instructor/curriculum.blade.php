@@ -452,7 +452,7 @@
                         <a href="javascript:void(0)" class="btn btn-secondary btn-sm imgmodal my-1" data-bs-target="#addImageModal" data-bs-toggle="modal">Add Image Content +</a>&nbsp;&nbsp;
                         <a href="javascript:void(0)" class="btn btn-secondary btn-sm codemodal my-1" data-bs-target="#addCodeModal" data-bs-toggle="modal">Add Code +</a>`,
                     2: `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal my-1">Add Video Content +</a>`,
-                    3: `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addTextModal" class="btn btn-secondary btn-sm textmodal my-1">Add Text Content +</a>`,
+                    3: `<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addVideoModal" class="btn btn-secondary btn-sm vidmodal my-1">Add Video Content +</a>`,
                 }
                 const button = (ty) => buttons[ty] || "";
                 return button(type);
